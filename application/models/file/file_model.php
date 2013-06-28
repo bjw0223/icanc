@@ -1,12 +1,21 @@
 <?php 
 
-class Help_model extends CI_Model {
+class File_model extends CI_Model {
     var $table = "help";
 
     function __construct()
     {
         parent::__construct();
     }
+    function get_filenames()
+    {
+        $this->load->helper('file');
+        $data = get_dir_file_info('./asset/user/',$top_level_only=FALSE);
+        //$data = get_filenames('./asset/user/');
+        return $data;
+    }
+}
+    /*
     function get($name)
     {
         return $this->db->query('SELECT * FROM help where name="'.$name.'"')->row();
@@ -42,4 +51,4 @@ class Help_model extends CI_Model {
         return $result ;
     }
 }
-
+*/

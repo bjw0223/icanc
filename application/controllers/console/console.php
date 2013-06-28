@@ -4,7 +4,9 @@ class Console extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('console/console');
+        $title =null;
+		//$this->load->view('console/console');
+		$this->load->view('console/console',array('title'=>$title));
     }   
 }
 

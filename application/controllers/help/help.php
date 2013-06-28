@@ -48,18 +48,11 @@ class Help extends CI_Controller {
             $data['search_keyword'] = $search_param['search_keyword'] = $this->input->get_post('search_keyword');
         }
 
-
         $result = $this->help_model->getHelpList($page,$list_count,$search_param);
 
         $data['helpList'] = $result['list'];
 		$data['pagination'] = $result['pagination'];
-
         $this->load->view('help/help_list',array('help'=>$data));
-        //$this->load->view('help/help_list',array('help'=>$result));
-        //$this->load->view('help/'.$name,array('help'=>$data));
-
-
-
     }
 }
 

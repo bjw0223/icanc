@@ -1,0 +1,36 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class Exec extends CI_Controller {
+    
+	public function index()
+	{
+        $this->load->helper('file');
+        $rmErrmsg = "rm -r ./var/www/application/controllers/compiler/errmsg.txt";
+        $rmPlay = "rm -r ./var/www/application/controllers/compiler/test"; 
+        $gcc = "gcc -o ./var/www/application/controllers/compiler/test ./var/www/application/controllers/complier/test.c 2> ./var/www/application/controllers/complier/errmsg.txt";
+        $run = "./var/www/application/controllers/complier/test";
+        // 컴파일과 결과파일 실행
+        exec($rmErrmsg);
+        exec($rmPlay);
+        exec($gcc, $gccOutput, $gccStatus);
+        exec($run, $runOutput, $runStatus);
+    echo "ddd";        
+        // 컴파일시 에러 발견됐을때 에러출력
+        if($gccOutput == $runOutput)
+        {
+            $error = array(read_file('./var/www/application/controllers/complier/errmsg.txt'));
+            echo "<pre>";
+            foreach($error as $line)
+            echo "$line\n";
+        }
+        // 컴파일 오류가 없을시 실행결과 출력
+        else
+        {
+            echo "<pre>";
+            foreach($runOutput as $line)
+            echo "$line\n";
+        }
+    }    
+}
+
+?>

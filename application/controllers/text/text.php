@@ -4,7 +4,8 @@ class Text extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('text/text');
+        $data = null;
+		$this->load->view('text/text',array('data'=>$data));
     }   
 }
 
