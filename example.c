@@ -2,8 +2,8 @@
 
 int main()
 {
-    int c =10;
-    int d =20;
+    int z =10;
+    int x =20;
 
 
     printf("%d + %d = %d ",c,d, c + d);
