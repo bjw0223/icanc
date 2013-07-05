@@ -2,11 +2,11 @@
 
 int main()
 {
-    int a =10;
-    int b =20;
+    int c =10;
+    int d =20;
 
 
-    printf("%d + %d = %d ",a,b, a + b);
+    printf("%d + %d = %d ",c,d, c + d);
 
     return 0;
 }
