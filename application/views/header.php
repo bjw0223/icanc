@@ -4,17 +4,16 @@
 
        
         <meta charset="utf-8"/>
-        <link href="/asset/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
-        <link href="/asset/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+        <link href="<?=base_url();?>/asset/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
+        <link href="<?=base_url();?>/asset/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
 
-        <script src="/asset/lib/jquery/js/jquery-1.8.3.js"></script>
-       <script src="/asset/lib/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="<?=base_url();?>/asset/lib/jquery/js/jquery-1.8.3.js"></script>
+       <script src="<?=base_url();?>/asset/lib/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
         
         <script src="http://comments.skplanetx.com/script/plugin.js"></script>
-        <script src="/asset/js/checkForm.js"></script>
 
         <title></title>
-        <script type="text/javascript" src="/asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>
+        <script type="text/javascript" src="<?=base_url();?>/asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>
     </head>
     <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
