@@ -1,9 +1,11 @@
 
-<div>  
-    <<div class="span6"></div>
-    <<div class="span4">
+<div>
+    <h3> Welcome to Sign in </h3>
+    <h3> Welcome to Sign in </h3>
+    <div class="span6"></div>
+    <div class="span4">
         
-       <<form class="form-horizontal" action="/icanc/index.php/auth/register" method="post">
+       <form class="form-horizontal" action="/icanc/index.php/auth/register" method="post">
         
             <div class="control-group">
                 <label class="control-label" for="inputEmail">이메일</label>
