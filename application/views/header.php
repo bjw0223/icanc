@@ -27,11 +27,23 @@
                 </a>
 
                 <!-- Be sure to leave the brand out there if you want it shown -->
-                <a class="brand" href="#">Project name</a>
+                <a class="brand" href="/icanc/index.php/main">I CAN C</a>
 
                 <!-- Everything you want hidden at 940px or less, place within here -->
                 <div class="nav-collapse collapse">
                 <!-- .nav, .navbar-search, .navbar-form, etc -->
+                    <ul class="nav pull-right">
+                        <form class="form-inline" action="/icanc/index.php/auth/authentication">
+                            <div>
+                                <input type="text" class="input-small" id="email" name="email" placeholder="Email">
+                            <input type="password" class="input-small" id="password" name="password" placeholder="Password">
+                            <button type="submit" style="margin-top:0px" class="btn">로그인</button>
+                            <label class="checkbox">
+                                <input type="checkbox" style="margin-top:4px"> <font color="yellow">아이디 저장</font>
+                            </label>
+                            <a href="/icanc/index.php/auth/register"><font color="white"> 회원가입 </font>  </a>
+                        </form>
+                    </ui>
                 </div>
 
             </div>
