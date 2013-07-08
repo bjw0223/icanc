@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-       
         <meta charset="utf-8"/>
         <link href="<?=base_url();?>asset/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
         <link href="<?=base_url();?>asset/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
