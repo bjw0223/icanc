@@ -21,9 +21,37 @@
                 $(this).parent().removeClass('inactive').addClass('active');
                 $('#description').load("<?=base_url();?>index.php/main/show/"+path);
             });
+            $('#reference').hide();
                 
         });
         </script>
+        <style type="text/css">
+       #reference{
+            font-weight:bold;
+            overflow;hidden;
+            margin-top:50px;
+            padding-top:10px;
+            padding-bottom:20px;
+            padding-left:8px;
+            background-color:#303030;
+        }
+        #reference .span2{
+            color:#CCCCCC;
+        }
+        .reference{
+            color:#CCCCCC;
+            line-height:0px;
+        }
+        #reference div li a:hover{
+            background-color:inherit;
+            font-size:13px;
+            color:yellow;
+            /*text-shadow:0 0 0 yellow;*/
+        }
+        #reference h5{
+            color:#FFFFFF;
+        }
+        </style>
 
         <title></title>
         <script type="text/javascript" src="<?=base_url();?>asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>
