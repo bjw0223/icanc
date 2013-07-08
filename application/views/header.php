@@ -51,14 +51,15 @@
                         <form class="form-inline" action="/icanc/index.php/auth/authentication">
                             <div>
                                 <input type="text" class="input-small" id="email" name="email" placeholder="Email">
-                            <input type="password" class="input-small" id="password" name="password" placeholder="Password">
-                            <button type="submit" style="margin-top:0px" class="btn">로그인</button>
-                            <label class="checkbox">
-                                <input type="checkbox" style="margin-top:4px"> <font color="yellow">아이디 저장</font>
-                            </label>
-                            <a href="/icanc/index.php/auth/register"><font color="white"> 회원가입 </font>  </a>
+                                <input type="password" class="input-small" id="password" name="password" placeholder="Password">
+                                <button type="submit" style="margin-top:0px" class="btn">로그인</button>
+                                <label class="checkbox">
+                                    <input type="checkbox" style="margin-top:4px"><font color="yellow">아이디 저장</font>
+                                </label>
+                                <a href="/icanc/index.php/auth/register"><font color="white"> 회원가입 </font>  </a>
+                            </div>
                         </form>
-                    </ui>
+                    </ul>
                 </div>
 
             </div>
