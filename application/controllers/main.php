@@ -11,6 +11,10 @@ class Main extends CI_Controller {
 		$this->load->view('description');
 		$this->load->view('footer');
 	}
+    public function show($title,$subtitle)
+    {
+		$this->load->view($title.'/'.$subtitle);
+    }
     
 
 
