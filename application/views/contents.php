@@ -64,9 +64,9 @@
             <div id="collapse_4" class="accordion-body collapse">
                 <div class="accordion-inner">
                     <ul class="nav nav-list">
-                        <li class=""><a href="#">Auto</a></li>
-                        <li class=""><a href="#">Static</a></li>
-                        <li class=""><a href="#">Extern</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="variable/auto">Auto</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="variable/static">Static</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="variable/extern">Extern</a></li>
                     </ul>
                 </div>
             </div>
@@ -81,30 +81,30 @@
                 <div class="accordion-inner">
                     <ul class="nav nav-list">
                         <li class="nav-header">Basic</li>
-                        <li class=""><a href="#">int(정수)</a></li>
-                        <li class=""><a href="#">double(실수)</a></li>
-                        <li class=""><a href="#">char(문자)</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/int">int(정수)</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/double">double(실수)</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/char">char(문자)</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">Array</li>
-                        <li class=""><a href="#">숫자</a></li>
-                        <li class=""><a href="#">문자</a></li>
-                        <li class=""><a href="#">2차원</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/numeric">숫자</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/character">문자</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/two_dimensional">2차원</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">Pointer</li>
-                        <li class=""><a href="#">포인터변수</a></li>
-                        <li class=""><a href="#">배열과의 관계</a></li>
-                        <li class=""><a href="#">포인터배열</a></li>
-                        <li class=""><a href="#">다중포인터</a></li>
-                        <li class=""><a href="#">배열포인터</a></li>
-                        <li class=""><a href="#">함수포인터</a></li>
-                        <li class=""><a href="#">void포인터</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/pointer_variable">포인터변수</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/relation_to_array">배열과의 관계</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/pointer_array">포인터배열</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/multiplePointer">다중포인터</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/arrayPointer">배열포인터</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/functionPointer">함수포인터</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/voidPointer">void포인터</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">Struct</li>
-                        <li class=""><a href="#">형태</a></li>
-                        <li class=""><a href="#">구조체배열</a></li>
-                        <li class=""><a href="#">구조체포인터</a></li>
-                        <li class=""><a href="#">공용체</a></li>
-                        <li class=""><a href="#">열거형</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/form">형태</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/structureArray">구조체배열</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/structurePointer">구조체포인터</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/union">공용체</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="data_type/enumeration">열거형</a></li>
                     </ul>
                 </div>
             </div>
@@ -119,19 +119,19 @@
                 <div class="accordion-inner">
                     <ul class="nav nav-list">
                         <li class="nav-header">선택</li>
-                        <li class=""><a href="#">if</a></li>
-                        <li class=""><a href="#">switch_case</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="control_statement/if">if</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="control_statement/switch_case">switch_case</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">반복</li>
-                        <li class=""><a href="#">do_while</a></li>
-                        <li class=""><a href="#">while</a></li>
-                        <li class=""><a href="#">for</a></li>
-                        <li class=""><a href="#">다중</a></li>
-                        <li class=""><a href="#">무한</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="control_statement/do_while">do_while</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="control_statement/while">while</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="control_statement/for">for</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="control_statement/multiple">다중</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="control_statement/infinite">무한</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">분기</li>
-                        <li class=""><a href="#">break</a></li>
-                        <li class=""><a href="#">continue</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="control_statement/break">break</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="control_statement/continue">continue</a></li>
                     </ul>
                 </div>
             </div>
@@ -146,15 +146,15 @@
                 <div class="accordion-inner">
                     <ul class="nav nav-list">
                         <li class="nav-header">산술</li>
-                        <li class=""><a href="#">사칙</a></li>
-                        <li class=""><a href="#">나머지</a></li>
-                        <li class=""><a href="#">증감</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="operator/four_fundamental">사칙</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="operator/remainder">나머지</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="operator/increase_and_decrease">증감</a></li>
                         <li class="divider"></li>
-                        <li class=""><a href="#">관계,논리</a></li>
-                        <li class=""><a href="#">비트</a></li>
-                        <li class=""><a href="#">멤버참조</a></li>
-                        <li class=""><a href="#">sizeof</a></li>
-                        <li class=""><a href="#">우선순위</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="operator/relation_and_logic">관계,논리</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="operator/bit">비트</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="operator/memberReference">멤버참조</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="operator/sizeof">sizeof</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="operator/priority">우선순위</a></li>
                     </ul>
                 </div>
             </div>
@@ -168,8 +168,8 @@
             <div id="collapse_8" class="accordion-body collapse">
                 <div class="accordion-inner">
                     <ul class="nav nav-list">
-                        <li class=""><a href="#">자동</a></li>
-                        <li class=""><a href="#">강제</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="type_conversion/automatic">자동</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="type_conversion/forced">강제</a></li>
                     </ul>
                 </div>
             </div>
@@ -183,28 +183,28 @@
             <div id="collapse_9" class="accordion-body collapse">
                 <div class="accordion-inner">
                     <ul class="nav nav-list">
-                        <li class=""><a href="#">선언</a></li>
-                        <li class=""><a href="#">정의</a></li>
-                        <li class=""><a href="#">호출</a></li>
-                        <li class=""><a href="#">다양한 형태</a></li>
-                        <li class=""><a href="#">배열 처리</a></li>
-                        <li class=""><a href="#">strcpy</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/declaration">선언</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/definition">정의</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/call">호출</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/various_form">다양한 형태</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/array_handling">배열 처리</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/strcpy">strcpy</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">동적할당</li>
-                        <li class=""><a href="#">malloc</a></li>
-                        <li class=""><a href="#">calloc</a></li>
-                        <li class=""><a href="#">realloc</a></li>
-                        <li class=""><a href="#">free</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/malloc">malloc</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/calloc">calloc</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/realloc">realloc</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/free">free</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">입력</li>
-                        <li class=""><a href="#">scanf</a></li>
-                        <li class=""><a href="#">getchar</a></li>
-                        <li class=""><a href="#">gets</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/scanf">scanf</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/getchar">getchar</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/gets">gets</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">출력</li>
-                        <li class=""><a href="#">printf</a></li>
-                        <li class=""><a href="#">putchar</a></li>
-                        <li class=""><a href="#">puts</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/printf">printf</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/putchar">putchar</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="function/puts">puts</a></li>
                     </ul>
                 </div>
             </div>
@@ -218,18 +218,18 @@
             <div id="collapse_10" class="accordion-body collapse">
                 <div class="accordion-inner">
                     <ul class="nav nav-list">
-                        <li class=""><a href="#">스트림</a></li>
-                        <li class=""><a href="#">fopen</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="file/stream">스트림</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="file/fopen">fopen</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">입력함수</li>
-                        <li class=""><a href="#">fgetc</a></li>
-                        <li class=""><a href="#">fgets</a></li>
-                        <li class=""><a href="#">fscanf</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="file/fgetc">fgetc</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="file/fgets">fgets</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="file/fscanf">fscanf</a></li>
                         <li class="divider"></li>
                         <li class="nav-header">출력함수</li>
-                        <li class=""><a href="#">fputc</a></li>
-                        <li class=""><a href="#">fputs</a></li>
-                        <li class=""><a href="#">fprintf</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="file/fputc">fputc</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="file/fputs">fputs</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="file/fprintf">fprintf</a></li>
                     </ul>
                 </div>
             </div>
@@ -246,8 +246,8 @@
                     <ul class="nav nav-list">
                         <li class="nav-header">기본</li>
                         <li class="divider"></li>
-                        <li class=""><a href="#">자동</a></li>
-                        <li class=""><a href="#">강제</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="">자동</a></li>
+                        <li class="inactive"><a class="contents_list" href="#" data-in="">강제</a></li>
                     </ul>
                 </div>
             </div>
