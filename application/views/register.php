@@ -1,9 +1,9 @@
 
 <div>  
-    <div class="span4"></div>
-    <div class="span4">
-        <?php echo validation_errors(); ?> 
-        <form class="form-horizontal" action="/icanc/index.php/auth/register" method="post">
+    <<div class="span6"></div>
+    <<div class="span4">
+        
+       <<form class="form-horizontal" action="/icanc/index.php/auth/register" method="post">
         
             <div class="control-group">
                 <label class="control-label" for="inputEmail">이메일</label>
@@ -38,10 +38,10 @@
                 <div class="controls">
                     <input type="submit" class="btn btn-primary" value="회원가입" />
                 </div>
-            </div>      
+            </div>    
     
         </form> 
-     
+    <?php echo validation_errors(); ?> 
     </div>
     <div class="span4"> </div>  
 </div>
