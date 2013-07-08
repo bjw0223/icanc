@@ -1,4 +1,4 @@
-<div class="container" style="margin-top:50px;">
+<div class="container" style="margin-top:100px;">
 <div class="row-fluid"> 
 <div id="contents" class="span3" >
 <!-- -->
