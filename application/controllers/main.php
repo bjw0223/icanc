@@ -16,8 +16,10 @@ class Main extends CI_Controller {
     {
 		$this->load->view($title.'/'.$subtitle);
     }
-    
-
+    public function reference($fname)
+    {
+		$this->load->view('reference/'.$fname);
+    }
 
 
 

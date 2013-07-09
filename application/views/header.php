@@ -23,18 +23,24 @@
             });
             $('.reference_btn').click(function(){
                 $('#reference').toggle('blind');
-                });
+            });
             $('#reference').hide();
+            $('#function_description > .desc').hide();
+            $('.reference').click(function(){
+                var name= $(this).attr("data-in");
+                $('#function_description > .desc').load("<?=base_url()?>index.php/main/reference/"+name);
+                $('#function_contents').hide('slide');
+                $('#function_description > .desc').show('blind');
+            });
                 
         });
         </script>
         <style type="text/css">
        #reference{
             font-weight:bold;
-            overflow;hidden;
             margin-top:40px;
             padding-top:10px;
-            padding-bottom:20px;
+            padding-bottom:0px;
             padding-left:8px;
             background-color:#303030;
         }
@@ -44,6 +50,7 @@
         .reference{
             color:#CCCCCC;
             line-height:0px;
+            font-size:9px;
         }
         #reference div li a:hover{
             background-color:inherit;
@@ -60,6 +67,10 @@
         table{
             border-width:0px;
         }   
+        .logo:hover{
+            color:yellow;
+            text-shadow:0 -1px 0 yellow;
+        }
         </style>
 
         <title></title>

@@ -2,12 +2,16 @@
     <div class="navbar-inner">
         <div class="container">
             <div class="row-fluid">
-                <div class="span2" style="background-color:;">
-                    <a class="brand" href="<?=base_url();?>index.php/main">I CAN C</a>
+                <div class="span3" style="background-color:;vertical-align:;">
+                    <a class="brand logo" href="<?=base_url();?>index.php/main" style="font-size:25px;">I CAN C</a>
                 </div>
-                <div class="span7" style="background-color:;">
+                <div class="span6" style="background-color:;">
                     <ul class="nav">
-                        <li class=""><a class="reference_btn">reference</a></li>
+                        <li class=""><a class="reference_btn">Reference</a></li>
+                        <li class=""><a>Tutorial</a></li>
+                        <li class=""><a>Free Coding</a></li>
+                          <li class="divider-vertical"></li>
+                        <li class=""><a>Board</a></li>
                     </ul>
 
                 </div>
