@@ -1,7 +1,7 @@
 <div id="reference">
 <div id="function_description">
     <div>
-        <img class="btn" src="/asset/lib/glyphicons/png/glyphicons_221_unshare.png">
+        <img class="btn" src="<?=base_url();?>asset/lib/glyphicons/png/glyphicons_221_unshare.png">
     </div>
     <div class="desc" style="color:white;">
     </div>
