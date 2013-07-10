@@ -4,7 +4,7 @@ class Auth extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        //$this->load->helper('url');
+        $this->load->helper('url');
     }
     function login()
     {
@@ -15,8 +15,7 @@ class Auth extends CI_Controller {
     function logout()
     {
         $this->session->sess_destroy();
-        
-        redirect('/');
+        redirect( base_url().'index.php/main');
     }
     function register()
     {
@@ -71,17 +70,37 @@ class Auth extends CI_Controller {
           { 
             $this->session->set_userdata('is_login',true);
             $returnURL = $this->input->get('returnURL');
+            echo $returnURL.'unknown';
             if($returnURL === false)
             {
-                $returnURL = '/';
+               $returnURL = base_url().'index.php/main';
             }
             redirect($returnURL);
         }
         else 
         {
+           echo 'login fail';
            $this->session->set_flashdata('message','로그인에 실패 했습니다');
            //redirect('/auth/login');
         }
+    }
+    function sendToMail()
+    {
+        $this->load->library('email');
+        $config['protocol'] = 'sendmail';
+        $this->email->initialize($config);
+        
+        $this->email->from('despairno2@gmail.com', 'I CAN C');
+        $this->email->to('despairno2@gmail.com'); 
+        $this->email->subject('Email Test');
+        $this->email->message('Testing the email class.');  
+
+        if ( ! $this->email->send())
+        {
+            echo 'mail send error';
+        }
+
+        echo $this->email->print_debugger();
     }
     function _head()
     {

@@ -10,6 +10,7 @@ class User_model extends CI_Model {
     function add($option)
     {
         $this->db->set('email',$option['email']);
+        $this->db->set('nickname',$option['nickname']);
         $this->db->set('password',$option['password']);
         $this->db->set('created','NOW()',false);
         $this->db->insert('user');

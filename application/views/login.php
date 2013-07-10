@@ -1,3 +1,4 @@
+
 <div class="container" style="margin-top:50px;">
     <div class="row-fluid" >
         <div class="span8 offset2">
@@ -11,11 +12,11 @@
     </div>
     <div class="row-fluid">
         <div class="span4 offset2" style="background-color:;">
-            <form class="navbar-formt" action="<?=base_url()?>index.php/auth/authentication">
+            <form class="navbar-formt" action="<?=base_url()?>index.php/auth/authentication" method="post">
                 <table class="table table-condensed">
                     <tbody>
                         <tr>
-                            <td colspan=3 style="border-width:0px"><input class="span12" type="text"id="email" name="email" placeholder="Email"/></td>
+                            <td colspan=3 style="border-width:0px"><input class="span12" type="text" id="email" name="email" placeholder="Email"/></td>
                         </tr>
                         <tr>
                             <td colspan=3 style="border-width:0px"><input class="span12" type="password" class="" id="password" name="password" placeholder="Password"/></td>
@@ -42,7 +43,7 @@
                 </div>
             </div>
         </div>
-        <div class="span4" style="background-color:;">
+        <div class="span4" style="background-color;">
         </div>
     </div>
 </div>
