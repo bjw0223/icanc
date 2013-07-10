@@ -15,11 +15,23 @@
                     </ul>
 
                 </div>
-                <div class="span3" style="background-color:;">
+                <!--login or sign up  button-->
+                <div id="login_div" class="span3"  style="background-color:;">
                     <span class="pull-right">
-                        <a class="btn btn-inverse" href="<?=base_url()?>index.php/auth/register">Sign up</a>
-                        <a class="btn btn-inverse" href="<?=base_url()?>index.php/auth/login">Sign in</a>
+                        <a class="btn btn-inverse" href="<?=base_url()?>index.php/auth/register">JOIN</a>
+                        <a class="btn btn-inverse" href="<?=base_url()?>index.php/auth/login">LOGIN</a>
                     </span>
+                </div>
+                <!--logout button-->
+                <div id="logout_div" class="span3" style="text-align:right;">
+                    <div class="row-fluid">
+                        <span style="vertical-align:sub;"> 
+                            <b id="welcome"><?=$this->session->userdata('user_nickname');?>님</b>
+                        </span>
+                        <span>
+                          <a class="btn btn-inverse" href="<?=base_url()?>index.php/auth/logout">LOGOUT</a>
+                        </span>
+                    </div>
                 </div>
             </div>
 

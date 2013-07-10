@@ -36,7 +36,7 @@ class Auth extends CI_Controller {
               if(!function_exists('password_hash'))
               {
                   $this->load->helper('password');
-              }
+              }:
 
               $hash = password_hash($this->input->post('password'),PASSWORD_BCRYPT);              
 
@@ -46,7 +46,7 @@ class Auth extends CI_Controller {
                           'password'=>$hash,
                           'nickname'=>$this->input->post('nickname')
                           ));
-           
+        
               $this->load->helper('url');
               $this->session->set_flashdata('message','회원가입에 성공했습니다.');
               $this->load->view('footer');
@@ -68,9 +68,13 @@ class Auth extends CI_Controller {
             password_verify($this->input->post('password'),$user->password)
         )  
           { 
-            $this->session->set_userdata('is_login',true);
+            $sess_add = array(
+                              'user_email'  => $user->email,
+                              'user_nickname' => $user->nickname,
+                              'is_login' => true
+                             );
+            $this->session->set_userdata($sess_add);
             $returnURL = $this->input->get('returnURL');
-            echo $returnURL.'unknown';
             if($returnURL === false)
             {
                $returnURL = base_url().'index.php/main';
@@ -79,9 +83,8 @@ class Auth extends CI_Controller {
         }
         else 
         {
-           echo 'login fail';
-           $this->session->set_flashdata('message','로그인에 실패 했습니다');
-           //redirect('/auth/login');
+           $this->session->set_flashdata('message','아이디 혹은 비밀번호를 확인해주세요');
+           redirect('/auth/login');
         }
     }
     function sendToMail()

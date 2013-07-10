@@ -32,6 +32,22 @@
                 $('#function_contents').hide('slide');
                 $('#function_description > .desc').show('blind');
             });
+            <?php 
+                 if($this->session->userdata('is_login') === true )
+                 {
+            ?>
+                    $('#login_div').hide();
+                    $('#logout_div').show();
+            <?php
+                 }
+                 else
+                 {
+            ?>
+                    $('#logout_div').hide();
+                    $('#login_div').show();
+            <?php     
+                 }
+            ?>
                 
         });
         </script>
@@ -71,11 +87,28 @@
             color:yellow;
             text-shadow:0 -1px 0 yellow;
         }
+        #logout_div b{
+            color:#FFFFFF;
+            margin-right:20px;
+        }
         </style>
 
         <title></title>
         <script type="text/javascript" src="<?=base_url();?>asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>
     </head>
     <body>
+    <!--로그인 실패시의 메세지 --!>
+    <?php
+        if( $this->session->flashdata('message'))
+        {
+    ?>
+
+    <script>
+        alert('<?=$this->session->flashdata('message')?>');
+    </script>
+    <?php
+        }
+    ?>
+    <!-- 로그인 실패시 메시지 끝 --!>
     
 

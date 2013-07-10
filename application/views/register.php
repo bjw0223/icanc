@@ -47,7 +47,7 @@
             </div>
             
             </form> 
-            <?php echo validation_errors(); ?> 
+            <?php echo validation_errors('email'); ?> 
         </div>
     </div>
 </div>
