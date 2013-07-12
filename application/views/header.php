@@ -9,7 +9,7 @@
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
         
         <script src="http://comments.skplanetx.com/script/plugin.js"></script>
-        <script>
+        <script type="text/javascript">
         $(document).ready(function() {
                 var postSelecter = null;
             $('.contents_list').click(function(){
@@ -48,7 +48,6 @@
             <?php     
                  }
             ?>
-                
         });
         </script>
         <style type="text/css">

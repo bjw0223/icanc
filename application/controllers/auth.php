@@ -4,7 +4,6 @@ class Auth extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->helper('url');
     }
     function login()
     {
@@ -36,7 +35,7 @@ class Auth extends CI_Controller {
               if(!function_exists('password_hash'))
               {
                   $this->load->helper('password');
-              }:
+              }
 
               $hash = password_hash($this->input->post('password'),PASSWORD_BCRYPT);              
 
