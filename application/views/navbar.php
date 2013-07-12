@@ -29,6 +29,9 @@
                             <b id="welcome"><?=$this->session->userdata('user_nickname');?>님</b>
                         </span>
                         <span>
+                          <a class="btn btn-inverse" href="<?=base_url()?>index.php/mypage">MYPAGE</a>
+                        </span>
+                        <span>
                           <a class="btn btn-inverse" href="<?=base_url()?>index.php/auth/logout">LOGOUT</a>
                         </span>
                     </div>

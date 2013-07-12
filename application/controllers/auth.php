@@ -83,7 +83,7 @@ class Auth extends CI_Controller {
         else 
         {
            $this->session->set_flashdata('message','아이디 혹은 비밀번호를 확인해주세요');
-           redirect('/auth/login');
+           redirect(base_url().'index.php/auth/login');
         }
     }
     function sendToMail()
