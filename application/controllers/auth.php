@@ -4,6 +4,7 @@ class Auth extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+        $this->load->helper('url');
     }
     function login()
     {
@@ -96,7 +97,7 @@ class Auth extends CI_Controller {
     function sendToMail()
     {
         $this->load->library('email');
-        $config['protocol'] = 'mail';
+        $config['protocol'] = 'sendmail';
         $config['mailpath'] = '/usr/sbin/sendmail';
         $this->email->initialize($config);
         $this->email->from('miss0110@naver.com','Eugene');
@@ -113,7 +114,6 @@ class Auth extends CI_Controller {
     }
     function _head()
     {
-        $this->load->helper('url');
         $this->load->view('header');
     }
 
