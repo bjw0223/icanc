@@ -9,7 +9,7 @@
                     <ul class="nav">
                         <li class=""><a class="reference_btn">Reference</a></li>
                         <li class=""><a>Tutorial</a></li>
-                        <li class=""><a>Free Coding</a></li>
+                        <li class=""><a href="<?=base_url();?>index.php/editer">Free Coding</a></li>
                           <li class="divider-vertical"></li>
                         <li class=""><a>Board</a></li>
                     </ul>
