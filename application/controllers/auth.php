@@ -48,6 +48,14 @@ class Auth extends CI_Controller {
                           ));
         
               $this->session->set_flashdata('message','회원가입에 성공했습니다.');
+              
+              // 회원가입 후 회원만의 저장 공간 생성
+              $this->load->helper('file');
+              $user = $this->user_model->getByEmail(array('email'=>$this->input->post('email')));
+              $userPath = "/var/www/icanc/user"."/".$user->id."/";
+              umask(0);
+              mkdir($userPath,0777);
+              
               $this->load->view('footer');
               redirect( base_url().'index.php/main');
            }
@@ -93,7 +101,7 @@ class Auth extends CI_Controller {
         $config['mailpath'] = '/usr/sbin/sendmail';
         $this->email->initialize($config);
         $this->email->from('miss0110@naver.com','Eugene');
-        $this->email->to('bjw0223@naver.com');
+        $this->email->to('sjmwoalsl@naver.com');
         $this->email->subject('테스트메일');
         $this->email->message('테스트중입니다.');
 
