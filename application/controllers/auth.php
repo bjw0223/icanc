@@ -89,13 +89,13 @@ class Auth extends CI_Controller {
     function sendToMail()
     {
         $this->load->library('email');
-        $config['protocol'] = 'sendmail';
+        $config['protocol'] = 'mail';
+        $config['mailpath'] = '/usr/sbin/sendmail';
         $this->email->initialize($config);
-        
-        $this->email->from('despairno2@gmail.com', 'I CAN C');
-        $this->email->to('despairno2@gmail.com'); 
-        $this->email->subject('Email Test');
-        $this->email->message('Testing the email class.');  
+        $this->email->from('miss0110@naver.com','Eugene');
+        $this->email->to('miss0110@naver.com');
+        $this->email->subject('테스트메일');
+        $this->email->message('테스트중입니다.');
 
         if ( ! $this->email->send())
         {
