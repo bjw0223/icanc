@@ -29,10 +29,10 @@
                             <b id="welcome"><?=$this->session->userdata('user_nickname');?>님</b>
                         </span>
                         <span>
-                          <a class="btn btn-inverse" href="<?=base_url()?>index.php/mypage">MYPAGE</a>
+                          <a class="btn btn-inverse" href="<?=base_url()?>index.php/mypage">M</a>
                         </span>
                         <span>
-                          <a class="btn btn-inverse" href="<?=base_url()?>index.php/auth/logout">LOGOUT</a>
+                          <a class="btn btn-inverse" href="<?=base_url()?>index.php/auth/logout">O</a>
                         </span>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ class Auth extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+        $this->load->helper('url');
     }
     function login()
     {
@@ -46,7 +47,6 @@ class Auth extends CI_Controller {
                           'nickname'=>$this->input->post('nickname')
                           ));
         
-              $this->load->helper('url');
               $this->session->set_flashdata('message','회원가입에 성공했습니다.');
               $this->load->view('footer');
               redirect( base_url().'index.php/main');
@@ -89,11 +89,11 @@ class Auth extends CI_Controller {
     function sendToMail()
     {
         $this->load->library('email');
-        $config['protocol'] = 'mail';
+        $config['protocol'] = 'sendmail';
         $config['mailpath'] = '/usr/sbin/sendmail';
         $this->email->initialize($config);
         $this->email->from('miss0110@naver.com','Eugene');
-        $this->email->to('miss0110@naver.com');
+        $this->email->to('bjw0223@naver.com');
         $this->email->subject('테스트메일');
         $this->email->message('테스트중입니다.');
 
@@ -106,7 +106,6 @@ class Auth extends CI_Controller {
     }
     function _head()
     {
-        $this->load->helper('url');
         $this->load->view('header');
     }
 
