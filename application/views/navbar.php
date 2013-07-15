@@ -8,10 +8,10 @@
                 <div class="span6" style="background-color:;">
                     <ul class="nav">
                         <li class=""><a class="reference_btn">Reference</a></li>
-                        <li class=""><a>Tutorial</a></li>
+                        <li class=""><a href="<?=base_url();?>index.php/tutorial">Tutorial</a></li>
                         <li class=""><a href="<?=base_url();?>index.php/editer">Free Coding</a></li>
                           <li class="divider-vertical"></li>
-                        <li class=""><a>Board</a></li>
+                        <li class=""><a href="<?=base_url();?>index.php/board">Board</a></li>
                     </ul>
 
                 </div>
@@ -29,10 +29,10 @@
                             <b id="welcome"><?=$this->session->userdata('user_nickname');?>님</b>
                         </span>
                         <span>
-                          <a class="btn btn-inverse" href="<?=base_url()?>index.php/mypage">M</a>
+                          <a class="btn btn-inverse" href="<?=base_url()?>index.php/mypage"><i class="icon-wrench icon-white"></i></a>
                         </span>
                         <span>
-                          <a class="btn btn-inverse" href="<?=base_url()?>index.php/auth/logout">O</a>
+                          <a class="btn btn-inverse" href="<?=base_url()?>index.php/auth/logout"><i class="icon-off icon-white"></i></a>
                         </span>
                     </div>
                 </div>
