@@ -4,7 +4,7 @@
 <!-- -->
     <ul class="nav nav-tabs nav-stacked"> 
         <li>
-            <a href="<?=base_url()?>index.php/mypage/info" style="z-index: 2;text-shadow: 0 1px 0 rgba(0,0,0,.15);">
+            <a href="<?=base_url()?>index.php/mypage/info">
                 내정보
                 <i class="icon-chevron-right pull-right"></i>
             </a>

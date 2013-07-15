@@ -5,10 +5,14 @@
             d
             </div>
             <div class="span9" style="background-color:blue;">
-                <form action="#" method="post">
-                <textarea class="span12" style="resize:none;height:300px;"></textarea>
-                <a class="btn" onclick="submit();">compile</a>
-                </form>
+                <div class="row-fluid">
+                    <form action="#" method="post">
+                    <textarea class="span12" style="resize:none;height:300px;"></textarea>
+                    <a class="btn" onclick="submit();">compile</a>
+                    </form>
+                </div>
+                <div class="row-fluid" style="background-color:yellow;height:100px;">
+                </div>
             </div>
         </div>
     </div>
