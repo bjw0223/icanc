@@ -2,7 +2,6 @@
 
 class Mypage extends CI_Controller {
 
-    var $selected=NULL;
     function __construct()
     {
         parent::__construct();
@@ -13,42 +12,51 @@ class Mypage extends CI_Controller {
 	}
 	public function info()
     {
+        $data['selected']="info";
         $this->_head();
         $this->load->view('navbar');
-        $this->load->view('mypage_contents');
+        $this->load->view('reference');
+        $this->load->view('mypage/mypage_contents',$data);
         $this->load->view('mypage/info');
         $this->load->view('footer');
-        return $selected="info";
 	}
 	public function invitation()
     {
+        $data['selected']="invitation";
         $this->_head();
         $this->load->view('navbar');
-        $this->load->view('mypage_contents');
+        $this->load->view('reference');
+        $this->load->view('mypage/mypage_contents',$data);
         $this->load->view('mypage/invitation');
         $this->load->view('footer');
 	}
 	public function modification()
     {
+        $data['selected']="modification";
         $this->_head();
         $this->load->view('navbar');
-        $this->load->view('mypage_contents');
+        $this->load->view('reference');
+        $this->load->view('mypage/mypage_contents',$data);
         $this->load->view('mypage/modification');
         $this->load->view('footer');
 	}
 	public function showdir()
     {
+        $data['selected']="showdir";
         $this->_head();
         $this->load->view('navbar');
-        $this->load->view('mypage_contents');
+        $this->load->view('reference');
+        $this->load->view('mypage/mypage_contents',$data);
         $this->load->view('mypage/showdir');
         $this->load->view('footer');
 	}
 	public function signout()
     {
+        $data['selected']="signout";
         $this->_head();
         $this->load->view('navbar');
-        $this->load->view('mypage_contents');
+        $this->load->view('reference');
+        $this->load->view('mypage/mypage_contents',$data);
         $this->load->view('mypage/signout');
         $this->load->view('footer');
 	}

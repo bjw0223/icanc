@@ -4,7 +4,7 @@ class Main extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('header');
+		$this->_head();
 		$this->load->view('navbar');
         $this->load->view('reference');
 		$this->load->view('contents');
@@ -19,7 +19,10 @@ class Main extends CI_Controller {
     {
 		$this->load->view('reference/'.$fname);
     }
-
+    function _head()
+    {
+        $this->load->view('header');
+    }
 
 
 

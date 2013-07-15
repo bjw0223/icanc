@@ -90,6 +90,16 @@
             color:#FFFFFF;
             margin-right:20px;
         }
+    
+        .my_contents li.selected{
+            background-color:rgba(10,55,240,.75);
+        }
+        .my_contents li.selected :hover{
+            background-color:rgba(10,55,240,.75);
+        }
+        .my_contents li.selected a{
+            color:white;
+        }
         </style>
 
         <title></title>

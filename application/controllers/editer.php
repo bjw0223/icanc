@@ -10,6 +10,7 @@ class Editer extends CI_Controller {
     {
         $this->_head();
         $this->load->view('navbar');
+        $this->load->view('reference');
         $this->load->view('editer');
         $this->load->view('footer');
     }
