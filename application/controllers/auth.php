@@ -52,12 +52,12 @@ class Auth extends CI_Controller {
               // 회원가입 후 회원만의 저장 공간 생성
               $this->load->helper('file');
               $user = $this->user_model->getByEmail(array('email'=>$this->input->post('email')));
-              $userPath = "/var/www/user"."/".$user->id."/";
+              $userPath = "/var/www/icanc/user"."/".$user->id."/";
               umask(0);
               mkdir($userPath,0777);
-              var_dump($s);
+              mkdir($userPath.'temp',0777);
               $this->load->view('footer');
-              //redirect( base_url().'index.php/main');
+              redirect( base_url().'index.php/main');
            }
     }
     function authentication()
