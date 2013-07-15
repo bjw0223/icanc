@@ -55,9 +55,9 @@ class Auth extends CI_Controller {
               $userPath = "/var/www/icanc/user"."/".$user->id."/";
               umask(0);
               mkdir($userPath,0777);
-              
+              var_dump($s);
               $this->load->view('footer');
-              redirect( base_url().'index.php/main');
+              //redirect( base_url().'index.php/main');
            }
     }
     function authentication()
