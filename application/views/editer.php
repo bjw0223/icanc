@@ -5,9 +5,9 @@
             d
             </div>
             <div class="span9" style="background-color:blue;">
-                <div class="row-fluid">
+                <div z-index=2class="row-fluid">
                     <form action="#" method="post">
-                    <textarea class="span12" style="resize:none;height:300px;"></textarea>
+                    <textarea  id="code" name="code" class="span12" style="resize:none;height:300px;"></textarea>
                     <a class="btn" onclick="submit();">compile</a>
                     </form>
                 </div>

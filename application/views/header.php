@@ -9,6 +9,19 @@
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
         
         <script src="http://comments.skplanetx.com/script/plugin.js"></script>
+<!-- highlight -->
+        <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shCore.js"></script>
+        <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?=base_url();?>asset/lib/syntaxhighlighter/styles/shCoreDefault.css">
+        <!--<script type="text/javascript" src="<?=base_url();?>asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>-->
+<!--  codemirror -->
+        <script src="<?=base_url();?>asset/lib/codemirror/lib/codemirror.js"></script>
+        <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/lib/codemirror.css">
+        <script src="<?=base_url();?>asset/lib/codemirror/mode/javascript/javascript.js"></script>
+        <script src="<?=base_url();?>asset/lib/codemirror/addon/edit/matchbrackets.js"></script>
+        <script src="<?=base_url();?>asset/lib/codemirror/mode/clike/clike.js"></script>
+     <!--   <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/doc/docs.css"> -->
+
         <script type="text/javascript">
         $(document).ready(function() {
                 var postSelecter = null;
@@ -48,6 +61,21 @@
             <?php     
                  }
             ?>
+            //<![CDATA[
+            SyntaxHighlighter.config.bloggerMode = true;
+            SyntaxHighlighter.all();
+            //]]>
+            //tinymce.init({
+            //    selector: "textarea"
+            // });
+            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "text/x-csrc"
+            });
+
+
+
         });
         </script>
         <style type="text/css">
