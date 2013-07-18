@@ -2,7 +2,5 @@
 
 void main()
 {
-printf("XXX")
-printf("XXX");
-printf("XXX");
+  printf("korea");
 }

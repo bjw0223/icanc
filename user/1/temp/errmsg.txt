@@ -1,2 +1,0 @@
-./user/1/temp/test.c: In function 'main':
-./user/1/temp/test.c:6:1: error: expected ';' before 'printf'
