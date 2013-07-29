@@ -19,6 +19,15 @@ class Tutorial extends CI_Controller {
     {
 		$this->load->view('reference/'.$fname);
     }
+	public function program()
+    {
+		$this->_head();
+		$this->load->view('navbar');
+        $this->load->view('reference');
+		$this->load->view('contents');
+		$this->load->view('program/understanding');
+		$this->load->view('footer');
+    }
     function _head()
     {
         $this->load->view('header');
