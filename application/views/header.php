@@ -8,8 +8,6 @@
 
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-1.8.3.js"></script>
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
-        
-        <script src="http://comments.skplanetx.com/script/plugin.js"></script>
 <!-- highlight -->
         <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shCore.js"></script>
         <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shBrushCpp.js"></script>
