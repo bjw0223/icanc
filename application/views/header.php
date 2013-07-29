@@ -179,7 +179,7 @@
         <script type="text/javascript" src="<?=base_url();?>asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>
     </head>
     <body>
-    <!--로그인 실패시의 메세지 --!>
+    <!--세션 플래시의 메세지 --!>
     <?php
         if( $this->session->flashdata('message'))
         {
@@ -191,6 +191,6 @@
     <?php
         }
     ?>
-    <!-- 로그인 실패시 메시지 끝 --!>
+    <!-- 세션 플래시 메시지 끝 --!>
     
 
