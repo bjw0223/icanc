@@ -17,10 +17,12 @@
 <!--  codemirror -->
         <script src="<?=base_url();?>asset/lib/codemirror/lib/codemirror.js"></script>
         <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/lib/codemirror.css">
+        <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/theme/lesser-dark.css">
         <script src="<?=base_url();?>asset/lib/codemirror/mode/javascript/javascript.js"></script>
         <script src="<?=base_url();?>asset/lib/codemirror/addon/edit/matchbrackets.js"></script>
         <script src="<?=base_url();?>asset/lib/codemirror/mode/clike/clike.js"></script>
-     <!--   <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/doc/docs.css"> -->
+<!--   <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/doc/docs.css"> -->
+<!-- font-awesome -->
 
         <script type="text/javascript">
         $(document).ready(function() {
@@ -68,15 +70,11 @@
             //tinymce.init({
             //    selector: "textarea"
             // });
-            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                lineNumbers: true,
-                matchBrackets: true,
-                mode: "text/x-csrc"
-            });
-
-
-
         });
+        function formSubmit()
+        {
+            $('#editor_form').submit();
+        }
         </script>
         <style type="text/css">
        #reference{
