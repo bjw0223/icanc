@@ -1,27 +1,29 @@
-<div class="container" style="margin-top:60px;">
-<div class="row-fluid"> 
-<div id="contents" class="span3" >
-<!-- -->
-    <div class="accordion" id="accordion2">
-<!-- -->
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse_1">
-                프로그램 
-                </a>
-            </div>
-            <div id="collapse_1" class="accordion-body collapse">
-                <div class="accordion-inner">
-                    <ul class="nav nav-list">
-                        <li class="inactive"><a class="contents_list" href="#" data-in="program/understanding">이해</a></li>
-                        <li class="inactive"><a class="contents_list" href="#" data-in="program/constitute">구성</a></li>
-                        <li class="inactive"><a class="contents_list" href="#" data-in="program/execution_process">실행과정</a></li>
-                        <li class="inactive"><a class="contents_list" href="#" data-in="program/reference">참고사항</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-group">
+<div class="container bs-docs-container" style="">
+<div class="row"> 
+
+<div id="tutorial_contents" class="col-lg-3" >
+    <div class="bs-sidebar">
+       <ul class="nav bs-sidenav"> 
+            <li class="active">
+                <a href="#">프로그램</a>
+                <ul class="nav">
+                    <li><a href="#" data-in="program/understanding">이해</a></li>
+                    <li><a href="#" data-in="program/constitute">구성</a></li>
+                    <li><a href="#" data-in="program/execution_process">실행과정</a></li>
+                    <li><a href="#" data-in="program/reference">참고사항</a></li>
+                </ul>
+            </li>
+            <li class="active">
+                <a href="#">진법</a>
+                <ul class="nav">
+                    <li><a href="#" data-in="program/understanding">10진법</a></li>
+                    <li><a href="#" data-in="program/constitute">8진법</a></li>
+                    <li><a href="#" data-in="program/execution_process">2진법</a></li>
+                    <li><a href="#" data-in="program/reference">16진법</a></li>
+                </ul>
+            </li>
+        </ul>
+    <!-- <div class="accordion-group">
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse_2">
                 진법   
@@ -46,23 +48,8 @@
             </div>
             <div id="collapse_3" class="accordion-body collapse">
                 <div class="accordion-inner">
-                    <ul class="nav nav-list">
-                        <li class="inactive"><a class="contents_list" href="#" data-in="literal/numeric">숫자</a></li>
-                        <li class="inactive"><a class="contents_list" href="#" data-in="literal/character">문자</a></li>
-                        <li class="inactive"><a class="contents_list" href="#" data-in="literal/string">문자열</a></li>
-                        <li class="inactive"><a class="contents_list" href="#" data-in="literal/method_of_saving">저장방식</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse_4">
-                변수 
-                </a>
-            </div>
-            <div id="collapse_4" class="accordion-body collapse">
-                <div class="accordion-inner">
+                    <ul class="nav nav-side">
+                        <li class="inactive"><a class="contents_list" href="#" data-in="literal/numeric">숫자</a></li> <li class="inactive"><a class="contents_list" href="#" data-in="literal/character">문자</a></li> <li class="inactive"><a class="contents_list" href="#" data-in="literal/string">문자열</a></li> <li class="inactive"><a class="contents_list" href="#" data-in="literal/method_of_saving">저장방식</a></li> </ul> </div> </div> </div> <div class="accordion-group"> <div class="accordion-heading"> <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse_4"> 변수 </a> </div> <div id="collapse_4" class="accordion-body collapse"> <div class="accordion-inner">
                     <ul class="nav nav-list">
                         <li class="inactive"><a class="contents_list" href="#" data-in="variable/auto">Auto</a></li>
                         <li class="inactive"><a class="contents_list" href="#" data-in="variable/static">Static</a></li>
@@ -234,7 +221,7 @@
                 </div>
             </div>
         </div>
-<!-- 기본형식
+ 기본형식
         <div class="accordion-group">
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse_11">
@@ -253,10 +240,7 @@
             </div>
         </div>
 -->
-
-<!-- -->
     </div>
-<!-- -->
 </div>
 
 

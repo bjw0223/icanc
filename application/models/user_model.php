@@ -18,6 +18,14 @@ class User_model extends CI_Model {
         return $result;
     }
     
+    function del($email)
+    {
+       $this->db->where('email', $email);
+       $this->db->delete('user'); 
+    }
+    
+
+    
     function getByEmail($option)
     {
         $result = $this->db->get_where('user',array('email'=>$option['email']))->row();

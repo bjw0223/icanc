@@ -9,16 +9,15 @@ Ported to CodeMirror by Peter Kroon
   font-family: 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Monaco', Courier, monospace !important;
 }
 
-/*.cm-s-lesser-dark.CodeMirror { background: #262626; color: #EBEFE7; text-shadow: 0 -1px 1px #262626; }*/
-.cm-s-lesser-dark.CodeMirror { background: #000; color: #EBEFE7; text-shadow: 0 -1px 1px #262626; }
+.cm-s-lesser-dark.CodeMirror { background: #262626; color: #EBEFE7; text-shadow: 0 -1px 1px #262626; }
 .cm-s-lesser-dark div.CodeMirror-selected {background: #45443B !important;} /* 33322B*/
 .cm-s-lesser-dark .CodeMirror-cursor { border-left: 1px solid white !important; }
 .cm-s-lesser-dark pre { padding: 0 8px; }/*editable code holder*/
 
 div.CodeMirror span.CodeMirror-matchingbracket { color: #7EFC7E; }/*65FC65*/
 
-.cm-s-lesser-dark .CodeMirror-gutters { background: #000; border-right:1px solid #aaa; }
-.cm-s-lesser-dark .CodeMirror-linenumber { color: #FFF; }
+.cm-s-lesser-dark .CodeMirror-gutters { background: #262626; border-right:1px solid #aaa; }
+.cm-s-lesser-dark .CodeMirror-linenumber { color: #777; }
 
 .cm-s-lesser-dark span.cm-keyword { color: #599eff; }
 .cm-s-lesser-dark span.cm-atom { color: #C2B470; }
@@ -32,8 +31,7 @@ div.CodeMirror span.CodeMirror-matchingbracket { color: #7EFC7E; }/*65FC65*/
 .cm-s-lesser-dark span.cm-comment { color: #666; }
 .cm-s-lesser-dark span.cm-string { color: #BCD279; }
 .cm-s-lesser-dark span.cm-string-2 {color: #f50;}
-.cm-s-lesser-dark span.cm-meta { color: #ffd700;font-weight:bold; }
-/*.cm-s-lesser-dark span.cm-meta { color: #738C73; }*/
+.cm-s-lesser-dark span.cm-meta { color: #738C73; }
 .cm-s-lesser-dark span.cm-error { color: #9d1e15; }
 .cm-s-lesser-dark span.cm-qualifier {color: #555;}
 .cm-s-lesser-dark span.cm-builtin { color: #ff9e59; }

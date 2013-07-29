@@ -2,8 +2,9 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <link href="<?=base_url();?>asset/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"> 
-        <link href="<?=base_url();?>asset/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+        <link href="<?=base_url();?>asset/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" media="screen"> 
+        <link href="<?=base_url();?>asset/lib/bootstrap/dist/css/docs.css" rel="stylesheet" media="screen"> 
+        <!--<link href="<?=base_url();?>asset/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">-->
 
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-1.8.3.js"></script>
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
@@ -17,12 +18,10 @@
 <!--  codemirror -->
         <script src="<?=base_url();?>asset/lib/codemirror/lib/codemirror.js"></script>
         <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/lib/codemirror.css">
-        <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/theme/lesser-dark.css">
         <script src="<?=base_url();?>asset/lib/codemirror/mode/javascript/javascript.js"></script>
         <script src="<?=base_url();?>asset/lib/codemirror/addon/edit/matchbrackets.js"></script>
         <script src="<?=base_url();?>asset/lib/codemirror/mode/clike/clike.js"></script>
-<!--   <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/doc/docs.css"> -->
-<!-- font-awesome -->
+     <!--   <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/doc/docs.css"> -->
 
         <script type="text/javascript">
         $(document).ready(function() {
@@ -70,13 +69,19 @@
             //tinymce.init({
             //    selector: "textarea"
             // });
+        /*
+            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                lineNumbers: true,
+                matchBrackets: true,
+                mode: "text/x-csrc"
+            });
+*/
+
+
         });
-        function formSubmit()
-        {
-            $('#editor_form').submit();
-        }
         </script>
         <style type="text/css">
+        /*
        #reference{
             font-weight:bold;
             margin-top:40px;
@@ -97,7 +102,6 @@
             background-color:inherit;
             font-size:13px;
             color:yellow;
-            /*text-shadow:0 0 0 yellow;*/
         }
         #reference h5{
             color:#FFFFFF;
@@ -126,6 +130,49 @@
         .my_contents li.selected a{
             color:white;
         }
+        .my_sidebar{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            padding-top:    10px;
+            padding-bottom: 10px;
+            text-shadow: 0 1px 0 #fff;
+            background-color: #f7f5fa;
+            border-radius: 5px;
+        }
+        .my_sidebar .nav > li > a {
+            display: block;
+            color: #716b7a;
+            padding: 5px 20px;
+        }
+        .my-sidebar .nav > li > a:hover,
+        .my-sidebar .nav > li > a:focus {
+            text-decoration: none;
+            background-color: #e5e3e9;
+            border-right: 1px solid #dbd8e0;
+        }
+        .my-sidebar .nav > .active > a,
+        .my-sidebar .nav > .active:hover > a,
+        .my-sidebar .nav > .active:focus > a {
+            font-weight: bold;
+            color: #563d7c;
+            background-color: transparent;
+            border-right: 1px solid #563d7c;
+        }
+
+        .my-sidebar .nav .nav {
+            display: none;
+            margin-bottom: 8px;
+        }
+        .my-sidebar .nav > .active > ul {
+            display: block;
+        }
+        .my-sidebar .nav .nav > li > a {
+            padding-top:    3px;
+            padding-bottom: 3px;
+            padding-left: 30px;
+            font-size: 90%;
+        }
+*/
         </style>
 
         <title></title>
