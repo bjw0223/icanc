@@ -180,17 +180,17 @@
     </head>
     <body>
     <!--로그인 실패시의 메세지 --!>
-    <?php
-        if( $this->session->flashdata('message'))
+<?php
+    if( $this->session->flashdata('message'))
         {
-    ?>
+?>
 
     <script>
         alert('<?=$this->session->flashdata('message')?>');
     </script>
-    <?php
+<?php
         }
-    ?>
+?>
     <!-- 로그인 실패시 메시지 끝 --!>
     
 
