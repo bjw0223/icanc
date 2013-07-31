@@ -1,6 +1,6 @@
 <div class="container" style="margin-top:60px;">
-<div class="row-fluid"> 
-<div id="contents" class="span3" >
+<div class="row"> 
+<div id="contents" class="col-lg-3" >
 <!-- -->
     <ul class="nav nav-tabs nav-stacked my_contents"> 
         <li class="<?=($selected=="info")?"selected":"";?>">

@@ -6,6 +6,7 @@ class Mypage extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('user_model');
+        $this->load->helper('file');
     }
 	
     public function index()
@@ -60,21 +61,44 @@ class Mypage extends CI_Controller {
         }
         else
         {
+            // 탈퇴 회원에 대한 user폴더 내의 해당 id폴더 삭제
+            $user = $this->user_model->getByEmail(array('email'=>$this->session->userdata('user_email')));
+            $userPath = "/var/www/icanc/user"."/".$user->id;
+            $rmdir = "rm -r ".$userPath;
+            
             $this->session->set_flashdata('message','회원탈퇴가 되었습니다.');
             $this->user_model->del(
                                    $this->session->userdata('user_email')
                                   );
+            
             $this->session->sess_destroy();
+            // id폴더 삭제 명령
+            exec($rmdir);
             redirect( base_url().'index.php/main');
         }
         $this->load->view('footer');
 
 	}
+    // 비밀번호 변경 
+    function pwdmodify()
+    {
+        $this->load->view('header');
+        $this->_head('pwdmodify');
+        $this->load->view('footer');
+    }        
+    // 기본정보 변경
+    function basicinfomodify()
+    {
+        $this->load->view('header');
+        $this->_head('basicinfomodify');
+        $this->load->view('footer');
+    }
 
     public function _head($address)
     {
         $data['email'] = $this->session->userdata('user_email');
-        $data['selected']=$address;
+        $data['nickname'] = $this->session->userdata('user_nickname');
+        $data['selected'] = $address;
         $this->load->view('navbar');
         $this->load->view('reference');
         $this->load->view('mypage/mypage_contents',$data);

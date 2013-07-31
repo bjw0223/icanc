@@ -81,6 +81,10 @@
         });
         </script>
         <style type="text/css">
+       #basicinfomodify .active {
+            padding-left:20px;
+            font-weight:bold;
+       }
         /*
        #reference{
             font-weight:bold;
