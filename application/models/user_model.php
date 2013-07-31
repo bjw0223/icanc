@@ -23,8 +23,12 @@ class User_model extends CI_Model {
        $this->db->delete('user'); 
     }
 
+    function checkRedundancy($option)
+    {
+        $result = $this->db->get_where('user',array('nickname'=>$option['nickname']))->row();
+        return $result;
+    }
 
-    
     function getByEmail($option)
     {
         $result = $this->db->get_where('user',array('email'=>$option['email']))->row();
