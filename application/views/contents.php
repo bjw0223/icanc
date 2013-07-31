@@ -7,10 +7,10 @@
             <li class="active">
                 <a href="#">프로그램</a>
                 <ul class="nav">
-                    <li><a href="#" data-in="program/understanding">이해</a></li>
-                    <li><a href="#" data-in="program/constitute">구성</a></li>
-                    <li><a href="#" data-in="program/execution_process">실행과정</a></li>
-                    <li><a href="#" data-in="program/reference">참고사항</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/program/understanding">이해</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/program/constitute">구성</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/program/execution_process">실행과정</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/program/reference">참고사항</a></li>
                 </ul>
             </li>
             <li class="active">

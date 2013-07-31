@@ -4,7 +4,6 @@ class Auth extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->helper('url');
     }
     function login()
     {
@@ -52,7 +51,7 @@ class Auth extends CI_Controller {
               // 회원가입 후 회원만의 저장 공간 생성
               $this->load->helper('file');
               $user = $this->user_model->getByEmail(array('email'=>$this->input->post('email')));
-              $userPath = "/var/www/icanc/user"."/".$user->id."/";
+              $userPath = "/var/www/user"."/".$user->id."/";
               umask(0);
               mkdir($userPath,0777);
               mkdir($userPath.'temp',0777);
