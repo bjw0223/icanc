@@ -9,7 +9,6 @@
                     <li class=""><a class="reference_btn">Reference</a></li>
                     <li class=""><a href="<?=base_url();?>index.php/tutorial">Tutorial</a></li>
                     <li class=""><a href="<?=base_url();?>index.php/compiler">Free Coding</a></li>
-                      <li class="divider-vertical"></li>
                     <li class=""><a href="<?=base_url();?>index.php/board">Board</a></li>
                 </ul>
 

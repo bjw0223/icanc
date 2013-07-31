@@ -1,8 +1,10 @@
-<div class="container" style="margin-top:60px;">
+<div class="container">
 <div class="row-fluid"> 
-<div id="board_contents" class="span3" >
+
+<div id="board_contents" class="col-lg-3" >
 <!-- -->
-    <ul class="nav nav-tabs nav-stacked my_contents"> 
+    <div class="bs-sidebar">
+       <ul class="nav bs-sidenav"> 
         <li class="<?=($selected=="faq")?"selected":"";?>">
             <a href="<?=base_url()?>index.php/board/faq">
                 FAQ 
@@ -16,6 +18,7 @@
             </a>
         </li>
     </ul>
+    </div>
 
 <!-- -->
 </div>
