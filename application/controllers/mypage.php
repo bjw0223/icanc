@@ -93,6 +93,23 @@ class Mypage extends CI_Controller {
         $this->_head('basicinfomodify');
         $this->load->view('footer');
     }
+    // 닉네임 중복 검사
+    function checkforNickname($nickname)
+    {
+        $user = $this->user_model->checkRedundancy(array('nickname'=>$nickname));
+        if($user == null)
+        {
+            echo '사용 가능한 별명 입니다.';
+            echo '<script type="text/javascript"> $("#info_saveBtn").show(); </script>';
+            echo '<script type="text/javascript"> $flag = true; </script>';
+        }
+        else
+        {
+            echo '중복된 별명 입니다.';
+            echo '<script type="text/javascript"> $("#info_saveBtn").hide(); </script>';
+
+        }
+    }
 
     public function _head($address)
     {
