@@ -34,8 +34,8 @@ class Compiler extends CI_Controller {
         $code = $this->input->post('code');
         $code = str_replace("\r\n","\n", $code);
         $code = str_replace("\r","\n", $code);
-        // 로그인 상태이면 컴파일 실행 
         
+        // 로그인 상태이면 컴파일 실행 
         if(!($mail === false))
         {
             $fp = fopen('/var/www/icanc/user/'.$user->id.'/temp/test.c','w');

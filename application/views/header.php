@@ -81,7 +81,7 @@
         <style type="text/css">
  	.tutorial_desc{
 	margin-top:30px;
-	
+	line-height:30px;	
 	}
 	.tutorial_desc .title{
 	   font-size:32px;
@@ -96,8 +96,13 @@
 	.tutorial_desc .general{
 	   font-size:18px;
 	}
-	.tutorial_desc .general > ol > a{
-	   font-size:15px;
+	.tutorial_desc .general_sub1{
+	   text-indent:30px;
+	   font-size:17px;
+	}
+	.tutorial_desc .general_sub2{
+	   font-size:16px;
+	   color:"#989898";
 	}
 	.tutorial_desc .blue{
 	   color:blue;
@@ -105,6 +110,10 @@
 	.tutorial_desc .red{
 	   color:red;
 	}
+       #basicinfomodify .active {
+            padding-left:20px;
+            font-weight:bold;
+       }
         /*
        #reference{
             font-weight:bold;

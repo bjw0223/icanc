@@ -9,7 +9,6 @@
                     <li class=""><a class="reference_btn">Reference</a></li>
                     <li class=""><a href="<?=base_url();?>index.php/tutorial">Tutorial</a></li>
                     <li class=""><a href="<?=base_url();?>index.php/compiler">Free Coding</a></li>
-                      <li class="divider-vertical"></li>
                     <li class=""><a href="<?=base_url();?>index.php/board">Board</a></li>
                 </ul>
 
@@ -22,8 +21,8 @@
             <!--logout button-->
             <div id="logout_div" class="col-lg-3">
                 <a id="welcome" class="navbar-brand" href="<?=base_url()?>index.php/mypage"><?=$this->session->userdata('user_nickname');?>님</b>
-                <a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/mypage"><i class="icon-wrench icon-white"></i></a>
-                <a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/logout"><i class="icon-off icon-white"></i></a>
+                <a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/mypage"><i class="icon-wrench icon-white"></i>mypage</a>
+                <a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/logout"><i class="icon-off icon-white"></i>logout</a>
             </div>
         </div>
     </div>

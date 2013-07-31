@@ -1,27 +1,27 @@
-<div>
-6. 프로그램의 전처리, 컴파일, 링크의 이해
-(5. C 프로그램의 실행흐름 참조)
-시작 : OS -&gt; Start up code -&gt; main() 함수 -&gt; sub() 함수 -&gt; printf() 함수
-종료 : 역순
-* Start up code 역할 : 메인함수 호출하기 전 실행하는데 필요한 Memory를
-할당(buffer, system 변수, system 상수), 해제(memory 관련 정리)
-제공처 : OS -&gt; 윈도우즈에서 만든 실행파일을 리눅스에서 실행 불가한 이유
-cf) Linker 의 두 번째 역할 – 분할 컴파일
-7. 참고사항
-1) 프로그램 작성 시에는 순서를 지켜야 한다.
-2) 프로그램 작성 시에는 관례를 지키는 것이 좋다.
-- 엄격한 제한이 있는 것은 아니나 한 번 작성된 코드는 개인에게 국한된 것이
-아니므로 관례를 지키는 것이 코드의 가독성 및 재활용성을 높일 수 있다.
-3) 주석은 필수다.
-- 앞에서 말한 것과 같이 한 번 작성된 코드는 여러 사람에게 거쳐 수정, 활용
-되므로 가독성을 위해 주석을 달아놓는 것이 좋으며 이는 생산성에 직결된다.
-4) 식별자 작성의 규칙
-프로그램을 작성할 때 임의로 이름을 만들어 사용하는 것을 식별자라고 하는데
-작성 시 3가지의 규칙을 지켜야 한다.
-ž 알파벳 대문자 A-Z, 소문자 a-z, 숫자 0~9, 밑줄_(underline) 로 구성
-ž 첫 문자에는 숫자가 올 수 없다.
-ž 대문자와 소문자는 서로 다른 식별자이다.
+<div class="col-lg-9 tutorial_desc">
+
+<span class="general">
+
+1. 프로그램 작성 시에는 순서를 지켜야 한다.<br>
+
+<img src="<?=base_url()?>asset\lib\img\tutorial\program\reference\1.PNG" width=280px; Height=550px style="margin-bottom:20px"><br>
+
+2. 프로그램 작성 시에는 관례를 지키는 것이 좋다.<br>
+<div class="general_sub1">엄격한 제한이 있는 것은 아니나 한 번 작성된 코드는 개인에게 국한된 것이 아니므로 관례를 지키는 것이</div>
+<p class="general_sub1">코드의 가독성 및 재활용성을 높일 수 있다.</p>
+
+3. 주석은 필수다.<br>
+<div class="general_sub1">앞에서 말한 것과 같이 한 번 작성된 코드는 여러 사람에게 거쳐 수정, 활용되므로 가독성을 위해</div>
+<p class="general_sub1">주석을 달아놓는 것이 좋으며 이는 생산성에 직결된다.</p>
+
+4. 식별자 작성의 규칙<br>
+<div class="general_sub1">프로그램을 작성할 때 임의로 이름을 만들어 사용하는 것을 식별자라고 하는데 작성 시 3가지의 규칙을 지켜야 한다.</div>
+<div class="general_sub1">1) 알파벳 대문자 A-Z, 소문자 a-z, 숫자 0~9, 밑줄_(underline) 로 구성</div>
+<div class="general_sub1">2) 첫 문자에는 숫자가 올 수 없다.</div>
+<div class="general_sub1">3) 대문자와 소문자는 서로 다른 식별자이다.</div>
 
 
+
+</span>
 
 </div>

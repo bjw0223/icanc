@@ -1,4 +1,4 @@
-<div id="qna" class="span9">
+<div id="qna" class="col-lg-9" style="margin-top:30px;">
 qna
 </div>
 
