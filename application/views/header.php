@@ -8,8 +8,6 @@
 
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-1.8.3.js"></script>
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
-        
-        <script src="http://comments.skplanetx.com/script/plugin.js"></script>
 <!-- highlight -->
         <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shCore.js"></script>
         <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shBrushCpp.js"></script>
@@ -81,6 +79,32 @@
         });
         </script>
         <style type="text/css">
+ 	.tutorial_desc{
+	margin-top:30px;
+	
+	}
+	.tutorial_desc .title{
+	   font-size:32px;
+	   font-weight:bold;
+	}
+	.tutorial_desc .subTitle{
+	   font-size:24px;
+	}
+	.tutorial_desc .general > li{
+	   font-size:18px;
+	}
+	.tutorial_desc .general{
+	   font-size:18px;
+	}
+	.tutorial_desc .general > ol > a{
+	   font-size:15px;
+	}
+	.tutorial_desc .blue{
+	   color:blue;
+	}
+	.tutorial_desc .red{
+	   color:red;
+	}
         /*
        #reference{
             font-weight:bold;
@@ -179,18 +203,18 @@
         <script type="text/javascript" src="<?=base_url();?>asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>
     </head>
     <body>
-    <!--로그인 실패시의 메세지 --!>
+    <!--세션 플래시의 메세지 --!>
     <?php
         if( $this->session->flashdata('message'))
         {
-    ?>
+?>
 
     <script>
         alert('<?=$this->session->flashdata('message')?>');
     </script>
-    <?php
+<?php
         }
     ?>
-    <!-- 로그인 실패시 메시지 끝 --!>
+    <!-- 세션 플래시 메시지 끝 --!>
     
 

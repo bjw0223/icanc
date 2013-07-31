@@ -1,37 +1,30 @@
-<div>
-주어진 문제를 해결하기 위한 처리 방법과 순서를 정하는 일.
+<div class="col-lg-9 tutorial_desc">
 
-2. 프로그래밍 언어
-일의 처리방법과 순서를 컴퓨터가 알아듣고 실행할 수 있도록 명령을 내려줄 때
-사용하는 언어. 단, 실제로 컴퓨터가 명령을 수행하기 위해서는 컴퓨터가
-정확하게 알아들을 수 있는 기계어로 프로그램을 변환해주는 작업을 거쳐야 함.
-ex) Assembly, BASIC, C, C++, VC++, JAVA, C#, Perl, Ruby...
+<p class="title">주어진 문제를 해결하기 위한 처리 방법과 순서를 정하는 일</p><br/>
 
-3. C언어의 탄생배경
-1) ALGOL60 (ALGORITHMIC Language)
-1960년 국제위원회에서 발표한 추상적이고 범용적인 언어, 모듈화 가능
-2) CPL(Combind Programming Language)
-1963년 영국 케임브리지 및 런던 대학교 팀이 발표한 언어로 ALGOL60의
-추상적인 면을 보완
-3) BCPL(Basic Combind Programming Language)
-1967년 케임브리지의 Martin Richards가 발표
-4) B
-1970년 Bell 연구소의 Ken Thompson이 개발, BCPL을 간소화
-5) C
-1972년 Bell 연구소의 Dennis Ritch가 개발
-2) 프로그램 작성 시에는 관례를 지키는 것이 좋다.
-- 엄격한 제한이 있는 것은 아니나 한 번 작성된 코드는 개인에게 국한된 것이
-아니므로 관례를 지키는 것이 코드의 가독성 및 재활용성을 높일 수 있다.
-3) 주석은 필수다.
-- 앞에서 말한 것과 같이 한 번 작성된 코드는 여러 사람에게 거쳐 수정, 활용
-되므로 가독성을 위해 주석을 달아놓는 것이 좋으며 이는 생산성에 직결된다.
-4) 식별자 작성의 규칙
-프로그램을 작성할 때 임의로 이름을 만들어 사용하는 것을 식별자라고 하는데
-작성 시 3가지의 규칙을 지켜야 한다.
-ž 알파벳 대문자 A-Z, 소문자 a-z, 숫자 0~9, 밑줄_(underline) 로 구성
-ž 첫 문자에는 숫자가 올 수 없다.
-ž 대문자와 소문자는 서로 다른 식별자이다.
+<p class="subTitle">Programming Language</p>
 
+<span class="general">일의 처리방법과 순서를 컴퓨터가 알아듣고 실행할 수 있도록 명령을 내려줄 때 사용하는 언어.<br/>단, 실제로 컴퓨터가 명령을 수행하기 위해서는 컴퓨터가
+정확하게 알아들을 수 있는<br/><span class="red">기계어로 프로그램을 변환해주는 작업을 거쳐야 함.</span><br/>
+ex) Assembly, BASIC, C, C++, VC++, JAVA, C#, Perl, Ruby...<br/><br/>
+
+<p class="subTitle">Birth background of C language</p>
+
+<ol>
+<li>ALGOL60 (ALGORITHMIC Language)</li>
+<p>1960년 국제위원회에서 발표한 추상적이고 범용적인 언어, 모듈화 가능</p><br/>
+<li>CPL(Combind Programming Language)</li>
+<a>1963년 영국 케임브리지 및 런던 대학교 팀이 발표한 언어로 ALGOL60의
+추상적인 면을 보완</a><br/>
+<li>BCPL(Basic Combind Programming Language)</li>
+<a>1967년 케임브리지의 Martin Richards가 발표</a><br/>
+<li>B</li>
+<a>1970년 Bell 연구소의 Ken Thompson이 개발, BCPL을 간소화</a><br/>
+<li>C</li>
+<a>1972년 Bell 연구소의 Dennis Ritch가 개발</a><br/>
+</ol>
+
+</span>
 
 </div>
 
