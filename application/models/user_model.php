@@ -35,8 +35,8 @@ class User_model extends CI_Model {
     // 별명 변경
     function nicknameModify($option)
     {
-        $this->db->set('nickname',$option['afterNick']);
         $this->db->where('nickname', $option['beforeNick']);
+        $this->db->set('nickname',$option['afterNick']);
         $this->db->update('user'); 
     }
     
