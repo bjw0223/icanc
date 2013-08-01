@@ -79,6 +79,25 @@
         });
         </script>
         <style type="text/css">
+        body {
+            overflow-x:hidden;
+        }
+    #reference{
+        background-color:#4c4c4c;
+    }
+    #referenceContents{
+        background-color:#555555;
+    }
+    .referenceDesc{
+        margin-top:10px;
+        padding-right:50px;
+    }
+    .referenceDescbg{
+        padding:10px;
+    }
+    .referenceDescDiv{
+        background-color:gray;
+    }
  	.tutorial_desc{
 	margin-top:30px;
 	line-height:30px;	
@@ -114,7 +133,33 @@
             padding-left:20px;
             font-weight:bold;
        }
-        /*
+       #register .active {
+            padding-left:20px;
+            font-weight:bold;
+       }
+
+
+
+       #reference .bs-sidenav {
+           text-shadow:none;
+           background-color:gray;
+           line-height:1px;
+           margin-left:40px;
+           margin-top:10px;
+           margin-bottom:10px;
+           margin-right:5px;
+       }
+       #reference .bs-sidenav > li > a {
+           color:white;
+           font-weight:bold;
+           margin-left:10px;
+       }
+       #reference .bs-sidenav > li > a:hover {
+           font-size:15px;
+       }
+
+
+/*
        #reference{
             font-weight:bold;
             margin-top:40px;

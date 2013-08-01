@@ -1,12 +1,11 @@
 <div id="basicinfomodify" class="col-lg-9">
     <div class="row">
         <div class="col-lg-12">
-           <form action="<?=base_url()?>index.php/mypage/basicinfomodify" method="post">
+           <form action="<?=base_url()?>index.php/mypage/basicinfoModify" method="post">
     	        <legend align="center"> 기본정보 변경  </legend>
                 <small color="gold"> 회원님의 정보 중 변경된 내용이 있는 경우, 아래에서 수정해주세요. <br/>
                 회원정보는 개인정보취급방침에 따라 안전하게 보호되며, 회원님의 명백한 동의 없이 공개 또는 제 3자에게 
                 제공되지 않습니다. <br/><br/><br/>
-                </small>
                 <table class="table ">
                     <thead> </thead>
                     <tbody>
@@ -54,10 +53,11 @@
                 
                 <div class="row">
                     <div style="text-align:center"> 
-                        <button type="submit" class="btn btn-primary">Change</button>
+                        <input type="submit" class="btn btn-primary">
                     </div>
                 </div>
 
+            <?php echo validation_errors('nickname'); ?> 
            </form>
         
         </div>
@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="row" style="margin-top:8px">
-                <div class="col-lg-4" id="checkNickResult" style="height:1px">
+                <div class="col-lg-8" id="checkNickResult" style="height:1px">
                         
                 </div>
             </div>
@@ -105,25 +105,74 @@
   <script type="text/javascript">
     $("#info_saveBtn").hide();
     var $flag = false;
+    var $checkNickFlag = false;
+    
     // 별명 중복 검사
     $("#checkNick").click( function(){
             var $nickname = $("#beforeNick").val();
-            $("#checkNickResult").load("<?=base_url()?>index.php/mypage/checkforNickname/"+$nickname);
+            // 별명 길이 확인
+            var $checkResult = checkNickname($nickname);
+            if($checkResult === true)
+            {
+                $("#checkNickResult").load("<?=base_url()?>index.php/mypage/checkforNickname/"+$nickname);
+            }
+            else
+            {
+                $("#checkNickResult").html('<font color="orange">1 ~ 20글자의 별명을 사용하세요</font>');
+                $("#info_saveBtn").hide();
+                $flag = false;
+            }
+            $checkNickFlag = true;
     });
+    
     // Save 버튼 활성화 후 재확인 후 별명 변경
     $("#info_saveBtn").click( function(){
-            var $nickname = $("#beforeNick").val();
-            $("#checkNickResult").load("<?=base_url()?>index.php/mypage/checkforNickname/"+$nickname);
-            if( $flag == true)
+            $nickname = $("#beforeNick").val();
+            
+            if( $checkNickFlag === false )
             {
-                $("#afterNick").val($nickname);
-                $("#checkRedundancy").modal('hide');
+                $("#checkNickResult").html('<font color="bluee">중복 검사를 하지 않았습니다.</font>');
+                $checkNickFlag = false;
+                $("#info_saveBtn").hide();
+            }
+            else
+            {
+                if( $flag === true)
+                {
+                    if( $("#beforeNick").val() == $nickname )
+                    {   
+                        //alert($("#beforeNick").val());
+                        alert($nickname);
+                    }
+                    else
+                    {
+                        $("#checkNickResult").html('<font color="bluee">중복 검사를 하지 않았습니다.</font>');
+                        $checkNickFlag = false;
+                    }
+                }
+                else
+                {
+                    alert(" flage == false");
+                }
             }
     });
+    
     // close버튼 클릭시
     $("#info_closeBtn").click( function(){
                 $("#checkRedundancy").modal('hide');
     });
+
+    function checkNickname($nickname)
+    {
+        if( $nickname.length >= 1 && $nickname.length <=20)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
 
   </script>
