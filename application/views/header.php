@@ -114,6 +114,12 @@
             padding-left:20px;
             font-weight:bold;
        }
+       #register .active {
+            padding-left:20px;
+            font-weight:bold;
+       }
+
+
 
        #reference .bs-sidenav {
            text-shadow:none;
