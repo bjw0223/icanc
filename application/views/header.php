@@ -79,6 +79,25 @@
         });
         </script>
         <style type="text/css">
+        body {
+            overflow-x:hidden;
+        }
+    #reference{
+        background-color:#4c4c4c;
+    }
+    #referenceContents{
+        background-color:#555555;
+    }
+    .referenceDesc{
+        margin-top:10px;
+        padding-right:50px;
+    }
+    .referenceDescbg{
+        padding:10px;
+    }
+    .referenceDescDiv{
+        background-color:gray;
+    }
  	.tutorial_desc{
 	margin-top:30px;
 	line-height:30px;	
