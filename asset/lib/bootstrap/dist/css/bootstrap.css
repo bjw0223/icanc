@@ -2443,7 +2443,7 @@ button.close {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eeeeee;
+  background-color: none;
 }
 
 .nav > li.disabled > a {
@@ -2489,7 +2489,7 @@ button.close {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 2px solid #303030;
 }
 
 .nav-tabs > li {
@@ -2502,19 +2502,26 @@ button.close {
   line-height: 1.428571429;
   border: 1px solid transparent;
   border-radius: 4px 4px 0 0;
+  color:#fdfdfd;
+  font-weight:bold;
 }
 
-.nav-tabs > li > a:hover {
-  border-color: #eeeeee;
+.nav-tabs > li > a:hover
+{
+  border-color: none; 
 }
 
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
-  color: #555555;
+.nav-tabs > li.active > a
+{
+  color: #FFFFFF;
+  font-weight:bold;
+  /*
   cursor: default;
   background-color: #ffffff;
   border: 1px solid #dddddd;
+  */
+  background-color: #4c4c4c;
+  border: 2px solid #303030;
   border-bottom-color: transparent;
 }
 
