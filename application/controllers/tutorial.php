@@ -7,6 +7,7 @@ class Tutorial extends CI_Controller {
 		$this->_head();
 		$this->load->view('navbar');
         $this->load->view('reference');
+		$this->load->view($title.'/'.$subTitle.'_Title');
 		$this->load->view('contents');
 		$this->load->view($title.'/'.$subTitle);
 		$this->load->view('footer');
@@ -16,6 +17,7 @@ class Tutorial extends CI_Controller {
 		$this->_head();
 		$this->load->view('navbar');
         $this->load->view('reference');
+		$this->load->view($title.'/'.$subTitle.'_Title');
 		$this->load->view('contents');
 		$this->load->view($title.'/'.$subTitle);
 		$this->load->view('footer');
@@ -24,6 +26,15 @@ class Tutorial extends CI_Controller {
     public function reference($fname)
     {
 		$this->load->view('reference/'.$fname);
+    }
+	public function program()
+    {
+		$this->_head();
+		$this->load->view('navbar');
+        $this->load->view('reference');
+		$this->load->view('contents');
+		$this->load->view('program/understanding');
+		$this->load->view('footer');
     }
     function _head()
     {

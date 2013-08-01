@@ -89,9 +89,43 @@ class Mypage extends CI_Controller {
     // 기본정보 변경
     function basicinfomodify()
     {
+        $this->load->library('form_validation');
         $this->load->view('header');
-        $this->_head('basicinfomodify');
-        $this->load->view('footer');
+        $this->form_validation->set_rules('nickname','닉네임','required|min_length[1]|max_length[20]');
+        if( $this->form_validation->run() === false)
+        {
+            $this->_head('basicinfomodify');
+        }
+        else
+        {
+            // 별명 변경
+            $option = array(
+                            'beforeNick' => $this->session->userdata('nickname'),
+                            'afterNick' => $this->input->post('afterNick')
+                           );
+            $this->user_model->nicknameModify($option);
+            // 세션의 별명값 변경
+            $sess_add = array( 'user_nickname' => $afterNick);
+            $this->load->view('footer');
+            redirect(base_url().'index.php/main');
+        }
+    }
+    // 닉네임 중복 검사
+    function checkforNickname($nickname)
+    {
+        $user = $this->user_model->checkRedundancy(array('nickname'=>$nickname));
+        if($user == null)
+        {
+            echo '사용 가능한 별명 입니다.';
+            echo '<script type="text/javascript"> $("#info_saveBtn").show(); </script>';
+            echo '<script type="text/javascript"> $flag = true; </script>';
+        }
+        else
+        {
+            echo '중복된 별명 입니다.';
+            echo '<script type="text/javascript"> $("#info_saveBtn").hide(); </script>';
+
+        }
     }
 
     public function _head($address)

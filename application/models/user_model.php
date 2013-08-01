@@ -6,6 +6,7 @@ class User_model extends CI_Model {
         parent::__construct();
     }
     
+    // 회원 추가(가입)
     function add($option)
     {
         $this->db->set('email',$option['email']);
@@ -17,14 +18,29 @@ class User_model extends CI_Model {
         return $result;
     }
     
+    // 회원 삭제(탈퇴)
     function del($email)
     {
        $this->db->where('email', $email);
        $this->db->delete('user'); 
     }
-
-
     
+    // 별명 중복 확인
+    function checkRedundancy($option)
+    {
+        $result = $this->db->get_where('user',array('nickname'=>$option['nickname']))->row();
+        return $result;
+    }
+    
+    // 별명 변경
+    function nicknameModify($option)
+    {
+        $this->db->set('nickname',$option['afterNick']);
+        $this->db->where('nickname', $option['beforeNick']);
+        $this->db->update('user'); 
+    }
+    
+    // 이메일로 유저 정보 가져오기
     function getByEmail($option)
     {
         $result = $this->db->get_where('user',array('email'=>$option['email']))->row();
