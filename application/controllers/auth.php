@@ -74,6 +74,7 @@ class Auth extends CI_Controller {
             password_verify($this->input->post('password'),$user->password)
         )  
           { 
+            // session에 사용자 정보 입력
             $sess_add = array(
                               'user_email'  => $user->email,
                               'user_nickname' => $user->nickname,
