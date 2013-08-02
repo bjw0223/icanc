@@ -4,34 +4,22 @@
     color:#b1b1b1;
     font-weight:bold;
 }
+#referenceNavbar > div{
+    border-bottom:1px solid #333333;
+    padding-right:30px;
+}
 </style>
 <div id="reference">
-    <div class="row referenceContents">
-        <div class="col-lg-12">
-            <ul class="nav nav-tabs" style="">
-                <li class="active"><a href="#reference0" data-toggle="tab">전체</a></li>
-                <li><a href="#reference1" data-toggle="tab">문자열처리</a></li>
-                <li><a href="#reference2" data-toggle="tab">메모리관리</a></li>
-                <li><a href="#reference3" data-toggle="tab">입출력</a></li>
-                <li><a href="#reference4" data-toggle="tab">파일&디렉토리</a></li>
-                <li><a href="#reference5" data-toggle="tab">수학</a></li>
-                <li><a href="#reference6" data-toggle="tab">탐색&정렬</a></li>
-                <li><a href="#reference7" data-toggle="tab">프로세서</a></li>
-                <li><a href="#reference8" data-toggle="tab">시그널</a></li>
-                <li><a href="#reference9" data-toggle="tab">데이터변환</a></li>
-                <li><a href="#reference10" data-toggle="tab">날짜&시간</a></li>
-                <li><a href="#reference11" data-toggle="tab">실행</a></li>
-                <li style="margin-left:20px;">
-                    <form class="navbar-form pull-left">
-                        <input type="text" class="form-control" style="width:200px;">
-                        <button type="submit" class="btn" style="">Search</button>
-                    </form>
-                </li>
-            </ul>
+    <div class="row" id="referenceNavbar">
+        <div class="col-lg-12" >
+            <form class="navbar-form pull-right">
+                <input type="text" class="form-control" style="width:200px;">
+                <button type="submit" class="btn" style="">Search</button>
+            </form>
         </div>
     </div>
-    <div class="tab-content">
-        <div class="tab-pane active" id="reference0">
+    <div id="referenceDev">
+        <div id="referenceContents">
             <div class="row">
                 <div class="col-lg-1"><!--목차-->
                     <a class="refBtn btn btn-block" href="#" data-in="isdigit">isdigit</a>
@@ -239,44 +227,14 @@
                     <a class="refBtn btn btn-block" href="#">perror</a>
                     <a class="refBtn btn btn-block" href="#">strerror</a>
                     <a class="refBtn btn btn-block" href="#">errno</a>
-
-
                 </div>
             </div>
         </div>
-    </div>
-    <div class="tab-content">
-        <div class="tab-pane active" id="reference1">
-            <div class="row">
-                <div class="col-lg-3"><!--목차-->
-                </div>
-            </div>
-        </div>
-    </div>
-<!--
-    <div class="row">
-        <div class="bs-sidebar">
-            <ul class="nav bs-sidenav">
-            <ul class="nav bs-sidenav">
-                            </ul>
-        </div>
-        <div class="bs-sidebar col-lg-2" style="color:#CCCCCC;">
-            <h5 style="color:#FFFFFF;">수학 함수</h5>
-            <ul class="nav bs-sidenav">
-                             </ul>
-             <h5 style="color:#FFFFFF;">탐색과 정렬 함수</h5>
-             <ul class="nav bs-sidenav">
-                            </ul>
-            <h5 style="color:#FFFFFF;">시그널 관련 함수</h5>
-            <ul class="nav bs-sidenav">
-                            </ul>
-        </div>
-        <div class="bs-sidebar col-lg-2" style="color:#CCCCCC;">
-            <h5 style="color:#FFFFFF;">데이터 변환 함수</h5>
-            <ul class="nav bs-sidenav">
-                            </ul>
 
-        </div>
-    </div>
-    -->
+
+
+    </div><!--referenceDiv-->
+
+
+
 </div>
