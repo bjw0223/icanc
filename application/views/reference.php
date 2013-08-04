@@ -13,9 +13,10 @@
     <div class="row" id="referenceNavbar">
         <div class="col-lg-12" >
             <form class="navbar-form pull-right">
-                <input type="text" class="form-control" style="width:200px;">
-                <button type="submit" class="btn" style="">Search</button>
+                <input id="refSearch" type="text" class="form-control" style="width:200px;">
+                <button id=""type="" class="btn" style="">Search</button>
             </form>
+                <button id="refSearchBtn"type="" class="btn" style="">Search</button>
         </div>
     </div>
     <div id="referenceDev">
@@ -67,7 +68,7 @@
                     <a class="refBtn btn btn-block" href="#">free</a>
                     <a class="refBtn btn btn-block" href="#">calloc</a>
                     <a class="refBtn btn btn-block" href="#">malloc</a>
-                    <a class="refBtn btn btn-block" href="#">fseek</a>
+                    <a class="refBtn btn btn-block" href="#" data-in="fseek">fseek</a>
                     <a class="refBtn btn btn-block" href="#">rewine</a>
                     <a class="refBtn btn btn-block" href="#">ftell</a>
                     <a class="refBtn btn btn-block" href="#">clearerr</a>
@@ -229,6 +230,42 @@
                     <a class="refBtn btn btn-block" href="#">errno</a>
                 </div>
             </div>
+        </div><!--referenceContents-->
+        <div id="referenceBody" class="row" >
+            <div id="referenceDesc"class="col-lg-5 col-offset-1" style="padding:10px;background-color:white;margin-top:30px;margin-bottom:30px;height:500px">
+                <label id="refName" style="padding-left:10px;font-size:30px;">
+                </label>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td><b>헤더</b></td>
+                            <td id="refHeader">
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>형태</b></td>
+                            <td id="refForm">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>인자</b></td>
+                            <td id="refParameter">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>반환</b></td>
+                            <td id="refReturn">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="refTip">
+                </div>
+            </div>
+            <div id="referenceCode" class="col-lg-5" style="padding:30px;">
+            </div>
         </div>
 
 
@@ -238,3 +275,4 @@
 
 
 </div>
+

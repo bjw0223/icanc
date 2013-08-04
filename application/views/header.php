@@ -25,6 +25,7 @@
 
         <script type="text/javascript">
         $(document).ready(function() {
+                $('#referenceBody').hide('');
                 var postSelecter = null;
             $('.contents_list').click(function(){
                 if(postSelecter){
@@ -40,6 +41,71 @@
             });
             $('#reference').hide();
             $('#function_description > .desc').hide();
+
+            $('#refSearchBtn').click(function(){
+                $('#referenceBody').show('blind');
+                var fname= $("#refSearch").val();
+                $.ajax({
+                    type : "GET",
+                    url : "reference/show",
+                    contentType : "application/json; charset=utf-8",
+                    dataType : "json",
+                    data : "fname=" + fname,
+                    error : function() {
+                        alert("error");
+                    },
+                    success : function(data) {
+                        if( data.name != null) {
+                        $('#referenceCode').html(data.code);
+                        $('#refName').html(data.name);
+                        $('#refHeader').html(data.header);
+                        $('#refForm').html(data.form);
+                        $('#refParameter').html(data.parameter);
+                        $('#refReturn').html(data.return);
+                        $('#refTip').html(data.tip);
+                        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                            lineNumbers: true,
+                            matchBrackets: true,
+                            mode: "text/x-csrc"
+                        });
+                        $('#referenceContents').hide('blind');
+                        }
+                    }
+                });
+            });
+
+            $('.refBtn').click(function(){
+                $('#referenceBody').show('blind');
+                var fname= $(this).attr("data-in");
+                $.ajax({
+                    type : "GET",
+                    url : "reference/show",
+                    contentType : "application/json; charset=utf-8",
+                    dataType : "json",
+                    data : "fname=" + fname,
+                    error : function() {
+                        alert("error");
+                    },
+                    success : function(data) {
+                        if( data.name != null) {
+                        $('#referenceCode').html(data.code);
+                        $('#refName').html(data.name);
+                        $('#refHeader').html(data.header);
+                        $('#refForm').html(data.form);
+                        $('#refParameter').html(data.parameter);
+                        $('#refReturn').html(data.return);
+                        $('#refTip').html(data.tip);
+                        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                            lineNumbers: true,
+                            matchBrackets: true,
+                            mode: "text/x-csrc"
+                        });
+                        $('#referenceContents').hide('blind');
+                        }
+                    }
+                });
+            });
+
             $('.reference').click(function(){
                 var name= $(this).attr("data-in");
                 $('#function_description > .desc').load("<?=base_url()?>index.php/main/reference/"+name);
@@ -81,6 +147,9 @@
         });
         </script>
         <style type="text/css">
+#referenceCode .CodeMirror{
+    height:500px;
+}
         body {
             overflow-x:hidden;
         }
