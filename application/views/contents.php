@@ -14,15 +14,105 @@
                 </ul>
             </li>
             <li class="active">
-                <a href="#">진법</a>
+                <a href="<?=base_url();?>index.php/tutorial/show/constant/constant">상수</a>
+            </li>  
+            <li class="active">
+                <a href="<?=base_url();?>index.php/tutorial/show/variable/variable">변수</a>
+	    </li>
+            <li class="active">
+                <a href="#">자료형</a>
                 <ul class="nav">
-                    <li><a href="#" data-in="program/understanding">10진법</a></li>
-                    <li><a href="#" data-in="program/constitute">8진법</a></li>
-                    <li><a href="#" data-in="program/execution_process">2진법</a></li>
-                    <li><a href="#" data-in="program/reference">16진법</a></li>
+                    <li class="active">
+			<a href="#">기본</a>
+            		<ul class="nav" style="margin-left:10px">
+          	 	     <li><a href="<?=base_url();?>index.php/tutorial/show/data_type/integer">정수</a></li>
+            		     <li><a href="<?=base_url();?>index.php/tutorial/show/data_type/real_number">실수</a></li>
+              		     <li><a href="<?=base_url();?>index.php/tutorial/show/data_type/character">문자</a></li>
+                        </ul>
+		    </li>
+                    <li class="active">
+			<a href="#">응용</a>
+            		<ul class="nav" style="margin-left:10px">
+          	 	     <li><a href="<?=base_url();?>index.php/tutorial/show/data_type/array">배열</a></li>
+            		     <li><a href="<?=base_url();?>index.php/tutorial/show/data_type/pointer">포인터</a></li>
+              		     <li><a href="<?=base_url();?>index.php/tutorial/show/data_type/structure">구조체</a></li>
+                        </ul>
+		    </li>
                 </ul>
             </li>
-        </ul>
+            <li class="active">
+                <a href="#">제어문</a>
+                <ul class="nav">
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/select">선택</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/repeat">반복</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/quarter">분기</a></li>
+                </ul>
+            </li>  
+            <li class="active">
+                <a href="#">연산자</a>
+                <ul class="nav">
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/operator/calculation">산술</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/operator/logic">관계 / 논리</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/operator/bit">비트</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/operator/member_reference">멤버참조</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/operator/sizeof">sizeof</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/operator/priority">우선순위</a></li>
+                </ul>
+            </li>  
+            <li class="active">
+                <a href="#">함수</a>
+                <ul class="nav">
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/summary">개요</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/many_form">여러 형태</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/array_handling">배열 처리</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/string_handling">문자열 처리</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/dynamic_allocation">동적 할당</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/function_input">입력</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/function_output">출력</a></li>
+                </ul>
+            </li>  
+            <li class="active">
+                <a href="#">파일</a>
+                <ul class="nav">
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/file/stream">스트림</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/file/open">개방</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/file/file_input">입력</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/file/file_output">출력</a></li>
+                </ul>
+            </li>  
+
+
+
+
+
+
+
+
+
+
+
+	</ul>
+  <!--        <ul class="nav">
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/program/understanding">이해</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/program/constitute">구성</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/program/execution_process">실행과정</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/program/reference">참고사항</a></li>
+
+		   
+                    <li class="active">
+			<a href="<?=base_url();?>index.php/tutorial/show/program/reference">사고뭉치</a>
+
+			<ul class="nav">
+			    <li><a href="<?=base_url();?>index.php/tutorial/show/program/understanding">a</a></li>
+			    <li><a href="<?=base_url();?>index.php/tutorial/show/program/constitute">b</a></li>
+			    <li><a href="<?=base_url();?>index.php/tutorial/show/program/execution_process">c</a></li>
+			    <li><a href="<?=base_url();?>index.php/tutorial/show/program/reference">d</a></li>
+			</ul>
+
+		   </li>
+
+                </ul> -->
+	   
     <!-- <div class="accordion-group">
             <div class="accordion-heading">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse_2">

@@ -97,8 +97,16 @@
 	   font-size:18px;
 	}
 	.tutorial_desc .general_sub1{
-	   text-indent:30px;
+	   text-indent:20px;
 	   font-size:17px;
+	}
+	.tutorial_desc .general_sub1_1{
+		text-indent:40px;
+		font-size:17px;
+	}
+	.tutorial_desc .general_sub1_2{
+		text-indent:60px;
+		font-size:17px;
 	}
 	.tutorial_desc .general_sub2{
 	   font-size:16px;
