@@ -8,6 +8,8 @@
 
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-1.8.3.js"></script>
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="<?=base_url();?>asset/lib/bootstrap/js/dropdown.js"></script>
+        <script src="<?=base_url();?>asset/lib/bootstrap/js/scrollspy.js"></script>
 <!-- highlight -->
         <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shCore.js"></script>
         <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shBrushCpp.js"></script>
@@ -23,6 +25,7 @@
 
         <script type="text/javascript">
         $(document).ready(function() {
+                $('#referenceBody').hide('');
                 var postSelecter = null;
             $('.contents_list').click(function(){
                 if(postSelecter){
@@ -38,6 +41,71 @@
             });
             $('#reference').hide();
             $('#function_description > .desc').hide();
+
+            $('#refSearchBtn').click(function(){
+                $('#referenceBody').show('blind');
+                var fname= $("#refSearch").val();
+                $.ajax({
+                    type : "GET",
+                    url : "reference/show",
+                    contentType : "application/json; charset=utf-8",
+                    dataType : "json",
+                    data : "fname=" + fname,
+                    error : function() {
+                        alert("error");
+                    },
+                    success : function(data) {
+                        if( data.name != null) {
+                        $('#referenceCode').html(data.code);
+                        $('#refName').html(data.name);
+                        $('#refHeader').html(data.header);
+                        $('#refForm').html(data.form);
+                        $('#refParameter').html(data.parameter);
+                        $('#refReturn').html(data.return);
+                        $('#refTip').html(data.tip);
+                        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                            lineNumbers: true,
+                            matchBrackets: true,
+                            mode: "text/x-csrc"
+                        });
+                        $('#referenceContents').hide('blind');
+                        }
+                    }
+                });
+            });
+
+            $('.refBtn').click(function(){
+                $('#referenceBody').show('blind');
+                var fname= $(this).attr("data-in");
+                $.ajax({
+                    type : "GET",
+                    url : "reference/show",
+                    contentType : "application/json; charset=utf-8",
+                    dataType : "json",
+                    data : "fname=" + fname,
+                    error : function() {
+                        alert("error");
+                    },
+                    success : function(data) {
+                        if( data.name != null) {
+                        $('#referenceCode').html(data.code);
+                        $('#refName').html(data.name);
+                        $('#refHeader').html(data.header);
+                        $('#refForm').html(data.form);
+                        $('#refParameter').html(data.parameter);
+                        $('#refReturn').html(data.return);
+                        $('#refTip').html(data.tip);
+                        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                            lineNumbers: true,
+                            matchBrackets: true,
+                            mode: "text/x-csrc"
+                        });
+                        $('#referenceContents').hide('blind');
+                        }
+                    }
+                });
+            });
+
             $('.reference').click(function(){
                 var name= $(this).attr("data-in");
                 $('#function_description > .desc').load("<?=base_url()?>index.php/main/reference/"+name);
@@ -79,6 +147,28 @@
         });
         </script>
         <style type="text/css">
+#referenceCode .CodeMirror{
+    height:500px;
+}
+        body {
+            overflow-x:hidden;
+        }
+    #reference{
+        background-color:#4c4c4c;
+    }
+    #referenceContents{
+        background-color:#555555;
+    }
+    .referenceDesc{
+        margin-top:10px;
+        padding-right:50px;
+    }
+    .referenceDescbg{
+        padding:10px;
+    }
+    .referenceDescDiv{
+        background-color:gray;
+    }
  	.tutorial_desc{
 	margin-top:30px;
 	line-height:30px;	
@@ -122,7 +212,33 @@
             padding-left:20px;
             font-weight:bold;
        }
-        /*
+       #register .active {
+            padding-left:20px;
+            font-weight:bold;
+       }
+
+
+
+       #reference .bs-sidenav {
+           text-shadow:none;
+           background-color:gray;
+           line-height:1px;
+           margin-left:40px;
+           margin-top:10px;
+           margin-bottom:10px;
+           margin-right:5px;
+       }
+       #reference .bs-sidenav > li > a {
+           color:white;
+           font-weight:bold;
+           margin-left:10px;
+       }
+       #reference .bs-sidenav > li > a:hover {
+           font-size:15px;
+       }
+
+
+/*
        #reference{
             font-weight:bold;
             margin-top:40px;
