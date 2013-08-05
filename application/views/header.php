@@ -74,6 +74,8 @@
                 });
             });
 
+       
+
             $('.refBtn').click(function(){
                 $('#referenceBody').show('blind');
                 var fname= $(this).attr("data-in");
@@ -142,7 +144,49 @@
                 mode: "text/x-csrc"
             });
 */
+        // 년 입력
+        $("#listYear > li").click(function(){
+            $("#year").val(this.value);    
+        });
+        
+        // 월 입력
+        $("#listMonth > li").click(function(){
+            $("#month").val(this.value);    
+        });
+        
+        // 일 입력
+        $("#listDay > li").click(function(){
+            $("#day").val(this.value);    
+        });
+        
+        // 직업 입력
+        $("#listJob > li").click(function(){
 
+            switch( this.value )
+            {
+                case 0 : $("#job").val("초등학생");
+                         break;
+                case 1 : $("#job").val("중학생");
+                         break;
+                case 2 : $("#job").val("고등학생");
+                         break;
+                case 3 : $("#job").val("대학생");
+                         break;
+                case 4 : $("#job").val("대학원생");
+                         break;
+                case 5 : $("#job").val("회사원");
+                         break;
+                case 6 : $("#job").val("자영업");
+                         break;
+                case 7 : $("#job").val("무직");
+                         break;
+                case 8 : $("#job").val("우여명ㅂㅅ");
+                         break;
+                case 9 : $("#job").val("기타");
+                         break;
+            }
+        });
+        
 
         });
         </script>
