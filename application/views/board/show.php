@@ -1,24 +1,17 @@
 <div id="faq" class="col-lg-9" style="margin-top:30px;background-color:gray;">
 
-<table class="table" >
-	<thead>
-		<tr><th>번호</th><th>제목</th><th>글쓴이</th><th>날짜</th><th>조회수</th></tr>				
-	</thead>
-	<tbody>
+	<table class="table table-striped" >
+		<tbody>
 	
 <?php
-	foreach($list as $data)
-	{
-		echo 	"<tr><td>$data->srl</td><td><a href='".base_url()."index.php/board/show/$data->srl'>$data->title</a></td><td>$data->writer</td><td>$data->modified_date</td><td>$data->count</td></tr>";
+	$data=$list[0];
+	echo "<tr><td><h4>$data->title<h4></td><td>임시날짜</td></tr>
+		<tr><td>$data->writer</td><td>$data->hits</td></tr>
+		<tr><td colspan=2>$data->text</td></tr>";
 		
-	 
 ?>		
-	</tbody>
-</table>
-<?php
-	echo $data->text;
-}
-?>
+		</tbody>
+	</table>
 
 </div>
 

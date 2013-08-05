@@ -9,7 +9,7 @@
 <?php
 	foreach($list as $data)
 	{
-		echo 	"<tr><td>$data->srl</td><td><a href='".base_url()."index.php/board/show/$data->srl'>$data->title</a></td><td>$data->writer</td><td>$data->modified_date</td><td>$data->count</td></tr>";
+		echo 	"<tr><td>$data->srl</td><td><a href='".base_url()."index.php/board/show/$data->srl'>$data->title</a></td><td>$data->writer</td><td>임시날짜</td><td>$data->hits</td></tr>";
 		
 	} 
 ?>		

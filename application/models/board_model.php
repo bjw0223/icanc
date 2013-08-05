@@ -10,17 +10,25 @@ class Board_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('faq_board');
+		$this->db->order_by('srl', 'desc');
 		$query=$this->db->get();
 		return $query->result();
 	}
 	
 	function get($srl)
 	{
-		$this->db->select('*');
-		$this->db->from('faq_board');
+		$this->_hit($srl);
 		$this->db->where('srl',$srl);
-		$query=$this->db->get();
+		$query=$this->db->get('faq_board');
 		return $query->result();
+	}
+	
+	function _hit($srl)
+	{
+		$this->db->where('srl', $srl);
+		$this->db->set('hits', 'hits', false);
+		$this->db->update('faq_board');
+
 	}
 }
 

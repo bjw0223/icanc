@@ -1,3 +1,8 @@
+<style type+"text/css">
+    .dropdown-year > li > a {
+        padding-left:15px;
+    }
+</style>
 
 <div id="register" class="container">
     <div class="row">
@@ -12,15 +17,20 @@
                     <thead> </thead>
                     <tbody>
                        <tr>
-                          <th class="active" width="200px" style="padding-left:20px">이메일</th>
-                          <th><input type="text" id="email" name="email" class="span11 offset1" value="<?php echo set_value('email'); ?>" placeholder="Email"></th>
+                          <th class="active" width="200px" style="padding-left:20px;">이메일</th>
+                          <th>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <input type="text" id="email" name="email" class="col-lg-4" value="<?php echo set_value('email'); ?>" placeholder="Email"></th>
+                                </div>
+                            </div>
                        </tr>
                        <tr>
                           <td class="active">별명</td>
                           <td>
                              <div class="row">
-                                    <div class="col-lg-3">
-                                        <input type="text" id="nickname" name="nickname" onkeyup="checkforNickname()" onfocus=" " class="span12" placeholder="Nickname"> 
+                                    <div class="col-lg-8">
+                                        <input type="text" id="nickname" name="nickname" onkeyup="checkforNickname()" onfocus=" " class="col-lg-4" placeholder="Nickname"> 
                                     </div>
                                     <div class="col-lg-4">
                                     <label id="checkResult" style="margin-top:2px"> </label>
@@ -38,131 +48,298 @@
                        
                        <tr>
                           <td class="active" >비밀번호</td>
-                          <td ><input type="password" id="password" name="password" class="span11 offset1" value="<?php echo set_value('password'); ?>" placeholder="Password"></td>
+                          <td >
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <input type="password" id="password" name="password" class="col-lg-4" value="<?php echo set_value('password'); ?>" placeholder="Password"></td>
+                                </div>
+                            </div>
                        </tr>
                        <tr>
                           <td class="active" >비밀번호확인</td>
-                          <td ><input type="password" id="re_password" name="re_password" class="span11 offset1" value="<?php echo set_value('re_password'); ?>" placeholder="Password Check"></td>
+                          <td>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <input type="password" id="re_password" name="re_password" class="col-lg-4" value="<?php echo set_value('re_password'); ?>" placeholder="Password Check"></td>
+                                </div>
+                            </div>
                        </tr>
                        <tr>
                           <td class="active" > 생년월일 </td>
                           <td >
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <input type="text" id="birth" name="birth" class="span12" placeholder="Birthday"> 
-                                    <!-- Split button -->
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-warning" id="year" name="year">YEAR</button>
-                                        <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                                            <li><a tabindex="-1" href="">2013</a></li> <li><a tabindex="-1" href="#">2012</a></li> <li><a tabindex="-1" href="#">2011</a></li>
-                                            <li><a tabindex="-1" href="#">2010</a></li> <li><a tabindex="-1" href="#">2009</a></li> <li><a tabindex="-1" href="#">2008</a></li>
-                                            <li><a tabindex="-1" href="#">2007</a></li> <li><a tabindex="-1" href="#">2006</a></li> <li><a tabindex="-1" href="#">2005</a></li>
-                                            <li><a tabindex="-1" href="#">2004</a></li> <li><a tabindex="-1" href="#">2003</a></li> <li><a tabindex="-1" href="#">2002</a></li>
-                                            <li><a tabindex="-1" href="#">2001</a></li> <li><a tabindex="-1" href="#">2000</a></li> <li><a tabindex="-1" href="#">1999</a></li>
-                                            <li><a tabindex="-1" href="#">1998</a></li> <li><a tabindex="-1" href="#">1997</a></li> <li><a tabindex="-1" href="#">1996</a></li>
-                                            <li><a tabindex="-1" href="#">1995</a></li> <li><a tabindex="-1" href="#">1994</a></li> <li><a tabindex="-1" href="#">1993</a></li>
-                                            <li><a tabindex="-1" href="#">1992</a></li> <li><a tabindex="-1" href="#">1991</a></li> <li><a tabindex="-1" href="#">1990</a></li>
-                                            <li><a tabindex="-1" href="#">1989</a></li> <li><a tabindex="-1" href="#">1988</a></li> <li><a tabindex="-1" href="#">1987</a></li>
-                                            <li><a tabindex="-1" href="#">1986</a></li> <li><a tabindex="-1" href="#">1985</a></li> <li><a tabindex="-1" href="#">1984</a></li>
-                                            <li><a tabindex="-1" href="#">1983</a></li> <li><a tabindex="-1" href="#">1982</a></li> <li><a tabindex="-1" href="#">1981</a></li>
-                                            <li><a tabindex="-1" href="#">1980</a></li> <li><a tabindex="-1" href="#">1979</a></li> <li><a tabindex="-1" href="#">1978</a></li>
-                                            <li><a tabindex="-1" href="#">1977</a></li> <li><a tabindex="-1" href="#">1976</a></li> <li><a tabindex="-1" href="#">1975</a></li>
-                                            <li><a tabindex="-1" href="#">1974</a></li> <li><a tabindex="-1" href="#">1973</a></li> <li><a tabindex="-1" href="#">1972</a></li>
-                                            <li><a tabindex="-1" href="#">1971</a></li> <li><a tabindex="-1" href="#">1970</a></li> <li><a tabindex="-1" href="#">1969</a></li>
-                                            <li><a tabindex="-1" href="#">1968</a></li> <li><a tabindex="-1" href="#">1967</a></li> <li><a tabindex="-1" href="#">1966</a></li>
-                                            <li><a tabindex="-1" href="#">1965</a></li> <li><a tabindex="-1" href="#">1964</a></li> <li><a tabindex="-1" href="#">1963</a></li>
-                                            <li><a tabindex="-1" href="#">1962</a></li> <li><a tabindex="-1" href="#">1961</a></li> <li><a tabindex="-1" href="#">1960</a></li>
-                                            <li><a tabindex="-1" href="#">1959</a></li> <li><a tabindex="-1" href="#">1958</a></li> <li><a tabindex="-1" href="#">1957</a></li>
-                                            <li><a tabindex="-1" href="#">1956</a></li> <li><a tabindex="-1" href="#">1955</a></li> <li><a tabindex="-1" href="#">1954</a></li>
-                                            <li><a tabindex="-1" href="#">1953</a></li> <li><a tabindex="-1" href="#">1952</a></li> <li><a tabindex="-1" href="#">1951</a></li>
-                                            <li><a tabindex="-1" href="#">1950</a></li> <li><a tabindex="-1" href="#">1949</a></li> <li><a tabindex="-1" href="#">1948</a></li>
-                                            <li><a tabindex="-1" href="#">1947</a></li> <li><a tabindex="-1" href="#">1946</a></li> <li><a tabindex="-1" href="#">1945</a></li>
-                                            <li><a tabindex="-1" href="#">1944</a></li> <li><a tabindex="-1" href="#">1943</a></li> <li><a tabindex="-1" href="#">1942</a></li>
-                                            <li><a tabindex="-1" href="#">1941</a></li> <li><a tabindex="-1" href="#">1940</a></li> <li><a tabindex="-1" href="#">1939</a></li>
-                                            <li><a tabindex="-1" href="#">1938</a></li> <li><a tabindex="-1" href="#">1937</a></li> <li><a tabindex="-1" href="#">1936</a></li>
-                                            <li><a tabindex="-1" href="#">1935</a></li> <li><a tabindex="-1" href="#">1934</a></li> <li><a tabindex="-1" href="#">1933</a></li>
-                                            <li><a tabindex="-1" href="#">1932</a></li> <li><a tabindex="-1" href="#">1931</a></li> <li><a tabindex="-1" href="#">1930</a></li>
-                                            <li><a tabindex="-1" href="#">1929</a></li> <li><a tabindex="-1" href="#">1928</a></li> <li><a tabindex="-1" href="#">1927</a></li>
-                                            <li><a tabindex="-1" href="#">1926</a></li> <li><a tabindex="-1" href="#">1925</a></li> <li><a tabindex="-1" href="#">1924</a></li>
-                                            <li><a tabindex="-1" href="#">1923</a></li> <li><a tabindex="-1" href="#">1922</a></li> <li><a tabindex="-1" href="#">1921</a></li>
-                                            <li><a tabindex="-1" href="#">1920</a></li> <li><a tabindex="-1" href="#">1919</a></li> <li><a tabindex="-1" href="#">1918</a></li>
-                                            <li><a tabindex="-1" href="#">1917</a></li> <li><a tabindex="-1" href="#">1916</a></li> <li><a tabindex="-1" href="#">1915</a></li>                           
-                                            <li><a tabindex="-1" href="#">1914</a></li> <li><a tabindex="-1" href="#">1913</a></li> <li><a tabindex="-1" href="#">1912</a></li>                                
-                                            <li><a tabindex="-1" href="#">1911</a></li> <li><a tabindex="-1" href="#">1910</a></li> <li><a tabindex="-1" href="#">1909</a></li>                         
-                                            <li><a tabindex="-1" href="#">1908</a></li> <li><a tabindex="-1" href="#">1907</a></li> <li><a tabindex="-1" href="#">1906</a></li>
-                                            <li><a tabindex="-1" href="#">1905</a></li> <li><a tabindex="-1" href="#">1904</a></li> <li><a tabindex="-1" href="#">1903</a></li>                                  
-                                            <li><a tabindex="-1" href="#">1902</a></li> <li><a tabindex="-1" href="#">1901</a></li> <li><a tabindex="-1" href="#">1900</a></li>                      
-                                        </ul>
-                                    </div>
+                            <!-- /btn-group -->
+                                <div class="row">
+                                    <div class="input-group col-lg-2">
+                                        <input type="text" id="year" name="year" style="height:30px; width:60px; text-align:center;">
+                                        <div class="input-group-btn class-lg">
+                                            <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">년 <span class="caret"></span></button>
+                                            <ul id="listYear" class="dropdown-menu" style="padding-right:px; margin:0px; height:200px; min-width:1px; width:77px; overflow-x:auto; overflow-y:scroll">
+                                                    <li value="2013"> <a tabindex="-1" href="#" data-in="2013">2013</a> </li>
+                                                    <li value="2012"> <a tabindex="-1" href="#" data-in="2012">2012</a> </li>
+                                                    <li value="2011"> <a tabindex="-1" href="#" data-in="2011">2011</a> </li>
+                                                    <li value="2010"> <a tabindex="-1" href="#" data-in="2010">2010</a> </li>
+                                                    <li value="2009"> <a tabindex="-1" href="#" data-in="2009">2009</a> </li>
+                                                    <li value="2008"> <a tabindex="-1" href="#" data-in="2008">2008</a> </li>
+                                                    <li value="2007"> <a tabindex="-1" href="#" data-in="2007">2007</a> </li>
+                                                    <li value="2006"> <a tabindex="-1" href="#" data-in="2006">2006</a> </li>
+                                                    <li value="2005"> <a tabindex="-1" href="#" data-in="2005">2005</a> </li>
+                                                    <li value="2004"> <a tabindex="-1" href="#" data-in="2004">2004</a> </li>
+                                                    <li value="2003"> <a tabindex="-1" href="#" data-in="2003">2003</a> </li>
+                                                    <li value="2002"> <a tabindex="-1" href="#" data-in="2002">2002</a> </li>
+                                                    <li value="2001"> <a tabindex="-1" href="#" data-in="2001">2001</a> </li>
+                                                    <li value="2000"> <a tabindex="-1" href="#" data-in="2000">2000</a> </li>
+                                                    <li value="1999"> <a tabindex="-1" href="#" data-in="1999">1999</a> </li>
+                                                    <li value="1998"> <a tabindex="-1" href="#" data-in="1998">1998</a> </li>
+                                                    <li value="1997"> <a tabindex="-1" href="#" data-in="1997">1997</a> </li>
+                                                    <li value="1996"> <a tabindex="-1" href="#" data-in="1996">1996</a> </li>
+                                                    <li value="1995"> <a tabindex="-1" href="#" data-in="1995">1995</a> </li>
+                                                    <li value="1994"> <a tabindex="-1" href="#" data-in="1994">1994</a> </li>
+                                                    <li value="1993"> <a tabindex="-1" href="#" data-in="1993">1993</a> </li>
+                                                    <li value="1992"> <a tabindex="-1" href="#" data-in="1992">1992</a> </li>
+                                                    <li value="1991"> <a tabindex="-1" href="#" data-in="1991">1991</a> </li>
+                                                    <li value="1990"> <a tabindex="-1" href="#" data-in="1990">1990</a> </li>
+                                                    <li value="1989"> <a tabindex="-1" href="#" data-in="1989">1989</a> </li>
+                                                    <li value="1988"> <a tabindex="-1" href="#" data-in="1988">1988</a> </li>
+                                                    <li value="1987"> <a tabindex="-1" href="#" data-in="1987">1987</a> </li>
+                                                    <li value="1986"> <a tabindex="-1" href="#" data-in="1986">1986</a> </li>
+                                                    <li value="1985"> <a tabindex="-1" href="#" data-in="1985">1985</a> </li>
+                                                    <li value="1984"> <a tabindex="-1" href="#" data-in="1984">1984</a> </li>
+                                                    <li value="1983"> <a tabindex="-1" href="#" data-in="1983">1983</a> </li>
+                                                    <li value="1982"> <a tabindex="-1" href="#" data-in="1982">1982</a> </li>
+                                                    <li value="1981"> <a tabindex="-1" href="#" data-in="1981">1981</a> </li>
+                                                    <li value="1980"> <a tabindex="-1" href="#" data-in="1980">1980</a> </li>
+                                                    <li value="1979"> <a tabindex="-1" href="#" data-in="1979">1979</a> </li>
+                                                    <li value="1978"> <a tabindex="-1" href="#" data-in="1978">1978</a> </li>
+                                                    <li value="1977"> <a tabindex="-1" href="#" data-in="1977">1977</a> </li>
+                                                    <li value="1976"> <a tabindex="-1" href="#" data-in="1976">1976</a> </li>
+                                                    <li value="1975"> <a tabindex="-1" href="#" data-in="1975">1975</a> </li>
+                                                    <li value="1974"> <a tabindex="-1" href="#" data-in="1974">1974</a> </li>
+                                                    <li value="1973"> <a tabindex="-1" href="#" data-in="1973">1973</a> </li>
+                                                    <li value="1972"> <a tabindex="-1" href="#" data-in="1972">1972</a> </li>
+                                                    <li value="1971"> <a tabindex="-1" href="#" data-in="1971">1971</a> </li>
+                                                    <li value="1970"> <a tabindex="-1" href="#" data-in="1970">1970</a> </li>
+                                                    <li value="1969"> <a tabindex="-1" href="#" data-in="1969">1969</a> </li>
+                                                    <li value="1968"> <a tabindex="-1" href="#" data-in="1968">1968</a> </li>
+                                                    <li value="1967"> <a tabindex="-1" href="#" data-in="1967">1967</a> </li>
+                                                    <li value="1966"> <a tabindex="-1" href="#" data-in="1966">1966</a> </li>
+                                                    <li value="1965"> <a tabindex="-1" href="#" data-in="1965">1965</a> </li>
+                                                    <li value="1964"> <a tabindex="-1" href="#" data-in="1964">1964</a> </li>
+                                                    <li value="1963"> <a tabindex="-1" href="#" data-in="1963">1963</a> </li>
+                                                    <li value="1962"> <a tabindex="-1" href="#" data-in="1962">1962</a> </li>
+                                                    <li value="1961"> <a tabindex="-1" href="#" data-in="1961">1961</a> </li>
+                                                    <li value="1960"> <a tabindex="-1" href="#" data-in="1960">1960</a> </li>
+                                                    <li value="1959"> <a tabindex="-1" href="#" data-in="1959">1959</a> </li>
+                                                    <li value="1958"> <a tabindex="-1" href="#" data-in="1958">1958</a> </li>
+                                                    <li value="1957"> <a tabindex="-1" href="#" data-in="1957">1957</a> </li>
+                                                    <li value="1956"> <a tabindex="-1" href="#" data-in="1956">1956</a> </li>
+                                                    <li value="1955"> <a tabindex="-1" href="#" data-in="1955">1955</a> </li>
+                                                    <li value="1954"> <a tabindex="-1" href="#" data-in="1954">1954</a> </li>
+                                                    <li value="1953"> <a tabindex="-1" href="#" data-in="1953">1953</a> </li>
+                                                    <li value="1952"> <a tabindex="-1" href="#" data-in="1952">1952</a> </li>
+                                                    <li value="1951"> <a tabindex="-1" href="#" data-in="1951">1951</a> </li>
+                                                    <li value="1950"> <a tabindex="-1" href="#" data-in="1950">1950</a> </li>
+                                                    <li value="1949"> <a tabindex="-1" href="#" data-in="1949">1949</a> </li>
+                                                    <li value="1948"> <a tabindex="-1" href="#" data-in="1948">1948</a> </li>
+                                                    <li value="1947"> <a tabindex="-1" href="#" data-in="1947">1947</a> </li>
+                                                    <li value="1946"> <a tabindex="-1" href="#" data-in="1946">1946</a> </li>
+                                                    <li value="1945"> <a tabindex="-1" href="#" data-in="1945">1945</a> </li>
+                                                    <li value="1944"> <a tabindex="-1" href="#" data-in="1944">1944</a> </li>
+                                                    <li value="1943"> <a tabindex="-1" href="#" data-in="1943">1943</a> </li>
+                                                    <li value="1942"> <a tabindex="-1" href="#" data-in="1942">1942</a> </li>
+                                                    <li value="1941"> <a tabindex="-1" href="#" data-in="1941">1941</a> </li>
+                                                    <li value="1940"> <a tabindex="-1" href="#" data-in="1940">1940</a> </li>
+                                                    <li value="1939"> <a tabindex="-1" href="#" data-in="1939">1939</a> </li>
+                                                    <li value="1938"> <a tabindex="-1" href="#" data-in="1938">1938</a> </li>
+                                                    <li value="1937"> <a tabindex="-1" href="#" data-in="1937">1937</a> </li>
+                                                    <li value="1936"> <a tabindex="-1" href="#" data-in="1936">1936</a> </li>
+                                                    <li value="1935"> <a tabindex="-1" href="#" data-in="1935">1935</a> </li>
+                                                    <li value="1934"> <a tabindex="-1" href="#" data-in="1934">1934</a> </li>
+                                                    <li value="1933"> <a tabindex="-1" href="#" data-in="1933">1933</a> </li>
+                                                    <li value="1932"> <a tabindex="-1" href="#" data-in="1932">1932</a> </li>
+                                                    <li value="1931"> <a tabindex="-1" href="#" data-in="1931">1931</a> </li>
+                                                    <li value="1930"> <a tabindex="-1" href="#" data-in="1930">1930</a> </li>
+                                                    <li value="1929"> <a tabindex="-1" href="#" data-in="1929">1929</a> </li>
+                                                    <li value="1928"> <a tabindex="-1" href="#" data-in="1928">1928</a> </li>
+                                                    <li value="1927"> <a tabindex="-1" href="#" data-in="1927">1927</a> </li>
+                                                    <li value="1926"> <a tabindex="-1" href="#" data-in="1926">1926</a> </li>
+                                                    <li value="1925"> <a tabindex="-1" href="#" data-in="1925">1925</a> </li>
+                                                    <li value="1924"> <a tabindex="-1" href="#" data-in="1924">1924</a> </li>
+                                                    <li value="1923"> <a tabindex="-1" href="#" data-in="1923">1923</a> </li>
+                                                    <li value="1922"> <a tabindex="-1" href="#" data-in="1922">1922</a> </li>
+                                                    <li value="1921"> <a tabindex="-1" href="#" data-in="1921">1921</a> </li>
+                                                    <li value="1920"> <a tabindex="-1" href="#" data-in="1920">1920</a> </li>
+                                                    <li value="1919"> <a tabindex="-1" href="#" data-in="1919">1919</a> </li>
+                                                    <li value="1918"> <a tabindex="-1" href="#" data-in="1918">1918</a> </li>
+                                                    <li value="1917"> <a tabindex="-1" href="#" data-in="1917">1917</a> </li>
+                                                    <li value="1916"> <a tabindex="-1" href="#" data-in="1916">1916</a> </li>
+                                                    <li value="1915"> <a tabindex="-1" href="#" data-in="1915">1915</a> </li>
+                                                    <li value="1914"> <a tabindex="-1" href="#" data-in="1914">1914</a> </li>
+                                                    <li value="1913"> <a tabindex="-1" href="#" data-in="1913">1913</a> </li>
+                                                    <li value="1912"> <a tabindex="-1" href="#" data-in="1912">1912</a> </li>
+                                                    <li value="1911"> <a tabindex="-1" href="#" data-in="1911">1911</a> </li>
+                                                    <li value="1910"> <a tabindex="-1" href="#" data-in="1910">1910</a> </li>
+                                                    <li value="1909"> <a tabindex="-1" href="#" data-in="1909">1909</a> </li>
+                                                    <li value="1908"> <a tabindex="-1" href="#" data-in="1908">1908</a> </li>
+                                                    <li value="1907"> <a tabindex="-1" href="#" data-in="1907">1907</a> </li>
+                                                    <li value="1906"> <a tabindex="-1" href="#" data-in="1906">1906</a> </li>
+                                                    <li value="1905"> <a tabindex="-1" href="#" data-in="1905">1905</a> </li>
+                                                    <li value="1904"> <a tabindex="-1" href="#" data-in="1904">1904</a> </li>
+                                                    <li value="1903"> <a tabindex="-1" href="#" data-in="1903">1903</a> </li>
+                                                    <li value="1902"> <a tabindex="-1" href="#" data-in="1902">1902</a> </li>
+                                                    <li value="1901"> <a tabindex="-1" href="#" data-in="1901">1901</a> </li>
+                                                    <li value="1900"> <a tabindex="-1" href="#" data-in="1900">1900</a> </li>
+                                                    </ul>
+                                        </div><!-- /input-group 년 -->
+                                    </div><!-- /input-group-btn 년 -->
+                                        
+                                        <div class="input-group col-lg-2">
+                                            <input type="text" id="month" name="month" style="height:30px; width:60px; text-align:center;">
+                                            <div class="input-group-btn class-lg">
+                                                <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">월 <span class="caret"></span></button>
+                                                <ul id="listMonth" class="dropdown-menu" style="padding-right:px; margin:0px; height:200px; min-width:1px; width:77px; overflow-x:auto; overflow-y:scroll">
+                                                <li value="12"> <a tabindex="-1" href="#" data-in="12">12</a> </li>
+                                                <li value="11"> <a tabindex="-1" href="#" data-in="11">11</a> </li>
+                                                <li value="10"> <a tabindex="-1" href="#" data-in="10">10</a> </li>
+                                                <li value="9"> <a tabindex="-1" href="#" data-in="9">9</a> </li>
+                                                <li value="8"> <a tabindex="-1" href="#" data-in="8">8</a> </li>
+                                                <li value="7"> <a tabindex="-1" href="#" data-in="7">7</a> </li>
+                                                <li value="6"> <a tabindex="-1" href="#" data-in="6">6</a> </li>
+                                                <li value="5"> <a tabindex="-1" href="#" data-in="5">5</a> </li>
+                                                <li value="4"> <a tabindex="-1" href="#" data-in="4">4</a> </li>
+                                                <li value="3"> <a tabindex="-1" href="#" data-in="3">3</a> </li>
+                                                <li value="2"> <a tabindex="-1" href="#" data-in="2">2</a> </li>
+                                                <li value="1"> <a tabindex="-1" href="#" data-in="1">1</a> </li>
+                                                </ul> 
+                                            </div><!-- /input-group 월 -->
+                                        </div><!-- /input-group-btn 월 -->
+                                        
+                                        <div class="input-group col-lg-2">
+                                            <input type="text" id="day" name="day" style="height:30px; width:60px; text-align:center;">
+                                            <div class="input-group-btn class-lg">
+                                                <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">일 <span class="caret"></span></button>
+                                                    <ul id="listDay" class="dropdown-menu" style="padding-right:px; margin:0px; height:200px; min-width:1px; width:77px; overflow-x:auto; overflow-y:scroll">
+                                                    <li value="31"> <a tabindex="-1" href="#" data-in="31">31</a> </li>
+                                                    <li value="30"> <a tabindex="-1" href="#" data-in="30">30</a> </li>
+                                                    <li value="29"> <a tabindex="-1" href="#" data-in="29">29</a> </li>
+                                                    <li value="28"> <a tabindex="-1" href="#" data-in="28">28</a> </li>
+                                                    <li value="27"> <a tabindex="-1" href="#" data-in="27">27</a> </li>
+                                                    <li value="26"> <a tabindex="-1" href="#" data-in="26">26</a> </li>
+                                                    <li value="25"> <a tabindex="-1" href="#" data-in="25">25</a> </li>
+                                                    <li value="24"> <a tabindex="-1" href="#" data-in="24">24</a> </li>
+                                                    <li value="23"> <a tabindex="-1" href="#" data-in="23">23</a> </li>
+                                                    <li value="22"> <a tabindex="-1" href="#" data-in="22">22</a> </li>
+                                                    <li value="21"> <a tabindex="-1" href="#" data-in="21">21</a> </li>
+                                                    <li value="20"> <a tabindex="-1" href="#" data-in="20">20</a> </li>
+                                                    <li value="19"> <a tabindex="-1" href="#" data-in="19">19</a> </li>
+                                                    <li value="18"> <a tabindex="-1" href="#" data-in="18">18</a> </li>
+                                                    <li value="17"> <a tabindex="-1" href="#" data-in="17">17</a> </li>
+                                                    <li value="16"> <a tabindex="-1" href="#" data-in="16">16</a> </li>
+                                                    <li value="15"> <a tabindex="-1" href="#" data-in="15">15</a> </li>
+                                                    <li value="14"> <a tabindex="-1" href="#" data-in="14">14</a> </li>
+                                                    <li value="13"> <a tabindex="-1" href="#" data-in="13">13</a> </li>
+                                                    <li value="12"> <a tabindex="-1" href="#" data-in="12">12</a> </li>
+                                                    <li value="11"> <a tabindex="-1" href="#" data-in="11">11</a> </li>
+                                                    <li value="10"> <a tabindex="-1" href="#" data-in="10">10</a> </li>
+                                                    <li value="9"> <a tabindex="-1" href="#" data-in="9">9</a> </li>
+                                                    <li value="8"> <a tabindex="-1" href="#" data-in="8">8</a> </li>
+                                                    <li value="7"> <a tabindex="-1" href="#" data-in="7">7</a> </li>
+                                                    <li value="6"> <a tabindex="-1" href="#" data-in="6">6</a> </li>
+                                                    <li value="5"> <a tabindex="-1" href="#" data-in="5">5</a> </li>
+                                                    <li value="4"> <a tabindex="-1" href="#" data-in="4">4</a> </li>
+                                                    <li value="3"> <a tabindex="-1" href="#" data-in="3">3</a> </li>
+                                                    <li value="2"> <a tabindex="-1" href="#" data-in="2">2</a> </li>
+                                                    <li value="1"> <a tabindex="-1" href="#" data-in="1">1</a> </li>
+                                                    </ul>
+                                            </div><!-- /input-group 일 -->
+                                        </div><!-- /input-group-btn 일 -->
+                                        
+                                        <div class="col-lg-6"> </div> <!-- 여백 -->
+                                    </div><!-- /.row -->
+                              </td>
+                           </tr>
+                           
+                           <tr>
+                              <td class="active"> 직업 </td>
+                              <td > 
+                                <div class="row">
+                                    <div class="input-group col-lg-2">
+                                        <input type="text" id="job" name="job" style="height:30px; width:90px; text-align:center;">
+                                            <div class="input-group-btn class-lg">
+                                                <button type="button" class="btn btn-default dropdown-toggle btn-small" style="width:100px;" data-toggle="dropdown">직업 <span class="caret"></span></button>
+                                                <ul id="listJob" class="dropdown-menu" style="padding-right:px; margin:0px; height:200px; min-width:1px; width:100px; overflow-x:auto; overflow-y:scroll">
+                                                <li value="0"> <a tabindex="-1" href="#">초등학생</a> </li>
+                                                <li value="1"> <a tabindex="-1" href="#">중학생</a> </li>
+                                                <li value="2"> <a tabindex="-1" href="#">고등학생</a> </li>
+                                                <li value="3"> <a tabindex="-1" href="#">대학생</a> </li>
+                                                <li value="4"> <a tabindex="-1" href="#">대학원생</a> </li>
+                                                <li value="5"> <a tabindex="-1" href="#">회사원</a> </li>
+                                                <li value="6"> <a tabindex="-1" href="#">자영업</a> </li>
+                                                <li value="7"> <a tabindex="-1" href="#">무직</a> </li>
+                                                <li value="8"> <a tabindex="-1" href="#">우여명ㅂㅅ</a> </li>
+                                                <li value="9"> <a tabindex="-1" href="#">기타</a> </li>
+                                                </ul> 
+                                            </div><!-- /input-group 월 -->
+                                    </div><!-- /input-group-btn 월 -->
                                 </div>
-                            </div>
-                                <div style="margin-top:8px">
-                                    <small style="color:purple">8자리 숫자만 가능합니다.<font style="color:black"> 예) 1951년06월25일 => 19510625 </font> <br/>
-                                </small>
-                          </td>
-                       </tr>
-                       
-                       <tr>
-                          <td class="active"> 직업 </td>
-                          <td > 무직 </td>
-                       </tr>
+                              </td>
+                           </tr>
 
-                    </tbody>
-                </table>
-                
-                <div class="row">
-                    <div style="text-align:center"> 
-                        <input type="submit" class="btn btn-primary" value=" 회 원 가 입 "/>
+                        </tbody>
+                    </table>
+                    
+                    <div class="row">
+                        <div style="text-align:center"> 
+                            <input type="submit" class="btn btn-primary" value=" 회 원 가 입 "/>
+                        </div>
                     </div>
-                </div>
 
-           </form>
-            <?php echo validation_errors('email'); ?> 
-        
+               </form>
+                <?php echo validation_errors('email'); ?> 
+            
+            </div>
         </div>
     </div>
-</div>
 
-<!-- -->
-</div>
-</div>
-<!-- -->
+    <!-- -->
+    </div>
+    </div>
+    <!-- -->
 
-  <!-- 자바스크립트 -->
-<script type="text/javascript">
+      <!-- 자바스크립트 -->
+    <script type="text/javascript">
 
-  // 별명 중복 확인 함수
-  function checkforNickname()
-  {
-        var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
-        var obj = document.getElementsByName("nickname")[0]
-       
-        if( obj.value.length >= 0 && obj.value.length <= 20 ) // 별명 길이 검사
-        {
-                if (regExp.test(obj.value)) 
-                {
-                    obj.value = obj.value.replace(regExp,"");//특수문자를 지우는 구문
-                }
-                else
-                {
-                        if( obj.value == "")
-                        {
-                            $("#checkResult").html('<font color="#2233b">공백은 사용할 수 없습니다.</font>');
-                        }
-                        else
-                        {
-                            $("#checkResult").load("<?=base_url()?>index.php/mypage/checkforNickname/"+obj.value);
-                        }
-                }
-        }
-        else
-        {
-            $("#checkResult").html('<font color="#2233b">1 ~ 20 글자의 별명만 사용 가능 합니다.</font>');
-        }
-  }
-$('.dropdown-toggle').dropdown();  
-$('#a').scrollspy(100);
-</script>
+      // 별명 중복 확인 함수
+      function checkforNickname()
+      {
+            var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
+            var obj = document.getElementsByName("nickname")[0]
+           
+            if( obj.value.length >= 0 && obj.value.length <= 20 ) // 별명 길이 검사
+            {
+                    if (regExp.test(obj.value)) 
+                    {
+                        obj.value = obj.value.replace(regExp,"");//특수문자를 지우는 구문
+                    }
+                    else
+                    {
+                            if( obj.value == "")
+                            {
+                                $("#checkResult").html('<font color="#2233b">공백은 사용할 수 없습니다.</font>');
+                            }
+                            else
+                            {
+                                $("#checkResult").load("<?=base_url()?>index.php/mypage/checkforNickname/"+obj.value);
+                            }
+                    }
+            }
+            else
+            {
+                $("#checkResult").html('<font color="#2233b">1 ~ 20 글자의 별명만 사용 가능 합니다.</font>');
+            }
+
+      }
+    
+
+    $('.dropdown-toggle').dropdown();  
+    $('#a').scrollspy();
+    </script>
