@@ -25,11 +25,19 @@ class User_model extends CI_Model {
        $this->db->delete('user'); 
     }
     
-    // 별명 중복 확인
-    function checkRedundancy($option)
+    // 별명,이메일 중복 확인
+    function checkRedundancy($check, $option)
     {
-        $result = $this->db->get_where('user',array('nickname'=>$option['nickname']))->row();
-        return $result;
+        if( $check == 'nickname')
+        {
+            $result = $this->db->get_where('user',array('nickname'=>$option['nickname']))->row();
+            return $result;
+        }
+        else if( $check == 'email')
+        {
+            $result = $this->db->get_where('user',array('email'=>$option['email']))->row();
+            return $result;
+        }
     }
     
     // 별명 변경

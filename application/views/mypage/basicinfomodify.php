@@ -20,12 +20,14 @@
                           <td >
                              <div class="row">
                                     <div class="col-lg-4">
-                                        <input type="text" id="nickname" name="nickname" onkeyup="redundancyCheck()" class="form-control input-small" value="<?=$nickname?>">
+                                        <input type="text" id="nickname" name="nickname" onkeyup="checkforNickname()" onfocus=" " class="form-control input-small" value="<?=$nickname?>">
                                     </div>
-                                    <div id="checkResult"> </div>
+                                    <div class="col-lg-8">
+                                    <label id="checkResult" style="margin-top:6px"> </label>
+                                    </div>
                              </div>
                                 <div style="margin-top:8px">
-                                    <small style="color:orange">한글 1~10자, 영문 대소문자 2~20자, 숫자를 사용할 수 있습니다. (혼용가능) <br/>
+                                    <small style="color:orange">특수문자를 제외한 한글,영문 대소문자 1~20자, 숫자를 사용할 수 있습니다. (혼용가능) <br/>
                                     </small>
                                     <small>
                                            욕설이나 미풍양속에 어긋나는 별명 사용으로 ID이용이 제한될 수 있습니다. 
@@ -40,8 +42,8 @@
                        </tr>
                        
                        <tr>
-                          <td class="active" > 나이 </td>
-                          <td > 19살 </td>
+                          <td class="active" > 생년월일 </td>
+                          <td > 1987.02.26 </td>
                        </tr>
                        
                        <tr>
@@ -71,11 +73,43 @@
   
   <!-- 자바스크립트 -->
   <script type="text/javascript">
-  
-  function redundancyCheck()
+
+  // 별명 중복 확인 함수
+  function checkforNickname()
   {
-    var $nickname = $("#nickname").val();
-    $("#checkResult").load("<?=base_url()?>index.php/mypage/checkforNickname/"+$nickname);
+        var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
+        var obj = document.getElementsByName("nickname")[0]
+        var $nickname = "<?=$nickname?>";
+       
+        if( obj.value.length >= 0 && obj.value.length <= 20 ) // 별명 길이 검사
+        {
+            if( $nickname == obj.value)
+            {
+                $("#checkResult").html('<font color="black">기존의 별명과 동일합니다.</font>');
+            }
+            else
+            {
+                if (regExp.test(obj.value)) 
+                {
+                    obj.value = obj.value.replace(regExp,"");//특수문자를 지우는 구문
+                }
+                else
+                {
+                        if( obj.value == "")
+                        {
+                            $("#checkResult").html('<font color="#2233b">공백은 사용할 수 없습니다.</font>');
+                        }
+                        else
+                        {
+                            $("#checkResult").load("<?=base_url()?>index.php/mypage/checkforNickname/"+obj.value);
+                        }
+                }
+            }
+        }
+        else
+        {
+            $("#checkResult").html('<font color="#2233b">1 ~ 20 글자의 별명만 사용 가능 합니다.</font>');
+        }
   }
 
 

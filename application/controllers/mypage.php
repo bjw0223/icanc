@@ -92,12 +92,12 @@ class Mypage extends CI_Controller {
     {
         $this->load->library('form_validation');
         $this->load->view('header');
-        if( $this->form_validation->run() === false)
-        {
-            $this->_head('basicinfomodify');
-        }
-        else
-        {
+        $this->_head('basicinfomodify');
+        $this->load->view('footer');
+    }
+
+    function modifyNickname()
+    {
             // 별명 변경
             $beforeNick = $this->session->userdata('user_nickname');
             $afterNick = $this->input->post('afterNick');
@@ -110,26 +110,39 @@ class Mypage extends CI_Controller {
             $sess_add = array( 'user_nickname' => $afterNick);
             $this->session->set_userdata($sess_add);
             redirect(base_url().'index.php/main');
-        }
             $this->load->view('footer');
     }
-    // 닉네임 중복 검사
+    
+    // 별명 중복 검사
     function checkforNickname($nickname)
     {
-        $user = $this->user_model->checkRedundancy(array('nickname'=>$nickname));
+        $user = $this->user_model->checkRedundancy('nickname',array('nickname'=>$nickname));
+        
         if($user == null)
         {
             echo '<font color="#77bb3">사용 가능한 별명 입니다.</font>';
-            echo '<script type="text/javascript"> $("#info_saveBtn").show(); </script>';
-            echo '<script type="text/javascript"> $flag = true; </script>';
         }
         else
         {
             echo '<font color="brwon">중복된 별명 입니다.</font>';
-            echo '<script type="text/javascript"> $("#info_saveBtn").hide(); </script>';
-            echo '<script type="text/javascript"> $flag = false; </script>';
         }
     }
+    
+    // 이메일 중복 검사
+    function checkforEmail($email)
+    {
+        $user = $this->user_model->checkRedundancy('email',array('email'=>$nickname));
+        
+        if($user == null)
+        {
+            echo '<font color="#77bb3">사용 가능한 이메일 입니다.</font>';
+        }
+        else
+        {
+            echo '<font color="brwon">등록된 이메일 입니다.</font>';
+        }
+    }
+
 
 
     public function _head($address)
