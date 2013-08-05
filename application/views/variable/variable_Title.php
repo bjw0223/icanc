@@ -2,10 +2,8 @@
 
 
 
-"sizeof  입니다"
 
-
-
+"KICK ASS2!"
 
 
 

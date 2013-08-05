@@ -263,20 +263,20 @@
                               <td > 
                                 <div class="row">
                                     <div class="input-group col-lg-2">
-                                        <input type="text" id="job" name="job" style="height:30px; width:90px; text-align:center;">
+                                        <input type="text" id="month" name="month" style="height:30px; width:60px; text-align:center;">
                                             <div class="input-group-btn class-lg">
-                                                <button type="button" class="btn btn-default dropdown-toggle btn-small" style="width:100px;" data-toggle="dropdown">직업 <span class="caret"></span></button>
+                                                <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">직업 <span class="caret"></span></button>
                                                 <ul id="listJob" class="dropdown-menu" style="padding-right:px; margin:0px; height:200px; min-width:1px; width:100px; overflow-x:auto; overflow-y:scroll">
-                                                <li value="0"> <a tabindex="-1" href="#">초등학생</a> </li>
-                                                <li value="1"> <a tabindex="-1" href="#">중학생</a> </li>
-                                                <li value="2"> <a tabindex="-1" href="#">고등학생</a> </li>
-                                                <li value="3"> <a tabindex="-1" href="#">대학생</a> </li>
-                                                <li value="4"> <a tabindex="-1" href="#">대학원생</a> </li>
-                                                <li value="5"> <a tabindex="-1" href="#">회사원</a> </li>
-                                                <li value="6"> <a tabindex="-1" href="#">자영업</a> </li>
-                                                <li value="7"> <a tabindex="-1" href="#">무직</a> </li>
-                                                <li value="8"> <a tabindex="-1" href="#">우여명ㅂㅅ</a> </li>
-                                                <li value="9"> <a tabindex="-1" href="#">기타</a> </li>
+                                                <li value="12"> <a tabindex="-1" href="#" data-in="12">초등학생</a> </li>
+                                                <li value="11"> <a tabindex="-1" href="#" data-in="11">중학생</a> </li>
+                                                <li value="10"> <a tabindex="-1" href="#" data-in="10">고등학생</a> </li>
+                                                <li value="9"> <a tabindex="-1" href="#" data-in="9">대학생</a> </li>
+                                                <li value="8"> <a tabindex="-1" href="#" data-in="8">대학원생</a> </li>
+                                                <li value="7"> <a tabindex="-1" href="#" data-in="7">회사원</a> </li>
+                                                <li value="6"> <a tabindex="-1" href="#" data-in="6">자영업</a> </li>
+                                                <li value="5"> <a tabindex="-1" href="#" data-in="5">무직</a> </li>
+                                                <li value="4"> <a tabindex="-1" href="#" data-in="4">우여명ㅂㅅ</a> </li>
+                                                <li value="4"> <a tabindex="-1" href="#" data-in="4">기타</a> </li>
                                                 </ul> 
                                             </div><!-- /input-group 월 -->
                                     </div><!-- /input-group-btn 월 -->

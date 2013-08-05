@@ -4,7 +4,7 @@
 
 1. 프로그램 작성 시에는 순서를 지켜야 한다.<br>
 
-<img src="<?=base_url()?>asset\lib\img\tutorial\program\reference\1.PNG" width=280px; Height=550px style="margin-bottom:20px"><br>
+<img src="<?=base_url()?>asset\lib\img\tutorial\program\reference\1.PNG" width=230px; Height=450px style="margin-bottom:20px; margin-left:20px"><br>
 
 2. 프로그램 작성 시에는 관례를 지키는 것이 좋다.<br>
 <div class="general_sub1">엄격한 제한이 있는 것은 아니나 한 번 작성된 코드는 개인에게 국한된 것이 아니므로 관례를 지키는 것이</div>
@@ -23,5 +23,8 @@
 
 
 </span>
+
+
+
 
 </div>

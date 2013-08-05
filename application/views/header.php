@@ -8,6 +8,8 @@
 
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-1.8.3.js"></script>
         <script src="<?=base_url();?>asset/lib/jquery/js/jquery-ui-1.9.2.custom.min.js"></script>
+        <script src="<?=base_url();?>asset/lib/bootstrap/js/dropdown.js"></script>
+        <script src="<?=base_url();?>asset/lib/bootstrap/js/scrollspy.js"></script>
 <!-- highlight -->
         <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shCore.js"></script>
         <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shBrushCpp.js"></script>
@@ -71,6 +73,8 @@
                     }
                 });
             });
+
+       
 
             $('.refBtn').click(function(){
                 $('#referenceBody').show('blind');
@@ -140,7 +144,49 @@
                 mode: "text/x-csrc"
             });
 */
+        // 년 입력
+        $("#listYear > li").click(function(){
+            $("#year").val(this.value);    
+        });
+        
+        // 월 입력
+        $("#listMonth > li").click(function(){
+            $("#month").val(this.value);    
+        });
+        
+        // 일 입력
+        $("#listDay > li").click(function(){
+            $("#day").val(this.value);    
+        });
+        
+        // 직업 입력
+        $("#listJob > li").click(function(){
 
+            switch( this.value )
+            {
+                case 0 : $("#job").val("초등학생");
+                         break;
+                case 1 : $("#job").val("중학생");
+                         break;
+                case 2 : $("#job").val("고등학생");
+                         break;
+                case 3 : $("#job").val("대학생");
+                         break;
+                case 4 : $("#job").val("대학원생");
+                         break;
+                case 5 : $("#job").val("회사원");
+                         break;
+                case 6 : $("#job").val("자영업");
+                         break;
+                case 7 : $("#job").val("무직");
+                         break;
+                case 8 : $("#job").val("우여명ㅂㅅ");
+                         break;
+                case 9 : $("#job").val("기타");
+                         break;
+            }
+        });
+        
 
         });
         </script>
@@ -185,8 +231,16 @@
 	   font-size:18px;
 	}
 	.tutorial_desc .general_sub1{
-	   text-indent:30px;
+	   text-indent:20px;
 	   font-size:17px;
+	}
+	.tutorial_desc .general_sub1_1{
+		text-indent:40px;
+		font-size:17px;
+	}
+	.tutorial_desc .general_sub1_2{
+		text-indent:60px;
+		font-size:17px;
 	}
 	.tutorial_desc .general_sub2{
 	   font-size:16px;
