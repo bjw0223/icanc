@@ -25,6 +25,7 @@
 
         <script type="text/javascript">
         $(document).ready(function() {
+                $('#reference').hide();
                 $('#referenceBody').hide('');
                 var postSelecter = null;
             $('.contents_list').click(function(){
@@ -36,82 +37,92 @@
                 $(this).parent().removeClass('inactive').addClass('active');
                 $('#description').load("<?=base_url();?>index.php/main/show/"+path);
             });
+/*reference Start*/
             $('.reference_btn').click(function(){
                 $('#reference').toggle('blind');
             });
-            $('#reference').hide();
-            $('#function_description > .desc').hide();
-
+            $('#showAllRefBtn').click(function(){
+                $('#referenceContents').show('blind');
+                $('#referenceBody').hide('blind');
+                $('#refSearchDiv').hide('blind');
+            });
             $('#refSearchBtn').click(function(){
-                $('#referenceBody').show('blind');
-                var fname= $("#refSearch").val();
+                var name= $("#refSearch").val();
                 $.ajax({
                     type : "GET",
-                    url : "reference/show",
+                    url : "<?=base_url()?>index.php/reference/getFun",
                     contentType : "application/json; charset=utf-8",
                     dataType : "json",
-                    data : "fname=" + fname,
+                    data : "name=&search_name="+name,
                     error : function() {
                         alert("error");
                     },
                     success : function(data) {
-                        if( data.name != null) {
-                        $('#referenceCode').html(data.code);
-                        $('#refName').html(data.name);
-                        $('#refHeader').html(data.header);
-                        $('#refForm').html(data.form);
-                        $('#refParameter').html(data.parameter);
-                        $('#refReturn').html(data.return);
-                        $('#refTip').html(data.tip);
+                        if( data['total_rows'] > 1 )
+                        { 
+                            $('#refSearchDiv').show('blind');
+                            $('#referenceContents').hide('blind');
+                            $('#referenceBody').hide('blind');
+                            var temp="<table class='table'><thead><tr><th>이름</th><th>헤더</th><th>형식</th></tr></thead><tbody>";
+                            for( var i = 0 ; i < data['total_rows'] ; i++ )
+                            {
+                               temp+="<tr><td><a class='refBtn' data-in='" +data['func'][i].name+"'>"+data['func'][i].name+"</a></td><td>" +data['func'][i].header+"</td><td>" +data['func'][i].form+"</td></tr>";
+                            }
+                            temp+="</tbody></table>";
+                            $('#refSearchDiv').html(temp);
+                        }else{
+                            $('#referenceBody').show('blind');
+                            $('#referenceCode').html(data['func'][0].code);
+                            $('#refName').html(data['func'][0].name);
+                            $('#refHeader').html(data['func'][0].header);
+                            $('#refForm').html(data['func'][0].form);
+                            $('#refParameter').html(data['func'][0].parameter);
+                            $('#refReturn').html(data['func'][0].return);
+                            $('#refTip').html(data['func'][0].tip);
+
+
+                        }
                         var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
                             lineNumbers: true,
                             matchBrackets: true,
                             mode: "text/x-csrc"
                         });
                         $('#referenceContents').hide('blind');
-                        }
                     }
                 });
             });
-
             $('.refBtn').click(function(){
                 $('#referenceBody').show('blind');
-                var fname= $(this).attr("data-in");
+                var name= $(this).attr("data-in");
                 $.ajax({
                     type : "GET",
-                    url : "reference/show",
+                    url : "<?=base_url()?>index.php/reference/getFun",
                     contentType : "application/json; charset=utf-8",
                     dataType : "json",
-                    data : "fname=" + fname,
+                    data : "name=" + name+"&search_name=",
                     error : function() {
                         alert("error");
                     },
                     success : function(data) {
-                        if( data.name != null) {
-                        $('#referenceCode').html(data.code);
-                        $('#refName').html(data.name);
-                        $('#refHeader').html(data.header);
-                        $('#refForm').html(data.form);
-                        $('#refParameter').html(data.parameter);
-                        $('#refReturn').html(data.return);
-                        $('#refTip').html(data.tip);
+                        $('#referenceCode').html(data['func'].code);
+                        $('#refName').html(data['func'].name);
+                        $('#refHeader').html(data['func'].header);
+                        $('#refForm').html(data['func'].form);
+                        $('#refParameter').html(data['func'].parameter);
+                        $('#refReturn').html(data['func'].return);
+                        $('#refTip').html(data['func'].tip);
                         var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
                             lineNumbers: true,
                             matchBrackets: true,
                             mode: "text/x-csrc"
                         });
                         $('#referenceContents').hide('blind');
-                        }
                     }
                 });
             });
+$('.dropdown-toggle').dropdown();
 
-            $('.reference').click(function(){
-                var name= $(this).attr("data-in");
-                $('#function_description > .desc').load("<?=base_url()?>index.php/main/reference/"+name);
-                $('#function_contents').hide('slide');
-                $('#function_description > .desc').show('blind');
-            });
+/*reference End*/
             <?php 
                  if($this->session->userdata('is_login') === true )
                  {

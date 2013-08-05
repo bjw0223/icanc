@@ -4,20 +4,30 @@
     color:#b1b1b1;
     font-weight:bold;
 }
-#referenceNavbar > div{
+#reference > div{
     border-bottom:1px solid #333333;
+}
+#referenceNavbar > div{
     padding-right:30px;
 }
+
 </style>
+
 <div id="reference">
-    <div class="row" id="referenceNavbar">
-        <div class="col-lg-12" >
-            <form class="navbar-form pull-right">
-                <input id="refSearch" type="text" class="form-control" style="width:200px;">
-                <button id=""type="" class="btn" style="">Search</button>
-            </form>
-                <button id="refSearchBtn"type="" class="btn" style="">Search</button>
+    <div class="row" id="referenceNavbar" style="height:50px;padding-top:5px;padding-bottom:5px;">
+        <div class="col-lg-1" style="">
+            <button id="showAllRefBtn" type="button" class="btn btn-danger" style="margin-left:10px;"> 목 록 </button>
         </div>
+        <div class="col-lg-8" style="">
+        </div>
+        <div class="col-lg-3" style="">
+            <div class="input-group">
+                <input id="refSearch"type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button id="refSearchBtn" class="btn btn-success" type="button"> 검 색 </button>
+                </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
     </div>
     <div id="referenceDev">
         <div id="referenceContents">
@@ -269,12 +279,15 @@
             <div id="" class="col-lg-4" style="margin-top:30px;background-color:white;">
             </div>
         </div>
+        <div class="row">
+            <div id="refSearchDiv" class="col-lg-6 col-offset-3" style="background-color:white;">
+
+            </div>
+        </div>
 
 
 
     </div><!--referenceDiv-->
-
-
 
 </div>
 
