@@ -1,14 +1,16 @@
 <div class="col-lg-9 tutorial_desc">
 
-<img src="<?=base_url()?>asset\lib\img\tutorial\program\understanding\1.PNG" width=350px; Height=250px>
+<img src="<?=base_url()?>asset\lib\img\tutorial\program\understanding\1.PNG" width=350px; Height=250px><br><br>
 
-<br><br><p class="subTitle">Programming Language</p>
+<p class="subTitle">Programming Language</p>
 
-<span class="general">일의 처리방법과 순서를 컴퓨터가 알아듣고 실행할 수 있도록 명령을 내려줄 때 사용하는 언어.<br>단, 실제로 컴퓨터가 명령을 수행하기 위해서는 컴퓨터가
-정확하게 알아들을 수 있는<br><span class="red">기계어로 프로그램을 변환해주는 작업을 거쳐야 함.</span><br>
+<span class="general">
+
+일의 처리방법과 순서를 컴퓨터가 알아듣고 실행할 수 있도록 명령을 내려줄 때 사용하는 언어.<br>
+단, 실제로 컴퓨터가 명령을 수행하기 위해서는 컴퓨터가 정확하게 알아들을 수 있는<br><span class="red">기계어로 프로그램을 변환해주는 작업을 거쳐야 함.</span><br>
 <span class="general_sub2">ex) Assembly, BASIC, C, C++, VC++, JAVA, C#, Perl, Ruby...</span><br>
 
-<img src="<?=base_url()?>asset\lib\img\tutorial\program\understanding\2.PNG" width=700px; Height=300px><br><br>
+<img src="<?=base_url()?>asset\lib\img\tutorial\program\understanding\2.PNG" width=700px; Height=300px; style="margin-left:20px"><br><br>
 
 <p class="subTitle">Birth background of C language</p>
 

@@ -1,14 +1,32 @@
 <div class="col-lg-9 tutorial_desc">
 
-<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\1.PNG" width=650px; Height=450pxi style="margin-bottom:20px"><br>
+<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\1.PNG" width=650px; Height=450px; style="margin-bottom:20px"><br>
 
 <span class="general">
 
-1. main 함수는 다른 함수들의 기능을 묶어주는 역할 - Start up code는 main 함수만 부른다(위치에 상관없다)<br>
+1. main 함수는 다른 함수들의 기능을 묶어주는 역할 - Start up code는 main 함수만 부른다<br><div style="text-indent:20px">(위치에 상관없다)</div>
 2. 함수의 Type = Return 값의 Type<br>
 3. main 함수 끝에서 return 하고 Start up code로 돌아간다<br><br>
 
-<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\2.PNG" width=740px; Height=480px style="margin-bottom:10px"><br>
+example program
+<pre class="brush:cpp">
+#include &lt;stdio.h&gt;
+void print_number(int);
+int main()
+{
+    int num;
+    num = 1;
+    print_number(num);
+    num = 3;
+    print_number(num);
+    return 0;
+}
+void print_number(int n)
+{
+    printf("정수값은 %d입니다.\n", n);
+    return 0;
+}
+</pre>
 
 1 line : C 언어 주석문, 프로그램의 이해를 돕기 위한 해설, 컴파일 대상에서 제외<br>
 <div class="general_sub1">/* .... */ -&gt; 여러 줄 주석</div>
@@ -22,8 +40,7 @@
 3 line : void print_number(int);
 <div class="general_sub1">1) print_number() 함수의 선언부분으로서 컴파일러에게 함수에 대한 기본 정보를 제공하며 선언부분 미 존재 시</div>
 <div class="general_sub1">함수호출부에서 에러 발생 (호출 전에만 선언하면 되므로 위치는 상관없다)</div>
-<p class="general_sub1">2) 괄호 안은 함수의 전달인자(Parameter)로서 이 함수의 전달인자
-type은 int 형이다.</p>
+<p class="general_sub1">2) 괄호 안은 함수의 전달인자(Parameter)로서 이 함수의 전달인자 type은 int 형이다.</p>
 
 4 line : int main()
 <p class="general_sub1">main 함수의 시작 부분</p>
@@ -58,24 +75,24 @@ type은 int 형이다.</p>
 cf) C 언어 block의 종류<br>
 <div class="general_sub1">1) 함수의 block (몸체)</div>
 <div class="general_sub1">2) 명령어 block</div>
-<div class="general_sub1">ex) if (조건식)</div>
-<div class="general_sub1" style="color:red">{</div>
-<div class="general_sub1">&nbsp;&nbsp;&nbsp;.....</div>
-<div class="general_sub1" style="color:red">}</div>
-<div class="general_sub1">else</div>
-<div class="general_sub1" style="color:red">{</div>
-<div class="general_sub1">&nbsp;&nbsp;&nbsp;.....</div>
-<div class="general_sub1" style="color:red">}</div>
+<div class="general_sub1_1">if (조건식)</div>
+<div class="general_sub1_2" style="color:red">{</div>
+<div class="general_sub1_2">&nbsp;&nbsp;&nbsp;.....</div>
+<div class="general_sub1_2" style="color:red">}</div>
+<div class="general_sub1_1">else</div>
+<div class="general_sub1_2" style="color:red">{</div>
+<div class="general_sub1_2">&nbsp;&nbsp;&nbsp;.....</div>
+<div class="general_sub1_2" style="color:red">}</div>
 <div class="general_sub1">3) Sub block (이름 없는 block)</div>
-<div class="general_sub1">{</div>
-<div class="general_sub1" style="color:red">&nbsp;&nbsp;&nbsp;{</div>
-<div class="general_sub1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.....</div>
-<div class="general_sub1" style="color:red">&nbsp;&nbsp;&nbsp;}</div>
-<p class="general_sub1">}</p>
+<div class="general_sub1_1">{</div>
+<div class="general_sub1_2" style="color:red">&nbsp;&nbsp;&nbsp;{</div>
+<div class="general_sub1_2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.....</div>
+<div class="general_sub1_2" style="color:red">&nbsp;&nbsp;&nbsp;}</div>
+<p class="general_sub1_1">}</p>
 
 * 프로그램의 전처리, 컴파일, 링크의 이해 - 맨 위 그림 참조<br>
  
-<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\3.png" width=550px; Height=900; style="margin-bottom:20px"><br>
+<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\3.png" width=550px; Height=900; style="margin-bottom:20px; margin-left:20px"><br>
 
 1. 시작 : OS -&gt; Start up code -&gt; main() 함수 -&gt; sub() 함수 -&gt; printf() 함수<br>
 2. 종료 : 역순<br>
@@ -84,7 +101,9 @@ cf) C 언어 block의 종류<br>
 <div class="general_sub1">&nbsp;&nbsp;(buffer, system 변수, system 상수), 해제(memory 관련 정리)</div>
 <p class="general_sub1">2) 제공처 : OS -&gt; 윈도우즈에서 만든 실행파일을 리눅스에서 실행 불가한 이유</p>
 
-<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\4.png" width=450px; Height=750; style="margin-bottom:20px"><br>
+<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\4.png" width=450px; Height=750; style="margin-bottom:20px; margin-left:20px"><br>
 
+
+</span>
 
 </div>
