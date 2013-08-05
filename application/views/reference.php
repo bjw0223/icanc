@@ -231,8 +231,8 @@
                 </div>
             </div>
         </div><!--referenceContents-->
-        <div id="referenceBody" class="row" >
-            <div id="referenceDesc"class="col-lg-5 col-offset-1" style="padding:10px;background-color:white;margin-top:30px;margin-bottom:30px;height:500px">
+        <div id="referenceBody" class="row"  style="padding-left:20px;padding-right:20px;">
+            <div id="referenceDesc"class="col-lg-4" style="padding:10px;background-color:white;margin-top:30px;margin-bottom:30px;height:500px">
                 <label id="refName" style="padding-left:10px;font-size:30px;">
                 </label>
                 <table class="table">
@@ -264,7 +264,9 @@
                 <div id="refTip">
                 </div>
             </div>
-            <div id="referenceCode" class="col-lg-5" style="padding:30px;">
+            <div id="referenceCode" class="col-lg-4" style="padding-top:30px;">
+            </div>
+            <div id="" class="col-lg-4" style="margin-top:30px;background-color:white;">
             </div>
         </div>
 
