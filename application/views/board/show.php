@@ -1,7 +1,4 @@
 <div id="faq" class="col-lg-9" style="margin-top:30px;">
-
-	<table class="table table-striped" >
-		<tbody>
 	
 <?php
 	$data=$list[0];
@@ -25,8 +22,6 @@
 			<div class='col-lg-2'>목록버튼</div>
 		</legend></div>";	
 ?>		
-		</tbody>
-	</table>
 
 </div>
 

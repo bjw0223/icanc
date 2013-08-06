@@ -30,6 +30,12 @@
 	</tbody>
 </table>
 
+<div class="row">
+	<div class='col-lg-12 text-right'>
+		<button type="button" class="btn btn-default">글쓰기</button>
+	</div>
+</div>
+
 
 </div>
 
