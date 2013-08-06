@@ -11,8 +11,6 @@ class User_model extends CI_Model {
     {
         $this->db->set('email',$option['email']);
         $this->db->set('nickname',$option['nickname']);
-        $this->db->set('job',$option['job']);
-        $this->db->set('dateOfBirth',$option['dateOfBirth']);
         $this->db->set('password',$option['password']);
         $this->db->set('created','NOW()',false);
         $this->db->insert('user');
