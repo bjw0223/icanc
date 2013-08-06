@@ -25,7 +25,9 @@
 
         <script type="text/javascript">
         $(document).ready(function() {
+                $('#reference').hide();
                 $('#referenceBody').hide('');
+                $('#refSearchDiv').hide('');
                 var postSelecter = null;
             $('.contents_list').click(function(){
                 if(postSelecter){
@@ -36,84 +38,88 @@
                 $(this).parent().removeClass('inactive').addClass('active');
                 $('#description').load("<?=base_url();?>index.php/main/show/"+path);
             });
+/*reference Start*/
             $('.reference_btn').click(function(){
                 $('#reference').toggle('blind');
             });
-            $('#reference').hide();
-            $('#function_description > .desc').hide();
-
-            $('#refSearchBtn').click(function(){
-                $('#referenceBody').show('blind');
-                var fname= $("#refSearch").val();
-                $.ajax({
-                    type : "GET",
-                    url : "reference/show",
-                    contentType : "application/json; charset=utf-8",
-                    dataType : "json",
-                    data : "fname=" + fname,
-                    error : function() {
-                        alert("error");
-                    },
-                    success : function(data) {
-                        if( data.name != null) {
-                        $('#referenceCode').html(data.code);
-                        $('#refName').html(data.name);
-                        $('#refHeader').html(data.header);
-                        $('#refForm').html(data.form);
-                        $('#refParameter').html(data.parameter);
-                        $('#refReturn').html(data.return);
-                        $('#refTip').html(data.tip);
-                        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                            lineNumbers: true,
-                            matchBrackets: true,
-                            mode: "text/x-csrc"
-                        });
-                        $('#referenceContents').hide('blind');
-                        }
-                    }
-                });
+            $('#showAllRefBtn').click(function(){
+                $('#referenceContents').show('blind');
+                $('#referenceBody').hide('blind');
+                $('#refSearchDiv').hide('blind');
             });
-
-       
-
             $('.refBtn').click(function(){
-                $('#referenceBody').show('blind');
-                var fname= $(this).attr("data-in");
+                var $name = $(this).attr("data-in");
+                var $flag = false; 
+                $('#referenceContents').hide('blind');
+                getReference($name,$flag);   
+            })
+            $('#refSearchBtn').click(function(){
+                var $name= $("#refSearch").val();
+                var $flag = true; 
+                getReference($name,$flag);   
+            })
+
+            function getReference($name,$flag)
+            {
                 $.ajax({
                     type : "GET",
-                    url : "reference/show",
+                    url : "<?=base_url()?>index.php/reference/getReference",
                     contentType : "application/json; charset=utf-8",
                     dataType : "json",
-                    data : "fname=" + fname,
+                    data : "name=" + $name + "&flag=" + $flag,
                     error : function() {
                         alert("error");
                     },
                     success : function(data) {
-                        if( data.name != null) {
-                        $('#referenceCode').html(data.code);
-                        $('#refName').html(data.name);
-                        $('#refHeader').html(data.header);
-                        $('#refForm').html(data.form);
-                        $('#refParameter').html(data.parameter);
-                        $('#refReturn').html(data.return);
-                        $('#refTip').html(data.tip);
-                        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                            lineNumbers: true,
-                            matchBrackets: true,
-                            mode: "text/x-csrc"
-                        });
-                        $('#referenceContents').hide('blind');
+                        if( data['total_rows'] == 0 ){
+                            alert("검색결과없당");
+                        }
+                        else if( data['total_rows']  > 1 )
+                        {
+                            $('#refSearchDiv').show('blind');
+                            $('#referenceContents').hide('blind');
+                            $('#referenceBody').hide('blind');
+                            var temp="<table class='table'><thead><tr><th>이름</th><th>헤더</th><th>형식</th></tr></thead><tbody>";
+                            for( var i = 0 ; i < data['total_rows'] ; i++ )
+                            {
+                               temp+="<tr><td><a class='refBtn' data-in='" +data['data'][i].name+"'>"+data['data'][i].name+"</a></td><td>" +data['data'][i].header+"</td><td>" +data['data'][i].form+"</td></tr>";
+                            }
+                            temp+="</tbody></table>";
+                            $('#refSearchDiv').html(temp);
+                            $('.refBtn').click(function(){
+                                var $name = $(this).attr("data-in");
+                                var $flag = false; 
+                                getReference($name,$flag);   
+                                $('#refSearchDiv').hide('blind');
+                            })
+
+                        }
+                        else
+                        {
+                            $('#referenceContents').hide('blind');
+                            for( var i = 0 ; i < data['total_rows'] ; i++ )
+                            {
+                                $('#referenceBody').show('blind');
+                                $('#referenceCode').html(data['data'][i].code);
+                                $('#refName').html(data['data'][i].name);
+                                $('#refHeader').html(data['data'][i].header);
+                                $('#refForm').html(data['data'][i].form);
+                                $('#refParameter').html(data['data'][i].parameter);
+                                $('#refReturn').html(data['data'][i].return);
+                                $('#refTip').html(data['data'][i].tip);
+                                    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                                    lineNumbers: true,
+                                    matchBrackets: true,
+                                    mode: "text/x-csrc"
+                                });
+                            }
                         }
                     }
                 });
-            });
+            }
 
-            $('.reference').click(function(){
-                var name= $(this).attr("data-in");
-                $('#function_description > .desc').load("<?=base_url()?>index.php/main/reference/"+name);
-                $('#function_contents').hide('slide');
-                $('#function_description > .desc').show('blind');
-            });
+/*reference End*/
+            $('.dropdown-toggle').dropdown();
             <?php 
                  if($this->session->userdata('is_login') === true )
                  {
@@ -239,99 +245,6 @@
            font-size:15px;
        }
 
-
-/*
-       #reference{
-            font-weight:bold;
-            margin-top:40px;
-            padding-top:10px;
-            padding-bottom:0px;
-            padding-left:8px;
-            background-color:#303030;
-        }
-        #reference .span2{
-            color:#CCCCCC;
-        }
-        .reference{
-            color:#CCCCCC;
-            line-height:0px;
-            font-size:9px;
-        }
-        #reference div li a:hover{
-            background-color:inherit;
-            font-size:13px;
-            color:yellow;
-        }
-        #reference h5{
-            color:#FFFFFF;
-        }
-        td{
-            border-width:0px;
-        }
-        table{
-            border-width:0px;
-        }   
-        .logo:hover{
-            color:yellow;
-            text-shadow:0 -1px 0 yellow;
-        }
-        #logout_div b{
-            color:#FFFFFF;
-            margin-right:20px;
-        }
-    
-        .my_contents li.selected{
-            background-color:rgba(10,55,240,.75);
-        }
-        .my_contents li.selected :hover{
-            background-color:rgba(10,55,240,.75);
-        }
-        .my_contents li.selected a{
-            color:white;
-        }
-        .my_sidebar{
-            margin-top: 30px;
-            margin-bottom: 30px;
-            padding-top:    10px;
-            padding-bottom: 10px;
-            text-shadow: 0 1px 0 #fff;
-            background-color: #f7f5fa;
-            border-radius: 5px;
-        }
-        .my_sidebar .nav > li > a {
-            display: block;
-            color: #716b7a;
-            padding: 5px 20px;
-        }
-        .my-sidebar .nav > li > a:hover,
-        .my-sidebar .nav > li > a:focus {
-            text-decoration: none;
-            background-color: #e5e3e9;
-            border-right: 1px solid #dbd8e0;
-        }
-        .my-sidebar .nav > .active > a,
-        .my-sidebar .nav > .active:hover > a,
-        .my-sidebar .nav > .active:focus > a {
-            font-weight: bold;
-            color: #563d7c;
-            background-color: transparent;
-            border-right: 1px solid #563d7c;
-        }
-
-        .my-sidebar .nav .nav {
-            display: none;
-            margin-bottom: 8px;
-        }
-        .my-sidebar .nav > .active > ul {
-            display: block;
-        }
-        .my-sidebar .nav .nav > li > a {
-            padding-top:    3px;
-            padding-bottom: 3px;
-            padding-left: 30px;
-            font-size: 90%;
-        }
-*/
         </style>
 
         <title></title>

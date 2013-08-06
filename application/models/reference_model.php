@@ -6,10 +6,21 @@ class Reference_model extends CI_Model {
         parent::__construct();
     }
     
-    // 회원 추가(가입)
-    function show($fname)
+    function getReference($name,$flag)
     {
-        return $this->db->get_where('reference', array('name'=>$fname))->row();
+        if( $flag == "false" ) //not search
+        {
+            $this->db->where('name',$name);
+            $data['data'] = $this->db->get('reference')->result();
+            $data['total_rows'] = 1;
+        } 
+        else if( $flag == "true" ) //search
+        {    
+            $this->db->like('name',$name);
+            $data['data'] = $this->db->get('reference')->result();
+            $this->db->like('name',$name);
+            $data['total_rows'] = $this->db->count_all_results('reference');
+        }
+        return $data;
     }
-    
 }
