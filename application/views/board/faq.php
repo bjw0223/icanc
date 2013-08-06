@@ -1,6 +1,6 @@
-<div id="faq" class="col-lg-9" style="margin-top:30px;background-color:gray;">
+<div id="faq" class="col-lg-9" style="margin-top:30px;background-color:#eeeeee;">
 
-<table class="table" >
+<table class="table table-hover" >
 	<thead>
 		<tr>
 			<th>번호</th>
@@ -29,6 +29,12 @@
 ?>		
 	</tbody>
 </table>
+
+<div class="row">
+	<div class='col-lg-12 text-right'>
+		<button type="button" class="btn btn-default">글쓰기</button>
+	</div>
+</div>
 
 
 </div>
