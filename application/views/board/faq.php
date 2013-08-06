@@ -1,6 +1,6 @@
-<div id="faq" class="col-lg-9" style="margin-top:30px;background-color:gray;">
+<div id="faq" class="col-lg-9" style="margin-top:30px;background-color:#eeeeee;">
 
-<table class="table" >
+<table class="table table-hover" >
 	<thead>
 		<tr>
 			<th>번호</th>
