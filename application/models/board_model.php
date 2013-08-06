@@ -26,7 +26,7 @@ class Board_model extends CI_Model {
 	function _hit($srl)
 	{
 		$this->db->where('srl', $srl);
-		$this->db->set('hits', 'hits', false);
+		$this->db->set('hits', 'hits+1', false);
 		$this->db->update('faq_board');
 
 	}
