@@ -5,27 +5,13 @@ class Reference extends CI_Controller {
     {
         parent::__construct();
     }
-/*
-    function getFun()
-    {
-        $name = $this->input->get_post('name');
-        $this->load->model('reference_model');
-        $data = $this->reference_model->gets($name);
-        echo json_encode( $data);
-    }
-*/
-    function getFun()
-    {
-        $this->load->model('reference_model');
 
-        if( $this->input->get_post('name'))
-        {
-            $name = $this->input->get_post('name');
-            $data['func'] = $this->reference_model->get($name);
-        }else if( $this->input->get_post('search_name') ){
-            $search_name = $this->input->get_post('search_name');
-            $data = $this->reference_model->gets($search_name);
-        }
+    function getReference()
+    {
+        $this->load->model('reference_model');
+        $name = $this->input->get_post('name');
+        $flag = $this->input->get_post('flag');
+        $data = $this->reference_model->getReference($name,$flag);
         echo json_encode( $data);
     }
 

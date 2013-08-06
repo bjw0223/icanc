@@ -27,6 +27,7 @@
         $(document).ready(function() {
                 $('#reference').hide();
                 $('#referenceBody').hide('');
+                $('#refSearchDiv').hide('');
                 var postSelecter = null;
             $('.contents_list').click(function(){
                 if(postSelecter){
@@ -46,83 +47,79 @@
                 $('#referenceBody').hide('blind');
                 $('#refSearchDiv').hide('blind');
             });
+            $('.refBtn').click(function(){
+                var $name = $(this).attr("data-in");
+                var $flag = false; 
+                $('#referenceContents').hide('blind');
+                getReference($name,$flag);   
+            })
             $('#refSearchBtn').click(function(){
-                var name= $("#refSearch").val();
+                var $name= $("#refSearch").val();
+                var $flag = true; 
+                getReference($name,$flag);   
+            })
+
+            function getReference($name,$flag)
+            {
                 $.ajax({
                     type : "GET",
-                    url : "<?=base_url()?>index.php/reference/getFun",
+                    url : "<?=base_url()?>index.php/reference/getReference",
                     contentType : "application/json; charset=utf-8",
                     dataType : "json",
-                    data : "name=&search_name="+name,
+                    data : "name=" + $name + "&flag=" + $flag,
                     error : function() {
                         alert("error");
                     },
                     success : function(data) {
-                        if( data['total_rows'] > 1 )
-                        { 
+                        if( data['total_rows'] == 0 ){
+                            alert("검색결과없당");
+                        }
+                        else if( data['total_rows']  > 1 )
+                        {
                             $('#refSearchDiv').show('blind');
                             $('#referenceContents').hide('blind');
                             $('#referenceBody').hide('blind');
                             var temp="<table class='table'><thead><tr><th>이름</th><th>헤더</th><th>형식</th></tr></thead><tbody>";
                             for( var i = 0 ; i < data['total_rows'] ; i++ )
                             {
-                               temp+="<tr><td><a class='refBtn' data-in='" +data['func'][i].name+"'>"+data['func'][i].name+"</a></td><td>" +data['func'][i].header+"</td><td>" +data['func'][i].form+"</td></tr>";
+                               temp+="<tr><td><a class='refBtn' data-in='" +data['data'][i].name+"'>"+data['data'][i].name+"</a></td><td>" +data['data'][i].header+"</td><td>" +data['data'][i].form+"</td></tr>";
                             }
                             temp+="</tbody></table>";
                             $('#refSearchDiv').html(temp);
-                        }else{
-                            $('#referenceBody').show('blind');
-                            $('#referenceCode').html(data['func'][0].code);
-                            $('#refName').html(data['func'][0].name);
-                            $('#refHeader').html(data['func'][0].header);
-                            $('#refForm').html(data['func'][0].form);
-                            $('#refParameter').html(data['func'][0].parameter);
-                            $('#refReturn').html(data['func'][0].return);
-                            $('#refTip').html(data['func'][0].tip);
-
+                            $('.refBtn').click(function(){
+                                var $name = $(this).attr("data-in");
+                                var $flag = false; 
+                                getReference($name,$flag);   
+                                $('#refSearchDiv').hide('blind');
+                            })
 
                         }
-                        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                            lineNumbers: true,
-                            matchBrackets: true,
-                            mode: "text/x-csrc"
-                        });
-                        $('#referenceContents').hide('blind');
+                        else
+                        {
+                            $('#referenceContents').hide('blind');
+                            for( var i = 0 ; i < data['total_rows'] ; i++ )
+                            {
+                                $('#referenceBody').show('blind');
+                                $('#referenceCode').html(data['data'][i].code);
+                                $('#refName').html(data['data'][i].name);
+                                $('#refHeader').html(data['data'][i].header);
+                                $('#refForm').html(data['data'][i].form);
+                                $('#refParameter').html(data['data'][i].parameter);
+                                $('#refReturn').html(data['data'][i].return);
+                                $('#refTip').html(data['data'][i].tip);
+                                    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                                    lineNumbers: true,
+                                    matchBrackets: true,
+                                    mode: "text/x-csrc"
+                                });
+                            }
+                        }
                     }
                 });
-            });
-            $('.refBtn').click(function(){
-                $('#referenceBody').show('blind');
-                var name= $(this).attr("data-in");
-                $.ajax({
-                    type : "GET",
-                    url : "<?=base_url()?>index.php/reference/getFun",
-                    contentType : "application/json; charset=utf-8",
-                    dataType : "json",
-                    data : "name=" + name+"&search_name=",
-                    error : function() {
-                        alert("error");
-                    },
-                    success : function(data) {
-                        $('#referenceCode').html(data['func'].code);
-                        $('#refName').html(data['func'].name);
-                        $('#refHeader').html(data['func'].header);
-                        $('#refForm').html(data['func'].form);
-                        $('#refParameter').html(data['func'].parameter);
-                        $('#refReturn').html(data['func'].return);
-                        $('#refTip').html(data['func'].tip);
-                        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                            lineNumbers: true,
-                            matchBrackets: true,
-                            mode: "text/x-csrc"
-                        });
-                        $('#referenceContents').hide('blind');
-                    }
-                });
-            });
-$('.dropdown-toggle').dropdown();
+            }
 
 /*reference End*/
+            $('.dropdown-toggle').dropdown();
             <?php 
                  if($this->session->userdata('is_login') === true )
                  {
@@ -290,99 +287,6 @@ $('.dropdown-toggle').dropdown();
            font-size:15px;
        }
 
-
-/*
-       #reference{
-            font-weight:bold;
-            margin-top:40px;
-            padding-top:10px;
-            padding-bottom:0px;
-            padding-left:8px;
-            background-color:#303030;
-        }
-        #reference .span2{
-            color:#CCCCCC;
-        }
-        .reference{
-            color:#CCCCCC;
-            line-height:0px;
-            font-size:9px;
-        }
-        #reference div li a:hover{
-            background-color:inherit;
-            font-size:13px;
-            color:yellow;
-        }
-        #reference h5{
-            color:#FFFFFF;
-        }
-        td{
-            border-width:0px;
-        }
-        table{
-            border-width:0px;
-        }   
-        .logo:hover{
-            color:yellow;
-            text-shadow:0 -1px 0 yellow;
-        }
-        #logout_div b{
-            color:#FFFFFF;
-            margin-right:20px;
-        }
-    
-        .my_contents li.selected{
-            background-color:rgba(10,55,240,.75);
-        }
-        .my_contents li.selected :hover{
-            background-color:rgba(10,55,240,.75);
-        }
-        .my_contents li.selected a{
-            color:white;
-        }
-        .my_sidebar{
-            margin-top: 30px;
-            margin-bottom: 30px;
-            padding-top:    10px;
-            padding-bottom: 10px;
-            text-shadow: 0 1px 0 #fff;
-            background-color: #f7f5fa;
-            border-radius: 5px;
-        }
-        .my_sidebar .nav > li > a {
-            display: block;
-            color: #716b7a;
-            padding: 5px 20px;
-        }
-        .my-sidebar .nav > li > a:hover,
-        .my-sidebar .nav > li > a:focus {
-            text-decoration: none;
-            background-color: #e5e3e9;
-            border-right: 1px solid #dbd8e0;
-        }
-        .my-sidebar .nav > .active > a,
-        .my-sidebar .nav > .active:hover > a,
-        .my-sidebar .nav > .active:focus > a {
-            font-weight: bold;
-            color: #563d7c;
-            background-color: transparent;
-            border-right: 1px solid #563d7c;
-        }
-
-        .my-sidebar .nav .nav {
-            display: none;
-            margin-bottom: 8px;
-        }
-        .my-sidebar .nav > .active > ul {
-            display: block;
-        }
-        .my-sidebar .nav .nav > li > a {
-            padding-top:    3px;
-            padding-bottom: 3px;
-            padding-left: 30px;
-            font-size: 90%;
-        }
-*/
         </style>
 
         <title></title>
