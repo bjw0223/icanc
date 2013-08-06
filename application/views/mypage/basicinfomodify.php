@@ -77,7 +77,8 @@
   // 별명 중복 확인 함수
   function checkforNickname()
   {
-        var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
+        //var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
+        var regExp = /[^a-zA-Z0-9]/;
         var obj = document.getElementsByName("nickname")[0]
         var $nickname = "<?=$nickname?>";
        

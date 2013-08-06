@@ -54,8 +54,8 @@ class Mypage extends CI_Controller {
         
         // 폼검증
         $this->form_validation->set_rules('option[]');
-        
-        if( $this->form_validation->run()  === false )
+        $re = $this->form_validation-run(); 
+        if( $re  === false )
         {
             $this->_head('signout');
         }
@@ -120,7 +120,8 @@ class Mypage extends CI_Controller {
         
         if($user == null)
         {
-            echo '<font color="#77bb3">사용 가능한 별명 입니다.</font>';
+            //echo '<font color="#77bb3">사용 가능한 별명 입니다.</font>';
+            echo '<font color="green">사용 가능한 별명 입니다.</font>';
         }
         else
         {
