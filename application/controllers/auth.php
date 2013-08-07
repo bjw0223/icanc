@@ -4,6 +4,7 @@ class Auth extends CI_Controller {
     function __construct()
     {
         parent::__construct();
+        $this->load->model('user_model');
     }
 
     // 로그인 창
@@ -24,37 +25,42 @@ class Auth extends CI_Controller {
     // 회원가입창
     function register()
     {
+        $data['nickname'] = "";
         $this->_head();
-        $this->load->view('register');
+        $this->load->view('register',$data);
         $this->load->view('footer');
     }   
 
     // 회원 가입
     function registerResult()
     {
-        if(!function_exists('password_hash'))
+        if(!function_exists('password_hash')) // libarary 존재여부 확인
         {
             $this->load->helper('password');
         }
         
-        $hash = password_hash($this->input->post('password'),PASSWORD_BCRYPT);              
-        
-        $this->load->model('user_model');
+        $hash = password_hash($this->input->post('password'),PASSWORD_BCRYPT); // 암호화 된 비밀번호              
         
         $dateOfBirth = $this->input->post('year').".".$this->input->post('month').".".$this->input->post('day');
-        $job = $this->_changeJob( $this->input->post('job') );
+        $job = $this->changeJob( $this->input->post('job') );
         
         $this->user_model->add(array(
-                                        'email'=>$this->input->post('email'),
-                                        'password'=>$hash,
-                                        'nickname'=>$this->input->post('nickname'),
-                                        'job'=>$job,
-                                        'dateOfBirth'=>$dateOfBirth
-                                    ));
+                                     'email'=>$this->input->post('email'),
+                                     'password'=>$hash,
+                                     'nickname'=>$this->input->post('nickname'),
+                                     'job'=>$job,
+                                     'dateOfBirth'=>$dateOfBirth
+                                   ));
 
         $this->session->set_flashdata('message','회원가입에 성공했습니다.');
-      
-        // 회원가입 후 회원만의 저장 공간 생성
+        $this->_createFolder();
+        $this->load->view('footer');
+        redirect( base_url().'index.php/main');
+    }
+    
+    // 회원가입 후 회원만의 저장 공간 생성
+    function _createFolder()
+    {
         $this->load->helper('file');
         $user = $this->user_model->getByEmail(array('email'=>$this->input->post('email')));
         $userPath = "/var/www/icanc/user"."/".$user->id."/";
@@ -62,9 +68,8 @@ class Auth extends CI_Controller {
         umask(0);
         mkdir($userPath,0777);
         mkdir($userPath.'temp',0777);
-        $this->load->view('footer');
-        redirect( base_url().'index.php/main');
     }
+
     
     // 회원 인증    
     function authentication()
@@ -132,7 +137,7 @@ class Auth extends CI_Controller {
     }
     
     // 직업 값 변경 ( 0~8 )
-    function _changeJob($job)
+    function changeJob($job)
     {
         $resulut = null;
         switch($job)
@@ -156,7 +161,6 @@ class Auth extends CI_Controller {
             case '기타' : $result = 8;
                           break;
         }
-
         return $result;
     }
 

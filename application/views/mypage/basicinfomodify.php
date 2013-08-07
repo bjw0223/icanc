@@ -7,7 +7,7 @@
 <div id="basicinfomodify" class="container col-lg-9">
     <div class="row">
         <div class="col-lg-10 col-offset-1">
-           <form id="basicinfomodifyForm" class="form-horizontal" action="<?=base_url()?>index.php/mypage/modifyNickname" method="post">
+           <form id="basicinfomodifyForm" class="form-horizontal" action="<?=base_url()?>index.php/mypage/modifyBasicinfo" method="post">
     	        <legend align="center"><h1> 기 본 정 보 수 정 </h1></legend>
                 <small color="gold"> 회원님의 정보 중 변경된 내용이 있는 경우, 아래에서 수정해주세요. <br/>
                 회원정보는 개인정보취급방침에 따라 안전하게 보호되며, 회원님의 명백한 동의 없이 공개 또는 제 3자에게 
@@ -295,35 +295,34 @@
 
     // 직업, 생년월일 값 초기화
     $(document).ready( function() {
+        
         $("#job").val( $("#listJob > li").children("#job"+"<?=$job?>").html() );
+        
         var $rawDate = "<?=$dateOfBirth?>"; 
         var $dateOfBirth = $rawDate.split('.');
+         
         $("#year").val($dateOfBirth[0]);
         $("#month").val($dateOfBirth[1]);
         $("#day").val($dateOfBirth[2]);
         checkforNickname();
     });
-
-    // 년 입력
-    $("#listYear > li").click(function(){
-        $("#year").val(this.value);    
-    });
-
-    // 월 입력
-    $("#listMonth > li").click(function(){
-        $("#month").val(this.value);    
-    });
-
-    // 일 입력
-    $("#listDay > li").click(function(){
-        $("#day").val(this.value);    
-    });
-
-    // 직업 입력
-    $("#listJob > li").click(function(){
-        $("#job").val( $( this ).children().html() );
-    });
-
+        // 년 입력
+        $("#listYear > li").click(function(){
+            $("#year").val(this.value);    
+        });
+        // 월 입력
+        $("#listMonth > li").click(function(){
+            $("#month").val(this.value);    
+        });
+        // 일 입력
+        $("#listDay > li").click(function(){
+            $("#day").val(this.value);    
+        });
+        // 직업 입력
+        $("#listJob > li").click(function(){
+            $("#job").val( $( this ).children().html() );
+        });
+    
     // 별명 중복 확인 함수
     function checkforNickname()
     {
@@ -349,7 +348,7 @@
                     if( obj.value == $nickname )
                     {
                         $("#nicknameResult").html('<font color="#2233b"></font>');
-                        $("#nicknameResult").val("false");
+                        $("#nicknameResult").val("true");
                     } 
                     else
                     {
@@ -390,6 +389,7 @@
         if( $result == "true")
         {
             $("#basicinfomodifyForm").submit();
+            alert("정상적으로 변경 되었습니다");
         }
         else
         {

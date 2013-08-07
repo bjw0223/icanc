@@ -42,11 +42,27 @@ class User_model extends CI_Model {
         }
     }
     
-    // 별명 변경
+    // 별명 업데이트
     function nicknameModify($option)
     {
         $this->db->where('nickname', $option['beforeNick']);
         $this->db->set('nickname',$option['afterNick']);
+        $this->db->update('user'); 
+    }
+
+    // 생년월일 업데이트
+    function modifyDateOfBirth($option)
+    {
+        $this->db->where('dateOfBirth', $option['beforeDateOfBirth']);
+        $this->db->set('dateOfBirth',$option['afterDateOfBirth']);
+        $this->db->update('user'); 
+    }
+
+    // 직업 업데이트
+    function modifyJob($option)
+    {
+        $this->db->where('job', $option['beforeJob']);
+        $this->db->set('job',$option['afterJob']);
         $this->db->update('user'); 
     }
     
