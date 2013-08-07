@@ -1,0 +1,15 @@
+<-----user----->
+
+CREATE TABLE  `icanc`.`user` (
+`id` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+ `email` VARCHAR( 50 ) NOT NULL ,
+ `nickname` VARCHAR( 20 ) NOT NULL ,
+ `job` INT( 11 ) NOT NULL ,
+ `dateOfBirth` VARCHAR( 10 ) NOT NULL ,
+ `password` VARCHAR( 255 ) NOT NULL ,
+ `created` DATETIME NOT NULL ,
+PRIMARY KEY (  `id` ) ,
+UNIQUE KEY  `email_idx` (  `email` )
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+<------ end ----->
