@@ -54,8 +54,8 @@ class Mypage extends CI_Controller {
         
         // 폼검증
         $this->form_validation->set_rules('option[]');
-        
-        if( $this->form_validation->run()  === false )
+        $re = $this->form_validation-run(); 
+        if( $re  === false )
         {
             $this->_head('signout');
         }
@@ -90,7 +90,6 @@ class Mypage extends CI_Controller {
     // 기본정보 변경
     function basicinfoModify()
     {
-        $this->load->library('form_validation');
         $this->load->view('header');
         $this->_head('basicinfomodify');
         $this->load->view('footer');
@@ -120,26 +119,26 @@ class Mypage extends CI_Controller {
         
         if($user == null)
         {
-            echo '<font color="#77bb3">사용 가능한 별명 입니다.</font>';
+            echo '<font color="green">사용 가능한 별명 입니다</font>';
         }
         else
         {
-            echo '<font color="brwon">중복된 별명 입니다.</font>';
+            echo '<font color="brwon">중복된 별명 입니다</font>';
         }
     }
     
     // 이메일 중복 검사
-    function checkforEmail($email)
+    function checkforEmail($head, $tail)
     {
-        $user = $this->user_model->checkRedundancy('email',array('email'=>$nickname));
-        
+        $email = $head."@".$tail;
+        $user = $this->user_model->checkRedundancy('email',array('email'=>$email));
         if($user == null)
         {
-            echo '<font color="#77bb3">사용 가능한 이메일 입니다.</font>';
+            echo '<font color="#77bb3">올바른 이메일 입니다</font>';
         }
         else
         {
-            echo '<font color="brwon">등록된 이메일 입니다.</font>';
+            echo '<font color="brwon">등록된 이메일 입니다</font>';
         }
     }
 
@@ -149,6 +148,8 @@ class Mypage extends CI_Controller {
     {
         $data['email'] = $this->session->userdata('user_email');
         $data['nickname'] = $this->session->userdata('user_nickname');
+        $data['job'] = $this->session->userdata('user_job');
+        $data['dateOfBirth'] = $this->session->userdata('user_dateOfBirth');
         $data['selected'] = $address;
         $this->load->view('navbar');
         $this->load->view('reference');

@@ -4,11 +4,11 @@
     }
 </style>
 
-<div id="basicinfomodify" class="container col-lg-9">
+<div id="register" class="container">
     <div class="row">
         <div class="col-lg-10 col-offset-1">
-           <form class="form-horizontal" action="<?=base_url()?>index.php/mypage/basicinfoModify" method="post">
-    	        <legend align="center"><h1> 기 본 정 보 수 정 </h1></legend>
+           <form class="form-horizontal" action="<?=base_url()?>index.php/auth/register" method="post">
+    	        <legend align="center"><h1> 회 원 가 입 </h1></legend>
                 <small color="gold"> 회원님의 정보 중 변경된 내용이 있는 경우, 아래에서 수정해주세요. <br/>
                 회원정보는 개인정보취급방침에 따라 안전하게 보호되며, 회원님의 명백한 동의 없이 공개 또는 제 3자에게 
                 제공되지 않습니다. <br/><br/><br/>
@@ -20,30 +20,27 @@
                           <th class="active" width="200px" style="padding-left:20px;">이메일</th>
                           <th>
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <label> <b><?=$email?> </label>
+                                <div class="col-lg-8">
+                                    <input type="text" id="email" name="email" class="col-lg-4" value="<?php echo set_value('email'); ?>" placeholder="Email"></th>
                                 </div>
                             </div>
-                          </th>
                        </tr>
                        <tr>
                           <td class="active">별명</td>
                           <td>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <input type="text" id="nickname" name="nickname" value="<?=$nickname?>" onkeyup="checkforNickname()" onfocus=" " onfocusout="checkforNickname()"> 
-                                </div>
-                                <div class="col-lg-2"> 
-                                </div>
-                                <div class="col-lg-6">
-                                    <label id="nicknameResult" style="margin-top:2px"> </label>
-                                </div>
+                             <div class="row">
+                                    <div class="col-lg-8">
+                                        <input type="text" id="nickname" name="nickname" onkeyup="checkforNickname()" onfocus=" " class="col-lg-4" placeholder="Nickname"> 
+                                    </div>
+                                    <div class="col-lg-4">
+                                    <label id="checkResult" style="margin-top:2px"> </label>
+                                    </div>
                              </div>
                                 <div style="margin-top:8px">
-                                    <small style="color:orange"><b>특수문자를 제외한 한글, 영문자 2~20자, 숫자를 사용할 수 있습니다. (혼용가능)</b> <br/>
+                                    <small style="color:orange">특수문자를 제외한 한글, 영문 대소문자 2~20자, 숫자를 사용할 수 있습니다. (혼용가능) <br/>
                                     </small>
                                     <small>
-                                           <b>욕설이나 미풍양속에 어긋나는 별명 사용으로 ID이용이 제한될 수 있습니다.</b> 
+                                           욕설이나 미풍양속에 어긋나는 별명 사용으로 ID이용이 제한될 수 있습니다. 
                                     </small>
                                 </div>
                           </td>
@@ -53,36 +50,19 @@
                           <td class="active" >비밀번호</td>
                           <td >
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <input type="password" id="password" name="password" onfocusout="checkforPassword()" placeholder="Password">
+                                <div class="col-lg-8">
+                                    <input type="password" id="password" name="password" class="col-lg-4" value="<?php echo set_value('password'); ?>" placeholder="Password"></td>
                                 </div>
-                                <div class="col-lg-2"> 
-                                </div>
-                                <div class="col-lg-6">
-                                    <label id="passwordResult" style="margin-top:2px"> </label>
-                                </div>
-                             </div>
-                                <div style="margin-top:8px">
-                                    <small style="color:orange"><b>특수문자, 한글을 제외한 영문 대소문자 7~15자, 숫자를 사용할 수 있습니다. (혼용가능)</b> <br/>
-                                    </small>
-                                    </small>
-                                </div>
-                          </td>
+                            </div>
                        </tr>
                        <tr>
                           <td class="active" >비밀번호확인</td>
                           <td>
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <input type="password" id="re_password" name="re_password" onfocusout="checkforRepassword()" placeholder="Password Check">
-                                </div>
-                                <div class="col-lg-2"> 
-                                </div>
-                                <div class="col-lg-6">
-                                    <label id="re_passwordResult" style="margin-top:2px"> </label>
+                                <div class="col-lg-8">
+                                    <input type="password" id="re_password" name="re_password" class="col-lg-4" value="<?php echo set_value('re_password'); ?>" placeholder="Password Check"></td>
                                 </div>
                             </div>
-                          </td>
                        </tr>
                        <tr>
                           <td class="active" > 생년월일 </td>
@@ -90,7 +70,7 @@
                             <!-- /btn-group -->
                                 <div class="row">
                                     <div class="input-group col-lg-2">
-                                        <input type="text" id="year" name="year" style="height:30px; width:60px; text-align:center;" readonly="true">
+                                        <input type="text" id="year" name="year" style="height:30px; width:60px; text-align:center;">
                                         <div class="input-group-btn class-lg">
                                             <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">년 <span class="caret"></span></button>
                                             <ul id="listYear" class="dropdown-menu" style="padding-right:px; margin:0px; height:200px; min-width:1px; width:77px; overflow-x:auto; overflow-y:scroll">
@@ -234,7 +214,7 @@
                                         </div><!-- /input-group-btn 월 -->
                                         
                                         <div class="input-group col-lg-2">
-                                            <input type="text" id="day" name="day" style="height:30px; width:60px; text-align:center;" readonly="true">
+                                            <input type="text" id="day" name="day" style="height:30px; width:60px; text-align:center;">
                                             <div class="input-group-btn class-lg">
                                                 <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">일 <span class="caret"></span></button>
                                                     <ul id="listDay" class="dropdown-menu" style="padding-right:px; margin:0px; height:200px; min-width:1px; width:77px; overflow-x:auto; overflow-y:scroll">
@@ -283,19 +263,20 @@
                               <td > 
                                 <div class="row">
                                     <div class="input-group col-lg-2">
-                                        <input type="text" id="job" name="job" style="height:30px; width:90px; text-align:center;" readonly="true">
+                                        <input type="text" id="month" name="month" style="height:30px; width:60px; text-align:center;">
                                             <div class="input-group-btn class-lg">
-                                                <button type="button" class="btn btn-default dropdown-toggle btn-small" style="width:100px;" data-toggle="dropdown">직업 <span class="caret"></span></button>
+                                                <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">직업 <span class="caret"></span></button>
                                                 <ul id="listJob" class="dropdown-menu" style="padding-right:px; margin:0px; height:200px; min-width:1px; width:100px; overflow-x:auto; overflow-y:scroll">
-                                                <li value="0"> <a id="job0" tabindex="-1" href="#">초등학생</a> </li>
-                                                <li value="1"> <a id="job1" tabindex="-1" href="#">중학생</a> </li>
-                                                <li value="2"> <a id="job2" tabindex="-1" href="#">고등학생</a> </li>
-                                                <li value="3"> <a id="job3" tabindex="-1" href="#">대학생</a> </li>
-                                                <li value="4"> <a id="job4" tabindex="-1" href="#">대학원생</a> </li>
-                                                <li value="5"> <a id="job5" tabindex="-1" href="#">회사원</a> </li>
-                                                <li value="6"> <a id="job6" tabindex="-1" href="#">자영업</a> </li>
-                                                <li value="7"> <a id="job7" tabindex="-1" href="#">무직</a> </li>
-                                                <li value="8"> <a id="job8" tabindex="-1" href="#">기타</a> </li>
+                                                <li value="12"> <a tabindex="-1" href="#" data-in="12">초등학생</a> </li>
+                                                <li value="11"> <a tabindex="-1" href="#" data-in="11">중학생</a> </li>
+                                                <li value="10"> <a tabindex="-1" href="#" data-in="10">고등학생</a> </li>
+                                                <li value="9"> <a tabindex="-1" href="#" data-in="9">대학생</a> </li>
+                                                <li value="8"> <a tabindex="-1" href="#" data-in="8">대학원생</a> </li>
+                                                <li value="7"> <a tabindex="-1" href="#" data-in="7">회사원</a> </li>
+                                                <li value="6"> <a tabindex="-1" href="#" data-in="6">자영업</a> </li>
+                                                <li value="5"> <a tabindex="-1" href="#" data-in="5">무직</a> </li>
+                                                <li value="4"> <a tabindex="-1" href="#" data-in="4">우여명ㅂㅅ</a> </li>
+                                                <li value="4"> <a tabindex="-1" href="#" data-in="4">기타</a> </li>
                                                 </ul> 
                                             </div><!-- /input-group 월 -->
                                     </div><!-- /input-group-btn 월 -->
@@ -308,11 +289,13 @@
                     
                     <div class="row">
                         <div style="text-align:center"> 
-                            <input type="submit" class="btn btn-primary" value="변 경"/>
+                            <input type="submit" class="btn btn-primary" value=" 회 원 가 입 "/>
                         </div>
                     </div>
 
                </form>
+                <?php echo validation_errors('email'); ?> 
+            
             </div>
         </div>
     </div>
@@ -323,150 +306,40 @@
     <!-- -->
 
       <!-- 자바스크립트 -->
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    // dropdown 활성화
+      // 별명 중복 확인 함수
+      function checkforNickname()
+      {
+            var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
+            var obj = document.getElementsByName("nickname")[0]
+           
+            if( obj.value.length >= 0 && obj.value.length <= 20 ) // 별명 길이 검사
+            {
+                    if (regExp.test(obj.value)) 
+                    {
+                        obj.value = obj.value.replace(regExp,"");//특수문자를 지우는 구문
+                    }
+                    else
+                    {
+                            if( obj.value == "")
+                            {
+                                $("#checkResult").html('<font color="#2233b">공백은 사용할 수 없습니다.</font>');
+                            }
+                            else
+                            {
+                                $("#checkResult").load("<?=base_url()?>index.php/mypage/checkforNickname/"+obj.value);
+                            }
+                    }
+            }
+            else
+            {
+                $("#checkResult").html('<font color="#2233b">1 ~ 20 글자의 별명만 사용 가능 합니다.</font>');
+            }
+
+      }
+    
+
     $('.dropdown-toggle').dropdown();  
-
-    // 직업, 생년월일 값 초기화
-    $(document).ready( function() {
-        $("#job").val( $("#listJob > li").children("#job"+"<?=$job?>").html() );
-        var $rawDate = "<?=$dateOfBirth?>"; 
-        var $dateOfBirth = $rawDate.split('.');
-        $("#year").val($dateOfBirth[0]);
-        $("#month").val($dateOfBirth[1]);
-        $("#day").val($dateOfBirth[2]);
-    });
-
-    // 년 입력
-    $("#listYear > li").click(function(){
-        $("#year").val(this.value);    
-    });
-
-    // 월 입력
-    $("#listMonth > li").click(function(){
-        $("#month").val(this.value);    
-    });
-
-    // 일 입력
-    $("#listDay > li").click(function(){
-        $("#day").val(this.value);    
-    });
-
-    // 직업 입력
-    $("#listJob > li").click(function(){
-        $("#job").val( $( this ).children().html() );
-    });
-
-    // 별명 중복 확인 함수
-    function checkforNickname()
-    {
-        var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
-        var obj = document.getElementsByName("nickname")[0];
-
-        if( obj.value.length >= 0 && obj.value.length <= 20 ) // 별명 길이 검사
-        {
-            if (regExp.test(obj.value)) 
-            {
-                obj.value = obj.value.replace(regExp,"");//특수문자를 지우는 구문
-            }
-            else
-            {
-                if( obj.value == "")
-                {
-                    $("#nicknameResult").html('<font color="#2233b">Nickname을 입력하세요</font>');
-                }
-                else
-                {
-                    $("#nicknameResult").load("<?=base_url()?>index.php/mypage/checkforNickname/"+obj.value);
-                }
-            }
-        }
-        else
-        {
-            $("#nicknameResult").html('<font color="#2233b">1 ~ 20 글자의 별명만 사용 가능 합니다</font>');
-        }
-
-    }
-
-    function checkforEmail()
-    {
-        var regExp = /^([0-9a-zA-Z-_]+)@([0-9a-zA-Z-_]+)\.([0-9a-zA-Z.]+)$/;
-        var obj = document.getElementsByName("email")[0];
-
-        if( obj.value.length == "")
-        {
-            $("#emailResult").html('<font color="#2233b">Email을 입력하세요</font>');
-        }    
-        else if ( regExp.test(obj.value) )
-        {
-            $("#emailResult").html('<font color="green">올바른 이메일 양식 입니다</font>');
-        }
-        else
-        {
-            $("#emailResult").html('<font color="brown">올바르지 않은 이메일 양식 입니다</font>');
-        }
-
-    }
-    function checkforPassword()
-    {
-        var regExp = /[^a-zA-Z0-9]/;
-        var obj = document.getElementsByName("password")[0];
-        
-        if( obj.value.length == "")
-        {
-            $("#passwordResult").html('<font color="#2233b">Password을 입력하세요</font>');
-        }
-        else if( obj.value.length >= 7 && obj.value.length <= 15 ) // 비밀번호 길이 검사
-        {
-            if( regExp.test(obj.value) )
-            {
-                $("#passwordResult").html('<font color="green">올바르지 않은 형식의 비밀번호 입니다</font>');
-                $("#password").val("");
-            }
-            else
-            {
-                $("#passwordResult").html('<font color="green">올바른 형식의 비밀번호 입니다</font>');
-            }
-        }
-        else
-        {
-            $("#passwordResult").html('<font color="green">올바르지 않은  형식의 비밀번호 입니다</font>');
-            $("#password").val("");
-        }
-    }
-
-    function checkforRepassword()
-    {
-        var regExp = /[^a-zA-Z0-9]/;
-        var obj = document.getElementsByName("password")[0];
-        var reObj = document.getElementsByName("re_password")[0];
-
-        if( obj.value == reObj.value)
-        {
-            if( reObj.value.length >= 7 && reObj.value.length <= 15 ) // 비밀번호 길이 검사
-            {
-                if( regExp.test(reObj.value) )
-                {
-                    $("#re_passwordResult").html('<font color="green">올바르지 않은 형식의 비밀번호 입니다</font>');
-                    $("#re_password").val("");
-                }
-                else
-                {
-                    $("#re_passwordResult").html('<font color="green">비밀번호가 일치 합니다</font>');
-                }
-            }
-            else
-            {
-                $("#re_passwordResult").html('<font color="green">Password를 입력하세요</font>');
-                $("#re_password").val("");
-            }
-        }
-        else
-        {
-            $("#re_passwordResult").html('<font color="green">비밀번호가 일치 하지 않습니다</font>');
-            $("#re_password").val("");
-        }
-    }                
-
-</script>
+    $('#a').scrollspy();
+    </script>

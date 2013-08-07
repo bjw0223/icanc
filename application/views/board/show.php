@@ -1,26 +1,40 @@
-<div id="faq" class="col-lg-9" style="margin-top:30px;background-color:gray;">
+<style>
 
-<table class="table" >
-	<thead>
-		<tr><th>번호</th><th>제목</th><th>글쓴이</th><th>날짜</th><th>조회수</th></tr>				
-	</thead>
-	<tbody>
-	
+</style>
+<div id="faq" class="col-lg-9" style="margin-top:30px;background-color:#eeeeee;">
+
 <?php
-	foreach($list as $data)
-	{
-		echo 	"<tr><td>$data->srl</td><td><a href='".base_url()."index.php/board/show/$data->srl'>$data->title</a></td><td>$data->writer</td><td>$data->modified_date</td><td>$data->count</td></tr>";
-		
-	 
+	$data=$list[0];
 ?>		
-	</tbody>
-</table>
-<?php
-	echo $data->text;
-}
-?>
-
+        <div class="row" style="padding:5px;">
+            <div class="col-lg-12" style="min-height:50px;background-color:white;">
+                <p class="col-lg-10" style="font-size:28px;font-weight:bold;"><?=$data->title?></p>
+                <p class="col-lg-2 pull-right"><?//=$data->modified_time?>임시</p>
+            </div>
+        </div>
+        <div class="row" style="padding:5px;">
+            <div class="col-lg-12" style="min-height:35px;background-color:white;">
+                <p class="col-lg-8">작성자 : <?=$data->writer?></p>
+                <p class="col-lg-2">조회수 : <?=$data->hits?></p>
+                <p class="col-lg-2">추천수 : <?=$data->goods?></p>
+            </div>
+        </div>
+        <div class="row" style="padding:5px;">
+            <div class="col-lg-12" style="overflow:auto;min-height:350px;background-color:white;">
+                <?=$data->text?>
+            </div> 
+        </div>
+        <div class="row" style="padding-top:5px;padding-bottom:5px;">
+            <div class="col-lg-11">
+                <button type="button" class="btn btn-info">좋아요 <?=$data->goods?></button>
+            </div>
+            <div class="col-lg-1">
+                <button type="button" class="btn"><i class="icon-reorder icon-large"></i></button>
+            </div>
+        </div>
+        
 </div>
+
 
 <!-- -->
 </div>
