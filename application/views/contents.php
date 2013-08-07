@@ -20,6 +20,9 @@
                 <a href="<?=base_url();?>index.php/tutorial/show/variable/variable">변수</a>
 	    </li>
             <li class="active">
+                <a href="<?=base_url();?>index.php/tutorial/show/storage_class/storage_class">기억클래스</a>
+	    </li>
+            <li class="active">
                 <a href="#">자료형</a>
                 <ul class="nav">
                     <li class="active">

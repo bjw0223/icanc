@@ -228,6 +228,9 @@
 	.tutorial_desc .red{
 	   color:red;
 	}
+       #list{
+	    list-style:none;
+       }
        #basicinfomodify .active {
             padding-left:20px;
             font-weight:bold;
