@@ -177,9 +177,21 @@
     .referenceDescDiv{
         background-color:gray;
     }
+	.tutorial_main{
+	   margin-top:40px;
+           font-size:40px;
+	}
+	.tutorial_main_sub{
+           font-size:18px;
+	   font-weight:bold;
+	   color:#616060;
+	}
+	.division{
+	   margin-top:40px;
+	}
  	.tutorial_desc{
-	margin-top:30px;
-	line-height:30px;	
+  	   margin-top:30px;
+	   line-height:30px;	
 	}
 	.tutorial_desc .title{
 	   font-size:32px;
@@ -199,12 +211,12 @@
 	   font-size:17px;
 	}
 	.tutorial_desc .general_sub1_1{
-		text-indent:40px;
-		font-size:17px;
+	   text-indent:40px;
+	   font-size:17px;
 	}
 	.tutorial_desc .general_sub1_2{
-		text-indent:60px;
-		font-size:17px;
+	   text-indent:60px;
+	   font-size:17px;
 	}
 	.tutorial_desc .general_sub2{
 	   font-size:16px;

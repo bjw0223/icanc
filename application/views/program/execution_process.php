@@ -1,6 +1,6 @@
 <div class="col-lg-9 tutorial_desc">
 
-<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\1.PNG" width=650px; Height=450px; style="margin-bottom:20px"><br>
+<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\1.PNG" width=650px; Height=400px; style="margin-bottom:20px"><br>
 
 <span class="general">
 
