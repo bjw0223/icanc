@@ -1,6 +1,6 @@
 <div class="col-lg-9 tutorial_desc">
 
-<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\1.PNG" width=650px; Height=450px; style="margin-bottom:20px"><br>
+<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\1.PNG" width=650px; Height=400px; style="margin-bottom:20px"><br>
 
 <span class="general">
 
@@ -92,7 +92,7 @@ cf) C 언어 block의 종류<br>
 
 * 프로그램의 전처리, 컴파일, 링크의 이해 - 맨 위 그림 참조<br>
  
-<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\3.png" width=550px; Height=900; style="margin-bottom:20px; margin-left:20px"><br>
+<img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\3.png" width=600px; Height=900; style="margin-bottom:20px; margin-left:20px"><br>
 
 1. 시작 : OS -&gt; Start up code -&gt; main() 함수 -&gt; sub() 함수 -&gt; printf() 함수<br>
 2. 종료 : 역순<br>

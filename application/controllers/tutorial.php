@@ -2,7 +2,7 @@
 
 class Tutorial extends CI_Controller {
 
-	public function index($title="program",$subTitle="understanding")
+	public function index($title="tutorial_main",$subTitle="tutorial_main")
 	{
 		$this->_head();
 		$this->load->view('navbar');

@@ -14,7 +14,7 @@ class Mypage extends CI_Controller {
         $this->info();
 	}
 	
-    // 회원정보
+    // 회원정보 폼
     public function info()
     {
         $this->load->view('header');
@@ -22,7 +22,7 @@ class Mypage extends CI_Controller {
         $this->load->view('footer');
 	}
 	
-    // 회원 초대
+    // 회원 초대 폼
     public function invitation()
     {
         $this->load->view('header');
@@ -30,15 +30,31 @@ class Mypage extends CI_Controller {
         $this->load->view('footer');
 	}
 	
-    // 정보 수정
+    // 정보 수정 폼
     public function modification()
     {
         $this->load->view('header');
         $this->_head('modification');
         $this->load->view('footer');
 	}
-	
-    // 파일 관리
+    
+    // 기본정보 변경 폼
+    function basicinfoModify()
+    {
+        $this->load->view('header');
+        $this->_head('basicinfomodify');
+        $this->load->view('footer');
+    }
+
+    // 비밀번호 변경 폼
+    function pwdmodify()
+    {
+        $this->load->view('header');
+        $this->_head('pwdmodify');
+        $this->load->view('footer');
+    }     
+
+    // 파일 관리 폼
     public function showdir()
     {
         $this->load->view('header');
@@ -52,7 +68,7 @@ class Mypage extends CI_Controller {
         $this->load->view('header');       
         $this->load->library('form_validation');
         
-        // 폼검증
+        // 폼검증 함수
         $this->form_validation->set_rules('option[]');
         $re = $this->form_validation-run(); 
         if( $re  === false )
@@ -79,71 +95,106 @@ class Mypage extends CI_Controller {
         $this->load->view('footer');
 
 	}
-    // 비밀번호 변경 
-    function pwdmodify()
+    
+    // 기본정보 변경하기
+    function modifyBasicinfo()
     {
-        $this->load->view('header');
-        $this->_head('pwdmodify');
+        $this->_modifyNickname();
+        $this->_modifyDateOfBirth();
+        $this->_modifyJob();
+        redirect(base_url().'index.php/main');
         $this->load->view('footer');
-    }     
-
-    // 기본정보 변경
-    function basicinfoModify()
-    {
-        $this->load->view('header');
-        $this->_head('basicinfomodify');
-        $this->load->view('footer');
-    }
-
-    function modifyNickname()
-    {
-            // 별명 변경
-            $beforeNick = $this->session->userdata('user_nickname');
-            $afterNick = $this->input->post('afterNick');
-            $option = array(
-                            'beforeNick' => $beforeNick,
-                            'afterNick' => $afterNick
-                           );
-            $this->user_model->nicknameModify($option);
-            // 세션의 별명값 변경
-            $sess_add = array( 'user_nickname' => $afterNick);
-            $this->session->set_userdata($sess_add);
-            redirect(base_url().'index.php/main');
-            $this->load->view('footer');
     }
     
-    // 별명 중복 검사
-    function checkforNickname($nickname)
+    // 별명 변경 함수
+    function _modifyNickname()
     {
+        // 별명 변경
+        $beforeNick = $this->session->userdata('user_nickname');
+        $afterNick = $this->input->post('nickname');
+        $option = array(
+                    'beforeNick' => $beforeNick,
+                        'afterNick' => $afterNick
+                       );
+        $this->user_model->nicknameModify($option);
+        
+        $sess_add = array( 'user_nickname' => $afterNick); // 세션의 별명 변경
+        $this->session->set_userdata($sess_add);
+    }
+
+    // 생년월일 변경 함수
+    function _modifyDateOfBirth()
+    {
+        $beforeDateOfBirth = $this->session->userdata('user_dateOfBirth');
+        $afterDateOfBirth = $this->input->post('year').".".$this->input->post('month').".".$this->input->post('day');
+        
+        $option = array(
+                        'beforeDateOfBirth' => $beforeDateOfBirth,
+                        'afterDateOfBirth' => $afterDateOfBirth
+                       );
+        $this->user_model->modifyDateOfBirth($option);
+        
+        $sess_add = array( 'user_dateOfBirth' => $afterDateOfBirth); // 세션의 생년월일 변경
+        $this->session->set_userdata($sess_add);
+    }
+
+    // 직업 변경 함수
+    function _modifyJob()
+    {
+        require(APPPATH.'/controllers/auth'.EXT);
+        $auth = new auth;        
+        $beforeJob = $this->session->userdata('user_job');
+        $afterJob = $auth->changeJob($this->input->post('job'));
+        
+        $option = array(
+                        'beforeJob' => $beforeJob,
+                        'afterJob' => $afterJob
+                       );
+        $this->user_model->modifyJob($option);
+        
+        $sess_add = array( 'user_job' => $afterJob); // 세션의 직업 변경
+        $this->session->set_userdata($sess_add);
+    }
+
+    // 별명 중복 검사 함수
+    function checkforNickname()
+    {
+        $nickname = $_POST['nickname'];
+        
         $user = $this->user_model->checkRedundancy('nickname',array('nickname'=>$nickname));
+
+        if($user == null)
+        {
+            $flag['value'] = "true";
+        }
+        else
+        {
+            $flag['value'] = "false";
+        }
+        
+        echo json_encode($flag);
+
+    }
+    
+    // 이메일 중복 검사 함수
+    function checkforEmail()
+    {
+        $email = $_POST['email'];
+
+        $user = $this->user_model->checkRedundancy('email',array('email'=>$email));
         
         if($user == null)
         {
-            echo '<font color="green">사용 가능한 별명 입니다</font>';
+            $flag['value'] = "true";
         }
         else
         {
-            echo '<font color="brwon">중복된 별명 입니다</font>';
+            $flag['value'] = "false";
         }
+        echo json_encode($flag);
     }
     
-    // 이메일 중복 검사
-    function checkforEmail($head, $tail)
-    {
-        $email = $head."@".$tail;
-        $user = $this->user_model->checkRedundancy('email',array('email'=>$email));
-        if($user == null)
-        {
-            echo '<font color="#77bb3">올바른 이메일 입니다</font>';
-        }
-        else
-        {
-            echo '<font color="brwon">등록된 이메일 입니다</font>';
-        }
-    }
-
-
-
+    // 헤더 함수
     public function _head($address)
     {
         $data['email'] = $this->session->userdata('user_email');

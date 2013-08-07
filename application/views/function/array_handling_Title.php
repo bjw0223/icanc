@@ -1,8 +1,7 @@
-<div>
-
-"배열 처리 화면 입니다"
-
-
-
-
+<div class="container">
+   <div class="col-lg-12">
+	<div class="tutorial_main">ARRAY HANDLING</div>
+   </div>
 </div>
+
+<div class="well row division"></div>

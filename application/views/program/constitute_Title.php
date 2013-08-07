@@ -1,5 +1,7 @@
 <div class="container">
-  <div class="col-lg-12">
-	<h1>CONSTITUTE</h1>
-  </div>
+   <div class="col-lg-12">
+	<div class="tutorial_main">CONSTITUTE</div>
+   </div>
 </div>
+
+<div class="well row division"></div>
