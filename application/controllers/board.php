@@ -65,6 +65,33 @@ class Board extends CI_Controller {
 		$this->load->view('board/show',$result);
 		$this->load->view('footer');
 	}
+    function documentWrite() //문서작성
+    {
+		$this->_head();
+		$this->load->view('navbar');
+		$this->load->view('reference');
+		$this->load->view('board/board_contents');
+		$this->load->view('board/document_write');
+		$this->load->view('footer');
+    }
+    function saveDoc()
+    {
+        $title = $_POST['docTitle'];
+        $description = $_POST['textEditor'];
+
+        $this->load->helper('text');
+        $string = ascii_to_entities($description);
+
+        $insert_data['title'] = $title; 
+        $insert_data['writer'] = "우여명";
+        $insert_data['created_time'] = time();
+        $insert_data['modified_time'] = time();
+        $insert_data['text'] = $string; 
+        //date("Y-m-d H:i:s",time())
+       	$this->load->model('board_model');
+        $this->board_model->saveDoc($insert_data);
+        redirect( base_url().'index.php/board/faq');
+    }
     function _head()
     {
         $this->load->view('header');

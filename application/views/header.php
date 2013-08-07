@@ -14,7 +14,8 @@
         <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shCore.js"></script>
         <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shBrushCpp.js"></script>
         <link rel="stylesheet" type="text/css" href="<?=base_url();?>asset/lib/syntaxhighlighter/styles/shCoreDefault.css">
-        <!--<script type="text/javascript" src="<?=base_url();?>asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>-->
+<!-- tinyMCE -->
+        <script type="text/javascript" src="<?=base_url();?>asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>
 <!--  codemirror -->
         <script src="<?=base_url();?>asset/lib/codemirror/lib/codemirror.js"></script>
         <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/lib/codemirror.css">
@@ -142,9 +143,6 @@
             SyntaxHighlighter.config.bloggerMode = true;
             SyntaxHighlighter.all();
             //]]>
-            //tinymce.init({
-            //    selector: "textarea"
-            // });
         /*
             var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
                 lineNumbers: true,
@@ -250,7 +248,6 @@
         </style>
 
         <title></title>
-        <script type="text/javascript" src="<?=base_url();?>asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>
     </head>
     <body>
     <!--세션 플래시의 메세지 --!>

@@ -9,7 +9,8 @@
         <div class="row" style="padding:5px;">
             <div class="col-lg-12" style="min-height:50px;background-color:white;">
                 <p class="col-lg-10" style="font-size:28px;font-weight:bold;"><?=$data->title?></p>
-                <p class="col-lg-2 pull-right"><?//=$data->modified_time?>임시</p>
+                <p class="col-lg-2 pull-right"><?=$data->modified_time?></p>
+                <p class="col-lg-2 pull-right"><?=$data->created_time?></p>
             </div>
         </div>
         <div class="row" style="padding:5px;">

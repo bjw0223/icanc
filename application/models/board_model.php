@@ -36,6 +36,10 @@ class Board_model extends CI_Model {
 		$this->db->order_by('srl', 'desc');
 		$query=$this->db->get('faq_board');
     }
+    public function saveDoc($arg)
+    {
+        $this->db->insert('faq_board',$arg);
+    }
 }
 
 

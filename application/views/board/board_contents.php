@@ -5,13 +5,13 @@
 <!-- -->
     <div class="bs-sidebar">
        <ul class="nav bs-sidenav"> 
-        <li class="<?=($selected=="faq")?"selected":"";?>">
+        <li class="">
             <a href="<?=base_url()?>index.php/board/faq">
                 FAQ 
                 <i class="icon-chevron-right pull-right"></i>
             </a>
         </li>
-        <li class="<?=($selected=="qna")?"selected":"";?>">
+        <li class="">
             <a href="<?=base_url()?>index.php/board/qna">
                 Q&A 
                 <i class="icon-chevron-right pull-right"></i>
