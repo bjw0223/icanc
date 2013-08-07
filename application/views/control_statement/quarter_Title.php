@@ -1,13 +1,7 @@
-<div>
-
-
-"분기문 타이틀 화면입니다"
-
-
-
-
-
-
-
-
+<div class="container">
+   <div class="col-lg-12">
+	<div class="tutorial_main">QUARTER</div>
+   </div>
 </div>
+
+<div class="well row division"></div>

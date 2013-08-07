@@ -1,5 +1,7 @@
 <div class="container">
-  <div class="col-lg-12">
-	<h1>REFERENCE</h1>
-  </div>
+   <div class="col-lg-12">
+	<div class="tutorial_main">REFERENCE</div>
+   </div>
 </div>
+
+<div class="well row division"></div>

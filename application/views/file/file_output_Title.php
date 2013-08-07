@@ -1,8 +1,7 @@
-<div>
-
-"파일 출력 화면입니다"
-
-
-
-
+<div class="container">
+   <div class="col-lg-12">
+	<div class="tutorial_main">OUTPUT</div>
+   </div>
 </div>
+
+<div class="well row division"></div>

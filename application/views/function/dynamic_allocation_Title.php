@@ -1,8 +1,7 @@
-<div>
-
-"동적할당 타이틀 화면 입니다"
-
-
-
-
+<div class="container">
+   <div class="col-lg-12">
+	<div class="tutorial_main">DYNAMIC ALLOCATION</div>
+   </div>
 </div>
+
+<div class="well row division"></div>
