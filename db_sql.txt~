@@ -1,6 +1,6 @@
 <-----user----->
 
-CREATE TABLE  `icanc`.`test` (
+CREATE TABLE  `icanc`.`user` (
 `id` INT( 11 ) NOT NULL AUTO_INCREMENT ,
  `email` VARCHAR( 50 ) NOT NULL ,
  `nickname` VARCHAR( 20 ) NOT NULL ,
@@ -11,5 +11,41 @@ CREATE TABLE  `icanc`.`test` (
 PRIMARY KEY (  `id` ) ,
 UNIQUE KEY  `email_idx` (  `email` )
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+<------ end ----->
+
+<------ reference -----> 
+CREATE TABLE  `icanc`.`reference` (
+    `srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+    `name` VARCHAR( 30 ) CHARACTER SET utf8 NOT NULL ,
+    `code` TEXT CHARACTER SET utf8 NOT NULL ,
+    `header` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
+    `form` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
+    `parameter` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
+    `return` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
+    `tip` TEXT CHARACTER SET utf8 NOT NULL ,
+    PRIMARY KEY (  `srl` ) ,
+    UNIQUE KEY  `name` (  `name` ) ,
+    KEY  `srl` (  `srl` )
+) ENGINE = INNODB DEFAULT CHARSET = latin1;
+<------ end ----->
+
+<------ reference -----> 
+CREATE TABLE  `icanc`.`faq_board` (
+    `srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+    `title` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
+    `writer` VARCHAR( 50 ) CHARACTER SET utf8 NOT NULL ,
+    `created_time` DATETIME NOT NULL ,
+    `modified_time` DATETIME NOT NULL ,
+    `hits` INT( 11 ) NOT NULL ,
+    `is_deleted` TINYINT( 1 ) NOT NULL ,
+    `is_bind` TINYINT( 1 ) NOT NULL ,
+    `is_open` TINYINT( 1 ) NOT NULL ,
+    `is_notice` TINYINT( 1 ) NOT NULL ,
+    `text` TEXT CHARACTER SET utf8 NOT NULL ,
+    `goods` INT( 11 ) NOT NULL ,
+    PRIMARY KEY (  `srl` )
+) ENGINE = INNODB DEFAULT CHARSET = latin1;
+
 
 <------ end ----->
