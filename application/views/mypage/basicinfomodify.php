@@ -7,7 +7,7 @@
 <div id="basicinfomodify" class="container col-lg-9">
     <div class="row">
         <div class="col-lg-10 col-offset-1">
-           <form class="form-horizontal" action="<?=base_url()?>index.php/mypage/basicinfoModify" method="post">
+           <form id="basicinfomodifyForm" class="form-horizontal" action="<?=base_url()?>index.php/mypage/modifyNickname" method="post">
     	        <legend align="center"><h1> 기 본 정 보 수 정 </h1></legend>
                 <small color="gold"> 회원님의 정보 중 변경된 내용이 있는 경우, 아래에서 수정해주세요. <br/>
                 회원정보는 개인정보취급방침에 따라 안전하게 보호되며, 회원님의 명백한 동의 없이 공개 또는 제 3자에게 
@@ -36,7 +36,7 @@
                                 <div class="col-lg-2"> 
                                 </div>
                                 <div class="col-lg-6">
-                                    <label id="nicknameResult" style="margin-top:2px"> </label>
+                                    <label id="nicknameResult" style="margin-top:2px" value="sdfdsf"> </label>
                                 </div>
                              </div>
                                 <div style="margin-top:8px">
@@ -49,41 +49,6 @@
                           </td>
                        </tr>
                        
-                       <tr>
-                          <td class="active" >비밀번호</td>
-                          <td >
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <input type="password" id="password" name="password" onfocusout="checkforPassword()" placeholder="Password">
-                                </div>
-                                <div class="col-lg-2"> 
-                                </div>
-                                <div class="col-lg-6">
-                                    <label id="passwordResult" style="margin-top:2px"> </label>
-                                </div>
-                             </div>
-                                <div style="margin-top:8px">
-                                    <small style="color:orange"><b>특수문자, 한글을 제외한 영문 대소문자 7~15자, 숫자를 사용할 수 있습니다. (혼용가능)</b> <br/>
-                                    </small>
-                                    </small>
-                                </div>
-                          </td>
-                       </tr>
-                       <tr>
-                          <td class="active" >비밀번호확인</td>
-                          <td>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <input type="password" id="re_password" name="re_password" onfocusout="checkforRepassword()" placeholder="Password Check">
-                                </div>
-                                <div class="col-lg-2"> 
-                                </div>
-                                <div class="col-lg-6">
-                                    <label id="re_passwordResult" style="margin-top:2px"> </label>
-                                </div>
-                            </div>
-                          </td>
-                       </tr>
                        <tr>
                           <td class="active" > 생년월일 </td>
                           <td >
@@ -308,7 +273,7 @@
                     
                     <div class="row">
                         <div style="text-align:center"> 
-                            <input type="submit" class="btn btn-primary" value="변 경"/>
+                            <input type="button" onclick="basicinfoResult()" class="btn btn-primary" value="변 경"/>
                         </div>
                     </div>
 
@@ -336,6 +301,7 @@
         $("#year").val($dateOfBirth[0]);
         $("#month").val($dateOfBirth[1]);
         $("#day").val($dateOfBirth[2]);
+        checkforNickname();
     });
 
     // 년 입력
@@ -363,6 +329,7 @@
     {
         var regExp = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\\(\=]/gi;//정규식 구문
         var obj = document.getElementsByName("nickname")[0];
+        var $nickname = "<?=$nickname?>";
 
         if( obj.value.length >= 0 && obj.value.length <= 20 ) // 별명 길이 검사
         {
@@ -375,10 +342,37 @@
                 if( obj.value == "")
                 {
                     $("#nicknameResult").html('<font color="#2233b">Nickname을 입력하세요</font>');
+                    $("#nicknameResult").val("false");
                 }
                 else
                 {
-                    $("#nicknameResult").load("<?=base_url()?>index.php/mypage/checkforNickname/"+obj.value);
+                    if( obj.value == $nickname )
+                    {
+                        $("#nicknameResult").html('<font color="#2233b"></font>');
+                        $("#nicknameResult").val("false");
+                    } 
+                    else
+                    {
+                        $.ajax({
+                                type : "POST",
+                                url : "<?=base_url()?>index.php/mypage/checkforNickname",
+                                data : "nickname="+obj.value,
+                                dataType : "json",
+                                success : function(flag) {
+                                        if( flag.value == "true")
+                                        {   
+                                            $("#nicknameResult").html('<font color="#2233b">사용 가능한 별명 입니다</font>');
+                                            $("#nicknameResult").val("true");
+                                        }
+                                        else if (flag.value == "false")
+                                        {
+                                            $("#nicknameResult").html('<font color="#2233b">중복된 별명 입니다</font>');
+                                            $("#nicknameResult").val("false");
+                                        }
+                                }
+                        });
+
+                    }
                 }
             }
         }
@@ -386,87 +380,20 @@
         {
             $("#nicknameResult").html('<font color="#2233b">1 ~ 20 글자의 별명만 사용 가능 합니다</font>');
         }
-
     }
 
-    function checkforEmail()
+    // submit
+    function basicinfoResult()
     {
-        var regExp = /^([0-9a-zA-Z-_]+)@([0-9a-zA-Z-_]+)\.([0-9a-zA-Z.]+)$/;
-        var obj = document.getElementsByName("email")[0];
-
-        if( obj.value.length == "")
-        {
-            $("#emailResult").html('<font color="#2233b">Email을 입력하세요</font>');
-        }    
-        else if ( regExp.test(obj.value) )
-        {
-            $("#emailResult").html('<font color="green">올바른 이메일 양식 입니다</font>');
-        }
-        else
-        {
-            $("#emailResult").html('<font color="brown">올바르지 않은 이메일 양식 입니다</font>');
-        }
-
-    }
-    function checkforPassword()
-    {
-        var regExp = /[^a-zA-Z0-9]/;
-        var obj = document.getElementsByName("password")[0];
+        var $result = $("#nicknameResult").val();
         
-        if( obj.value.length == "")
+        if( $result == "true")
         {
-            $("#passwordResult").html('<font color="#2233b">Password을 입력하세요</font>');
-        }
-        else if( obj.value.length >= 7 && obj.value.length <= 15 ) // 비밀번호 길이 검사
-        {
-            if( regExp.test(obj.value) )
-            {
-                $("#passwordResult").html('<font color="green">올바르지 않은 형식의 비밀번호 입니다</font>');
-                $("#password").val("");
-            }
-            else
-            {
-                $("#passwordResult").html('<font color="green">올바른 형식의 비밀번호 입니다</font>');
-            }
+            $("#basicinfomodifyForm").submit();
         }
         else
         {
-            $("#passwordResult").html('<font color="green">올바르지 않은  형식의 비밀번호 입니다</font>');
-            $("#password").val("");
+            alert("다시 확인해");
         }
     }
-
-    function checkforRepassword()
-    {
-        var regExp = /[^a-zA-Z0-9]/;
-        var obj = document.getElementsByName("password")[0];
-        var reObj = document.getElementsByName("re_password")[0];
-
-        if( obj.value == reObj.value)
-        {
-            if( reObj.value.length >= 7 && reObj.value.length <= 15 ) // 비밀번호 길이 검사
-            {
-                if( regExp.test(reObj.value) )
-                {
-                    $("#re_passwordResult").html('<font color="green">올바르지 않은 형식의 비밀번호 입니다</font>');
-                    $("#re_password").val("");
-                }
-                else
-                {
-                    $("#re_passwordResult").html('<font color="green">비밀번호가 일치 합니다</font>');
-                }
-            }
-            else
-            {
-                $("#re_passwordResult").html('<font color="green">Password를 입력하세요</font>');
-                $("#re_password").val("");
-            }
-        }
-        else
-        {
-            $("#re_passwordResult").html('<font color="green">비밀번호가 일치 하지 않습니다</font>');
-            $("#re_password").val("");
-        }
-    }                
-
 </script>
