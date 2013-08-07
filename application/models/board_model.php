@@ -30,6 +30,12 @@ class Board_model extends CI_Model {
 		$this->db->update('faq_board');
 
 	}
+    function getList($srl,$limit=10)
+    {
+		$this->db->select('*');
+		$this->db->order_by('srl', 'desc');
+		$query=$this->db->get('faq_board');
+    }
 }
 
 

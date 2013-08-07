@@ -22,6 +22,8 @@
         <script src="<?=base_url();?>asset/lib/codemirror/addon/edit/matchbrackets.js"></script>
         <script src="<?=base_url();?>asset/lib/codemirror/mode/clike/clike.js"></script>
      <!--   <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/doc/docs.css"> -->
+<!--  fontawesome     -->
+         <link href="<?=base_url();?>asset/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
 
         <script type="text/javascript">
         $(document).ready(function() {

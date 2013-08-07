@@ -49,11 +49,22 @@ class Board extends CI_Controller {
 		$this->_head();
 		$this->load->view('navbar');
 		$this->load->view('reference');
-		$this->load->view('board/board_contents',$data);
+		$this->load->view('board/board_contents');
 		$this->load->view('board/show',$result);
 		$this->load->view('footer');
-	
 	}	
+
+    function getList($srl,$limit=10)
+	{
+            
+       	$this->load->model('board_model');
+		$this->_head();
+		$this->load->view('navbar');
+		$this->load->view('reference');
+		$this->load->view('board/board_contents');
+		$this->load->view('board/show',$result);
+		$this->load->view('footer');
+	}
     function _head()
     {
         $this->load->view('header');
