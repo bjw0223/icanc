@@ -88,7 +88,7 @@ class Auth extends CI_Controller {
                               'user_nickname' => $user->nickname,
                               'user_job' => $user->job,
                               'user_dateOfBirth' => $user->dateOfBirth,
-                              'is_login' => "true"
+                              'is_login' => true
                              );
             $this->session->set_userdata($sess_add);
             $returnURL = $this->input->get('returnURL');

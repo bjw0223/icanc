@@ -366,7 +366,8 @@
       {
             var regExp = /^([0-9a-zA-Z-_]+)@([0-9a-zA-Z-_]+)\.([0-9a-zA-Z.]+)$/;
             var obj = document.getElementsByName("email")[0];
-            
+            var rawObj = "";
+            var email = "";
 
             if( obj.value.length == "")
             {
@@ -374,7 +375,9 @@
             }    
             else if ( regExp.test(obj.value) )
             {
-                $("#emailResult").html('<font color="green">올바른 이메일 양식 입니다</font>');
+                rawObj = obj.value;
+                email = rawObj.split('@');
+                $("#emailResult").load("<?=base_url()?>index.php/mypage/checkforEmail/"+email[0]+"/"+email[1]);
             }
             else
             {
