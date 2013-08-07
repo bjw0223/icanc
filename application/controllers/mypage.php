@@ -52,7 +52,7 @@ class Mypage extends CI_Controller {
         $this->load->view('header');       
         $this->load->library('form_validation');
         
-        // 폼검증
+        // 폼검증 함수
         $this->form_validation->set_rules('option[]');
         $re = $this->form_validation-run(); 
         if( $re  === false )
@@ -79,7 +79,7 @@ class Mypage extends CI_Controller {
         $this->load->view('footer');
 
 	}
-    // 비밀번호 변경 
+    // 비밀번호 변경 폼
     function pwdmodify()
     {
         $this->load->view('header');
@@ -87,19 +87,20 @@ class Mypage extends CI_Controller {
         $this->load->view('footer');
     }     
 
-    // 기본정보 변경
+    // 기본정보 변경 폼
     function basicinfoModify()
     {
         $this->load->view('header');
         $this->_head('basicinfomodify');
         $this->load->view('footer');
     }
-
+    
+    // 별명 변경 함수
     function modifyNickname()
     {
             // 별명 변경
             $beforeNick = $this->session->userdata('user_nickname');
-            $afterNick = $this->input->post('afterNick');
+            $afterNick = $this->input->post('nickname');
             $option = array(
                             'beforeNick' => $beforeNick,
                             'afterNick' => $afterNick
@@ -113,18 +114,23 @@ class Mypage extends CI_Controller {
     }
     
     // 별명 중복 검사
-    function checkforNickname($nickname)
+    function checkforNickname()
     {
-        $user = $this->user_model->checkRedundancy('nickname',array('nickname'=>$nickname));
+        $nickname = $_POST['nickname'];
         
+        $user = $this->user_model->checkRedundancy('nickname',array('nickname'=>$nickname));
+
         if($user == null)
         {
-            echo '<font color="green">사용 가능한 별명 입니다</font>';
+            $flag['value'] = "true";
         }
         else
         {
-            echo '<font color="brwon">중복된 별명 입니다</font>';
+            $flag['value'] = "false";
         }
+        
+        echo json_encode($flag);
+
     }
     
     // 이메일 중복 검사
