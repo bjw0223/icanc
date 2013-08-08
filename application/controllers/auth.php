@@ -74,34 +74,25 @@ class Auth extends CI_Controller {
     // 회원 인증    
     function authentication()
     {
-        $this->load->model('user_model');
-        // password 암호화
-        if(!function_exists('password_hash'))
-        {
-            $this->load->helper('password');
-        }
-        // db에서 email 가져와서 일치여부 확인
-        $user = $this->user_model->getByEmail(array('email'=>$this->input->post('email')));
-        if(
-            $this->input->post('email') == $user->email &&
-            password_verify($this->input->post('password'),$user->password)
-        )  
-          { 
-            // session에 사용자 정보 입력
-            $sess_add = array(
-                              'user_email'  => $user->email,
-                              'user_nickname' => $user->nickname,
-                              'user_job' => $user->job,
-                              'user_dateOfBirth' => $user->dateOfBirth,
-                              'is_login' => true
-                             );
-            $this->session->set_userdata($sess_add);
-            $returnURL = $this->input->get('returnURL');
-            if($returnURL === false)
-            {
-               $returnURL = base_url().'index.php/main';
-            }
-            redirect($returnURL);
+        require(APPPATH.'/controllers/mypage'.EXT);
+        $mypage = new mypage;        
+        
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $verifyResult = $mypage->verifyPassword($email, $password); // password 검증
+        
+        if( $verifyResult != null) // 결과값이 있으면
+        { 
+           // session에 사용자 정보 입력
+           $sess_add = array(
+                             'user_email'  => $verifyResult->email,
+                             'user_nickname' => $verifyResult->nickname,
+                             'user_job' => $verifyResult->job,
+                             'user_dateOfBirth' => $verifyResult->dateOfBirth,
+                             'is_login' => true
+                            );
+           $this->session->set_userdata($sess_add);
+           redirect( base_url().'index.php/main' );
         }
         else 
         {
