@@ -17,6 +17,14 @@ class Board extends CI_Controller {
   //      $data['selected']="FAQ";
         $table='faq_board';
         $search_param = null;
+        $data['search_key'] = '';
+        $data['search_keyword'] = '';
+
+        if($this->input->get_post('search_key') && $this->input->get_post('search_keyword')){
+            $search_param = array();
+            $data['search_key'] =  $search_param['search_key'] = $this->input->get_post('search_key');
+            $data['search_keyword'] = $search_param['search_keyword'] = $this->input->get_post('search_keyword');
+        }
 
         $this->load->model('board_model');
         $data=$this->board_model->getList($table,$search_param,$page,$list_count);
