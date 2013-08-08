@@ -34,24 +34,33 @@ class Board_model extends CI_Model {
     {
         $this->db->order_by("srl", "desc");
         $this->db->limit($list_count , ($page-1)*$list_count );
-		$query=$this->db->get($table)->result();
+		//$query=$this->db->get($table)->result();
 
-		$this->db->where('is_blind', 0);
-        $total_rows = $this->db->count_all_results($table);
+        if($search_param == null) {
+            $query=$this->db->get($table)->result();
+            $total_rows = $this->db->count_all_results($table);
+
+        //    $query = $this->db->get($this->table);
+
+          //  $total_rows = $this->db->count_all($this->table);
+
+        }else{
+
+            $this->db->like($search_param['search_key'],$search_param['search_keyword']);
+            $query=$this->db->get($table)->result();
+            $this->db->like($search_param['search_key'],$search_param['search_keyword']);
+            $total_rows = $this->db->count_all_results($table);
+        }
+
+		//$this->db->where('is_blind', 0);
+        //$total_rows = $this->db->count_all_results($table);
 
         $data['list'] = $query;
         $data['total_rows'] = $total_rows;
         $data['page'] = $page;
         $data['list_count'] = $list_count;
         $data['page_count'] = ceil($total_rows / $list_count) ;
-/*
-        $pagination['page'] = $page ;
-        $pagination['list_count'] = $list_count ;
-        $pagination['total_rows'] = $total_rows ;
-        $pagination['page_count'] = ceil($total_rows / $list_count) ;
-        $result['list'] = $query->result() ;
-        $result['pagination'] = $pagination ;
-*/
+
 		return $data;
     }
     public function saveDoc($flag, $arg)

@@ -4,18 +4,18 @@
         <form class="form-inline">
             
             <div class="input-group col-lg-2 col-offset-5 text-right" style="padding-right:0px;">
-                <select class="form-control">
-                    <option>제목</option>
-                    <option>작성자</option>
-                    <option>번호</option>
+                <select name="search_key" class="form-control">
+                    <option value="title">제목</option>
+                    <option value="writer">작성자</option>
+                    <option value="srl">번호</option>
                 </select>
                  
             </div>
             <div class="input-group col-lg-5 text-right" style="padding-right:0px;">
                      
-                <input id="searchInput" type="text" class="form-control" placeholder="검색">
+                <input id="searchInput" name="search_keyword" type="text" class="form-control" placeholder="검색">
                 <span class="input-group-btn">
-                    <button id="refSearchBtn" class="btn btn-success" type="button"> 검 색 </button>
+                    <button id="refSearchBtn" class="btn btn-success" type="submit"> 검 색 </button>
                 </span>
             </div><!-- /input-group -->
 
