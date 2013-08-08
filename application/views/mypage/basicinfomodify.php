@@ -300,7 +300,6 @@
         
         var $rawDate = "<?=$dateOfBirth?>"; 
         var $dateOfBirth = $rawDate.split('.');
-         
         $("#year").val($dateOfBirth[0]);
         $("#month").val($dateOfBirth[1]);
         $("#day").val($dateOfBirth[2]);

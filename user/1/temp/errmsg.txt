@@ -1,0 +1,2 @@
+./user/1/temp/test.c: In function 'main':
+./user/1/temp/test.c:8:1: error: expected ';' before '}' token
