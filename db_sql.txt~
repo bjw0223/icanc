@@ -39,7 +39,7 @@ CREATE TABLE  `icanc`.`faq_board` (
     `modified_time` DATETIME NOT NULL ,
     `hits` INT( 11 ) NOT NULL ,
     `is_deleted` TINYINT( 1 ) NOT NULL ,
-    `is_bind` TINYINT( 1 ) NOT NULL ,
+    `is_blind` TINYINT( 1 ) NOT NULL ,
     `is_open` TINYINT( 1 ) NOT NULL ,
     `is_notice` TINYINT( 1 ) NOT NULL ,
     `text` TEXT CHARACTER SET utf8 NOT NULL ,
@@ -49,3 +49,16 @@ CREATE TABLE  `icanc`.`faq_board` (
 
 
 <------ end ----->
+
+<------ session -----> 
+CREATE TABLE  `icanc`.`ci_sessions1` (
+`session_id` VARCHAR( 40 ) NOT NULL DEFAULT  '0',
+ `ip_address` VARCHAR( 16 ) NOT NULL DEFAULT  '0',
+ `user_agent` VARCHAR( 120 ) NOT NULL ,
+ `last_activity` INT( 10 ) UNSIGNED NOT NULL DEFAULT  '0',
+ `user_data` TEXT NOT NULL ,
+PRIMARY KEY (  `session_id` ) ,
+KEY  `last_activity_idx` (  `last_activity` )
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+<------ end ----->
+
