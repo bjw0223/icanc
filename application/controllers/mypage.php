@@ -62,38 +62,32 @@ class Mypage extends CI_Controller {
         $this->load->view('footer');
 	}
 	
-    // 회원 탈퇴
+    // 회원 탈퇴 폼
     public function signout()
     {
         $this->load->view('header');       
-        $this->load->library('form_validation');
-        
-        // 폼검증 함수
-        $this->form_validation->set_rules('option[]');
-        $re = $this->form_validation-run(); 
-        if( $re  === false )
-        {
-            $this->_head('signout');
-        }
-        else
-        {
+        $this->_head('signout');
+        $this->load->view('footer');
+    }
+    
+    // 회원 정보 삭제
+    public function destroyInfo()
+    {
             // 탈퇴 회원에 대한 user폴더 내의 해당 id폴더 삭제
             $user = $this->user_model->getByEmail(array('email'=>$this->session->userdata('user_email')));
             $userPath = "/var/www/icanc/user"."/".$user->id;
+            
             $rmdir = "rm -r ".$userPath;
             
             $this->session->set_flashdata('message','회원탈퇴가 되었습니다.');
             $this->user_model->del(
                                    $this->session->userdata('user_email')
                                   );
-            
             $this->session->sess_destroy();
+            
             // id폴더 삭제 명령
             exec($rmdir);
             redirect( base_url().'index.php/main');
-        }
-        $this->load->view('footer');
-
 	}
     
     // 기본정보 변경하기

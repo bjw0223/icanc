@@ -1,4 +1,4 @@
-<div id="signout" class="span9">
+<div id="signout" class="col-lg-9">
 
 <h2><font color="#7bb002">회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.</font></h2> <br>
 사용하고 계신 아이디(<?=$email?>)는 탈퇴할 경우 복구가 불가능 하기 때문에 신중하게 선택하시기 바랍니다.<br>
@@ -9,12 +9,12 @@
 <br>
 <br>
 
-<form action="<?=base_url()?>index.php/mypage/signout" method="post">
+<form id="signoutForm" action="<?=base_url()?>index.php/mypage/destroyInfo" method="post">
         <label class="checkbox">
-            <input type="checkbox" name="option[]" value="1" <?php $this->session->set_flashdata('message','동의하셔야 탈퇴가 가능합니다.\n테스트중'); ?> > 
+            <input type="checkbox" id="agree" name="agree" value="" > 
             <span class="label label-info">위의 내용을 확실히 확인하고 아이디(<font color="gold"><?=$email?></font>)를 회원 탈퇴 하겠습니다.</span>
         </label>
-        <button type="submit" class="btn btn-large btn-primary">확인</button>
+        <button type="button" class="btn btn-large btn-primary" onclick="checkAgree()" >확인</button>
 </form>
 
 </div>
@@ -25,3 +25,24 @@
 </div>
 </div>
 <!-- -->
+
+
+<script type="text/javascript">
+
+    function checkAgree()
+    {
+      var $checkResult = $("#agree").is(":checked");
+      
+      if( $checkResult === true )
+      {
+          alert("정상적으로 탈퇴 되었습니다");
+          $("#signoutForm").submit();
+      }
+      else
+      {
+          alert("동의 하셔야 탈퇴가 가능합니다");
+      }
+
+    }
+
+</script>
