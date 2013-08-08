@@ -12,12 +12,16 @@ class Board extends CI_Controller {
         $this->faq();
 	}
 	
-	public function faq()
+	public function faq($page=1,$list_count=10)
     {
-        $data['selected']="faq";
+  //      $data['selected']="FAQ";
+        $table='faq_board';
+        $search_param = null;
+
         $this->load->model('board_model');
-        $list=$this->board_model->gets();
-		$result['list']=$list;
+        $data=$this->board_model->getList($table,$search_param,$page,$list_count);
+
+		$result=$data;
 		$this->_head();
         $this->load->view('navbar');
         $this->load->view('reference');
@@ -42,10 +46,8 @@ class Board extends CI_Controller {
 	function show($srl)
 	{
        	$this->load->model('board_model');
-       	//$this->board_model->updateHit($srl);
        	$list = $this->board_model->get($srl);
-		$result['list']=$list;
-		$data['selected']="qna";
+		$result['data']=$list;
 		$this->_head();
 		$this->load->view('navbar');
 		$this->load->view('reference');

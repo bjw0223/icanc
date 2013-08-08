@@ -1,37 +1,156 @@
 <div id="faq" class="col-lg-9" style="margin-top:30px;background-color:#eeeeee;">
+<div class="row well" style="margin-bottom:0px;padding:8px;">
+    <div class="col-lg-12" style="background-color:white;padding:3px 0px 3px 0px;">
+        <form class="form-inline">
+            
+            <div class="input-group col-lg-2 col-offset-5 text-right" style="padding-right:0px;">
+                <select class="form-control">
+                    <option>제목</option>
+                    <option>작성자</option>
+                    <option>번호</option>
+                </select>
+                 
+            </div>
+            <div class="input-group col-lg-5 text-right" style="padding-right:0px;">
+                     
+                <input id="searchInput" type="text" class="form-control" placeholder="검색">
+                <span class="input-group-btn">
+                    <button id="refSearchBtn" class="btn btn-success" type="button"> 검 색 </button>
+                </span>
+            </div><!-- /input-group -->
 
-<table class="table table-hover" >
-	<thead>
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>글쓴이</th>
-			<th>날짜</th>
-			<th>조회수</th>
-			<th>추천수</th>
-		</tr>				
-	</thead>
-	<tbody>
-	
+        </form>
+
+    </div>
+</div>
+<div class="row well" style="margin-bottom:0px;padding:8px;">
+    <div class="col-lg-12" style="background-color:white;">
+        <table class="table table-hover"  style="text-align:center;">
+            <thead>
+                <tr>
+                    <th class="col-lg-1" style="text-align:center;"><h4>번호</h4></th>
+                    <th class="col-lg-5" style="text-align:center;"><h4>제목</h4></th>
+                    <th class="col-lg-2" style="text-align:center;"><h4>글쓴이</h4></th>
+                    <th class="col-lg-2" style="text-align:center;"><h4>날짜</h4></th>
+                    <th class="col-lg-1" style="text-align:center;"><h4>조회수</h4></th>
+                    <th class="col-lg-1" style="text-align:center;"><h4>추천수</h4></th>
+                </tr>				
+            </thead>
+            <tbody>
+            
+        <?php
+            foreach($list as $data)
+            {
+                echo "<tr>
+                        <td>$data->srl</td>
+                        <td><a href='".base_url()."index.php/board/show/$data->srl'>$data->title</a></td>
+                        <td>$data->writer</td>
+                        <td>$data->modified_time</td>
+                        <td>$data->hits</td>
+                        <td>$data->goods</td>
+                    </tr>";
+                
+            } 
+        ?>		
+            </tbody>
+        </table>
+        <div class="col-lg-12 text-center"> 
 <?php
-	foreach($list as $data)
-	{
-		echo "<tr>
-				<td>$data->srl</td>
-				<td><a href='".base_url()."index.php/board/show/$data->srl'>$data->title</a></td>
-				<td>$data->writer</td>
-				<td>임시날짜</td>
-				<td>$data->hits</td>
-				<td>$data->goods</td>
-			</tr>";
-		
-	} 
-?>		
-	</tbody>
-</table>
+if( $page_count >= 5 )
+{
+    $first_page =  $page > 3  ? $page-2 : 1;
+    /*
+    $last_page =  $page > 3  ? $page+2 : 5; 
+    if( $last_page > $page_count )
+    {
+        $last_page = $page_count;
+    }
+    */
+}
+else
+{
+    $first_page = 1;
+    //$last_page = $page_count + 1;
+}
+/*
+echo "first_page = ".$first_page."<br/>";
+echo "last_page = ".$last_page."<br/>";
+echo "total_rows = ".$total_rows."<br/>";
+echo "list_count = ".$list_count."<br/>";
+echo "page = ".$page."<br/>";
+echo "page_count = ".$page_count."<br/>";
+*/
+?>
+            <ul class="pagination">
+                <li><a href="<?=base_url();?>index.php/board/faq/" class="btn-large">&lt&lt</a></li>
+<?php
+if( $page == 1)
+{
+?>
+                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page-1?>" class="btn btn-large disabled">&lt</a></li>
+<?php
+}
+else
+{
+?>
+                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page-1?>" class="btn-large">&lt</a></li>
 
-<div class="row">
-	<div class='col-lg-12 text-right'>
+<?php
+}
+//for( $i = $first_page ; $i < $last_page + 1 ; $i++)
+for( $i = $first_page ; $i < $first_page + 5 ; $i++)
+{
+    if( $page == $i )
+    {
+?>
+                <li><a href="<?=base_url();?>index.php/board/faq/<?=$i?>" class="btn btn-primary btn-large active disabled"><?=$i?></a></li>
+<?php
+    }
+    else if( $i > $page_count )
+    {
+?>
+                <li><a href="<?=base_url();?>index.php/board/faq/<?=$i?>" class="btn btn-large disabled"><?=$i?></a></li>
+<?php
+    }
+    else
+    {
+?>
+                <li><a href="<?=base_url();?>index.php/board/faq/<?=$i?>" class="btn-large"><?=$i?></a></li>
+<?php
+    }
+}
+?>
+            <!--
+                <li><a href="#" class="btn-large">&laquo;</a></li>
+                <li><a href="#" class="btn-large">1</a></li>
+                <li><a href="#" class="btn-large">2</a></li>
+                <li><a href="#" class="btn-large">3</a></li>
+                <li><a href="#" class="btn-large">4</a></li>
+                <li><a href="#" class="btn-large">5</a></li>
+                <li><a href="#" class="btn-large">&raquo;</a></li>
+            -->
+<?php
+if( $page >= $page_count)
+{
+?>
+                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page-1?>" class="btn btn-large disabled">&gt</a></li>
+<?php
+}
+else
+{
+?>
+                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page+1?>" class="btn-large">&gt</a></li>
+<?php
+}
+?>
+
+                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page_count?>" class="btn-large">&gt&gt</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row well" style="margin-bottom:0px;padding:8px;">
+    <div class='col-lg-12 text-right'>
 		<a class="btn btn-default" href="<?=base_url();?>index.php/board/documentWrite">글쓰기</a>
 	</div>
 </div>

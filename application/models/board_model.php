@@ -20,7 +20,7 @@ class Board_model extends CI_Model {
 		$this->_hit($srl);
 		$this->db->where('srl',$srl);
 		$query=$this->db->get('faq_board');
-		return $query->result();
+		return $query->row();
 	}
 	
 	function _hit($srl)
@@ -30,11 +30,29 @@ class Board_model extends CI_Model {
 		$this->db->update('faq_board');
 
 	}
-    function getList($srl,$limit=10)
+    function getList($table,$search_param=null,$page=1,$list_count=10)
     {
-		$this->db->select('*');
-		$this->db->order_by('srl', 'desc');
-		$query=$this->db->get('faq_board');
+        $this->db->order_by("srl", "desc");
+        $this->db->limit($list_count , ($page-1)*$list_count );
+		$query=$this->db->get($table)->result();
+
+		$this->db->where('is_blind', 0);
+        $total_rows = $this->db->count_all_results($table);
+
+        $data['list'] = $query;
+        $data['total_rows'] = $total_rows;
+        $data['page'] = $page;
+        $data['list_count'] = $list_count;
+        $data['page_count'] = ceil($total_rows / $list_count) ;
+/*
+        $pagination['page'] = $page ;
+        $pagination['list_count'] = $list_count ;
+        $pagination['total_rows'] = $total_rows ;
+        $pagination['page_count'] = ceil($total_rows / $list_count) ;
+        $result['list'] = $query->result() ;
+        $result['pagination'] = $pagination ;
+*/
+		return $data;
     }
     public function saveDoc($flag, $arg)
     {
@@ -47,7 +65,7 @@ class Board_model extends CI_Model {
         {
             $this->db->set('modified_time','NOW()',false);
         }
-            $this->db->insert('faq_board',$arg);
+        $this->db->insert('faq_board',$arg);
     }
 }
 
