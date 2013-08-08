@@ -66,6 +66,14 @@ class User_model extends CI_Model {
         $this->db->update('user'); 
     }
     
+    // 비밀번호 업데이트
+    function modifyPassword($option)
+    {
+        $this->db->where('email', $option['email']);
+        $this->db->set('password',$option['password']);
+        $this->db->update('user'); 
+    }
+    
     // 이메일로 유저 정보 가져오기
     function getByEmail($option)
     {

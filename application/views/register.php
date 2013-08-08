@@ -384,8 +384,8 @@
                     {
                         $.ajax({
                                 type : "POST",
-                                url : "<?=base_url()?>index.php/mypage/checkforNickname",
-                                data : "nickname="+obj.value,
+                                url : "<?=base_url()?>index.php/mypage/checkInfo",
+                                data : "object="+obj.value+"&target=nickname",
                                 dataType : "json",
                                 success : function(flag) {
                                         if( flag.value == "true")
@@ -427,8 +427,8 @@
             {
                     $.ajax({
                             type : "POST",
-                            url : "<?=base_url()?>index.php/mypage/checkforEmail",
-                            data : "email="+obj.value,
+                            url : "<?=base_url()?>index.php/mypage/checkInfo",
+                            data : "object="+obj.value+"&target=email",
                             dataType : "json",
                             success : function(flag) {
                                             if( flag.value == "true")
