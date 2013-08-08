@@ -51,7 +51,7 @@ CREATE TABLE  `icanc`.`faq_board` (
 <------ end ----->
 
 <------ session -----> 
-CREATE TABLE  `icanc`.`ci_sessions1` (
+CREATE TABLE  `icanc`.`ci_sessions` (
 `session_id` VARCHAR( 40 ) NOT NULL DEFAULT  '0',
  `ip_address` VARCHAR( 16 ) NOT NULL DEFAULT  '0',
  `user_agent` VARCHAR( 120 ) NOT NULL ,

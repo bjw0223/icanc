@@ -49,3 +49,16 @@ CREATE TABLE  `icanc`.`faq_board` (
 
 
 <------ end ----->
+
+<------ session -----> 
+CREATE TABLE  `icanc`.`ci_sessions1` (
+`session_id` VARCHAR( 40 ) NOT NULL DEFAULT  '0',
+ `ip_address` VARCHAR( 16 ) NOT NULL DEFAULT  '0',
+ `user_agent` VARCHAR( 120 ) NOT NULL ,
+ `last_activity` INT( 10 ) UNSIGNED NOT NULL DEFAULT  '0',
+ `user_data` TEXT NOT NULL ,
+PRIMARY KEY (  `session_id` ) ,
+KEY  `last_activity_idx` (  `last_activity` )
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+<------ end ----->
+
