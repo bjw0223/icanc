@@ -30,7 +30,7 @@ CREATE TABLE  `icanc`.`reference` (
 ) ENGINE = INNODB DEFAULT CHARSET = latin1;
 <------ end ----->
 
-<------ reference -----> 
+<------ faq_board -----> 
 CREATE TABLE  `icanc`.`faq_board` (
     `srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
     `title` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,

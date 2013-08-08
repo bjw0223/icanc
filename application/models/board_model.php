@@ -36,9 +36,18 @@ class Board_model extends CI_Model {
 		$this->db->order_by('srl', 'desc');
 		$query=$this->db->get('faq_board');
     }
-    public function saveDoc($arg)
+    public function saveDoc($flag, $arg)
     {
-        $this->db->insert('faq_board',$arg);
+        if($flag == 'write') // 처음 글쓸경우
+        {
+            $this->db->set('created_time','NOW()',false);
+            $this->db->set('modified_time','NOW()',false);
+        }
+        else if( $flag == 'modify') // 쓴 글을 수정한 경우
+        {
+            $this->db->set('modified_time','NOW()',false);
+        }
+            $this->db->insert('faq_board',$arg);
     }
 }
 
