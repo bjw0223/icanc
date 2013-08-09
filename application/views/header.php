@@ -183,7 +183,8 @@
 	}
 	.tutorial_main_sub{
            font-size:18px;
-	   font-weight:bold;
+	/*   font-weight:bold;*/
+	   font-family:"Helvetica Neue, Helvetica, Arial, sans-serif";
 	   color:#616060;
 	}
 	.division{
@@ -227,6 +228,12 @@
 	}
 	.tutorial_desc .red{
 	   color:red;
+	}
+	.tutorial_desc .green{
+	   color:green;
+	}
+	.tutorial_desc .purple{
+	   color:purple;
 	}
        #list{
 	    list-style:none;
