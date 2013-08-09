@@ -65,14 +65,7 @@ class Compiler extends CI_Controller {
                  $this->load->view('editer',$data);
              }
         }
-        // 로그인 상태가 아닐때
-        else
-        {
-            $this->session->set_flashdata('message','login이 되어 있지 않습니다');
-            redirect( base_url().'index.php/main');
-        } 
         $this->load->view('footer');
     }   
 
-// CLASS close
 }
