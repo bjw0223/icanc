@@ -229,6 +229,12 @@
 	.tutorial_desc .red{
 	   color:red;
 	}
+	.tutorial_desc .green{
+	   color:green;
+	}
+	.tutorial_desc .purple{
+	   color:purple;
+	}
        #list{
 	    list-style:none;
        }
