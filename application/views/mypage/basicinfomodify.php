@@ -300,7 +300,6 @@
         
         var $rawDate = "<?=$dateOfBirth?>"; 
         var $dateOfBirth = $rawDate.split('.');
-         
         $("#year").val($dateOfBirth[0]);
         $("#month").val($dateOfBirth[1]);
         $("#day").val($dateOfBirth[2]);
@@ -354,8 +353,8 @@
                     {
                         $.ajax({
                                 type : "POST",
-                                url : "<?=base_url()?>index.php/mypage/checkforNickname",
-                                data : "nickname="+obj.value,
+                                url : "<?=base_url()?>index.php/mypage/checkInfo",
+                                data : "object="+obj.value+"&target=nickname",
                                 dataType : "json",
                                 success : function(flag) {
                                         if( flag.value == "true")

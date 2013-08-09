@@ -62,38 +62,32 @@ class Mypage extends CI_Controller {
         $this->load->view('footer');
 	}
 	
-    // 회원 탈퇴
+    // 회원 탈퇴 폼
     public function signout()
     {
         $this->load->view('header');       
-        $this->load->library('form_validation');
-        
-        // 폼검증 함수
-        $this->form_validation->set_rules('option[]');
-        $re = $this->form_validation-run(); 
-        if( $re  === false )
-        {
-            $this->_head('signout');
-        }
-        else
-        {
+        $this->_head('signout');
+        $this->load->view('footer');
+    }
+    
+    // 회원 정보 삭제
+    public function destroyInfo()
+    {
             // 탈퇴 회원에 대한 user폴더 내의 해당 id폴더 삭제
             $user = $this->user_model->getByEmail(array('email'=>$this->session->userdata('user_email')));
             $userPath = "/var/www/icanc/user"."/".$user->id;
+            
             $rmdir = "rm -r ".$userPath;
             
             $this->session->set_flashdata('message','회원탈퇴가 되었습니다.');
             $this->user_model->del(
                                    $this->session->userdata('user_email')
                                   );
-            
             $this->session->sess_destroy();
+            
             // id폴더 삭제 명령
             exec($rmdir);
             redirect( base_url().'index.php/main');
-        }
-        $this->load->view('footer');
-
 	}
     
     // 기본정보 변경하기
@@ -103,7 +97,13 @@ class Mypage extends CI_Controller {
         $this->_modifyDateOfBirth();
         $this->_modifyJob();
         redirect(base_url().'index.php/main');
-        $this->load->view('footer');
+    }
+
+    // 비밀번호 변경하기
+    function modifyPwd()
+    {
+        $this->_modifypassword();
+        redirect(base_url().'index.php/main');
     }
     
     // 별명 변경 함수
@@ -149,19 +149,45 @@ class Mypage extends CI_Controller {
         $option = array(
                         'beforeJob' => $beforeJob,
                         'afterJob' => $afterJob
-                       );
+                );
         $this->user_model->modifyJob($option);
         
         $sess_add = array( 'user_job' => $afterJob); // 세션의 직업 변경
         $this->session->set_userdata($sess_add);
     }
 
-    // 별명 중복 검사 함수
-    function checkforNickname()
+    // 비밀번호 변경 함수
+    function _modifypassword()
     {
-        $nickname = $_POST['nickname'];
         
-        $user = $this->user_model->checkRedundancy('nickname',array('nickname'=>$nickname));
+        if(!function_exists('password_hash')) // libarary 존재여부 확인
+        {
+            $this->load->helper('password');
+        }
+            $hash = password_hash($this->input->post('password'),PASSWORD_BCRYPT); // 암호화 된 비밀번호              
+
+        $option = array(
+                        'email' => $this->session->userdata('user_email'),
+                        'password' => $hash
+                );
+        $this->user_model->modifyPassword($option);
+    }
+
+    // 정보 중복 검사 함수
+    function checkInfo()
+    {
+        $object = $_POST['object'];
+        $target = $_POST['target'];
+         
+        if( $target == 'password')
+        {
+            $email = $this->session->userdata('user_email');
+            $user = $this->verifyPassword($email, $object);
+        }
+        else
+        {
+            $user = $this->user_model->checkRedundancy($target, array($target=>$object));
+        }
 
         if($user == null)
         {
@@ -172,28 +198,29 @@ class Mypage extends CI_Controller {
             $flag['value'] = "false";
         }
         
-        echo json_encode($flag);
-
+            echo json_encode($flag);
     }
-    
-    // 이메일 중복 검사 함수
-    function checkforEmail()
-    {
-        $email = $_POST['email'];
 
-        $user = $this->user_model->checkRedundancy('email',array('email'=>$email));
-        
-        if($user == null)
+    // 비밀번호 일치 검사 함수
+    function verifyPassword($email, $password)
+    {
+        if( !function_exists('password_hash') )
         {
-            $flag['value'] = "true";
+            $this->load->helper('password');
+        }
+        
+            $user = $this->user_model->getByEmail(array('email'=>$email));
+        
+        if( $email == $user->email && password_verify( $password , $user->password) )
+        {
+            return $user;
         }
         else
         {
-            $flag['value'] = "false";
+            return null;
         }
-        echo json_encode($flag);
     }
-    
+        
     // 헤더 함수
     public function _head($address)
     {
