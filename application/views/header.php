@@ -183,7 +183,8 @@
 	}
 	.tutorial_main_sub{
            font-size:18px;
-	   font-weight:bold;
+	/*   font-weight:bold;*/
+	   font-family:"Helvetica Neue, Helvetica, Arial, sans-serif";
 	   color:#616060;
 	}
 	.division{
