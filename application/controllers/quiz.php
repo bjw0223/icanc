@@ -6,13 +6,12 @@ class Quiz extends CI_Controller {
         parent::__construct();
     }
  //지웅 
-    public function textQuiz($srl)
+    public function objectiveQuiz($srl)
     {
         $this->load->model('quiz_model');
-        $data = $this->quiz_model->getTextQuiz($srl);
-        
+        $data['data'] = $this->quiz_model->getObjectiveQuiz($srl);
         $this->load->view('header');
-        $this->load->view('quiz/textQuiz',$data);
+        $this->load->view('quiz/objectiveQuiz',$data);
         $this->load->view('footer');
         //$this->load->view('quiz/textQuiz',$data);
     }

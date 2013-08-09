@@ -6,10 +6,10 @@ class Quiz_model extends CI_Model {
         parent::__construct();
     }
 //  지웅 시작  
-	function getTextQuiz($srl)
+	function getObjectiveQuiz($srl)
 	{
 		$this->db->where('srl',$srl);
-		$this->db->from('text_quiz');
+		$this->db->from('objective_quiz');
 		$query=$this->db->get()->row();
 		return $query;
 	}
