@@ -25,6 +25,7 @@ class Quiz extends CI_Controller {
     {
         $data = $this->quiz_model->getcodingQuiz($id);
         $this->load->view('header');
+        $result['result'] = null;
         $this->load->view('quiz/codingQuiz',$data);
         $this->load->view('footer');
     }
