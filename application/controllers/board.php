@@ -12,14 +12,15 @@ class Board extends CI_Controller {
         $this->faq();
 	}
 	
-	public function faq($page=1,$list_count=10)
+	public function board($board, $page=1,$list_count=10)
     {
-  //      $data['selected']="FAQ";
+//      $data['selected']="FAQ";
         $table='faq_board';
         $search_param = null;
         $data['search_key'] = '';
         $data['search_keyword'] = '';
-
+		$data['goods']=0;
+		
         if($this->input->get_post('search_key') && $this->input->get_post('search_keyword')){
             $search_param = array();
             $data['search_key'] =  $search_param['search_key'] = $this->input->get_post('search_key');
@@ -39,43 +40,62 @@ class Board extends CI_Controller {
         $this->load->view('footer');
 	}
 	
-	public function qna()
+	public function qna($page=1,$list_count=10)
     {
-        $data['selected']="qna";
-        $this->_head();
+      	$table='qna_board';
+        $search_param = null;
+        $data['search_key'] = '';
+        $data['search_keyword'] = '';
+		
+				
+        if($this->input->get_post('search_key') && $this->input->get_post('search_keyword')){
+            $search_param = array();
+            $data['search_key'] =  $search_param['search_key'] = $this->input->get_post('search_key');
+            $data['search_keyword'] = $search_param['search_keyword'] = $this->input->get_post('search_keyword');
+        }
+
+        $this->load->model('board_model');
+        $data=$this->board_model->getList($table,$search_param,$page,$list_count);
+
+		$result=$data;
+		$this->_head();
         $this->load->view('navbar');
         $this->load->view('reference');
-       	$this->load->view('board/qna_title',$data);
-       	$this->load->view('board/board_contents',$data);
-        $this->load->view('board/qna');
+        $this->load->view('board/qna_title',$data);
+		$this->load->view('board/board_contents',$data);
+        $this->load->view('board/qna', $result);
         $this->load->view('footer');
 	}
 
-	function show($srl)
+	function faq_doc_view($srl, $page)
 	{
        	$this->load->model('board_model');
+       	$list = $this->board_model->get($srl);
+		$result['data'] = $list;
+
+		$this->_head();
+		$this->load->view('navbar');
+		$this->load->view('reference');
+		$this->load->view('board/board_contents');
+		$this->load->view('board/faq_doc_view',$result);
+		$this->load->view('footer');
+	}
+
+	function qna_doc_view($srl)
+	{
+		$this->load->model('board_model');
        	$list = $this->board_model->get($srl);
 		$result['data']=$list;
 		$this->_head();
 		$this->load->view('navbar');
 		$this->load->view('reference');
 		$this->load->view('board/board_contents');
-		$this->load->view('board/show',$result);
+		$this->load->view('board/qna_doc_view',$result);
 		$this->load->view('footer');
-	}	
 
-    function getList($srl,$limit=10)
-	{
-            
-       	$this->load->model('board_model');
-		$this->_head();
-		$this->load->view('navbar');
-		$this->load->view('reference');
-		$this->load->view('board/board_contents');
-		$this->load->view('board/show',$result);
-		$this->load->view('footer');
 	}
-    function documentWrite() //문서작성
+
+    function documentWrite($board) //문서작성
     {
         if( $this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
         {
@@ -92,8 +112,10 @@ class Board extends CI_Controller {
             redirect( base_url()."index.php/auth/login" );
         }
     }
-    function saveDoc($flag)
+    
+	function saveDoc($flag, $board)
     {
+		$board_name = $board;
         $title = $_POST['docTitle'];
         $description = $_POST['textEditor'];
 
@@ -107,10 +129,25 @@ class Board extends CI_Controller {
         $insert_data['text'] = $string; 
         //date("Y-m-d H:i:s",time())
        	$this->load->model('board_model');
-        $this->board_model->saveDoc($flag,$insert_data);
-        redirect( base_url().'index.php/board/faq');
+        $this->board_model->saveDoc($flag,$insert_data,$board);
+        redirect( base_url().'index.php/board/'.$board);
     }
-    function _head()
+    
+	function good($srl, $board)
+	{
+		$this->load->model('board_model');
+		$this->board_model->good($srl, $board);
+		redirect( base_url().'index.php/board/'.$board.'_doc_view/'.$srl);
+	}
+/*	
+	function returnList($srl, $board)
+	{
+		$this->load->model('board_model');
+		$this->board_model->returnList($srl, $);
+		//redirect( base_url().'index.php/board/'.$board.'/'.$page);
+	}
+*/
+	function _head()
     {
         $this->load->view('header');
     }

@@ -39,11 +39,15 @@
             <tbody>
             
         <?php
-            foreach($list as $data)
+			$page = $this->uri->segment(3);
+			if($page==0){
+				$page = 1;
+			}
+			foreach($list as $data)
             {
                 echo "<tr>
                         <td>$data->srl</td>
-                        <td><a href='".base_url()."index.php/board/show/$data->srl'>$data->title</a></td>
+                        <td><a href='".base_url()."index.php/board/faq_doc_view/$data->srl/$page'>$data->title</a></td>
                         <td>$data->writer</td>
                         <td>$data->modified_time</td>
                         <td>$data->hits</td>
@@ -151,7 +155,10 @@ else
 </div>
 <div class="row well" style="margin-bottom:0px;padding:8px;">
     <div class='col-lg-12 text-right'>
-		<a class="btn btn-default" href="<?=base_url();?>index.php/board/documentWrite">글쓰기</a>
+<?php
+	$board='faq';
+?>
+		<a class="btn btn-default" href="<?=base_url();?>index.php/board/documentWrite/<?=$board ?>">글쓰기</a>
 	</div>
 </div>
 
