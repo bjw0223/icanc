@@ -24,7 +24,7 @@
              <li class="general_sub2">처리 속도가 빠르다.</li>
              <li class="general_sub2">중간에 값을 바꿀 수 없다.</li>
              <li class="general_sub2" id="list">ex) #define PI 3.14</li>
-             <img src="<?=base_url()?>asset\lib\img\tutorial\constant\3.PNG" width=400px; height=210px; style="margin-left:25px"><br>
+             <img src="<?=base_url()?>asset\lib\img\tutorial\constant\3.PNG" width=400px; height=180px; style="margin-left:25px"><br>
            </ul><br>
          <li>주소 상수 : 변수의 시작주소, 배열의 시작주소, 배열원소의 시작주소, 함수의 시작주소</li>
            <ul>

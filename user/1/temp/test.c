@@ -1,8 +1,10 @@
 #include<stdio.h>
 
-void main()
+// 메인함수
+int main()
 {
-  	int a=10;
-  
-    printf("6개월동안 잠시만 안녕 * %d",a)
+    int a;
+    a = 20;    printf("a=%d",a);  // 이 함수의 결과값은?
+    
+    return 0;
 }
