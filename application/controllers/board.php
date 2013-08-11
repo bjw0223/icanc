@@ -12,7 +12,7 @@ class Board extends CI_Controller {
         $this->faq();
 	}
 	
-	public function board($board, $page=1,$list_count=10)
+	public function faq($page=1,$list_count=10)
     {
 //      $data['selected']="FAQ";
         $table='faq_board';
