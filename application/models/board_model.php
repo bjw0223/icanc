@@ -15,23 +15,23 @@ class Board_model extends CI_Model {
 		return $query->result();
 	}
 */
-	function get($srl)
+	function get($board ,$srl)
 	{
-		$this->_hit($srl);
+		$this->_hit($board, $srl);
 		$this->db->where('srl',$srl);
-		$query=$this->db->get('faq_board');
+		$query=$this->db->get($board.'_board');
 		return $query->row();
 	}
 	
-	function _hit($srl)
+	function _hit($board, $srl)
 	{
 		$this->db->where('srl', $srl);
 		$this->db->set('hits', 'hits+1', false);
-		$this->db->update('faq_board');
+		$this->db->update($board.'_board');
 
 	}
     
-	function getList($table,$search_param=null,$page=1,$list_count=10)
+	function getList($table, $search_param=null,$page=1,$list_count=10)
     {
         $this->db->order_by("srl", "desc");
         $this->db->limit($list_count , ($page-1)*$list_count );
@@ -81,26 +81,12 @@ class Board_model extends CI_Model {
         $this->db->insert($board.'_board',$arg);
     }
 	
-	function good($srl, $board)
+	function good($board, $srl)
 	{	
 		$this->db->where('srl', $srl);
 		$this->db->set('goods', 'goods+1', false);
 		$this->db->update($board.'_board');
 	}
-/*
-	function returnList($srl, $list_count=10)
-	{
-		var_dump("xxx");
-		$page = 1;
-        $this->db->get('faq_board');
-		$total_rows = $this->db->count_all_result('faq_board');
-		var_dump("jjj");
-		$page = ($total_rows - $srl) / $list_count + 1;
-
-		var_dump("ddd");
-		return $page;
-	}
-*/
 }
 
 

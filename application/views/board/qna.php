@@ -38,11 +38,17 @@
             <tbody>
             
         <?php
+			$uri_num=$this->uri->total_segments();
+			$page = $this->uri->segment($uri_num);
+			if($page==0){
+				$page = 1;
+			}
+
             foreach($list as $data)
             {
                 echo "<tr>
                         <td>$data->srl</td>
-                        <td><a href='".base_url()."index.php/board/faq_doc_view/$data->srl'>$data->title</a></td>
+                        <td><a href='".base_url()."index.php/board/doc_view/qna/$page/$data->srl'>$data->title</a></td>
                         <td>$data->writer</td>
                         <td>$data->modified_time</td>
                         <td>$data->hits</td>
@@ -81,18 +87,18 @@ echo "page_count = ".$page_count."<br/>";
 */
 ?>
             <ul class="pagination">
-                <li><a href="<?=base_url();?>index.php/board/faq/" class="btn-large">&lt&lt</a></li>
+                <li><a href="<?=base_url();?>index.php/board/qna/" class="btn-large">&lt&lt</a></li>
 <?php
 if( $page == 1)
 {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page-1?>" class="btn btn-large disabled">&lt</a></li>
+                <li><a href="<?=base_url();?>index.php/board/qna/<?=$page-1?>" class="btn btn-large disabled">&lt</a></li>
 <?php
 }
 else
 {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page-1?>" class="btn-large">&lt</a></li>
+                <li><a href="<?=base_url();?>index.php/board/qna/<?=$page-1?>" class="btn-large">&lt</a></li>
 
 <?php
 }
@@ -102,19 +108,19 @@ for( $i = $first_page ; $i < $first_page + 5 ; $i++)
     if( $page == $i )
     {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$i?>" class="btn btn-primary btn-large active disabled"><?=$i?></a></li>
+                <li><a href="<?=base_url();?>index.php/board/qna/<?=$i?>" class="btn btn-primary btn-large active disabled"><?=$i?></a></li>
 <?php
     }
     else if( $i > $page_count )
     {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$i?>" class="btn btn-large disabled"><?=$i?></a></li>
+                <li><a href="<?=base_url();?>index.php/board/qna/<?=$i?>" class="btn btn-large disabled"><?=$i?></a></li>
 <?php
     }
     else
     {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$i?>" class="btn-large"><?=$i?></a></li>
+                <li><a href="<?=base_url();?>index.php/board/qna/<?=$i?>" class="btn-large"><?=$i?></a></li>
 <?php
     }
 }
@@ -132,18 +138,18 @@ for( $i = $first_page ; $i < $first_page + 5 ; $i++)
 if( $page >= $page_count)
 {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page-1?>" class="btn btn-large disabled">&gt</a></li>
+                <li><a href="<?=base_url();?>index.php/board/qna/<?=$page-1?>" class="btn btn-large disabled">&gt</a></li>
 <?php
 }
 else
 {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page+1?>" class="btn-large">&gt</a></li>
+                <li><a href="<?=base_url();?>index.php/board/qna/<?=$page+1?>" class="btn-large">&gt</a></li>
 <?php
 }
 ?>
 
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page_count?>" class="btn-large">&gt&gt</a></li>
+                <li><a href="<?=base_url();?>index.php/board/qna/<?=$page_count?>" class="btn-large">&gt&gt</a></li>
             </ul>
         </div>
     </div>

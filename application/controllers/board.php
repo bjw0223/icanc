@@ -67,20 +67,20 @@ class Board extends CI_Controller {
         $this->load->view('footer');
 	}
 
-	function faq_doc_view($srl, $page)
+	function doc_view($board, $page, $srl)
 	{
        	$this->load->model('board_model');
-       	$list = $this->board_model->get($srl);
+       	$list = $this->board_model->get($board, $srl);
 		$result['data'] = $list;
 
 		$this->_head();
 		$this->load->view('navbar');
 		$this->load->view('reference');
 		$this->load->view('board/board_contents');
-		$this->load->view('board/faq_doc_view',$result);
+		$this->load->view('board/doc_view',$result);
 		$this->load->view('footer');
 	}
-
+/*
 	function qna_doc_view($srl)
 	{
 		$this->load->model('board_model');
@@ -94,7 +94,7 @@ class Board extends CI_Controller {
 		$this->load->view('footer');
 
 	}
-
+*/
     function documentWrite($board) //문서작성
     {
         if( $this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
@@ -133,11 +133,11 @@ class Board extends CI_Controller {
         redirect( base_url().'index.php/board/'.$board);
     }
     
-	function good($srl, $board)
+	function good($board, $page, $srl)
 	{
 		$this->load->model('board_model');
-		$this->board_model->good($srl, $board);
-		redirect( base_url().'index.php/board/'.$board.'_doc_view/'.$srl);
+		$this->board_model->good($board, $srl);
+		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
 	}
 /*	
 	function returnList($srl, $board)
