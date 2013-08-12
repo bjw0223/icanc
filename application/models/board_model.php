@@ -18,7 +18,7 @@ class Board_model extends CI_Model {
 		
 		$this->_hit($board, $srl);
 		$this->db->where('srl',$srl);
-		$query=$this->db->get('_board');
+		$query=$this->db->get('board');
 		return $query->row();
 	}
 	
