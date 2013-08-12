@@ -4,8 +4,9 @@ class Tutorial extends CI_Controller {
 
 	public function index($title="tutorial_main",$subTitle="tutorial_main")
 	{
+        $data['active']='tutorial';
 		$this->_head();
-		$this->load->view('navbar');
+		$this->load->view('navbar',$data);
         $this->load->view('reference');
 		$this->load->view($title.'/'.$subTitle.'_Title');
 		$this->load->view('contents');

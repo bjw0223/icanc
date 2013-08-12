@@ -44,6 +44,14 @@
 /*reference Start*/
             $('.reference_btn').click(function(){
                 $('#reference').toggle('blind');
+                if( $(this).parent().attr('class') == 'active')
+                {
+                    $(this).parent().attr('class','');
+                }
+                else
+                {
+                    $(this).parent().attr('class','active');
+                }
             });
             $('#showAllRefBtn').click(function(){
                 $('#referenceContents').show('blind');
@@ -155,6 +163,29 @@
         });
         </script>
         <style type="text/css">
+.navbar{
+    background-color:#36545F;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus{
+    background-color:#2C3E49;
+}
+.navbar-btn{
+    background-color:#36545F;
+    border:0px solid white;
+}
+
+.btn-start{
+font-size:30px;
+color:white;
+border:1px solid white;
+border-radius:6px;
+padding:10px 30px 10px 30px;
+}
+.btn-start:hover{
+background-color:white;
+color:#36545F;
+
+}
 #referenceCode .CodeMirror{
     height:500px;
 }

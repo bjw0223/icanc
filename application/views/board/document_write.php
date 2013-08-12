@@ -69,7 +69,11 @@ function ajaxLoad() {
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <div class="row">
-    <form action="<?=base_url()?>index.php/board/saveDoc/write" method="POST">
+<?php
+	$board=$this->uri->segment(3);
+	var_dump($board);
+?>
+    <form action="<?=base_url()?>index.php/board/saveDoc/write/<?=$board?>" method="POST">
             <div class="col-lg-12 well">
             <input type="text" id="docTitle" name="docTitle" class="form-control" placeholder="제목"/>
             </div>

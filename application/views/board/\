@@ -1,8 +1,7 @@
-<div id="faq" class="col-lg-9" style="margin-top:30px;background-color:#eeeeee;">
+<div id="qna" class="col-lg-9" style="margin-top:30px;background-color:#eeeeee;">
 <div class="row well" style="margin-bottom:0px;padding:8px;">
     <div class="col-lg-12" style="background-color:white;padding:3px 0px 3px 0px;">
         <form class="form-inline">
-            
             <div class="input-group col-lg-2 col-offset-5 text-right" style="padding-right:0px;">
                 <select name="search_key" class="form-control">
                     <option value="title">제목</option>
@@ -44,11 +43,12 @@
 			if($page==0){
 				$page = 1;
 			}
-			foreach($list as $data)
+
+            foreach($list as $data)
             {
                 echo "<tr>
                         <td>$data->srl</td>
-                        <td><a href='".base_url()."index.php/board/doc_view/faq/$page/$data->srl'>$data->title</a></td>
+                        <td><a href='".base_url()."index.php/board/doc_view/qna/$data->srl/$page'>$data->title</a></td>
                         <td>$data->writer</td>
                         <td>$data->modified_time</td>
                         <td>$data->hits</td>
@@ -157,9 +157,9 @@ else
 <div class="row well" style="margin-bottom:0px;padding:8px;">
     <div class='col-lg-12 text-right'>
 <?php
-	$board='faq';
+	$board='qna';
 ?>
-		<a class="btn btn-default" href="<?=base_url();?>index.php/board/documentWrite/<?=$board ?>">글쓰기</a>
+	<a class="btn btn-default" href="<?=base_url();?>index.php/board/documentWrite/<?=$board?>">글쓰기</a>
 	</div>
 </div>
 
