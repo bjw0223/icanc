@@ -6,13 +6,13 @@
     <div class="bs-sidebar">
        <ul class="nav bs-sidenav"> 
         <li class="">
-            <a href="<?=base_url()?>index.php/board/boardList/faq">
+            <a href="<?=base_url()?>index.php/board/blist/faq">
                 FAQ 
                 <i class="icon-chevron-right pull-right"></i>
             </a>
         </li>
         <li class="">
-            <a href="<?=base_url()?>index.php/board/boardList/qna">
+            <a href="<?=base_url()?>index.php/board/blist/qna">
                 Q&A 
                 <i class="icon-chevron-right pull-right"></i>
             </a>
