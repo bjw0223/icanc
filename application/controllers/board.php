@@ -149,7 +149,8 @@ class Board extends CI_Controller {
 */
 	function _head()
     {
-        $this->load->view('header');
+        $data['active']='board';
+        $this->load->view('header',$data);
     }
 }
 

@@ -8,8 +8,10 @@ class Compiler extends CI_Controller {
     }
     function index()
     {
+        $data['active']='freeCoding';
+
         $this->load->view('header');
-        $this->load->view('navbar');
+        $this->load->view('navbar',$data);
         $this->load->view('reference');
         $data['result']= null;
         $this->load->view('quiz/codingQuiz',$data);
@@ -19,6 +21,15 @@ class Compiler extends CI_Controller {
     // c파일 생성
     function _createFile($code)
     {
+<<<<<<< HEAD
+        $data['active']='freeCoding';
+
+        $this->load->view('header');
+        $this->load->view('navbar',$data);
+        $this->load->view('reference');
+        // 권한 해제
+=======
+>>>>>>> 378d8540ad21729da25e545f059af5753a3ed345
         umask(0);
         // session값에 저장된 mail값 불러오기
         $this->load->model('user_model');

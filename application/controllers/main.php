@@ -12,7 +12,8 @@ class Main extends CI_Controller {
 	}
     function _head()
     {
-        $this->load->view('header');
+        $data['active']='main';
+        $this->load->view('header',$data);
     }
 
 
