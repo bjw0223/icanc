@@ -25,7 +25,7 @@ class Compiler extends CI_Controller {
         $mail = $this->session->userdata('user_email');
         $user = $this->user_model->getByEmail(array('email'=>$mail));
         delete_files('./user/'.$user->id.'/temp/');
-        
+
         $fp = fopen('/var/www/icanc/user/'.$user->id.'/temp/test.c','w');
         fwrite($fp,$code);
         fclose($fp);
@@ -38,11 +38,11 @@ class Compiler extends CI_Controller {
         $head = $_POST['head'];
         $code = $_POST['code'];
         $tail = $_POST['tail'];
-        $finalCode = $head.$code.$tail;
-        
+        $finalCode = $head.$code."\r".$tail;
+       
         // textarea에 text값 가져와 \n처리
-        $finalCode = str_replace("\r\n","\n", $finalCode);
-        $finalCode = str_replace("\r","\n", $finalCode);
+        //$finalCode = str_replace("\r\n","\n", $finalCode);
+        //$finalCode = str_replace("\r","\n", $finalCode);
         
         $user = $this->_createFile($finalCode);
             
