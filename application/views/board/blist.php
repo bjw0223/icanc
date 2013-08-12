@@ -65,27 +65,27 @@
 if( $page_count >= 5 )
 {
     $first_page =  $page > 3  ? $page-2 : 1;
-    /*
+    
     $last_page =  $page > 3  ? $page+2 : 5; 
     if( $last_page > $page_count )
     {
         $last_page = $page_count;
     }
-    */
+   
 }
 else
 {
     $first_page = 1;
     //$last_page = $page_count + 1;
 }
-/*
+
 echo "first_page = ".$first_page."<br/>";
 echo "last_page = ".$last_page."<br/>";
 echo "total_rows = ".$total_rows."<br/>";
 echo "list_count = ".$list_count."<br/>";
 echo "page = ".$page."<br/>";
 echo "page_count = ".$page_count."<br/>";
-*/
+
 ?>
             <ul class="pagination">
                 <li><a href="<?=base_url();?>index.php/board/blist/<?=$board?>" class="btn-large">&lt&lt</a></li>
