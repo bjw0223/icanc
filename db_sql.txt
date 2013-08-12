@@ -30,8 +30,8 @@ CREATE TABLE  `icanc`.`reference` (
 ) ENGINE = INNODB DEFAULT CHARSET = latin1;
 <------ end ----->
 
-<------ faq_board -----> 
-REATE TABLE  `icanc`.`board` (
+<------ board -----> 
+CREATE TABLE  `icanc`.`board` (
 	`srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
 	`title` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
 	`writer` VARCHAR( 50 ) CHARACTER SET utf8 NOT NULL ,
@@ -47,7 +47,7 @@ REATE TABLE  `icanc`.`board` (
 	`board_name` INT( 11 ) NOT NULL ,
 	`is_reply` TINYINT( 4 ) NOT NULL ,
  	PRIMARY KEY (  `srl` )
- ) ENGINE = INNODB DEFAULT CHARSET = latin1;
+ ) ENGINE = INNODB DEFAULT CHARSET = utf8;
 <------ end ----->
 
 <------ session -----> 

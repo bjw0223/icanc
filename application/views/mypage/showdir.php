@@ -6,7 +6,6 @@
             <div class="input-group col-lg-2 col-offset-5 text-right" style="padding-right:0px;">
                 <select name="search_key" class="form-control">
                     <option value="title">제목</option>
-                    <option value="writer">작성자</option>
                     <option value="srl">번호</option>
                 </select>
                  
@@ -30,17 +29,16 @@
                 <tr>
                     <th class="col-lg-1" style="text-align:center;"><h4>번호</h4></th>
                     <th class="col-lg-5" style="text-align:center;"><h4>제목</h4></th>
-                    <th class="col-lg-2" style="text-align:center;"><h4>글쓴이</h4></th>
                     <th class="col-lg-2" style="text-align:center;"><h4>날짜</h4></th>
                     <th class="col-lg-1" style="text-align:center;"><h4>조회수</h4></th>
                     <th class="col-lg-1" style="text-align:center;"><h4>추천수</h4></th>
+                    <th class="col-lg-1" style="text-align:center;"><h4>수정</h4></th>
+                    <th class="col-lg-1" style="text-align:center;"><h4>삭제</h4></th>
                 </tr>				
             </thead>
             <tbody>
             
         <?php
-			$uri_num=$this->uri->total_segments();
-			$page = $this->uri->segment($uri_num);
 			if($page==0){
 				$page = 1;
 			}
@@ -49,10 +47,11 @@
                 echo "<tr>
                         <td>$data->srl</td>
                         <td><a href='".base_url()."index.php/board/doc_view/faq/$page/$data->srl'>$data->title</a></td>
-                        <td>$data->writer</td>
                         <td>$data->modified_time</td>
                         <td>$data->hits</td>
                         <td>$data->goods</td>
+                        <td><a class='btn btn-info' data-in='$data->srl'>수정</a></td>
+                        <td><a class='btn btn-danger' data-in='$data->srl'>삭제</a></td>
                     </tr>";
                 
             } 
@@ -87,18 +86,18 @@ echo "page_count = ".$page_count."<br/>";
 */
 ?>
             <ul class="pagination">
-                <li><a href="<?=base_url();?>index.php/board/faq/" class="btn-large">&lt&lt</a></li>
+                <li><a href="<?=base_url();?>index.php/mypage/showdir/" class="btn-large">&lt&lt</a></li>
 <?php
 if( $page == 1)
 {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page-1?>" class="btn btn-large disabled">&lt</a></li>
+                <li><a href="<?=base_url();?>index.php/mypage/showdir/<?=$page-1?>" class="btn btn-large disabled">&lt</a></li>
 <?php
 }
 else
 {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page-1?>" class="btn-large">&lt</a></li>
+                <li><a href="<?=base_url();?>index.php/mypage/showdir/<?=$page-1?>" class="btn-large">&lt</a></li>
 
 <?php
 }
@@ -108,19 +107,19 @@ for( $i = $first_page ; $i < $first_page + 5 ; $i++)
     if( $page == $i )
     {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$i?>" class="btn btn-primary btn-large active disabled"><?=$i?></a></li>
+                <li><a href="<?=base_url();?>index.php/mypage/showdir/<?=$i?>" class="btn btn-primary btn-large active disabled"><?=$i?></a></li>
 <?php
     }
     else if( $i > $page_count )
     {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$i?>" class="btn btn-large disabled"><?=$i?></a></li>
+                <li><a href="<?=base_url();?>index.php/mypage/showdir/<?=$i?>" class="btn btn-large disabled"><?=$i?></a></li>
 <?php
     }
     else
     {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$i?>" class="btn-large"><?=$i?></a></li>
+                <li><a href="<?=base_url();?>index.php/mypage/showdir/<?=$i?>" class="btn-large"><?=$i?></a></li>
 <?php
     }
 }
@@ -138,18 +137,18 @@ for( $i = $first_page ; $i < $first_page + 5 ; $i++)
 if( $page >= $page_count)
 {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page-1?>" class="btn btn-large disabled">&gt</a></li>
+                <li><a href="<?=base_url();?>index.php/mypage/showdir/<?=$page-1?>" class="btn btn-large disabled">&gt</a></li>
 <?php
 }
 else
 {
 ?>
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page+1?>" class="btn-large">&gt</a></li>
+                <li><a href="<?=base_url();?>index.php/mypage/showdir/<?=$page+1?>" class="btn-large">&gt</a></li>
 <?php
 }
 ?>
 
-                <li><a href="<?=base_url();?>index.php/board/faq/<?=$page_count?>" class="btn-large">&gt&gt</a></li>
+                <li><a href="<?=base_url();?>index.php/mypage/showdir/<?=$page_count?>" class="btn-large">&gt&gt</a></li>
             </ul>
         </div>
     </div>
