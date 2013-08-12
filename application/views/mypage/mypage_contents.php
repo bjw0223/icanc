@@ -2,7 +2,7 @@
 <div class="row-fluid"> 
 <div id="mypage_contents" class="col-lg-3" >
 <!-- -->
-    <div class="bs-sidebar">
+    <div class="bs-sidebar well" style="padding:0px 10px 0px 10px;">
         <ul class="nav bs-sidenav"> 
             <li class="active">
                 <a href="<?=base_url();?>index.php/mypage/info">

@@ -220,7 +220,37 @@ class Mypage extends CI_Controller {
             return null;
         }
     }
-        
+    
+    // 내가작성한글
+    public function getBoard($page=1, $list_count=10)
+    {
+        $table='board';
+        /*
+        $search_param = null;
+        $data['search_key'] = '';
+        $data['search_keyword'] = '';
+		$data['goods'] =0;
+		$data['board'] = $board;
+
+        if($this->input->get_post('search_key') && $this->input->get_post('search_keyword')){
+            $search_param = array();
+            $data['search_key'] =  $search_param['search_key'] = $this->input->get_post('search_key');
+            $data['search_keyword'] = $search_param['search_keyword'] = $this->input->get_post('search_keyword');
+        }
+        */
+
+        $this->load->model('board_model');
+        $list=$this->board_model->getList($table,$search_param,$page,$list_count);
+		
+		$this->_head();
+        $this->load->view('navbar');
+        $this->load->view('reference');
+        $this->load->view('board/btitle', $data);
+		$this->load->view('board/board_contents');
+        $this->load->view('board/blist',$list);
+        $this->load->view('footer');
+	}
+
     // 헤더 함수
     public function _head($address)
     {
