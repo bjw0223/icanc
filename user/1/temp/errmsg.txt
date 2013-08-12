@@ -1,0 +1,2 @@
+./user/1/temp/test.c: In function 'main':
+./user/1/temp/test.c:7:15: error: lvalue required as left operand of assignment

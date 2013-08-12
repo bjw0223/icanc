@@ -33,7 +33,7 @@
     }
     
     .CodeMirror-linenumber {
-        width:30px;
+        width:50px;
         text-align:center;
     }
     
@@ -45,6 +45,8 @@
 <script type="text/javascript">
 
 $(document).ready(function(){
+    
+    var regExp = /((for|while|do|switch)\s*\()|(goto\s*\:)/;
     
     // head textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
@@ -89,27 +91,54 @@ $(document).ready(function(){
     {
         // CodeMirror에서 code textare로 값 보내기
         $code.save();
+
         var $headStr = document.getElementById("head").value;
         var $codeStr = document.getElementById("code").value;
         var $tailStr = document.getElementById("tail").value;
+        var $result; 
         
-        // code textarea 특수문자 처리
-        $codeStr = encodeURIComponent($codeStr);
-        $.ajax({
+        // 반복문, 선택문, goto 문 사용 불가 정규식 판별
+        if( ($checkCodeStr = regExp.exec($codeStr)) != null )
+        {
+            // 사용불가 알림창 표시위한 공백 및 'i', ':' 제거
+            $codeStr = $checkCodeStr[0].replace("(","");
+            $codeStr = $checkCodeStr[0].replace(":","");
+            $codeStr = $codeStr.replace(/^\s*|\s*$/g,"");
+            
+            alert($codeStr+"문은 사용할 수 없습니다"); 
+        }
+        else
+        {
+            // code textarea 특수문자 처리
+            $codeStr = encodeURIComponent($codeStr);
+            $.ajax({
+                    type : "POST",
+                    url : "<?=base_url()?>index.php/compiler/compile",
+                    data : "head="+$headStr+"&code="+$codeStr+"&tail="+$tailStr,
+                    dataType : "json",
+                    success : function($result) {
+                                var $codeResult= "";
+                                for (var $value in $result) 
+                                {
+                                    $codeResult = $codeResult + $result[$value] + "<br>";
+                                }
+                                    if( $codeResult == ("<?=$answer?>"+"<br>") )
+                                    {
+                                        alert("정답입니다");
+                                        var $description = "설명<br/><?=$description?>";
+                                        $("#description").html($description);
+                                        $("#result").html("컴파일 결과<br/>"+$codeResult+"<br/>");
+                                    }
+                                    else
+                                    {
+                                        alert("오답 또는 컴파일 에러입니다\n컴파일 결과창을 확인하세요");
+                                        $("#description").html("");
+                                        $("#result").html("컴파일 결과<br/>"+$codeResult);
+                                    }
 
-                type : "POST",
-                url : "<?=base_url()?>index.php/compiler/compile",
-                data : "head="+$headStr+"&code="+$codeStr+"&tail="+$tailStr,
-                dataType : "json",
-                success : function($result) {
-                            var $codeResult= "";
-                            for (var $value in $result) 
-                            {
-                                $codeResult = $codeResult + $result[$value] + "<br>";
                             }
-                                $("#description").html($codeResult);
-                        }
-                });
+                    });
+        }
     });
 
 }); //ready close 
@@ -141,7 +170,12 @@ $(document).ready(function(){
         <input type="button" class="form-control btn-warning" id="compile" name="compile" value="Compile"> </input>
     </div>
     
-    <div id="description">
-    </div>
+    <h2>
+        <div id="result">
+        </div>
+        <div id="description">
+        </div>
+    </h2>
+
 </form>
     

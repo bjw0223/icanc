@@ -8,29 +8,14 @@ class Compiler extends CI_Controller {
     }
     function index()
     {
-        $data['active']='freeCoding';
-
-        $this->load->view('header');
-        $this->load->view('navbar',$data);
-        $this->load->view('reference');
-        $data['result']= null;
-        $this->load->view('quiz/codingQuiz',$data);
-        $this->load->view('footer');
     }
     
     // c파일 생성
     function _createFile($code)
     {
-<<<<<<< HEAD
-        $data['active']='freeCoding';
-
-        $this->load->view('header');
-        $this->load->view('navbar',$data);
-        $this->load->view('reference');
         // 권한 해제
-=======
->>>>>>> 378d8540ad21729da25e545f059af5753a3ed345
         umask(0);
+        
         // session값에 저장된 mail값 불러오기
         $this->load->model('user_model');
         $mail = $this->session->userdata('user_email');
@@ -52,8 +37,8 @@ class Compiler extends CI_Controller {
         $finalCode = $head.$code."\r".$tail;
        
         // textarea에 text값 가져와 \n처리
-        //$finalCode = str_replace("\r\n","\n", $finalCode);
-        //$finalCode = str_replace("\r","\n", $finalCode);
+        $finalCode = str_replace("\r\n","\n", $finalCode);
+        $finalCode = str_replace("\r","\n", $finalCode);
         
         $user = $this->_createFile($finalCode);
             
@@ -70,6 +55,7 @@ class Compiler extends CI_Controller {
          {
              $error = array(read_file('./user/'.$user->id.'/temp/errmsg.txt'));
              $error = str_replace("\n","<br>", $error);
+             $error = str_replace('./user/'.$user->id.'/temp/test.c:',">> ", $error);
              echo json_encode($error);
          }
         // 컴파일 오류가 없을시 실행결과 출력
