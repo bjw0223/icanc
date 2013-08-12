@@ -14,7 +14,6 @@ class Board extends CI_Controller {
 	
 	public function faq($page=1,$list_count=10)
     {
-  //      $data['selected']="FAQ";
         $table='faq_board';
         $search_param = null;
         $data['search_key'] = '';
@@ -112,7 +111,8 @@ class Board extends CI_Controller {
     }
     function _head()
     {
-        $this->load->view('header');
+        $data['active']='board';
+        $this->load->view('header',$data);
     }
 }
 

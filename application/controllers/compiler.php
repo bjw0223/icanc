@@ -8,8 +8,10 @@ class Compiler extends CI_Controller {
     }
     function index()
     {
+        $data['active']='freeCoding';
+
         $this->load->view('header');
-        $this->load->view('navbar');
+        $this->load->view('navbar',$data);
         $this->load->view('reference');
         $data['result']= null;
         $this->load->view('editer',$data);
@@ -17,8 +19,10 @@ class Compiler extends CI_Controller {
     }
     function compile()
     {
+        $data['active']='freeCoding';
+
         $this->load->view('header');
-        $this->load->view('navbar');
+        $this->load->view('navbar',$data);
         $this->load->view('reference');
         // 권한 해제
         umask(0);

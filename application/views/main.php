@@ -1,4 +1,5 @@
 <style>
+/*
 .navbar{
     background-color:#36545F;
 }
@@ -19,6 +20,7 @@ background-color:white;
 color:#36545F;
 
 }
+*/
 body{ 
     background-color:#36545F;
 }
@@ -30,7 +32,7 @@ body{
             <p style="font-size:30px;">whenever and wherever you wannar study</p>
             <p style="font-size:20px;">C Language Study Opensorce Project</p>
             <p style="margin-top:30px;">
-                <a class="btn btn-lg btn-start"><strong> S T A R T </strong></a>
+                <a  href="<?=base_url();?>index.php/start" class="btn btn-lg btn-start"><strong> START I CAN C</strong></a>
             </p>
         <div>
     </div>

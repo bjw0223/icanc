@@ -6,10 +6,11 @@
             </div>
             <div class="col-lg-6" style="background-color:;">
                 <ul class="nav navbar-nav">
+                    <li class="<?=$active == 'startIcanc' ? 'active':'';?>"><a href="<?=base_url();?>index.php/start">Start ICANC</a></li>
                     <li class=""><a class="reference_btn">Reference</a></li>
-                    <li class=""><a href="<?=base_url();?>index.php/tutorial">Tutorial</a></li>
-                    <li class=""><a href="<?=base_url();?>index.php/compiler">Free Coding</a></li>
-                    <li class=""><a href="<?=base_url();?>index.php/board">Board</a></li>
+                    <li class="<?=$active == 'tutorial' ? 'active':'';?>"><a href="<?=base_url();?>index.php/tutorial">Tutorial</a></li>
+                    <li class="<?=$active == 'freeCoding' ? 'active':'';?>"><a href="<?=base_url();?>index.php/compiler">Free Coding</a></li>
+                    <li class="<?=$active == 'board' ? 'active':'';?>"><a href="<?=base_url();?>index.php/board">Board</a></li>
                 </ul>
 
             </div>
