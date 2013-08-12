@@ -34,9 +34,16 @@ class Quiz_model extends CI_Model {
         return $result;
     }
 
-    
-    
-    
+    function setCodingQuiz($data)
+    {
+        var_dump($data);
+        $this->db->set('question',$data['question']);
+        $this->db->set('answer',$data['answer']);
+        $this->db->set('head',$data['head']);
+        $this->db->set('tail',$data['tail']);
+        $this->db->set('description',$data['description']); 
+        $this->db->insert('coding_quiz');
+    }
     
 //진영끝
 }
