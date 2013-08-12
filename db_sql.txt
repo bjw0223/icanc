@@ -31,23 +31,23 @@ CREATE TABLE  `icanc`.`reference` (
 <------ end ----->
 
 <------ faq_board -----> 
-CREATE TABLE  `icanc`.`faq_board` (
-    `srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
-    `title` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
-    `writer` VARCHAR( 50 ) CHARACTER SET utf8 NOT NULL ,
-    `created_time` DATETIME NOT NULL ,
-    `modified_time` DATETIME NOT NULL ,
-    `hits` INT( 11 ) NOT NULL ,
-    `is_deleted` TINYINT( 1 ) NOT NULL ,
-    `is_blind` TINYINT( 1 ) NOT NULL ,
-    `is_open` TINYINT( 1 ) NOT NULL ,
-    `is_notice` TINYINT( 1 ) NOT NULL ,
-    `text` TEXT CHARACTER SET utf8 NOT NULL ,
-    `goods` INT( 11 ) NOT NULL ,
-    PRIMARY KEY (  `srl` )
-) ENGINE = INNODB DEFAULT CHARSET = latin1;
-
-
+REATE TABLE  `icanc`.`board` (
+	`srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+	`title` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
+	`writer` VARCHAR( 50 ) CHARACTER SET utf8 NOT NULL ,
+	`created_time` DATETIME NOT NULL ,
+	`modified_time` DATETIME NOT NULL ,
+	`hits` INT( 11 ) NOT NULL ,
+	`is_deleted` TINYINT( 1 ) NOT NULL ,
+	`is_blind` TINYINT( 1 ) NOT NULL ,
+	`is_closed` TINYINT( 1 ) NOT NULL ,
+	`is_notice` TINYINT( 1 ) NOT NULL ,
+	`text` TEXT CHARACTER SET utf8 NOT NULL ,
+	`goods` INT( 11 ) NOT NULL ,
+	`board_name` INT( 11 ) NOT NULL ,
+	`is_reply` TINYINT( 4 ) NOT NULL ,
+ 	PRIMARY KEY (  `srl` )
+ ) ENGINE = INNODB DEFAULT CHARSET = latin1;
 <------ end ----->
 
 <------ session -----> 
