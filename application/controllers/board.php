@@ -11,16 +11,17 @@ class Board extends CI_Controller {
 	{
         $this->faq();
 	}
-	
-	public function faq($page=1,$list_count=10)
+
+	/*게시판 리스트 출력 함수*/
+	public function blist($board='faq', $page=1, $list_count=10)
     {
 //      $data['selected']="FAQ";
-        $table='faq_board';
         $search_param = null;
         $data['search_key'] = '';
         $data['search_keyword'] = '';
-		$data['goods']=0;
-		
+		$data['goods'] =0;
+		$data['board'] = $board;
+
         if($this->input->get_post('search_key') && $this->input->get_post('search_keyword')){
             $search_param = array();
             $data['search_key'] =  $search_param['search_key'] = $this->input->get_post('search_key');
@@ -28,45 +29,17 @@ class Board extends CI_Controller {
         }
 
         $this->load->model('board_model');
-        $data=$this->board_model->getList($table,$search_param,$page,$list_count);
-
-		$result=$data;
+        $list=$this->board_model->getList($board, $search_param,$page,$list_count);
+		
 		$this->_head();
         $this->load->view('navbar');
         $this->load->view('reference');
-        $this->load->view('board/faq_title',$data);
-		$this->load->view('board/board_contents',$data);
-        $this->load->view('board/faq', $result);
+        $this->load->view('board/btitle', $data);
+		$this->load->view('board/board_contents');
+        $this->load->view('board/blist',$list);
         $this->load->view('footer');
 	}
 	
-	public function qna($page=1,$list_count=10)
-    {
-      	$table='qna_board';
-        $search_param = null;
-        $data['search_key'] = '';
-        $data['search_keyword'] = '';
-		
-				
-        if($this->input->get_post('search_key') && $this->input->get_post('search_keyword')){
-            $search_param = array();
-            $data['search_key'] =  $search_param['search_key'] = $this->input->get_post('search_key');
-            $data['search_keyword'] = $search_param['search_keyword'] = $this->input->get_post('search_keyword');
-        }
-
-        $this->load->model('board_model');
-        $data=$this->board_model->getList($table,$search_param,$page,$list_count);
-
-		$result=$data;
-		$this->_head();
-        $this->load->view('navbar');
-        $this->load->view('reference');
-        $this->load->view('board/qna_title',$data);
-		$this->load->view('board/board_contents',$data);
-        $this->load->view('board/qna', $result);
-        $this->load->view('footer');
-	}
-
 	function doc_view($board, $page, $srl)
 	{
        	$this->load->model('board_model');
@@ -80,25 +53,11 @@ class Board extends CI_Controller {
 		$this->load->view('board/doc_view',$result);
 		$this->load->view('footer');
 	}
-/*
-	function qna_doc_view($srl)
-	{
-		$this->load->model('board_model');
-       	$list = $this->board_model->get($srl);
-		$result['data']=$list;
-		$this->_head();
-		$this->load->view('navbar');
-		$this->load->view('reference');
-		$this->load->view('board/board_contents');
-		$this->load->view('board/qna_doc_view',$result);
-		$this->load->view('footer');
 
-	}
-*/
-    function documentWrite($board) //문서작성
+	function documentWrite($board) //문서작성
     {
         if( $this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
-        {
+        {   
             $this->_head();
             $this->load->view('navbar');
             $this->load->view('reference');
@@ -130,9 +89,31 @@ class Board extends CI_Controller {
         //date("Y-m-d H:i:s",time())
        	$this->load->model('board_model');
         $this->board_model->saveDoc($flag,$insert_data,$board);
-        redirect( base_url().'index.php/board/'.$board);
+        redirect( base_url().'index.php/board/blist/'.$board);
     }
-    
+   	
+	function delDoc($board, $srl)
+	{
+       	$this->load->model('board_model');
+		$this->board_model->delDoc($srl);
+		
+        redirect( base_url().'index.php/board/blist/'.$board);
+	}
+
+	function modifyDoc($srl)
+	{
+		$this->load->model('board_model');
+		$list = $this->board_model->get($board, $srl);
+		$result['data'] = $list;
+	
+		$this->_head();
+        $this->load->view('navbar');
+        $this->load->view('reference');
+        $this->load->view('board/board_contents');
+        $this->load->view('board/document_write', $result);
+        $this->load->view('footer');
+	}
+
 	function good($board, $page, $srl)
 	{
 		$this->load->model('board_model');

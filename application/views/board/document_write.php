@@ -71,7 +71,6 @@ function ajaxLoad() {
     <div class="row">
 <?php
 	$board=$this->uri->segment(3);
-	var_dump($board);
 ?>
     <form action="<?=base_url()?>index.php/board/saveDoc/write/<?=$board?>" method="POST">
             <div class="col-lg-12 well">

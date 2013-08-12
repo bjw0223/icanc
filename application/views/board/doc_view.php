@@ -46,10 +46,10 @@
 				<button type="button" class="btn"><i class="icon-pencil icon-large"></i></button>
             </div>
 			<div class="col-lg-1">
-                <button type="button" class="btn"><i class="icon-trash icon-large"></i></button>
+                <a href="<?=base_url()?>/index.php/board/delDoc/<?=$board?>/<?=$data->srl?>"><button type="button" class="btn"><i class="icon-trash icon-large"></i></button></a>
             </div>
 			<div class="col-lg-1">
-                <a href="<?=base_url()?>/index.php/board/<?=$board?>/<?=$page?>"><button type="button" class="btn"><i class="icon-reorder icon-large"></i></button></a>
+                <a href="<?=base_url()?>/index.php/board/blist/<?=$board?>/<?=$page?>"><button type="button" class="btn"><i class="icon-reorder icon-large"></i></button></a>
             </div>
 
         </div>
