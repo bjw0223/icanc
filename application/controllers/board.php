@@ -57,7 +57,7 @@ class Board extends CI_Controller {
 	function documentWrite($board) //문서작성
     {
         if( $this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
-        {
+        {   
             $this->_head();
             $this->load->view('navbar');
             $this->load->view('reference');
@@ -91,7 +91,29 @@ class Board extends CI_Controller {
         $this->board_model->saveDoc($flag,$insert_data,$board);
         redirect( base_url().'index.php/board/blist/'.$board);
     }
-    
+   	
+	function delDoc($board, $srl)
+	{
+       	$this->load->model('board_model');
+		$this->board_model->delDoc($srl);
+		
+        redirect( base_url().'index.php/board/blist/'.$board);
+	}
+
+	function modifyDoc($srl)
+	{
+		$this->load->model('board_model');
+		$list = $this->board_model->get($board, $srl);
+		$result['data'] = $list;
+	
+		$this->_head();
+        $this->load->view('navbar');
+        $this->load->view('reference');
+        $this->load->view('board/board_contents');
+        $this->load->view('board/document_write', $result);
+        $this->load->view('footer');
+	}
+
 	function good($board, $page, $srl)
 	{
 		$this->load->model('board_model');
