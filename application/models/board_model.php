@@ -109,6 +109,19 @@ class Board_model extends CI_Model {
         $this->db->insert('board',$arg);
     }
 	
+	function delDoc($srl)
+	{
+		var_dump($srl);
+		$this->db->where('srl', $srl);
+		$this->db->set('is_deleted', 1);
+		$this->db->update('board');
+	}
+
+	function modifyDoc($srl)
+	{
+
+	}
+
 	function good($board, $srl)
 	{	
 		if($board=='faq'){
