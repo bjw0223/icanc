@@ -21,7 +21,7 @@
            </ul>
           <li>비트 카피(bit copy)</li>
             <img src="<?=base_url()?>asset\lib\img\tutorial\variable\3.PNG" width=650px; height=180px; style="margin-bottom:20px"><br>
-            <img src="<?=base_url()?>asset\lib\img\tutorial\variable\4.PNG" width=700px; height=220px; style="margin-bottom:20px"><br>
+            <img src="<?=base_url()?>asset\lib\img\tutorial\variable\4.PNG" width=680px; height=220px; style="margin-bottom:20px"><br>
             <ul>
               <li class="general_sub2">정수형 대표 : int(4Byte), 실수형 대표 : double(8byte)</li>
               <li class="general_sub2">고정길이 상수(숫자, 문자 상수) / 가변길이 상수(문자열 상수)</li>

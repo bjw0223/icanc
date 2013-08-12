@@ -23,7 +23,20 @@ class Quiz_model extends CI_Model {
 	}
 */
 // 지웅끝
-// 지영시작
 
+
+
+// 진영시작
+    
+    function getCodingQuiz($id)
+    {
+        $result = $this->db->get_where('coding_quiz',array('id'=>$id))->row();
+        return $result;
+    }
+
+    
+    
+    
+    
 //진영끝
 }

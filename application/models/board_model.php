@@ -6,7 +6,7 @@ class Board_model extends CI_Model {
         parent::__construct();
     }
     
-	function gets()
+/*	function gets()
 	{
 		$this->db->select('*');
 		$this->db->from('faq_board');
@@ -14,23 +14,24 @@ class Board_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result();
 	}
-	
-	function get($srl)
+*/
+	function get($board ,$srl)
 	{
-		$this->_hit($srl);
+		$this->_hit($board, $srl);
 		$this->db->where('srl',$srl);
-		$query=$this->db->get('faq_board');
+		$query=$this->db->get($board.'_board');
 		return $query->row();
 	}
 	
-	function _hit($srl)
+	function _hit($board, $srl)
 	{
 		$this->db->where('srl', $srl);
 		$this->db->set('hits', 'hits+1', false);
-		$this->db->update('faq_board');
+		$this->db->update($board.'_board');
 
 	}
-    function getList($table,$search_param=null,$page=1,$list_count=10)
+    
+	function getList($table, $search_param=null,$page=1,$list_count=10)
     {
         $this->db->order_by("srl", "desc");
         $this->db->limit($list_count , ($page-1)*$list_count );
@@ -38,6 +39,7 @@ class Board_model extends CI_Model {
 
         if($search_param == null) {
             $query=$this->db->get($table)->result();
+			//블라인드와 삭제 확인하기
             $total_rows = $this->db->count_all_results($table);
 
         //    $query = $this->db->get($this->table);
@@ -49,7 +51,8 @@ class Board_model extends CI_Model {
             $this->db->like($search_param['search_key'],$search_param['search_keyword']);
             $query=$this->db->get($table)->result();
             $this->db->like($search_param['search_key'],$search_param['search_keyword']);
-            $total_rows = $this->db->count_all_results($table);
+            //블라인드와 삭제 확인하기
+			$total_rows = $this->db->count_all_results($table);
         }
 
 		//$this->db->where('is_blind', 0);
@@ -63,7 +66,8 @@ class Board_model extends CI_Model {
 
 		return $data;
     }
-    public function saveDoc($flag, $arg)
+    
+	public function saveDoc($flag, $arg, $board)
     {
         if($flag == 'write') // 처음 글쓸경우
         {
@@ -74,8 +78,15 @@ class Board_model extends CI_Model {
         {
             $this->db->set('modified_time','NOW()',false);
         }
-        $this->db->insert('faq_board',$arg);
+        $this->db->insert($board.'_board',$arg);
     }
+	
+	function good($board, $srl)
+	{	
+		$this->db->where('srl', $srl);
+		$this->db->set('goods', 'goods+1', false);
+		$this->db->update($board.'_board');
+	}
 }
 
 
