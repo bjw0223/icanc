@@ -43,7 +43,10 @@
 </style>
 
 <script type="text/javascript">
+
 $(document).ready(function(){
+    
+    // head textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
                 mode: "text/x-csrc",
                 theme: "lesser-dark",
@@ -53,15 +56,19 @@ $(document).ready(function(){
                 readOnly : true,
             });
     
+    // code textarea option
     var $code = CodeMirror.fromTextArea(document.getElementById("code"), {
                 mode: "text/x-csrc",
                 theme: "lesser-dark",
                 matchBrackets: true,
+                smartIndent : true,
                 lineNumbers: true,
                 firstLineNumber : $head.lineCount()+1,
                 viewportMargin: 10,
+                tabSize : 4,
             });
     
+    // tail textarea option
     var $tail = CodeMirror.fromTextArea(document.getElementById("tail"), {
                 mode: "text/x-csrc",
                 theme: "lesser-dark",
@@ -76,19 +83,31 @@ $(document).ready(function(){
     $code.on("change", function($code, change) {   
                 $tail.setOption("firstLineNumber", $head.lineCount()+$code.lineCount()+1); 
             });
+
+    // compile button click Event
     $("#compile").click( function()
     {
+        // CodeMirror에서 code textare로 값 보내기
         $code.save();
         var $headStr = document.getElementById("head").value;
         var $codeStr = document.getElementById("code").value;
         var $tailStr = document.getElementById("tail").value;
+        
+        // code textarea 특수문자 처리
+        $codeStr = encodeURIComponent($codeStr);
         $.ajax({
+
                 type : "POST",
                 url : "<?=base_url()?>index.php/compiler/compile",
                 data : "head="+$headStr+"&code="+$codeStr+"&tail="+$tailStr,
                 dataType : "json",
-                success : function(flag) {
-                            $("#description").html(flag);
+                success : function($result) {
+                            var $codeResult= "";
+                            for (var $value in $result) 
+                            {
+                                $codeResult = $codeResult + $result[$value] + "<br>";
+                            }
+                                $("#description").html($codeResult);
                         }
                 });
     });
@@ -122,8 +141,7 @@ $(document).ready(function(){
         <input type="button" class="form-control btn-warning" id="compile" name="compile" value="Compile"> </input>
     </div>
     
-    <div>
-        <label class="form-control" id="description" name="description"></label>
+    <div id="description">
     </div>
 </form>
     
