@@ -13,14 +13,6 @@ class Compiler extends CI_Controller {
     // c파일 생성
     function _createFile($code)
     {
-<<<<<<< HEAD
-=======
-        $data['active']='freeCoding';
-
-        $this->load->view('header');
-        $this->load->view('navbar',$data);
-        $this->load->view('reference');
->>>>>>> 68a34c5302544fe00e6f0d3c07b7d56860e46709
         // 권한 해제
         umask(0);
         
