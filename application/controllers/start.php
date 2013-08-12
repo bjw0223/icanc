@@ -12,6 +12,7 @@ class Start extends CI_Controller {
         $this->load->view('header');
         $this->load->view('navbar',$data);
         $this->load->view('reference');
+		$this->load->view('start_contents');
         $this->load->view('startIcanc');
         $this->load->view('footer');
     }

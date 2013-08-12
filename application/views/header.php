@@ -158,11 +158,33 @@
                 mode: "text/x-csrc"
             });
 */
-        
+     $('.nav-title').click(function(){
+        if( $(this).parent().attr('class') == 'active')
+        {
+            $(this).parent().attr('class','');
+        }
+        else
+        {
+            $('.bs-sidebar > ul > li > ul > li').attr('class','');
+            $(this).parent().attr('class','active');
+        }
+    });
+    $('.nav-subtitle').click(function(){
+        $('.bs-sidebar > ul > li > ul > li').attr('class','');
+        $(this).parent().parent().parent().attr('class','active');
+        $(this).parent().attr('class','active');
+    });
+       
 
         });
         </script>
         <style type="text/css">
+.bs-sidebar .nav > .active > a, .bs-sidebar .nav > .active:hover > a, .bs-sidebar .nav > .active:focus > a {
+font-weight: bold;
+color: #36545F;
+background-color: transparent;
+border-right:0px solid #563d7c;
+}
 .navbar{
     background-color:#36545F;
 }
