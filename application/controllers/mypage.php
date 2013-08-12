@@ -229,7 +229,8 @@ class Mypage extends CI_Controller {
         $data['job'] = $this->session->userdata('user_job');
         $data['dateOfBirth'] = $this->session->userdata('user_dateOfBirth');
         $data['selected'] = $address;
-        $this->load->view('navbar');
+        $data['active'] = 'mypage';
+        $this->load->view('navbar',$data);
         $this->load->view('reference');
         $this->load->view('mypage/mypage_contents',$data);
         $this->load->view('mypage/'.$address);
