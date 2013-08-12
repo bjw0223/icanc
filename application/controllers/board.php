@@ -12,10 +12,10 @@ class Board extends CI_Controller {
         $this->faq();
 	}
 	
-	public function faq($page=1,$list_count=10)
+	public function boardList($board='faq', $page=1,$list_count=10)
     {
 //      $data['selected']="FAQ";
-        $table='faq_board';
+        $table=$board.'_board';
         $search_param = null;
         $data['search_key'] = '';
         $data['search_keyword'] = '';
@@ -34,12 +34,12 @@ class Board extends CI_Controller {
 		$this->_head();
         $this->load->view('navbar');
         $this->load->view('reference');
-        $this->load->view('board/faq_title',$data);
+        $this->load->view('board/'.$board.'_title',$data);
 		$this->load->view('board/board_contents',$data);
-        $this->load->view('board/faq', $result);
+        $this->load->view('board/'.$board, $result);
         $this->load->view('footer');
 	}
-	
+/*	
 	public function qna($page=1,$list_count=10)
     {
       	$table='qna_board';
@@ -66,7 +66,7 @@ class Board extends CI_Controller {
         $this->load->view('board/qna', $result);
         $this->load->view('footer');
 	}
-
+*/
 	function doc_view($board, $page, $srl)
 	{
        	$this->load->model('board_model');
