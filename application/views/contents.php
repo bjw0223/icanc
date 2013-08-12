@@ -3,7 +3,7 @@
 
 <div id="tutorial_contents" class="col-lg-3" >
     <div class="bs-sidebar">
-       <ul class="nav bs-sidenav"> 
+       <ul class="nav bs-sidebar"> 
             <li class="active">
                 <a href="#">프로그램</a>
                 <ul class="nav">
