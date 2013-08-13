@@ -46,7 +46,7 @@
 
 $(document).ready(function(){
     
-    var regExp = /((for|while|do|switch)\s*\()|(goto\s*\:)/;
+    var regExp = /((for|while|do|switch|main|scanf|gets|getchar|getc)\s*\()|(goto\s*\:)/;
     
     // head textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
@@ -95,14 +95,13 @@ $(document).ready(function(){
         var $headStr = document.getElementById("head").value;
         var $codeStr = document.getElementById("code").value;
         var $tailStr = document.getElementById("tail").value;
-        var $result; 
         
         // 반복문, 선택문, goto 문 사용 불가 정규식 판별
         if( ($checkCodeStr = regExp.exec($codeStr)) != null )
         {
             // 사용불가 알림창 표시위한 공백 및 'i', ':' 제거
             $codeStr = $checkCodeStr[0].replace("(","");
-            $codeStr = $checkCodeStr[0].replace(":","");
+            $codeStr = $codeStr.replace(":","");
             $codeStr = $codeStr.replace(/^\s*|\s*$/g,"");
             
             alert($codeStr+"문은 사용할 수 없습니다"); 
