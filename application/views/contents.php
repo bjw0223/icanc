@@ -1,3 +1,22 @@
+<script>
+$(window).scroll(function(){
+        var $width = $(".bs-sidebar").css('width');
+  if($(document).scrollTop() > 180){
+        $(".bs-sidebar").css({
+            position: 'fixed',
+            top:80+'px',
+            width: $width
+        });
+    }
+  if($(document).scrollTop() <= 180)
+  {
+        $(".bs-sidebar").css({
+            position: 'relative',
+            top:'auto'
+        });
+    }
+});
+</script>
 <div class="container bs-docs-container" style="">
 <div class="row"> 
 

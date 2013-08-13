@@ -61,17 +61,19 @@
             </tbody>
         </table>
         <div class="col-lg-12 text-center"> 
+
 <?php
+
 if( $page_count >= 5 )
 {
     $first_page =  $page > 3  ? $page-2 : 1;
-    /*
+    
     $last_page =  $page > 3  ? $page+2 : 5; 
     if( $last_page > $page_count )
     {
         $last_page = $page_count;
     }
-    */
+   
 }
 else
 {
@@ -87,6 +89,7 @@ echo "page = ".$page."<br/>";
 echo "page_count = ".$page_count."<br/>";
 */
 ?>
+
             <ul class="pagination">
                 <li><a href="<?=base_url();?>index.php/board/blist/<?=$board?>" class="btn-large">&lt&lt</a></li>
 <?php

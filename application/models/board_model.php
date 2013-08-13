@@ -5,60 +5,79 @@ class Board_model extends CI_Model {
     {
         parent::__construct();
     }
-    
-/*	function gets()
-	{
-		$this->db->select('*');
-		$this->db->from('faq_board');
-		$this->db->order_by('srl', 'desc');
-		$query=$this->db->get();
-		return $query->result();
-	}
-*/
+	
 	function get($board ,$srl)
 	{
+		if($board=='faq'){
+			$this->db->where('board_name', 1);
+		}else if($board=='qna'){
+			$this->db->where('board_name', 2);
+		}else {
+			//게시판 추가
+		}
+		
 		$this->_hit($board, $srl);
 		$this->db->where('srl',$srl);
-		$query=$this->db->get($board.'_board');
+		$query=$this->db->get('board');
 		return $query->row();
 	}
 	
 	function _hit($board, $srl)
-	{
+	{		
+		if($board=='faq'){
+			$this->db->where('board_name', 1);
+		}else if($board=='qna'){
+			$this->db->where('board_name', 2);
+		}else {
+			//게시판 추가
+		}
+
 		$this->db->where('srl', $srl);
 		$this->db->set('hits', 'hits+1', false);
-		$this->db->update($board.'_board');
-
+		$this->db->update('board');
 	}
     
-	function getList($table, $search_param=null,$page=1,$list_count=10)
+	function getList($board, $search_param=null,$page=1,$list_count=10)
     {
         $this->db->order_by("srl", "desc");
         $this->db->limit($list_count , ($page-1)*$list_count );
-		//$query=$this->db->get($table)->result();
-
-        if($search_param == null) {
-            $query=$this->db->get($table)->result();
-			//블라인드와 삭제 확인하기
-            $total_rows = $this->db->count_all_results($table);
-
-        //    $query = $this->db->get($this->table);
-
-          //  $total_rows = $this->db->count_all($this->table);
+		$this->db->where('is_deleted', 0);	//삭제 확인
+		$this->db->where('is_blind', 0);	//블라인드 확인
+		$this->db->where('is_closed', 0);	//비공개 확인
+		
+		if($board=='faq'){
+			$this->db->where('board_name', 1);
+		}else if($board=='qna'){
+			$this->db->where('board_name', 2);
+		}else {
+			//게시판 추가
+		}
+		
+        if($search_param == null) {  
+		  	$query=$this->db->get('board')->result();
 
         }else{
-
             $this->db->like($search_param['search_key'],$search_param['search_keyword']);
-            $query=$this->db->get($table)->result();
+            $query=$this->db->get('board')->result();
             $this->db->like($search_param['search_key'],$search_param['search_keyword']);
-            //블라인드와 삭제 확인하기
-			$total_rows = $this->db->count_all_results($table);
         }
 
-		//$this->db->where('is_blind', 0);
-        //$total_rows = $this->db->count_all_results($table);
-
-        $data['list'] = $query;
+		/*게시물 갯수 확인을 위해 재확인*/
+		$this->db->where('is_deleted', 0);	//삭제 확인
+		$this->db->where('is_blind', 0);	//블라인드 확인
+		$this->db->where('is_closed', 0);	//비공개 확인
+		
+		if($board=='faq'){
+			$this->db->where('board_name', 1);
+		}else if($board=='qna'){
+			$this->db->where('board_name', 2);
+		}else {
+			//게시판 추가
+		}
+		
+		$total_rows = $this->db->count_all_results('board');
+        
+		$data['list'] = $query;
         $data['total_rows'] = $total_rows;
         $data['page'] = $page;
         $data['list_count'] = $list_count;
@@ -78,15 +97,75 @@ class Board_model extends CI_Model {
         {
             $this->db->set('modified_time','NOW()',false);
         }
-        $this->db->insert($board.'_board',$arg);
+	
+		if($board=='faq'){
+			$this->db->set('board_name', 1);
+		}else if($board=='qna'){
+			$this->db->set('board_name', 2);
+		}else {
+			//게시판 추가
+		}
+
+        $this->db->insert('board',$arg);
     }
 	
+	function delDoc($srl)
+	{
+		var_dump($srl);
+		$this->db->where('srl', $srl);
+		$this->db->set('is_deleted', 1);
+		$this->db->update('board');
+	}
+
+	function modifyDoc($srl)
+	{
+
+	}
+
 	function good($board, $srl)
 	{	
+		if($board=='faq'){
+			$this->db->where('board_name', 1);
+		}else if($board=='qna'){
+			$this->db->where('board_name', 2);
+		}else {
+			//게시판 추가
+		}
+		
 		$this->db->where('srl', $srl);
 		$this->db->set('goods', 'goods+1', false);
-		$this->db->update($board.'_board');
+		$this->db->update('board');
 	}
+
+    function getMyList($search_param=null,$page=1,$list_count=10,$nickname)
+    {
+		$this->db->where('writer', $nickname);
+        $this->db->order_by("srl", "desc");
+        $this->db->limit($list_count , ($page-1)*$list_count );
+
+        if($search_param == null) {  
+		  	$query=$this->db->get('board')->result();
+            $this->db->where('writer', $nickname);
+            $total_rows = $this->db->count_all_results('board');
+
+        }else{
+            $this->db->like($search_param['search_key'],$search_param['search_keyword']);
+            $query=$this->db->get('board')->result();
+
+            $this->db->where('writer', $nickname);
+            $this->db->like($search_param['search_key'],$search_param['search_keyword']);
+            $total_rows = $this->db->count_all_results('board');
+        }
+
+		$data['list'] = $query;
+        $data['total_rows'] = $total_rows;
+        $data['page'] = $page;
+        $data['list_count'] = $list_count;
+        $data['page_count'] = ceil($total_rows / $list_count) ;
+
+		return $data;
+
+    }
 }
 
 
