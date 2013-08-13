@@ -233,12 +233,13 @@ color:#36545F;
 	.tutorial_main{
 	   margin-top:40px;
            font-size:40px;
+	   color:#36545F;
+           font-weight:bold;
 	}
 	.tutorial_main_sub{
            font-size:18px;
-	/*   font-weight:bold;*/
 	   font-family:"Helvetica Neue, Helvetica, Arial, sans-serif";
-	   color:#616060;
+	   color:#36545F;
 	}
 	.division{
 	   margin-top:40px;
@@ -259,22 +260,15 @@ color:#36545F;
 	}
 	.tutorial_desc .general{
 	   font-size:18px;
+	   color:#36545F;
 	}
-	.tutorial_desc .general_sub1{
-	   text-indent:20px;
-	   font-size:17px;
-	}
-	.tutorial_desc .general_sub1_1{
-	   text-indent:40px;
-	   font-size:17px;
-	}
-	.tutorial_desc .general_sub1_2{
-	   text-indent:60px;
-	   font-size:17px;
-	}
+	.tutorial_desc .general_sub{
+           font-size:16px;
+           color:#36545F;
+        }
 	.tutorial_desc .general_sub2{
-	   font-size:16px;
-	   color:"#989898";
+	   font-size:15px;
+	   color:"#36545F";
 	}
 	.tutorial_desc .blue{
 	   color:blue;
