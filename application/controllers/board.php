@@ -120,6 +120,7 @@ class Board extends CI_Controller {
 		$this->board_model->good($board, $srl);
 		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
 	}
+
 /*	
 	function returnList($srl, $board)
 	{

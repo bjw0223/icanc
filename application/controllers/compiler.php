@@ -19,7 +19,7 @@ class Compiler extends CI_Controller {
         // textarea에 text값 가져와 \n처리
         $finalCode = $head."\r".$code."\r".$tail;
         
-        $filePath = $this->_createFile($finalCode)."temp/";
+        $filePath = $this->_createFile($finalCode);
             
         // 저장된 code GCC
         $gcc = 'gcc -o '.$filePath.'test '.$filePath.'test.c 2> '.$filePath.'errmsg.txt';
@@ -59,7 +59,7 @@ class Compiler extends CI_Controller {
     function _createFile($code)
     {
         umask(0);  //권한 해제
-        $filePath = $this->_filePath();
+        $filePath = $this->_filePath()."/temp/";
         
         delete_files($filePath);
 

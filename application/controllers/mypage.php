@@ -55,13 +55,38 @@ class Mypage extends CI_Controller {
     }     
 
     // 파일 관리 폼
-    public function showdir()
+    public function showdir($page=1,$list_count=10)
     {
+        $nickname = $this->session->userdata('user_nickname');
+        $search_param = null;
+        $data['search_key'] = '';
+        $data['search_keyword'] = '';
+
+        if($this->input->get_post('search_key') && $this->input->get_post('search_keyword')){
+            $search_param = array();
+            $data['search_key'] =  $search_param['search_key'] = $this->input->get_post('search_key');
+            $data['search_keyword'] = $search_param['search_keyword'] = $this->input->get_post('search_keyword');
+        }
+
+
+        $this->load->model('board_model');
+        $result=$this->board_model->getMyList($search_param,$page,$list_count,$nickname);
+
+        $data['active'] = 'mypage';
         $this->load->view('header');
-        $this->_head('showdir');
+        $this->load->view('navbar',$data);
+        $this->load->view('reference');
+        $this->load->view('mypage/mypage_contents');
+        $this->load->view('mypage/showdir',$result);
         $this->load->view('footer');
 	}
-	
+    // 파일삭제	
+    function delDoc($srl)
+    {
+       	$this->load->model('board_model');
+		$this->board_model->delDoc($srl);
+        redirect( base_url().'index.php/mypage/showdir');
+    }
     // 회원 탈퇴 폼
     public function signout()
     {
@@ -220,7 +245,7 @@ class Mypage extends CI_Controller {
             return null;
         }
     }
-        
+    
     // 헤더 함수
     public function _head($address)
     {
