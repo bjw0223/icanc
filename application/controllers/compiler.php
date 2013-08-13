@@ -10,21 +10,6 @@ class Compiler extends CI_Controller {
     {
     }
     
-    // c파일 생성
-    function _createFile($code)
-    {
-        umask(0);  //권한 해제
-        $filePath = $this->_filePath();
-        
-        delete_files($filePath);
-
-        $fp = fopen($filePath.'test.c','w');
-        fwrite($fp,$code);
-        fclose($fp);
-
-        return $filePath;
-    }
-    
     function compile()
     {
         $head = $_POST['head'];
@@ -34,7 +19,7 @@ class Compiler extends CI_Controller {
         // textarea에 text값 가져와 \n처리
         $finalCode = $head."\r".$code."\r".$tail;
         
-        $filePath = $this->_createFile($finalCode);
+        $filePath = $this->_createFile($finalCode)."temp/";
             
         // 저장된 code GCC
         $gcc = 'gcc -o '.$filePath.'test '.$filePath.'test.c 2> '.$filePath.'errmsg.txt';
@@ -59,16 +44,30 @@ class Compiler extends CI_Controller {
          }
     }
     
-    // user/id/temp까지의 파일경로 추출
+    // user/id/까지의 파일경로 추출
     function _filePath()
     {
         // session값에 저장된 mail값 불러오기
         $this->load->model('user_model');
         $user = $this->user_model->getByEmail(array('email'=>$this->session->userdata('user_email')));
 
-        $SCRIPT_FILENAME = str_replace("index.php","user/",$_SERVER["SCRIPT_FILENAME"]).$user->id.'/temp/';
+        $SCRIPT_FILENAME = str_replace("index.php","user/",$_SERVER["SCRIPT_FILENAME"]).$user->id.'/';
         return $SCRIPT_FILENAME;
     }
+    
+    // c파일 생성
+    function _createFile($code)
+    {
+        umask(0);  //권한 해제
+        $filePath = $this->_filePath();
+        
+        delete_files($filePath);
 
+        $fp = fopen($filePath.'test.c','w');
+        fwrite($fp,$code);
+        fclose($fp);
+
+        return $filePath;
+    }
 
 }
