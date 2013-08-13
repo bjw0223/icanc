@@ -63,11 +63,9 @@ class Auth extends CI_Controller {
     {
         $this->load->helper('file');
         $user = $this->user_model->getByEmail(array('email'=>$this->input->post('email')));
-        $userPath = "/var/www/icanc/user"."/".$user->id."/";
-        
         umask(0);
-        mkdir($userPath,0777);
-        mkdir($userPath.'temp',0777);
+        mkdir("user/$user->id",0777);
+        mkdir("user/$user->id/temp",0777);
     }
 
     

@@ -70,5 +70,16 @@ class Compiler extends CI_Controller {
         return $SCRIPT_FILENAME;
     }
 
+ function path()
+    {
+        // session값에 저장된 mail값 불러오기
+        $this->load->model('user_model');
+        $user = $this->user_model->getByEmail(array('email'=>$this->session->userdata('user_email')));
+
+        $SCRIPT_FILENAME = str_replace("index.php","user/",$_SERVER["SCRIPT_FILENAME"]).$user->id.'/temp/';
+        var_dump( $SCRIPT_FILENAME);
+    }
+
+
 
 }
