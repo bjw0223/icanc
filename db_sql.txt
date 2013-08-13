@@ -1,4 +1,4 @@
-<-----user----->
+<--------------------------USER TABLE START-------------------------->
 
 CREATE TABLE  `icanc`.`user` (
 `id` INT( 11 ) NOT NULL AUTO_INCREMENT ,
@@ -12,9 +12,9 @@ PRIMARY KEY (  `id` ) ,
 UNIQUE KEY  `email_idx` (  `email` )
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
 
-<------ end ----->
+<--------------------------USER TABLE END-------------------------->
 
-<------ reference -----> 
+<--------------------------REFERENCE TABLE START--------------------------> 
 CREATE TABLE  `icanc`.`reference` (
     `srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
     `name` VARCHAR( 30 ) CHARACTER SET utf8 NOT NULL ,
@@ -28,9 +28,9 @@ CREATE TABLE  `icanc`.`reference` (
     UNIQUE KEY  `name` (  `name` ) ,
     KEY  `srl` (  `srl` )
 ) ENGINE = INNODB DEFAULT CHARSET = latin1;
-<------ end ----->
+<--------------------------REFERENCE TABLE END-------------------------->
 
-<------ faq_board -----> 
+<--------------------------FAQ_BOARD TABLE START--------------------------> 
 REATE TABLE  `icanc`.`board` (
 	`srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
 	`title` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
@@ -48,9 +48,9 @@ REATE TABLE  `icanc`.`board` (
 	`is_reply` TINYINT( 4 ) NOT NULL ,
  	PRIMARY KEY (  `srl` )
  ) ENGINE = INNODB DEFAULT CHARSET = latin1;
-<------ end ----->
+<--------------------------FAQ_BOARD TABLE START-------------------------->
 
-<------ session -----> 
+<--------------------------SESSION TABLE START--------------------------> 
 CREATE TABLE  `icanc`.`ci_sessions` (
 `session_id` VARCHAR( 40 ) NOT NULL DEFAULT  '0',
  `ip_address` VARCHAR( 16 ) NOT NULL DEFAULT  '0',
@@ -60,5 +60,35 @@ CREATE TABLE  `icanc`.`ci_sessions` (
 PRIMARY KEY (  `session_id` ) ,
 KEY  `last_activity_idx` (  `last_activity` )
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
-<------ end ----->
+<---------------------SESSION TABLE END-------------------------->
+
+<--------------------------CODING_QUIZ TABLE START-------------------------->
+CREATE TABLE  `icanc`.`coding_quiz` (
+`id` INT( 11 ) NOT NULL AUTO_INCREMENT COMMENT  '문제번호',
+ `question` VARCHAR( 255 ) NOT NULL COMMENT  '문제',
+ `answer` VARCHAR( 255 ) NOT NULL COMMENT  '정답',
+ `head` TEXT NOT NULL COMMENT  '코드 상단',
+ `tail` TEXT NOT NULL COMMENT  '코드 하단',
+ `description` TEXT NOT NULL COMMENT  '정답 설명',
+PRIMARY KEY (  `id` )
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+
+<--데이터값-->
+ID = 1
+QUESTION = 아래의 결과 값이 나오도록 코드를 완성하세요
+ANSWER = a=10
+HEAD = #include<stdio.h>
+
+// 메인함수
+int main()
+{
+    int a;
+    a = 20;
+TAIL =     printf("a=%d",a);  // 이 함수의 결과값은?
+   
+    return 0;
+}
+DESCRIPTION = 현재 a의 값은 20으로 할당되어있다.<br> 그렇기 때문에 a의 값을 10으로 할당해주는 코드가 필요하다.<br>따라서 'a=10;'이 정답이다.
+<--------------------------CODING_QUIZ TABLE END--------------------------> 
+
 
