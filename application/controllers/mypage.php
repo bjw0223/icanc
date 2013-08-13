@@ -80,7 +80,13 @@ class Mypage extends CI_Controller {
         $this->load->view('mypage/showdir',$result);
         $this->load->view('footer');
 	}
-	
+    // 파일삭제	
+    function delDoc($srl)
+    {
+       	$this->load->model('board_model');
+		$this->board_model->delDoc($srl);
+        redirect( base_url().'index.php/mypage/showdir');
+    }
     // 회원 탈퇴 폼
     public function signout()
     {

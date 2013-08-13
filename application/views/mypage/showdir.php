@@ -1,3 +1,10 @@
+<script>
+$(document).ready(function() {
+
+});
+
+
+</script>
 <div id="showdir" class="col-lg-9">
 <div class="row well">
     <div class="col-lg-12" style="background-color:white;padding:3px 0px 3px 0px;">
@@ -51,7 +58,7 @@
                         <td>$data->hits</td>
                         <td>$data->goods</td>
                         <td><a class='btn btn-info' data-in='$data->srl'>수정</a></td>
-                        <td><a class='btn btn-danger' data-in='$data->srl'>삭제</a></td>
+                        <td><a class='btn btn-danger deleteBtn' data-in='$data->srl'>삭제</a></td>
                     </tr>";
                 
             } 
@@ -153,15 +160,6 @@ else
         </div>
     </div>
 </div>
-<div class="row well" style="margin-bottom:0px;padding:8px;">
-    <div class='col-lg-12 text-right'>
-<?php
-	$board='faq';
-?>
-		<a class="btn btn-default" href="<?=base_url();?>index.php/board/documentWrite/<?=$board ?>">글쓰기</a>
-	</div>
-</div>
-
 
 
 </div>
