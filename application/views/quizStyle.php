@@ -32,11 +32,13 @@ text-transform: uppercase;
 }
 .quiz-middle-desc, .quiz-right-desc{
 background-color:#232C31;
+overflow-y:auto;
 }
 .quiz-middle-footer, .quiz-right-footer{
 border-top: 1px solid #3d3e3e;
 background-color:#232C31;
 height:70px;
+padding-top:16px;
 }
 
 .quiz-tap {
@@ -63,6 +65,24 @@ color: #646464;
 background-color:#0099FF;
 border:1px solid #0052FF; 
 }
+.quiz-result {
+background-color:black;
+position:absolute;
+border-radius:15px;
+border: 1px solid #eeeeee;
+padding:10px;
+}
+.quiz-result-desc{
+background-color:#292727;
+height:100%;
+width:100%;
+     color:#ffffff;
+}
+.compileBtn {
+background-color:#08c;
+color:#ffffff;
+}
+
 </style>
 
 <style>
@@ -75,7 +95,7 @@ border:1px solid #0052FF;
     
     #codeDiv > .CodeMirror {
         width : 100%;
-        height : 580px;
+    /*    height : 580px; */
     }
 
     #headDiv > .CodeMirror, #tailDiv > #CodeMirror {
@@ -206,6 +226,12 @@ $(document).ready(function() {
     $('.quiz-left-desc').css('height', windowHeight + 30 );
     $('.quiz-middle-desc').css('height', windowHeight );
     $('.quiz-right-desc').css('height', windowHeight );
+    
+    var target = $('.quiz-right-bar');
+    $('.quiz-result').css('top',target.offset().top + 30  );
+    $('.quiz-result').css('left',target.offset().left - 80 );
+    $('.quiz-result').css('height',$(window).height()/5*2);
+    $('.quiz-result').css('width',target.width());
 });
 </script>
 <div class="row">
@@ -256,22 +282,24 @@ $(document).ready(function() {
 
             </div>
             <div class="quiz-middle-footer col-lg-12">
-                <input type="button" class="form-control btn-warning" id="compile" name="compile" value="Compile"> </input>
+                <button class="btn compileBtn" id="compile" name="compile"> Compile </button>
             </div>
         </div>
     </div>
     <div class="quiz-right col-lg-4">
         <div class="quiz-right-div row">
             <div class="quiz-right-bar col-lg-12">
-                navber
             </div>
             <div class="quiz-right-desc col-lg-12">
-                etc
             </div>
             <div class="quiz-right-footer col-lg-12">
-                footer
             </div>
         </div>
     </div>
 
 <div>
+
+<div class="quiz-result">
+    <div class="quiz-result-desc">
+    </div>
+</div>
