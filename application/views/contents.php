@@ -65,9 +65,9 @@ $(window).scroll(function(){
             <li class="active">
                 <a class="nav-title" href="#">제어문</a>
                 <ul class="nav">
-                    <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/select">선택</a></li>
-                    <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/repeat">반복</a></li>
-                    <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/quarter">분기</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/selection">선택</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/repetition">반복</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/branch_statement">분기</a></li>
                 </ul>
             </li>  
             <li class="active">
@@ -78,7 +78,7 @@ $(window).scroll(function(){
                     <li><a href="<?=base_url();?>index.php/tutorial/show/operator/bit">비트</a></li>
                     <li><a href="<?=base_url();?>index.php/tutorial/show/operator/member_reference">멤버참조</a></li>
                     <li><a href="<?=base_url();?>index.php/tutorial/show/operator/sizeof">sizeof</a></li>
-                    <li><a href="<?=base_url();?>index.php/tutorial/show/operator/priority">우선순위</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/operator/precedence">우선순위</a></li>
                 </ul>
             </li>  
             <li class="active">
@@ -89,8 +89,8 @@ $(window).scroll(function(){
                     <li><a href="<?=base_url();?>index.php/tutorial/show/function/array_handling">배열 처리</a></li>
                     <li><a href="<?=base_url();?>index.php/tutorial/show/function/string_handling">문자열 처리</a></li>
                     <li><a href="<?=base_url();?>index.php/tutorial/show/function/dynamic_allocation">동적 할당</a></li>
-                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/function_input">입력</a></li>
-                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/function_output">출력</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/scanf">입력</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/function/printf">출력</a></li>
                 </ul>
             </li>  
             <li class="active">

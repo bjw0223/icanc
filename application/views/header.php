@@ -282,6 +282,9 @@ color:#36545F;
 	.tutorial_desc .purple{
 	   color:purple;
 	}
+	.tutorial_desc .maroon{
+	   color:maroon;
+	}
        #list{
 	    list-style:none;
        }
