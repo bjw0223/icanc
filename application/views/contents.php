@@ -42,10 +42,10 @@ $(window).scroll(function(){
                 <a href="<?=base_url();?>index.php/tutorial/show/storage_class/storage_class">기억클래스</a>
 	    </li>
             <li class="active">
-                <a href="#">자료형</a>
+                <a class="nav-title" href="#">자료형</a>
                 <ul class="nav">
                     <li class="active">
-			<a href="#">기본</a>
+			<a class="nav-title" href="#">기본</a>
             		<ul class="nav" style="margin-left:10px">
           	 	     <li><a href="<?=base_url();?>index.php/tutorial/show/data_type/integer">정수</a></li>
             		     <li><a href="<?=base_url();?>index.php/tutorial/show/data_type/real_number">실수</a></li>
@@ -53,7 +53,7 @@ $(window).scroll(function(){
                         </ul>
 		    </li>
                     <li class="active">
-			<a href="#">응용</a>
+			<a class="nav-title" href="#">응용</a>
             		<ul class="nav" style="margin-left:10px">
           	 	     <li><a href="<?=base_url();?>index.php/tutorial/show/data_type/array">배열</a></li>
             		     <li><a href="<?=base_url();?>index.php/tutorial/show/data_type/pointer">포인터</a></li>
@@ -63,7 +63,7 @@ $(window).scroll(function(){
                 </ul>
             </li>
             <li class="active">
-                <a href="#">제어문</a>
+                <a class="nav-title" href="#">제어문</a>
                 <ul class="nav">
                     <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/select">선택</a></li>
                     <li><a href="<?=base_url();?>index.php/tutorial/show/control_statement/repeat">반복</a></li>
@@ -71,9 +71,9 @@ $(window).scroll(function(){
                 </ul>
             </li>  
             <li class="active">
-                <a href="#">연산자</a>
+                <a class="nav-title" href="#">연산자</a>
                 <ul class="nav">
-                    <li><a href="<?=base_url();?>index.php/tutorial/show/operator/calculation">산술</a></li>
+                    <li><a href="<?=base_url();?>index.php/tutorial/show/operator/arithmetic">산술</a></li>
                     <li><a href="<?=base_url();?>index.php/tutorial/show/operator/logic">관계 / 논리</a></li>
                     <li><a href="<?=base_url();?>index.php/tutorial/show/operator/bit">비트</a></li>
                     <li><a href="<?=base_url();?>index.php/tutorial/show/operator/member_reference">멤버참조</a></li>
@@ -82,7 +82,7 @@ $(window).scroll(function(){
                 </ul>
             </li>  
             <li class="active">
-                <a href="#">함수</a>
+                <a class="nav-title" href="#">함수</a>
                 <ul class="nav">
                     <li><a href="<?=base_url();?>index.php/tutorial/show/function/summary">개요</a></li>
                     <li><a href="<?=base_url();?>index.php/tutorial/show/function/many_form">여러 형태</a></li>
@@ -94,7 +94,7 @@ $(window).scroll(function(){
                 </ul>
             </li>  
             <li class="active">
-                <a href="#">파일</a>
+                <a class="nav-title" href="#">파일</a>
                 <ul class="nav">
                     <li><a href="<?=base_url();?>index.php/tutorial/show/file/stream">스트림</a></li>
                     <li><a href="<?=base_url();?>index.php/tutorial/show/file/open">개방</a></li>
