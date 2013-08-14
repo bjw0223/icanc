@@ -45,7 +45,7 @@ class Compiler extends CI_Controller {
     }
     
     // user/id/까지의 파일경로 추출
-    function _filePath()
+    function filePath()
     {
         // session값에 저장된 mail값 불러오기
         $this->load->model('user_model');
@@ -59,7 +59,7 @@ class Compiler extends CI_Controller {
     function _createFile($code)
     {
         umask(0);  //권한 해제
-        $filePath = $this->_filePath()."/temp/";
+        $filePath = $this->filePath()."/temp/";
         
         delete_files($filePath);
 
