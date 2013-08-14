@@ -1,3 +1,4 @@
+
 <!-- editor theme include -->
 <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/theme/ambiance.css">
 <link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/theme/blackboard.css">
@@ -20,28 +21,8 @@
 <!-- placeholder -->
 <script src="<?=base_url();?>asset/lib/codemirror/addon/display/placeholder.js"></script>
 
-
 <style type="text/css">
-    .quiz-left-bar {
-        height:50px;
-        border-bottom:1 solid black;
-        background-color:silver;
-    }
-    .quiz-left-footer {
-       
-    }
-    .quiz-middle-bar, .quiz-right-bar {
-        height:50px;
-    }
-
-    .quiz-middle-desc {
-        height:500px;
-        overflow:auto;
-    }
-    .quiz-middle-footer, .quiz-right-footer{
-        height:70px;
-        background-color:silver;
-    }
+<!-- 진영 CSS -->
 
     #headDiv > .CodeMirror, #tailDiv > .CodeMirror {
         border: 0px solid #eee;
@@ -68,82 +49,29 @@
     
     .CodeMirror pre.CodeMirror-placeholder { 
         color: #999; 
+    }
 
-}
+</style>
+
+<style type="text/css">
+<!-- 지웅 CSS -->
+
 </style>
 
 <script>
 $(document).ready(function() {
-    var windowHeight =  $(window).height() - $('.quiz-left-div').offset().top;
+// 지웅 javascript
 
-    $('.quiz-left-div').css('height', windowHeight );
-    $('.quiz-middle').css('height', windowHeight );
-    $('.quiz-right').css('height', windowHeight );
-
-    $('.quiz-left-footer').css('position', 'relative' );
-    $('.quiz-left-footer').css('top', windowHeight );
+    var windowHeight =  $(window).height() - $('.quiz-middle-footer').offset().top - 50 ;
+    $('.quiz-left-desc').css('height', windowHeight + 30 );
+    $('.quiz-middle-desc').css('height', windowHeight );
+    $('.quiz-right-desc').css('height', windowHeight );
 });
 </script>
 
-<div class="row">
-    <div class="quiz-left col-lg-3">
-        <div class="quiz-left-div row">
-            <div class="quiz-left-bar col-lg-12">
-                navbar
-            </div>
-            <div class="quiz-left-desc col-lg-12">
-                quiz 
-            </div>
-            <div class="quiz-left-tip col-lg-12">
-                tip
-            </div>
-            <div class="quiz-left-footer col-lg-12">
-                button
-            </div>
-        </div>
-    </div>
-    <div class="quiz-middle col-lg-5">
-        <div class="quiz-middle-div row">
-            <div class="quiz-middle-bar">
-                navber
-            </div>
-            <div class="quiz-middle-desc">
-
-                <div id="headDiv">
-                    <textarea class="form-control" id="head" name="head"><?=$head?></textarea>
-                </div>
-
-                <div id="codeDiv">
-                    <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
-                </div>
-
-                <div id="tailDiv">
-                    <textarea class="form-control" id="tail" name="tail"><?=$tail?></textarea>
-                </div>
-
-            </div>
-            <div class="quiz-middle-footer">
-                <input type="button" class="form-control btn-warning" id="compile" name="compile" value="Compile"> </input>
-            </div>
-        </div>
-    </div>
-    <div class="quiz-right col-lg-4">
-        <div class="quiz-right-div row">
-            <div class="quiz-right-bar">
-                navber
-            </div>
-            <div class="quiz-right-desc">
-                etc
-            </div>
-            <div class="quiz-right-footer">
-                footer
-            </div>
-        </div>
-    </div>
-
-<div>
 
 <script type="text/javascript">
+// 진영 javascript
 
 $(document).ready(function(){
     
@@ -244,3 +172,73 @@ $(document).ready(function(){
 
 }); //ready close 
 </script>
+<div class="row">
+    <div class="quiz-left col-lg-3">
+        <div class="quiz-left-div row">
+            <div class="quiz-left-bar col-lg-12">
+                navbar
+            </div>
+            <div class="quiz-left-desc col-lg-12">
+                <div class="quiz-left-tip col-lg-12">
+                quiz 
+                tip
+                </div>
+            </div>
+            <div class="quiz-left-footer col-lg-12">
+                <div class="row">
+                    <div class="quiz-left-question col-lg-12">
+                        질문하기
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="quiz-middle col-lg-5">
+        <div class="quiz-middle-div row">
+            <div class="quiz-middle-bar col-lg-12">
+                <div class="row">
+                    <div class="quiz-tap-title col-lg-2">
+                        files :
+                    </div>
+                    <div class="quiz-tap col-lg-2" style="">
+                        quiz-name
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-middle-desc">
+
+                <div id="headDiv">
+                    <textarea class="form-control" id="head" name="head"><?=$head?></textarea>
+                </div>
+
+                <div id="codeDiv">
+                    <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
+                </div>
+
+                <div id="tailDiv">
+                    <textarea class="form-control" id="tail" name="tail"><?=$tail?></textarea>
+                </div>
+
+            </div>
+            <div class="quiz-middle-footer">
+                <input type="button" class="form-control btn-warning" id="compile" name="compile" value="Compile"> </input>
+            </div>
+        </div>
+    </div>
+    <div class="quiz-right col-lg-4">
+        <div class="quiz-right-div row">
+            <div class="quiz-right-bar col-lg-12">
+                navber
+            </div>
+            <div class="quiz-right-desc col-lg-12">
+                etc
+            </div>
+            <div class="quiz-right-footer col-lg-12">
+                footer
+            </div>
+        </div>
+    </div>
+
+<div>
+
+
