@@ -7,19 +7,21 @@ class Quiz extends CI_Controller {
         $this->load->model('quiz_model');
     }
  //지웅 
+    
     public function objectiveQuiz($srl)
     {
-<<<<<<< HEAD
         $this->load->model('quiz_model');
         $data['data'] = $this->quiz_model->getObjectiveQuiz($srl);
-=======
-        $data = $this->quiz_model->getTextQuiz($srl);
-        
->>>>>>> 378d8540ad21729da25e545f059af5753a3ed345
         $this->load->view('header');
         $this->load->view('quiz/objectiveQuiz',$data);
         $this->load->view('footer');
         //$this->load->view('quiz/textQuiz',$data);
+    }
+    public function quizTest()
+    {
+        $this->load->view('header');
+        $this->load->view('quizTest');
+        $this->load->view('footer');
     }
 //지웅끝
 
@@ -43,7 +45,6 @@ class Quiz extends CI_Controller {
         $this->load->view('header');
         $this->load->view('quiz/createCodingQuiz');
         $this->load->view('footer');
-
     }
 
     // 코딩퀴즈 저장

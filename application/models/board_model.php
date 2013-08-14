@@ -136,6 +136,36 @@ class Board_model extends CI_Model {
 		$this->db->set('goods', 'goods+1', false);
 		$this->db->update('board');
 	}
+
+    function getMyList($search_param=null,$page=1,$list_count=10,$nickname)
+    {
+		$this->db->where('writer', $nickname);
+        $this->db->order_by("srl", "desc");
+        $this->db->limit($list_count , ($page-1)*$list_count );
+
+        if($search_param == null) {  
+		  	$query=$this->db->get('board')->result();
+            $this->db->where('writer', $nickname);
+            $total_rows = $this->db->count_all_results('board');
+
+        }else{
+            $this->db->like($search_param['search_key'],$search_param['search_keyword']);
+            $query=$this->db->get('board')->result();
+
+            $this->db->where('writer', $nickname);
+            $this->db->like($search_param['search_key'],$search_param['search_keyword']);
+            $total_rows = $this->db->count_all_results('board');
+        }
+
+		$data['list'] = $query;
+        $data['total_rows'] = $total_rows;
+        $data['page'] = $page;
+        $data['list_count'] = $list_count;
+        $data['page_count'] = ceil($total_rows / $list_count) ;
+
+		return $data;
+
+    }
 }
 
 

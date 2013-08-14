@@ -53,21 +53,22 @@ class Auth extends CI_Controller {
                                    ));
 
         $this->session->set_flashdata('message','회원가입에 성공했습니다.');
-        $this->_createFolder();
+        $this->_createFolder($this->input->post('email'));
         $this->load->view('footer');
         redirect( base_url().'index.php/main');
     }
     
     // 회원가입 후 회원만의 저장 공간 생성
-    function _createFolder()
+    function _createFolder($email)
     {
         $this->load->helper('file');
-        $user = $this->user_model->getByEmail(array('email'=>$this->input->post('email')));
-        $userPath = "/var/www/icanc/user"."/".$user->id."/";
-        
+        $user = $this->user_model->getByEmail(array('email'=>$email));
+        $userPath = str_replace("index.php","user/",$_SERVER["SCRIPT_FILENAME"]);
+        $userPath = $userPath.$user->id."/";
+
         umask(0);
         mkdir($userPath,0777);
-        mkdir($userPath.'temp',0777);
+        mkdir($userPath."/temp",0777);
     }
 
     
