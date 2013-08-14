@@ -41,10 +41,14 @@ class Board extends CI_Controller {
 	}
 	
 	function doc_view($board, $page, $srl)
-	{
+	{	
+
        	$this->load->model('board_model');
        	$list = $this->board_model->get($board, $srl);
 		$result['data'] = $list;
+		
+		var_dump($this->session->userdata('user_nickname'));
+		var_dump($list->writer);
 
 		$this->_head();
 		$this->load->view('navbar');
@@ -92,12 +96,29 @@ class Board extends CI_Controller {
         redirect( base_url().'index.php/board/blist/'.$board);
     }
    	
-	function delDoc($board, $srl)
+	function delDoc($board, $page, $srl, $writer)
 	{
-       	$this->load->model('board_model');
-		$this->board_model->delDoc($srl);
-		
-        redirect( base_url().'index.php/board/blist/'.$board);
+		var_dump($nick);
+		var_dump($writer);
+        if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
+		{
+			if(($nick=$this->session->userdata('user_nickname'))==$writer)
+			{
+				$this->load->model('board_model');
+				$this->board_model->delDoc($srl);
+        		//redirect( base_url().'index.php/board/blist/'.$board.'/'.$page);
+			}
+			else
+			{	
+				$this->session->set_flashdata("message",'작성자만'.$nick.$writer.' 삭제 가능합니다');
+        		//redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
+			}
+		}
+		else // 비로그인시 로그인창으로 리다이렉트
+        {
+            $this->session->set_flashdata("message","로그인후 사용 가능합니다");
+            //redirect( base_url()."index.php/auth/login" );
+        }
 	}
 
 	function modifyDoc($srl)
