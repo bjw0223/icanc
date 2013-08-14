@@ -1,20 +1,26 @@
 <script>
 $(window).scroll(function(){
         var $width = $(".bs-sidebar").css('width');
-  if($(document).scrollTop() > 180){
+        var refHeight = $('#referenceDev').height();
+
+  if($(document).scrollTop() > 160 + refHeight)
+  {
+        //alert($(document).scrollTop());
+        //alert(refHeight);
         $(".bs-sidebar").css({
             position: 'fixed',
-            top:80+'px',
+            top: 80 + 'px',
             width: $width
         });
     }
-  if($(document).scrollTop() <= 180)
-  {
+    else if($(document).scrollTop() <= 170 + refHeight)
+    {
         $(".bs-sidebar").css({
             position: 'relative',
             top:'auto'
         });
     }
+
 });
 </script>
 <div class="container bs-docs-container" style="">

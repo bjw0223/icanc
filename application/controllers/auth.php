@@ -102,26 +102,6 @@ class Auth extends CI_Controller {
         }
     }
 
-    // 메일 보내기
-    function sendToMail()
-    {
-        $this->load->library('email');
-        $config['protocol'] = 'sendmail';
-        $config['mailpath'] = '/usr/sbin/sendmail';
-        $this->email->initialize($config);
-        $this->email->from('miss0110@naver.com','Eugene');
-        $this->email->to('sjmwoalsl@naver.com');
-        $this->email->subject('테스트메일');
-        $this->email->message('테스트중입니다.');
-
-        if ( ! $this->email->send())
-        {
-            echo 'mail send error';
-        }
-
-        echo $this->email->print_debugger();
-    }
-    
     // 헤더
     function _head()
     {

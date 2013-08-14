@@ -7,6 +7,7 @@ class Quiz extends CI_Controller {
         $this->load->model('quiz_model');
     }
  //지웅 
+    
     public function objectiveQuiz($srl)
     {
         $this->load->model('quiz_model');
@@ -15,6 +16,14 @@ class Quiz extends CI_Controller {
         $this->load->view('quiz/objectiveQuiz',$data);
         $this->load->view('footer');
         //$this->load->view('quiz/textQuiz',$data);
+    }
+    public function quizTest($id)
+    {
+        $data = $this->quiz_model->getCodingQuiz($id);
+        $result['result'] = null;
+        $this->load->view('header');
+        $this->load->view('quizStyle',$data);
+        $this->load->view('footer');
     }
 //지웅끝
 
