@@ -1,2 +1,0 @@
-/var/www/icanc/user/1/temp/test.c: In function 'main':
-/var/www/icanc/user/1/temp/test.c:9:5: error: expected ';' before 'printf'

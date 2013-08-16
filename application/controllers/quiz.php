@@ -17,10 +17,12 @@ class Quiz extends CI_Controller {
         $this->load->view('footer');
         //$this->load->view('quiz/textQuiz',$data);
     }
-    public function quizTest()
+    public function quizTest($id)
     {
+        $data = $this->quiz_model->getCodingQuiz($id);
+        $result['result'] = null;
         $this->load->view('header');
-        $this->load->view('quizTest');
+        $this->load->view('quizStyle',$data);
         $this->load->view('footer');
     }
 //지웅끝

@@ -159,20 +159,15 @@
             });
 */
      $('.nav-title').click(function(){
-        if( $(this).parent().attr('class') == 'active')
-        {
-            $(this).parent().attr('class','');
-        }
-        else
-        {
-            $('.bs-sidebar > ul > li > ul > li').attr('class','');
-            $(this).parent().attr('class','active');
-        }
+         $('.nav-title').parent().attr('class','');
+         $('.nav-subtitle').parent().attr('class','');
+         $(this).parent().attr('class', 'active');
     });
     $('.nav-subtitle').click(function(){
-        $('.bs-sidebar > ul > li > ul > li').attr('class','');
-        $(this).parent().parent().parent().attr('class','active');
-        $(this).parent().attr('class','active');
+         $('.nav-subtitle').parent().attr('class','');
+         $(this).parent().attr('class','active');
+         var load_href = $(this).attr('load-href');
+         $('.tutorial_desc').load(load_href);
     });
        
 
@@ -233,12 +228,13 @@ color:#36545F;
 	.tutorial_main{
 	   margin-top:40px;
            font-size:40px;
+	   color:#36545F;
+           font-weight:bold;
 	}
 	.tutorial_main_sub{
            font-size:18px;
-	/*   font-weight:bold;*/
 	   font-family:"Helvetica Neue, Helvetica, Arial, sans-serif";
-	   color:#616060;
+	   color:#36545F;
 	}
 	.division{
 	   margin-top:40px;
@@ -259,22 +255,15 @@ color:#36545F;
 	}
 	.tutorial_desc .general{
 	   font-size:18px;
+	   color:#36545F;
 	}
-	.tutorial_desc .general_sub1{
-	   text-indent:20px;
-	   font-size:17px;
-	}
-	.tutorial_desc .general_sub1_1{
-	   text-indent:40px;
-	   font-size:17px;
-	}
-	.tutorial_desc .general_sub1_2{
-	   text-indent:60px;
-	   font-size:17px;
-	}
+	.tutorial_desc .general_sub{
+           font-size:16px;
+           color:#36545F;
+        }
 	.tutorial_desc .general_sub2{
-	   font-size:16px;
-	   color:"#989898";
+	   font-size:15px;
+	   color:"#36545F";
 	}
 	.tutorial_desc .blue{
 	   color:blue;
@@ -287,6 +276,9 @@ color:#36545F;
 	}
 	.tutorial_desc .purple{
 	   color:purple;
+	}
+	.tutorial_desc .maroon{
+	   color:maroon;
 	}
        #list{
 	    list-style:none;
