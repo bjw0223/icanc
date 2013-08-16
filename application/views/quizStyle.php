@@ -49,6 +49,7 @@ body {
     border-bottom: 0px solid #3d3e3e;
     border-left: 1px solid #000000;
     color:white;
+    font-size:15px;
     font-weight:bold;
     text-transform: none;
 
@@ -288,7 +289,7 @@ $(document).ready(function() {
                         files :
                     </div>
                     <div class="quiz-tap col-lg-2" style="">
-                        quiz-name
+                    <i class="icon-file-alt icon-large"></i> quiz.c
                     </div>
                 </div>
             </div>

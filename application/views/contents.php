@@ -2,18 +2,18 @@
 $(window).scroll(function(){
         var $width = $(".bs-sidebar").css('width');
         var refHeight = $('#referenceDev').height();
+        var docScrollTop = $(document).scrollTop();
+        alert(docScrollTop +refHeight);
 
-  if($(document).scrollTop() > 160 + refHeight)
+  if(docScrollTop > 160 + refHeight)
   {
-        //alert($(document).scrollTop());
-        //alert(refHeight);
         $(".bs-sidebar").css({
             position: 'fixed',
             top: 80 + 'px',
             width: $width
         });
     }
-    else if($(document).scrollTop() <= 170 + refHeight)
+    else if(docScrollTop <= 170 + refHeight)
     {
         $(".bs-sidebar").css({
             position: 'relative',
