@@ -22,7 +22,14 @@ class Quiz extends CI_Controller {
         $data = $this->quiz_model->getCodingQuiz($id);
         $result['result'] = null;
         $this->load->view('header');
+        $this->load->view('quiz_navbar');
         $this->load->view('quizStyle',$data);
+        $this->load->view('footer');
+    }
+    public function quizContents()
+    {
+        $this->load->view('header');
+        $this->load->view('quiz_contents');
         $this->load->view('footer');
     }
 //지웅끝
