@@ -220,15 +220,15 @@ $(document).ready(function(){
                                     if( $codeResult == ("<?=$answer?>"+"<br>") )
                                     {
                                         alert("정답입니다");
-                                        var $description = "설명<br/><?=$description?>";
-                                        $("#description").html($description);
-                                        $("#result").html("컴파일 결과<br/>"+$codeResult+"<br/>");
+                                        var $description = "DESCRIPTION<br/><br/><?=$description?>";
+                                        $(".quiz-result-desc").html($codeResult);
+                                        $(".quiz-description").html($description);
                                     }
                                     else
                                     {
                                         alert("오답 또는 컴파일 에러입니다\n컴파일 결과창을 확인하세요");
-                                        $("#description").html("");
-                                        $("#result").html("컴파일 결과<br/>"+$codeResult);
+                                        $(".quiz-description").html("");
+                                        $(".quiz-result-desc").html($codeResult);
                                     }
 
                             }
@@ -268,8 +268,10 @@ $(document).ready(function() {
             </div>
             <div class="quiz-left-desc col-lg-12">
                 <div class="quiz-left-tip col-lg-12">
-                quiz 
-                tip
+                <h2><?=$category?></h2> <br/>
+                <h4><?=$question?></h4> <br/>
+                    결과 : <?=$answer?> <br/></br>
+                    힌트 : <?=$hint?> <br/>
                 </div>
             </div>
             <div class="quiz-left-footer col-lg-12">
@@ -331,19 +333,4 @@ $(document).ready(function() {
 
 <div>
 
-<div class="quiz-error">
-aa<br/>
-aa<br/>
-aa<br/>
-aa<br/>
-aa<br/>
-aa<br/>
-aa<br/>
-aa<br/>
-aa<br/>
-aa<br/>
-aa<br/>
-aa<br/>
-aa<br/>
-</div>
     
