@@ -34,7 +34,7 @@ class Compiler extends CI_Controller {
          {
              $error = array( read_file($filePath.'errmsg.txt') );
              $error = str_replace("\n","<br>", $error);
-             $error = str_replace($filePath.'test.c:',">> ", $error);
+             $error = str_replace($filePath.'test.c:',"--> ", $error);
              echo json_encode($error);
          }
         // 컴파일 오류가 없을시 실행결과 출력

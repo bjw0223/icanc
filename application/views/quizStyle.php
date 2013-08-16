@@ -49,6 +49,7 @@ body {
     border-bottom: 0px solid #3d3e3e;
     border-left: 1px solid #000000;
     color:white;
+    font-size:15px;
     font-weight:bold;
     text-transform: none;
 
@@ -65,27 +66,26 @@ body {
     background-color:#0099FF;
     border:1px solid #0052FF; 
 }
-.quiz-result {
-    background-color:rgb(160, 157, 153);
-    border-radius:15px;
-    border: 1px solid #FFFFFF;
-    padding:10px;
+.quiz-left-tip{
+    line-height : 30px;
 }
-.quiz-result-desc{
+.quiz-description, .quiz-result {
+    background-color:#FFFFFF;
+    border-radius:10px;
+    border: 1px solid #FFFFFF;
+    padding:5px;
+}
+.quiz-description-desc, .quiz-result-desc{
     background-color:#204420;
     height:100%;
     width:100%;
     color:#ffffff;
+    padding: 10px 20px 10px 20px;
+    overflow-y:auto;
 }
 .quiz-description {
     margin-top:10px;
-    background-color:rgba(14, 116, 184, 0.8);
-    border: 1px solid #FFFFFF;
-    padding:10px;
-    border-radius:15px;
-    color:#0008CA;
 }
-
 .compileBtn {
     background-color:#08c;
     color:#ffffff;
@@ -210,14 +210,16 @@ $(document).ready(function(){
                                     {
                                         alert("정답입니다");
                                         var $description = "DESCRIPTION<br/><br/><?=$description?>";
-                                        $(".quiz-result-desc").html($codeResult);
-                                        $(".quiz-description").html($description);
+                                        $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
+                                        $(".quiz-description").show("blind");
+                                        $(".quiz-description-desc").html($description);
                                     }
                                     else
                                     {
+                                        $(".quiz-description").hide("blind");
                                         alert("오답 또는 컴파일 에러입니다\n컴파일 결과창을 확인하세요");
-                                        $(".quiz-description").html("");
-                                        $(".quiz-result-desc").html($codeResult);
+                                        $(".quiz-description-desc").html("");
+                                        $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
                                     }
 
                             }
@@ -234,6 +236,7 @@ $(document).ready(function() {
     $('.quiz-left-desc').css('height', windowHeight + 30 );
     $('.quiz-middle-desc').css('height', windowHeight );
     $('.quiz-right-desc').css('height', windowHeight );
+    $(".quiz-description").hide();
   /*  
     var target = $('.quiz-right-bar');
     $('.quiz-result').css('top',target.offset().top + 30  );
@@ -253,13 +256,13 @@ $(document).ready(function() {
     <div class="quiz-left col-lg-3">
         <div class="quiz-left-div row">
             <div class="quiz-left-bar col-lg-12">
-                Problem : <?=$id?> <br/>
-                <h4 style="text-align:center"><?=$category?></h4>
+                problem : <?=$id?> <br/>
             </div>
             <div class="quiz-left-desc col-lg-12">
                 <div class="quiz-left-tip col-lg-12">
-                <h3><b><?=$question?></b></h3> <br/>
-                    <?=$context?><br/>
+                <br/> 
+                <h1><p class="muted"><?=$category?></p></h1> <br/>
+                    <?=$context?> <br/><br/>
                     결과 : <?=$answer?> <br/></br>
                     힌트 : <?=$hint?> <br/>
                 </div>
@@ -281,7 +284,10 @@ $(document).ready(function() {
                         files :
                     </div>
                     <div class="quiz-tap col-lg-2" style="">
-                        quiz-name
+                        <i class="icon-file-alt icon-large"></i> quiz.c
+                    </div>
+                    <div class="col-lg-8"> 
+                        <p class="text-warning"><?=$question?></p>
                     </div>
                 </div>
             </div>
@@ -314,6 +320,8 @@ $(document).ready(function() {
                     </div>
                 </div>
                 <div class="quiz-description">
+                    <div class="quiz-description-desc">
+                    </div>
                 </div>
             </div>
             <div class="quiz-right-footer col-lg-12">
@@ -321,6 +329,6 @@ $(document).ready(function() {
         </div>
     </div>
 
-<div>
+</div>
 
     
