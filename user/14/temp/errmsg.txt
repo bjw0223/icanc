@@ -1,8 +1,2 @@
 /var/www/user/14//temp/test.c: In function 'main':
-/var/www/user/14//temp/test.c:8:4: error: expected '(' before '&' token
-/var/www/user/14//temp/test.c:8:5: error: 'nbsp' undeclared (first use in this function)
-/var/www/user/14//temp/test.c:8:5: note: each undeclared identifier is reported only once for each function it appears in
-/var/www/user/14//temp/test.c:8:14: error: expected ')' before ';' token
-/var/www/user/14//temp/test.c:10:15: error: expected ')' before ';' token
-/var/www/user/14//temp/test.c:9:1: error: called object 'a = 0' is not a function
-/var/www/user/14//temp/test.c:13:6: error: expected ';' before 'printf'
+/var/www/user/14//temp/test.c:9:6: error: expected ';' before 'printf'
