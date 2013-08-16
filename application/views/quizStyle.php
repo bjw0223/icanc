@@ -202,14 +202,14 @@ $(document).ready(function(){
                                     {
                                         alert("정답입니다");
                                         var $description = "설명<br/><?=$description?>";
-                                        $("#description").html($description);
-                                        $("#result").html("컴파일 결과<br/>"+$codeResult+"<br/>");
+                                        $("description").html($description);
+                                        $(".quiz-result-desc").html(+$codeResult+"<br/>");
                                     }
                                     else
                                     {
                                         alert("오답 또는 컴파일 에러입니다\n컴파일 결과창을 확인하세요");
                                         $("#description").html("");
-                                        $("#result").html("컴파일 결과<br/>"+$codeResult);
+                                        $(".quiz-result-desc").html($codeResult);
                                     }
 
                             }
@@ -300,6 +300,6 @@ $(document).ready(function() {
 <div>
 
 <div class="quiz-result">
-    <div class="quiz-result-desc">
+    <div class="quiz-result-desc" style="padding:20px;">
     </div>
 </div>
