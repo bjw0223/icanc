@@ -49,7 +49,6 @@ body {
     border-bottom: 0px solid #3d3e3e;
     border-left: 1px solid #000000;
     color:white;
-    font-size:15px;
     font-weight:bold;
     text-transform: none;
 
@@ -66,22 +65,36 @@ body {
     background-color:#0099FF;
     border:1px solid #0052FF; 
 }
-.quiz-description, .quiz-result {
-    background-color:#FFFFFF;
-    border-radius:10px;
+.quiz-result {
+    background-color:rgb(160, 157, 153);
+    border-radius:15px;
     border: 1px solid #FFFFFF;
-    padding:5px;
+    padding:10px;
 }
-.quiz-description-desc, .quiz-result-desc{
+.quiz-result-desc{
     background-color:#204420;
     height:100%;
     width:100%;
     color:#ffffff;
-    padding: 10px 20px 10px 20px;
-    overflow-y:auto;
 }
 .quiz-description {
     margin-top:10px;
+    background-color:rgba(14, 116, 184, 0.8);
+    border: 1px solid #FFFFFF;
+    padding:10px;
+    border-radius:15px;
+    color:#0008CA;
+}
+.quiz-error {
+    margin-top:10px;
+    background-color:rgba(255, 55, 55, 0.8);
+    border: 1px solid #FFFFFF;
+    padding:10px;
+    border-radius:15px;
+    color:rgb(52, 204, 218);
+    position:fixed;
+    bottom:70px;
+    z-index: 10;
 }
 .compileBtn {
     background-color:#08c;
@@ -208,12 +221,12 @@ $(document).ready(function(){
                                         alert("정답입니다");
                                         var $description = "DESCRIPTION<br/><br/><?=$description?>";
                                         $(".quiz-result-desc").html($codeResult);
-                                        $(".quiz-description-desc").html($description);
+                                        $(".quiz-description").html($description);
                                     }
                                     else
                                     {
                                         alert("오답 또는 컴파일 에러입니다\n컴파일 결과창을 확인하세요");
-                                        $(".quiz-description-desc").html("");
+                                        $(".quiz-description").html("");
                                         $(".quiz-result-desc").html($codeResult);
                                     }
 
@@ -250,12 +263,13 @@ $(document).ready(function() {
     <div class="quiz-left col-lg-3">
         <div class="quiz-left-div row">
             <div class="quiz-left-bar col-lg-12">
-                navbar
+                Proble : <?=$id?> <br/>
+                <h4 style="text-align:center"><?=$category?></h4>
             </div>
             <div class="quiz-left-desc col-lg-12">
                 <div class="quiz-left-tip col-lg-12">
-                <h2><?=$category?></h2> <br/>
-                <h4><?=$question?></h4> <br/>
+                <h3><b><?=$question?></b></h3> <br/>
+                    <?=$context?><br/>
                     결과 : <?=$answer?> <br/></br>
                     힌트 : <?=$hint?> <br/>
                 </div>
@@ -277,7 +291,7 @@ $(document).ready(function() {
                         files :
                     </div>
                     <div class="quiz-tap col-lg-2" style="">
-                    <i class="icon-file-alt icon-large"></i> quiz.c
+                        quiz-name
                     </div>
                 </div>
             </div>
@@ -310,8 +324,6 @@ $(document).ready(function() {
                     </div>
                 </div>
                 <div class="quiz-description">
-                    <div class="quiz-description-desc">
-                    </div>
                 </div>
             </div>
             <div class="quiz-right-footer col-lg-12">
@@ -319,6 +331,6 @@ $(document).ready(function() {
         </div>
     </div>
 
-</div>
+<div>
 
     
