@@ -169,6 +169,10 @@
          var load_href = $(this).attr('load-href');
          $('.tutorial_desc').load(load_href);
     });
+    $('.nav-subCategory').click(function(){
+         $('.nav-subCategory').parent().attr('class','');
+         $(this).parent().attr('class', 'active');
+    });
        
 
         });

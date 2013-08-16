@@ -37,31 +37,31 @@ $(window).scroll(function(){
                 </ul>
             </li>
             <li class="">
-                <a load-href="<?=base_url();?>index.php/tutorial/show/constant/constant">상수</a>
+                <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/constant/constant">상수</a>
             </li>  
             <li class="">
-                <a load-href="<?=base_url();?>index.php/tutorial/show/variable/variable">변수</a>
-	    </li>
+                <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/variable/variable">변수</a>
+            </li>
             <li class="">
-                <a load-href="<?=base_url();?>index.php/tutorial/show/storage_class/storage_class">기억클래스</a>
-	    </li>
+                <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/storage_class/storage_class">기억클래스</a>
+            </li>
             <li class="">
                 <a class="nav-title" href="#">자료형</a>
                 <ul class="nav">
                     <li class="">
-			<a class="nav-title" href="#">기본</a>
+			<a class="nav-subCategory" href="#">기본</a>
             		<ul class="nav" style="margin-left:10px">
-          	 	     <li><a load-href="<?=base_url();?>index.php/tutorial/show/data_type/integer">정수</a></li>
-            		     <li><a load-href="<?=base_url();?>index.php/tutorial/show/data_type/real_number">실수</a></li>
-              		     <li><a load-href="<?=base_url();?>index.php/tutorial/show/data_type/character">문자</a></li>
-                        </ul>
-		    </li>
+                         <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/integer">정수</a></li>
+                         <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/real_number">실수</a></li>
+                         <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/character">문자</a></li>
+                    </ul>
+                </li>
                     <li class="">
-			<a class="nav-title" href="#">응용</a>
+                <a class="nav-subCategory" href="#">응용</a>
             		<ul class="nav" style="margin-left:10px">
-          	 	     <li><a load-href="<?=base_url();?>index.php/tutorial/show/data_type/array">배열</a></li>
-            		     <li><a load-href="<?=base_url();?>index.php/tutorial/show/data_type/pointer">포인터</a></li>
-              		     <li><a load-href="<?=base_url();?>index.php/tutorial/show/data_type/structure">구조체</a></li>
+          	 	     <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/array">배열</a></li>
+            		     <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/pointer">포인터</a></li>
+              		     <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/structure">구조체</a></li>
                         </ul>
 		    </li>
                 </ul>
@@ -69,41 +69,41 @@ $(window).scroll(function(){
             <li class="">
                 <a class="nav-title" href="#">제어문</a>
                 <ul class="nav">
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/control_statement/selection">선택</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/control_statement/repetition">반복</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/control_statement/branch_statement">분기</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/control_statement/selection">선택</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/control_statement/repetition">반복</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/control_statement/branch_statement">분기</a></li>
                 </ul>
             </li>  
             <li class="">
                 <a class="nav-title" href="#">연산자</a>
                 <ul class="nav">
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/operator/arithmetic">산술</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/operator/logic">관계 / 논리</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/operator/bit">비트</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/operator/member_reference">멤버참조</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/operator/sizeof">sizeof</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/operator/precedence">우선순위</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/arithmetic">산술</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/logic">관계 / 논리</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/bit">비트</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/member_reference">멤버참조</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/sizeof">sizeof</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/precedence">우선순위</a></li>
                 </ul>
             </li>  
             <li class="">
                 <a class="nav-title" href="#">함수</a>
                 <ul class="nav">
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/function/summary">개요</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/function/many_form">여러 형태</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/function/array_handling">배열 처리</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/function/string_handling">문자열 처리</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/function/dynamic_allocation">동적 할당</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/function/scanf">입력</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/function/printf">출력</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/summary">개요</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/many_form">여러 형태</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/array_handling">배열 처리</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/string_handling">문자열 처리</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/dynamic_allocation">동적 할당</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/scanf">입력</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/printf">출력</a></li>
                 </ul>
             </li>  
             <li class="">
                 <a class="nav-title" href="#">파일</a>
                 <ul class="nav">
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/file/stream">스트림</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/file/open">개방</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/file/file_input">입력</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/file/file_output">출력</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/stream">스트림</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/open">개방</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/file_input">입력</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/file_output">출력</a></li>
                 </ul>
             </li>  
 
