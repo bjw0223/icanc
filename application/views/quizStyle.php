@@ -11,76 +11,94 @@ body {
     overflow-y:hidden;
 }
 .quiz-left-bar {
-height:50px;
-background-color:#E6E6E6;
-border-bottom: 1px solid rgba(0,0,0,0.15);
+    height:50px;
+    background-color:#E6E6E6;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
 }
 .quiz-left-footer {
-height:40px;
-border-top: 1px solid rgba(0,0,0,0.15);
+    height:40px;
+    border-top: 1px solid rgba(0,0,0,0.15);
 }
 .quiz-middle-bar,.quiz-right-bar {
-height:50px;
-background-color:#1F1D1D;
-border-bottom: 1px solid #000000;
-text-align:center;
-font-size: 13px;
-line-height: 50px;
-color: #646464;
-font-weight:bold;
-text-transform: uppercase;
+    height:50px;
+    background-color:#1F1D1D;
+    border-bottom: 1px solid #000000;
+    text-align:center;
+    font-size: 13px;
+    line-height: 50px;
+    color: #646464;
+    font-weight:bold;
+    text-transform: uppercase;
 }
 .quiz-middle-desc, .quiz-right-desc{
-background-color:#232C31;
-overflow-y:auto;
+    background-color:#232C31;
+    overflow-y:auto;
 }
 .quiz-middle-footer, .quiz-right-footer{
-border-top: 1px solid #3d3e3e;
-background-color:#232C31;
-height:70px;
-padding-top:16px;
+    border-top: 1px solid #3d3e3e;
+    background-color:#232C31;
+    height:70px;
+    padding-top:16px;
 }
 
 .quiz-tap {
-height:50px;
-background-color:#232C31;
-border-top: 1px solid #000000;
-border-right: 1px solid #000000;
-border-bottom: 0px solid #3d3e3e;
-border-left: 1px solid #000000;
-color:white;
-font-weight:bold;
-text-transform: none;
+    height:50px;
+    background-color:#232C31;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 0px solid #3d3e3e;
+    border-left: 1px solid #000000;
+    color:white;
+    font-weight:bold;
+    text-transform: none;
 
 }
 .quiz-left-question {
-text-align:center;
-height:40px;
+    text-align:center;
+    height:40px;
 
-font-size: 13px;
-line-height: 35px;
-color: #646464;
+    font-size: 13px;
+    line-height: 35px;
+    color: #646464;
 }
 .quiz-left-question:hover {
-background-color:#0099FF;
-border:1px solid #0052FF; 
+    background-color:#0099FF;
+    border:1px solid #0052FF; 
 }
 .quiz-result {
-background-color:black;
-position:absolute;
-border-radius:15px;
-border: 1px solid #eeeeee;
-padding:10px;
+    background-color:rgb(160, 157, 153);
+    border-radius:15px;
+    border: 1px solid #FFFFFF;
+    padding:10px;
 }
 .quiz-result-desc{
-background-color:#292727;
-height:100%;
-width:100%;
-     color:#ffffff;
+    background-color:#204420;
+    height:100%;
+    width:100%;
+    color:#ffffff;
+}
+.quiz-description {
+    margin-top:10px;
+    background-color:rgba(14, 116, 184, 0.8);
+    border: 1px solid #FFFFFF;
+    padding:10px;
+    border-radius:15px;
+    color:#0008CA;
+}
+.quiz-error {
+    margin-top:10px;
+    background-color:rgba(255, 55, 55, 0.8);
+    border: 1px solid #FFFFFF;
+    padding:10px;
+    border-radius:15px;
+    color:rgb(52, 204, 218);
+    position:fixed;
+    bottom:70px;
+    z-index: 10;
 }
 .compileBtn {
-background-color:#08c;
-color:#ffffff;
+    background-color:#08c;
+    color:#ffffff;
 }
 
 </style>
@@ -201,14 +219,14 @@ $(document).ready(function(){
                                     if( $codeResult == ("<?=$answer?>"+"<br>") )
                                     {
                                         alert("정답입니다");
-                                        var $description = "설명<br/><?=$description?>";
-                                        $("description").html($description);
-                                        $(".quiz-result-desc").html(+$codeResult+"<br/>");
+                                        var $description = "DESCRIPTION<br/><br/><?=$description?>";
+                                        $(".quiz-result-desc").html($codeResult);
+                                        $(".quiz-description").html($description);
                                     }
                                     else
                                     {
                                         alert("오답 또는 컴파일 에러입니다\n컴파일 결과창을 확인하세요");
-                                        $("#description").html("");
+                                        $(".quiz-description").html("");
                                         $(".quiz-result-desc").html($codeResult);
                                     }
 
@@ -222,16 +240,23 @@ $(document).ready(function(){
 
 <script>
 $(document).ready(function() {
-    var windowHeight =  $(window).height() - $('.quiz-right-footer').offset().top - 50 ;
+    var windowHeight =  $(window).height() - $('.quiz-right-footer').offset().top - 20;
     $('.quiz-left-desc').css('height', windowHeight + 30 );
     $('.quiz-middle-desc').css('height', windowHeight );
     $('.quiz-right-desc').css('height', windowHeight );
-    
+  /*  
     var target = $('.quiz-right-bar');
     $('.quiz-result').css('top',target.offset().top + 30  );
     $('.quiz-result').css('left',target.offset().left - 80 );
     $('.quiz-result').css('height',$(window).height()/5*2);
     $('.quiz-result').css('width',target.width());
+    */
+    $('.quiz-result').css('height',$('.quiz-right-desc').height()/2);
+    $('.quiz-description').css('height',$('.quiz-right-desc').height()/2 - 10);
+    $('.quiz-error').css('left',$('.quiz-middle-bar').offset().left);
+    $('.quiz-error').css('bottom',$(window).height() - $('.quiz-middle-footer').offset().top);
+    $('.quiz-error').css('min-height',70);
+    $('.quiz-error').css('width',$('.quiz-middle-bar').width());
 });
 </script>
 <div class="row">
@@ -242,8 +267,10 @@ $(document).ready(function() {
             </div>
             <div class="quiz-left-desc col-lg-12">
                 <div class="quiz-left-tip col-lg-12">
-                quiz 
-                tip
+                <h2><?=$category?></h2> <br/>
+                <h4><?=$question?></h4> <br/>
+                    결과 : <?=$answer?> <br/></br>
+                    힌트 : <?=$hint?> <br/>
                 </div>
             </div>
             <div class="quiz-left-footer col-lg-12">
@@ -285,12 +312,18 @@ $(document).ready(function() {
                 <button class="btn compileBtn" id="compile" name="compile"> Compile </button>
             </div>
         </div>
-    </div>
+   </div>
     <div class="quiz-right col-lg-4">
         <div class="quiz-right-div row">
             <div class="quiz-right-bar col-lg-12">
             </div>
             <div class="quiz-right-desc col-lg-12">
+                <div class="quiz-result">
+                    <div class="quiz-result-desc">
+                    </div>
+                </div>
+                <div class="quiz-description">
+                </div>
             </div>
             <div class="quiz-right-footer col-lg-12">
             </div>
@@ -299,7 +332,4 @@ $(document).ready(function() {
 
 <div>
 
-<div class="quiz-result">
-    <div class="quiz-result-desc" style="padding:20px;">
-    </div>
-</div>
+    
