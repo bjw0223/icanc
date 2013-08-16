@@ -46,7 +46,13 @@
 				<button type="button" class="btn"><i class="icon-pencil icon-large"></i></button>
             </div>
 			<div class="col-lg-1">
-                <a href="<?=base_url()?>/index.php/board/delDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>/<?=$data->writer?>"><button type="button" class="btn"><i class="icon-trash icon-large"></i></button></a>
+				<form action="<?=base_url()?>/index.php/board/delDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
+				<!--	<input type="hidden" name="board" value="<?=$board?>">
+					<input type="hidden" name="page" value="<?=$page?>">
+					<input type="hidden" name="srl" value="<?=$data->srl?>">-->
+					<input type="hidden" name="writer" value="<?=$data->writer?>">
+                	<button class="btn" value=""><i class="icon-trash icon-large"></i></button>
+				</form>
             </div>
 			<div class="col-lg-1">
                 <a href="<?=base_url()?>/index.php/board/blist/<?=$board?>/<?=$page?>"><button type="button" class="btn"><i class="icon-reorder icon-large"></i></button></a>

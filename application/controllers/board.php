@@ -96,28 +96,28 @@ class Board extends CI_Controller {
         redirect( base_url().'index.php/board/blist/'.$board);
     }
    	
-	function delDoc($board, $page, $srl, $writer)
+	function delDoc($board, $page, $srl)
 	{
-		var_dump($nick);
-		var_dump($writer);
-        if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
+		$writer = $this->input->get_post('writer');
+        
+		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
 		{
 			if(($nick=$this->session->userdata('user_nickname'))==$writer)
 			{
 				$this->load->model('board_model');
 				$this->board_model->delDoc($srl);
-        		//redirect( base_url().'index.php/board/blist/'.$board.'/'.$page);
+        		redirect( base_url().'index.php/board/blist/'.$board.'/'.$page);
 			}
 			else
 			{	
-				$this->session->set_flashdata("message",'작성자만'.$nick.$writer.' 삭제 가능합니다');
-        		//redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
+				$this->session->set_flashdata("message",'작성자만 삭제 가능합니다');
+        		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
 			}
 		}
 		else // 비로그인시 로그인창으로 리다이렉트
         {
             $this->session->set_flashdata("message","로그인후 사용 가능합니다");
-            //redirect( base_url()."index.php/auth/login" );
+            redirect( base_url()."index.php/auth/login" );
         }
 	}
 
