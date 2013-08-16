@@ -66,6 +66,9 @@ body {
     background-color:#0099FF;
     border:1px solid #0052FF; 
 }
+.quiz-left-tip{
+    line-height : 30px;
+}
 .quiz-description, .quiz-result {
     background-color:#FFFFFF;
     border-radius:10px;
@@ -207,14 +210,16 @@ $(document).ready(function(){
                                     {
                                         alert("정답입니다");
                                         var $description = "DESCRIPTION<br/><br/><?=$description?>";
-                                        $(".quiz-result-desc").html($codeResult);
+                                        $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
+                                        $(".quiz-description").show("blind");
                                         $(".quiz-description-desc").html($description);
                                     }
                                     else
                                     {
+                                        $(".quiz-description").hide("blind");
                                         alert("오답 또는 컴파일 에러입니다\n컴파일 결과창을 확인하세요");
                                         $(".quiz-description-desc").html("");
-                                        $(".quiz-result-desc").html($codeResult);
+                                        $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
                                     }
 
                             }
@@ -231,6 +236,7 @@ $(document).ready(function() {
     $('.quiz-left-desc').css('height', windowHeight + 30 );
     $('.quiz-middle-desc').css('height', windowHeight );
     $('.quiz-right-desc').css('height', windowHeight );
+    $(".quiz-description").hide();
   /*  
     var target = $('.quiz-right-bar');
     $('.quiz-result').css('top',target.offset().top + 30  );
@@ -250,12 +256,13 @@ $(document).ready(function() {
     <div class="quiz-left col-lg-3">
         <div class="quiz-left-div row">
             <div class="quiz-left-bar col-lg-12">
-                navbar
+                problem : <?=$id?> <br/>
             </div>
             <div class="quiz-left-desc col-lg-12">
                 <div class="quiz-left-tip col-lg-12">
-                <h2><?=$category?></h2> <br/>
-                <h4><?=$question?></h4> <br/>
+                <br/> 
+                <h1><p class="muted"><?=$category?></p></h1> <br/>
+                    <?=$context?> <br/><br/>
                     결과 : <?=$answer?> <br/></br>
                     힌트 : <?=$hint?> <br/>
                 </div>
@@ -277,7 +284,10 @@ $(document).ready(function() {
                         files :
                     </div>
                     <div class="quiz-tap col-lg-2" style="">
-                    <i class="icon-file-alt icon-large"></i> quiz.c
+                        <i class="icon-file-alt icon-large"></i> quiz.c
+                    </div>
+                    <div class="col-lg-8"> 
+                        <p class="text-warning"><?=$question?></p>
                     </div>
                 </div>
             </div>
