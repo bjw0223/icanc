@@ -85,17 +85,7 @@ body {
     border-radius:15px;
     color:#0008CA;
 }
-.quiz-error {
-    margin-top:10px;
-    background-color:rgba(255, 55, 55, 0.8);
-    border: 1px solid #FFFFFF;
-    padding:10px;
-    border-radius:15px;
-    color:rgb(52, 204, 218);
-    position:fixed;
-    bottom:70px;
-    z-index: 10;
-}
+
 .compileBtn {
     background-color:#08c;
     color:#ffffff;
@@ -263,7 +253,7 @@ $(document).ready(function() {
     <div class="quiz-left col-lg-3">
         <div class="quiz-left-div row">
             <div class="quiz-left-bar col-lg-12">
-                Proble : <?=$id?> <br/>
+                Problem : <?=$id?> <br/>
                 <h4 style="text-align:center"><?=$category?></h4>
             </div>
             <div class="quiz-left-desc col-lg-12">
