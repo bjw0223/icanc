@@ -161,19 +161,32 @@
      $('.nav-title').click(function(){
          $('.nav-title').parent().attr('class','');
          $('.nav-subtitle').parent().attr('class','');
-         $(this).parent().attr('class', 'active');
+         $('.nav-subCategory').parent().attr('class','');
+
+         $(this).parent('li').attr('class', 'active');
     });
     $('.nav-subtitle').click(function(){
+         $('.nav-title').parent().attr('class','');
          $('.nav-subtitle').parent().attr('class','');
-         $(this).parent().attr('class','active');
+         $('.nav-subCategory').parent().attr('class','');
+
+         $(this).parent('li').attr('class','active');
+         $(this).parent().parent().parent('li').attr('class','active');
+         $(this).parent().parent().parent().parent().parent('li').attr('class','active');
          var load_href = $(this).attr('load-href');
          $('.tutorial_desc').load(load_href);
+         $('.tutorial-title').load(load_href+"/true");
     });
     $('.nav-subCategory').click(function(){
+         $('.nav-title').parent().attr('class','');
+         $('.nav-subtitle').parent().attr('class','');
          $('.nav-subCategory').parent().attr('class','');
-         $(this).parent().attr('class', 'active');
+
+         $(this).parent('li').attr('class','active');
+         $(this).parent().parent().parent('li').attr('class','active');
+            
     });
-       
+
 
         });
         </script>
