@@ -1,7 +1,6 @@
 <div class="container">
    <div class="col-lg-12">
-	<div class="tutorial_main">BRANCH STATEMENT</div>
-        <div class="tutorial_main_sub"></div>
+	<div class="tutorial_main">INPUT</div>
    </div>
 </div>
 
