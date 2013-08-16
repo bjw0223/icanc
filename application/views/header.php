@@ -159,20 +159,15 @@
             });
 */
      $('.nav-title').click(function(){
-        if( $(this).parent().attr('class') == 'active')
-        {
-            $(this).parent().attr('class','');
-        }
-        else
-        {
-            $('.bs-sidebar > ul > li > ul > li').attr('class','');
-            $(this).parent().attr('class','active');
-        }
+         $('.nav-title').parent().attr('class','');
+         $('.nav-subtitle').parent().attr('class','');
+         $(this).parent().attr('class', 'active');
     });
     $('.nav-subtitle').click(function(){
-        $('.bs-sidebar > ul > li > ul > li').attr('class','');
-        $(this).parent().parent().parent().attr('class','active');
-        $(this).parent().attr('class','active');
+         $('.nav-subtitle').parent().attr('class','');
+         $(this).parent().attr('class','active');
+         var load_href = $(this).attr('load-href');
+         $('.tutorial_desc').load(load_href);
     });
        
 
