@@ -6,18 +6,18 @@
 <style>
 .my-navbar {
     height:50px;
-    background-color:rgb(34, 27, 83);
+    background-color:black;
     position:fixed;
     width:100%;
     top:0px;
 }
 .my-nav-logo
 {
-    height:50px;
-    line-height:50px;
-    font-size:30px;
-    font-weight:bold;
-    text-align:center;
+height:50px;
+line-height:50px;
+font-size:30px;
+font-weight:bold;
+text-align:center;
 }
 .my-nav-logo > a {
     color:white;
@@ -30,21 +30,21 @@
 }
 .my-nav-auth
 {
-    height:50px;
-    line-height:46px;
+height:50px;
+line-height:46px;
 }
 .my-nav-auth > div > div {
-    height:50px;
-    line-height:50px;
-    font-size:18px;
-    border-left:1px solid #222222;
-    text-align:center
-    color:white;
+height:50px;
+line-height:50px;
+font-size:18px;
+border-left:1px solid #222222;
+text-align:center;
+color:white;
 }
 .my-nav-auth > div > div:hover {
-    background-color:white;
-    color:green;
-    font-weight:bold;
+background-color:white;
+color:black;
+font-weight:bold;
 }
 </style>
 

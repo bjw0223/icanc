@@ -1,10 +1,8 @@
 #include<stdio.h>
 
-// 메인함수
 int main()
-{
-    int a;
-    a = 20;	a = 10;    printf("a=%d",a);  // 이 함수의 결과값은?
-   
+{	int a = 1004    //결과값 출력문
+    printf("정답은 a=%d 입니다",a);
+
     return 0;
 }

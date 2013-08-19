@@ -7,13 +7,14 @@ class Tutorial extends CI_Controller {
 		$this->_head();
 		$this->load->view('navbar');
         $this->load->view('reference');
-		$this->load->view($title.'/'.$subTitle.'_Title');
+		//$this->load->view($title.'/'.$subTitle.'_Title');
+		$this->load->view('tutorial_title');
 		$this->load->view('contents');
 		//$this->load->view($title.'/'.$subTitle);
 		$this->load->view('tutorial');
 		$this->load->view('footer');
 	}
-    public function show($title,$subTitle)
+    public function show($title,$subTitle,$flag="false")
 	{
         /*
 		$this->_head();
@@ -23,8 +24,15 @@ class Tutorial extends CI_Controller {
 		$this->load->view('contents');
 		$this->load->view($title.'/'.$subTitle);
 		$this->load->view('footer');
+
         */
-		$this->load->view($title.'/'.$subTitle);
+        if( $flag == "false") {
+            $this->load->view($title.'/'.$subTitle);
+        }
+        else if($flag == "true" )
+        {
+            $this->load->view($title.'/'.$subTitle.'_Title');
+        }
 	}
 
     public function reference($fname)
