@@ -86,27 +86,30 @@ class Board_model extends CI_Model {
 		return $data;
     }
     
-	public function saveDoc($flag, $arg, $board)
+	public function saveDoc($flag, $data, $board, $srl)
     {
         if($flag == 'write') // 처음 글쓸경우
         {
+			if($board=='faq'){
+				$this->db->set('board_name', 1);
+			}else if($board=='qna'){
+				$this->db->set('board_name', 2);
+			}else {
+				//게시판 추가
+			}
+
             $this->db->set('created_time','NOW()',false);
             $this->db->set('modified_time','NOW()',false);
+        	$this->db->insert('board',$data);
         }
         else if( $flag == 'modify') // 쓴 글을 수정한 경우
         {
+			$this->db->where('srl', $srl);
             $this->db->set('modified_time','NOW()',false);
+			$this->db->set('title', $data['title'] );
+			$this->db->set('text', $data['text'] );
+			$this->db->update('board');
         }
-	
-		if($board=='faq'){
-			$this->db->set('board_name', 1);
-		}else if($board=='qna'){
-			$this->db->set('board_name', 2);
-		}else {
-			//게시판 추가
-		}
-
-        $this->db->insert('board',$arg);
     }
 	
 	function delDoc($srl)
@@ -115,11 +118,6 @@ class Board_model extends CI_Model {
 		$this->db->where('srl', $srl);
 		$this->db->set('is_deleted', 1);
 		$this->db->update('board');
-	}
-
-	function modifyDoc($srl)
-	{
-
 	}
 
 	function good($board, $srl)

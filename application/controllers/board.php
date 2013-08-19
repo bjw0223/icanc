@@ -46,9 +46,6 @@ class Board extends CI_Controller {
        	$this->load->model('board_model');
        	$list = $this->board_model->get($board, $srl);
 		$result['data'] = $list;
-		
-		var_dump($this->session->userdata('user_nickname'));
-		var_dump($list->writer);
 
 		$this->_head();
 		$this->load->view('navbar');
@@ -76,7 +73,7 @@ class Board extends CI_Controller {
         }
     }
     
-	function saveDoc($flag, $board)
+	function saveDoc($flag, $board, $srl)
     {
 		$board_name = $board;
         $title = $_POST['docTitle'];
@@ -92,7 +89,7 @@ class Board extends CI_Controller {
         $insert_data['text'] = $string; 
         //date("Y-m-d H:i:s",time())
        	$this->load->model('board_model');
-        $this->board_model->saveDoc($flag,$insert_data,$board);
+        $this->board_model->saveDoc($flag, $insert_data, $board, $srl);
         redirect( base_url().'index.php/board/blist/'.$board);
     }
    	
@@ -121,18 +118,37 @@ class Board extends CI_Controller {
         }
 	}
 
-	function modifyDoc($srl)
+	function modifyDoc($board, $page, $srl)
 	{
-		$this->load->model('board_model');
-		$list = $this->board_model->get($board, $srl);
-		$result['data'] = $list;
+		$writer = $this->input->get_post('writer');
+       	$data['flag']='modify';
+
+		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
+		{
+			if(($nick=$this->session->userdata('user_nickname'))==$writer)//일치했을때 삭제
+			{
+				$this->load->model('board_model');
+				$list = $this->board_model->get($board, $srl);
+				$result['data'] = $list;
 	
-		$this->_head();
-        $this->load->view('navbar');
-        $this->load->view('reference');
-        $this->load->view('board/board_contents');
-        $this->load->view('board/document_write', $result);
-        $this->load->view('footer');
+				$this->_head();
+        		$this->load->view('navbar');
+        		$this->load->view('reference');
+        		$this->load->view('board/board_contents', $data);
+        		$this->load->view('board/document_modify', $result);
+        		$this->load->view('footer');
+			}
+			else
+			{	
+				$this->session->set_flashdata("message",'작성자만 수정 가능합니다');
+        		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
+			}
+		}
+		else // 비로그인시 로그인창으로 리다이렉트
+        {
+            $this->session->set_flashdata("message","로그인후 사용 가능합니다");
+            redirect( base_url()."index.php/auth/login" );
+        }
 	}
 
 	function good($board, $page, $srl)

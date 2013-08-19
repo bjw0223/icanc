@@ -43,15 +43,15 @@
                 <a href="<?=base_url()?>/index.php/board/good/<?=$board?>/<?=$page?>/<?=$data->srl?>"><button type="button" class="btn btn-info">좋아요 <?=$data->goods?></button></a>
             </div>
             <div class="col-lg-1">
-				<button type="button" class="btn"><i class="icon-pencil icon-large"></i></button>
+				<form action="<?=base_url()?>/index.php/board/modifyDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
+					<input type="hidden" name="writer" value="<?=$data->writer?>">
+					<button class="btn"><i class="icon-pencil icon-large"></i></button>
+				</form>
             </div>
 			<div class="col-lg-1">
 				<form action="<?=base_url()?>/index.php/board/delDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
-				<!--	<input type="hidden" name="board" value="<?=$board?>">
-					<input type="hidden" name="page" value="<?=$page?>">
-					<input type="hidden" name="srl" value="<?=$data->srl?>">-->
 					<input type="hidden" name="writer" value="<?=$data->writer?>">
-                	<button class="btn" value=""><i class="icon-trash icon-large"></i></button>
+                	<button class="btn"><i class="icon-trash icon-large"></i></button>
 				</form>
             </div>
 			<div class="col-lg-1">
