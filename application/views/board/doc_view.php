@@ -39,7 +39,7 @@
             </div> 
         </div>
         <div class="row well" style="padding:8px;margin-bottom:0px;">
-            <div class="col-lg-9">
+            <div class="col-lg-8">
                 <a href="<?=base_url()?>/index.php/board/good/<?=$board?>/<?=$page?>/<?=$data->srl?>"><button type="button" class="btn btn-info">좋아요 <?=$data->goods?></button></a>
             </div>
             <div class="col-lg-1">
@@ -54,6 +54,11 @@
                 	<button class="btn"><i class="icon-trash icon-large"></i></button>
 				</form>
             </div>
+			<div class="col-lg-1">
+				<form action="<?=base_url()?>/index.php/board/replyDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
+					<button class="btn"><i class="icon-reply icon-large"></i></button>
+				</form>
+			</div>
 			<div class="col-lg-1">
                 <a href="<?=base_url()?>/index.php/board/blist/<?=$board?>/<?=$page?>"><button type="button" class="btn"><i class="icon-reorder icon-large"></i></button></a>
             </div>

@@ -72,14 +72,14 @@ function ajaxLoad() {
 <?php
 	$board=$this->uri->segment(3);
 ?>
-    <form action="<?=base_url()?>index.php/board/saveModifiedDoc/<?=$board?>/<?=$data->srl?>" method="POST">
+    <form action="<?=base_url()?>index.php/board/saveDoc/reply/<?=$board?>" method="POST">
             <div class="col-lg-12 well">
-            <input type="text" id="docTitle" name="docTitle" value="<?=$data->title?>" class="form-control" placeholder="제목"/>
+            <input type="text" id="docTitle" name="docTitle" class="form-control" placeholder="제목"/>
             </div>
         </div>
     <div class="row">
         <div class="col-lg-12 well">
-            <textarea id="textEditor" name="textEditor" style="min-height:300px;"><?=$data->text?></textarea>
+            <textarea id="textEditor" name="textEditor" style="min-height:300px;"></textarea>
         </div>
     </div>
 

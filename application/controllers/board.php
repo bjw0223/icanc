@@ -73,7 +73,7 @@ class Board extends CI_Controller {
         }
     }
     
-	function saveDoc($flag, $board, $srl)
+	function saveDoc($board)
     {
 		$board_name = $board;
         $title = $_POST['docTitle'];
@@ -86,12 +86,51 @@ class Board extends CI_Controller {
 
         $insert_data['title'] = $title; 
         $insert_data['writer'] = $nickname;
-        $insert_data['text'] = $string; 
+        $insert_data['text'] = $string;
+
         //date("Y-m-d H:i:s",time())
        	$this->load->model('board_model');
-        $this->board_model->saveDoc($flag, $insert_data, $board, $srl);
+        $this->board_model->saveDoc($insert_data, $board);
         redirect( base_url().'index.php/board/blist/'.$board);
     }
+
+	function saveModifiedDoc($board, $srl)
+	{
+        $title = $_POST['docTitle'];
+        $description = $_POST['textEditor'];
+        $this->load->helper('text');
+        $string = ascii_to_entities($description);
+	
+        $insert_data['title'] = $title; 
+        $insert_data['text'] = $string;
+
+        //date("Y-m-d H:i:s",time())
+       	$this->load->model('board_model');
+        $this->board_model->saveModifiedDoc($insert_data, $board, $srl);
+        redirect( base_url().'index.php/board/blist/'.$board);
+
+	}
+
+	function saveReplyDoc($board, $srl)
+	{
+		$board_name = $board;
+        $title = $_POST['docTitle'];
+        $description = $_POST['textEditor'];
+
+        $this->load->helper('text');
+        $string = ascii_to_entities($description);
+
+        $nickname = $this->session->userdata('user_nickname');
+
+        $insert_data['title'] = $title; 
+        $insert_data['writer'] = $nickname;
+        $insert_data['text'] = $string;
+
+        //date("Y-m-d H:i:s",time())
+       	$this->load->model('board_model');
+        $this->board_model->saveDoc($insert_data, $board);
+        redirect( base_url().'index.php/board/blist/'.$board);
+	}
    	
 	function delDoc($board, $page, $srl)
 	{
@@ -118,10 +157,27 @@ class Board extends CI_Controller {
         }
 	}
 
+	function replyDoc($board, $page, $srl)
+	{
+		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
+		{
+		    $this->_head();
+            $this->load->view('navbar');
+            $this->load->view('reference');
+            $this->load->view('board/board_contents');
+            $this->load->view('board/document_reply');
+            $this->load->view('footer');
+      	}
+		else{// 비로그인시 로그인창으로 리다이렉트
+        
+            $this->session->set_flashdata("message","로그인후 사용 가능합니다");
+            redirect( base_url()."index.php/auth/login" );
+        }
+	}
+
 	function modifyDoc($board, $page, $srl)
 	{
 		$writer = $this->input->get_post('writer');
-       	$data['flag']='modify';
 
 		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
 		{
@@ -134,7 +190,7 @@ class Board extends CI_Controller {
 				$this->_head();
         		$this->load->view('navbar');
         		$this->load->view('reference');
-        		$this->load->view('board/board_contents', $data);
+        		$this->load->view('board/board_contents');
         		$this->load->view('board/document_modify', $result);
         		$this->load->view('footer');
 			}
