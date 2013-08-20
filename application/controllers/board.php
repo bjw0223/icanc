@@ -111,7 +111,7 @@ class Board extends CI_Controller {
 
 	}
 
-	function saveReplyDoc($board, $srl)
+	function saveReplyDoc($board, $page, $srl)
 	{
 		$board_name = $board;
         $title = $_POST['docTitle'];
@@ -128,8 +128,9 @@ class Board extends CI_Controller {
 
         //date("Y-m-d H:i:s",time())
        	$this->load->model('board_model');
-        $this->board_model->saveDoc($insert_data, $board);
-        redirect( base_url().'index.php/board/blist/'.$board);
+        $this->board_model->saveReplyDoc($insert_data, $board, $srl);
+		
+		redirect( base_url().'index.php/board/blist/'.$board.'/'.$page);
 	}
    	
 	function delDoc($board, $page, $srl)
@@ -159,13 +160,19 @@ class Board extends CI_Controller {
 
 	function replyDoc($board, $page, $srl)
 	{
+		$title = $this->input->get_post('title');
+		$reply_cnt = $this->input->get_post('reply_cnt');
+
+		$data['title'] = $title;
+		$data['reply_srl'] = $reply_cnt+1;
+
 		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
 		{
 		    $this->_head();
             $this->load->view('navbar');
             $this->load->view('reference');
             $this->load->view('board/board_contents');
-            $this->load->view('board/document_reply');
+            $this->load->view('board/document_reply', $data);
             $this->load->view('footer');
       	}
 		else{// 비로그인시 로그인창으로 리다이렉트

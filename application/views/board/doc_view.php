@@ -45,18 +45,34 @@
             <div class="col-lg-1">
 				<form action="<?=base_url()?>/index.php/board/modifyDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
 					<input type="hidden" name="writer" value="<?=$data->writer?>">
-					<button class="btn"><i class="icon-pencil icon-large"></i></button>
+					<?php
+						if(($nick=$this->session->userdata('user_nickname'))==$data->writer){
+                			echo "<button class='btn'><i class='icon-pencil icon-large'></i></button>";
+						}
+					?>
 				</form>
             </div>
 			<div class="col-lg-1">
 				<form action="<?=base_url()?>/index.php/board/delDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
 					<input type="hidden" name="writer" value="<?=$data->writer?>">
-                	<button class="btn"><i class="icon-trash icon-large"></i></button>
+					<?php
+						if(($nick=$this->session->userdata('user_nickname'))==$data->writer){
+                			echo "<button class='btn'><i class='icon-trash icon-large'></i></button>";
+						}
+					?>
 				</form>
             </div>
 			<div class="col-lg-1">
 				<form action="<?=base_url()?>/index.php/board/replyDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
-					<button class="btn"><i class="icon-reply icon-large"></i></button>
+					<input type="hidden" name="title" value="<?=$data->title?>">
+					<input type="hidden" name="reply_cnt" value="<?=$data->reply_cnt?>">
+					<?php 
+						//답글에 답글을 달지 못하도록 하는 부분
+						if($data->reply_srl==0){
+							echo "<button class='btn'><i class='icon-reply icon-large'></i></button>";
+						}
+						
+					?>
 				</form>
 			</div>
 			<div class="col-lg-1">
