@@ -46,6 +46,8 @@ CREATE TABLE  `icanc`.`board` (
  `goods` INT( 11 ) NOT NULL ,
  `board_name` INT( 11 ) NOT NULL ,
  `group_id` INT( 11 ) NOT NULL ,
+ `reply_cnt` INT( 11 ) NOT NULL ,
+ `reply_srl` INT( 11 ) NOT NULL ,
 PRIMARY KEY (  `srl` )
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
 <--------------------------BOARD TABLE END--------------------------> 
