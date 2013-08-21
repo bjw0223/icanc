@@ -39,7 +39,8 @@ class Board_model extends CI_Model {
     
 	function getList($board, $search_param=null,$page=1,$list_count=10)
     {
-        $this->db->order_by("srl", "desc");
+        $this->db->order_by('group_id', 'desc');
+		$this->db->order_by('reply_srl','asc');
         $this->db->limit($list_count , ($page-1)*$list_count );
 		$this->db->where('is_deleted', 0);	//삭제 확인
 		$this->db->where('is_blind', 0);	//블라인드 확인
@@ -86,18 +87,10 @@ class Board_model extends CI_Model {
 		return $data;
     }
     
-	public function saveDoc($flag, $arg, $board)
+	public function saveDoc($data, $board)
     {
-        if($flag == 'write') // 처음 글쓸경우
-        {
-            $this->db->set('created_time','NOW()',false);
-            $this->db->set('modified_time','NOW()',false);
-        }
-        else if( $flag == 'modify') // 쓴 글을 수정한 경우
-        {
-            $this->db->set('modified_time','NOW()',false);
-        }
-	
+		$total_rows = $this->db->count_all_results('board');
+		
 		if($board=='faq'){
 			$this->db->set('board_name', 1);
 		}else if($board=='qna'){
@@ -106,20 +99,55 @@ class Board_model extends CI_Model {
 			//게시판 추가
 		}
 
-        $this->db->insert('board',$arg);
+        $this->db->set('created_time','NOW()',false);
+        $this->db->set('modified_time','NOW()',false);
+       	$this->db->set('group_id', $total_rows+1);
+		$this->db->insert('board',$data);
     }
-	
+
+	function saveModifiedDoc($data, $board, $srl)
+	{
+		$this->db->where('srl', $srl);
+        $this->db->set('modified_time','NOW()',false);
+		$this->db->set('title', $data['title'] );
+		$this->db->set('text', $data['text'] );
+		$this->db->update('board');
+	}
+
+	function saveReplyDoc($data, $board, $srl)
+	{
+		//get parent's infomation
+		$this->db->where('srl', $srl);
+		$result = $this->db->get('board')->row();
+		//check parent's reply_cnt
+		$reply_srl = $result->reply_cnt+1;
+		//insert reply_cnt+1 to reply_srl
+		
+		$this->db->where('srl', $srl);
+		$this->db->set('reply_cnt', 'reply_cnt+1', false);
+		$this->db->update('board');
+
+		if($board=='faq'){
+			$this->db->set('board_name', 1);
+		}else if($board=='qna'){
+			$this->db->set('board_name', 2);
+		}else {
+			//게시판 추가
+		}
+     	
+		$this->db->set('created_time','NOW()',false);
+      	$this->db->set('modified_time','NOW()',false);
+      	$this->db->set('group_id', $srl);
+		$this->db->set('reply_srl', $reply_srl);
+		$this->db->insert('board',$data);
+	}
+
 	function delDoc($srl)
 	{
 		var_dump($srl);
 		$this->db->where('srl', $srl);
 		$this->db->set('is_deleted', 1);
 		$this->db->update('board');
-	}
-
-	function modifyDoc($srl)
-	{
-
 	}
 
 	function good($board, $srl)

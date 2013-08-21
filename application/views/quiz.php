@@ -43,7 +43,7 @@ $(document).ready(function() {
         target = $(this).children().children('.quiz-btn');
         target.removeClass();     
         target.addClass("btn btn-info btn-lg btn-block quiz-btn");     
-        target.html("go quiz");
+        target.html("go tutorial");
     },function(){
         target = $(this).children().children('.quiz-btn');
         data = target.attr('data-in');
@@ -74,14 +74,24 @@ $(document).ready(function() {
                     <div class="row quiz-body-div">
                         <div class="col-lg-12">
                             <p class="quiz-title">1. welcome to C language</p>
-                            <p class="quiz-description">temp quiz description</p>
+                            <p class="quiz-description">discription</p>
                             <div class="row">
                                 <div class="col-lg-10 col-offset-1 quiz-box">
                                     <div class="col-lg-9 quiz-box-description">
-                                       temp quiz view 
+                                       asdfghjklqweruyiozvcxnm,.b 
                                     </div>
                                     <div class="col-lg-3 quiz-btn-box">
-                                        <a href="<?=base_url();?>index.php/quiz/title/temp" class="quiz-btn" data-in="data-in">data-in</a>
+                                        <a href="#" class="quiz-btn" data-in="data-in">data-in</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-10 col-offset-1 quiz-box">
+                                    <div class="col-lg-9 quiz-box-description">
+                                       asdfghjklqweruyiozvcxnm,.b 
+                                    </div>
+                                    <div class="col-lg-3 quiz-btn-box">
+                                        <a href="#" class="quiz-btn" data-in="data-in">data-in</a>
                                     </div>
                                 </div>
                             </div>
@@ -93,6 +103,16 @@ $(document).ready(function() {
                         <div class="col-lg-12">
                             <p class="quiz-title">2. hi eugene</p>
                             <p class="quiz-description">discription</p>
+                            <div class="row">
+                                <div class="col-lg-10 col-offset-1 quiz-box">
+                                    <div class="col-lg-9 quiz-box-description">
+                                       asdfghjklqweruyiozvcxnm,.b 
+                                    </div>
+                                    <div class="col-lg-3 quiz-btn-box">
+                                        <a href="#" class="quiz-btn" data-in="data-in">data-in</a>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-10 col-offset-1 quiz-box">
                                     <div class="col-lg-9 quiz-box-description">

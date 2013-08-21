@@ -27,44 +27,30 @@ CREATE TABLE  `icanc`.`reference` (
     PRIMARY KEY (  `srl` ) ,
     UNIQUE KEY  `name` (  `name` ) ,
     KEY  `srl` (  `srl` )
-<<<<<<< HEAD
-) ENGINE = INNODB DEFAULT CHARSET = utf8;
-<------ end ----->
-
-<------ board -----> 
-=======
 ) ENGINE = INNODB DEFAULT CHARSET = latin1;
 <--------------------------REFERENCE TABLE END-------------------------->
 
-<--------------------------FAQ_BOARD TABLE START--------------------------> 
->>>>>>> 24dc2e5edcf1da79a346e773eb088394581367f0
-REATE TABLE  `icanc`.`board` (
-	`srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
-	`title` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
-	`writer` VARCHAR( 50 ) CHARACTER SET utf8 NOT NULL ,
-	`created_time` DATETIME NOT NULL ,
-	`modified_time` DATETIME NOT NULL ,
-	`hits` INT( 11 ) NOT NULL ,
-	`is_deleted` TINYINT( 1 ) NOT NULL ,
-	`is_blind` TINYINT( 1 ) NOT NULL ,
-	`is_closed` TINYINT( 1 ) NOT NULL ,
-	`is_notice` TINYINT( 1 ) NOT NULL ,
-	`text` TEXT CHARACTER SET utf8 NOT NULL ,
-	`goods` INT( 11 ) NOT NULL ,
-	`board_name` INT( 11 ) NOT NULL ,
-	`is_reply` TINYINT( 4 ) NOT NULL ,
- 	PRIMARY KEY (  `srl` )
-<<<<<<< HEAD
- ) ENGINE = INNODB DEFAULT CHARSET = utf8;
-<------ end ----->
-
-<------ session -----> 
-=======
- ) ENGINE = INNODB DEFAULT CHARSET = latin1;
-<--------------------------FAQ_BOARD TABLE START-------------------------->
+<--------------------------BOARD TABLE START--------------------------> 
+CREATE TABLE  `icanc`.`board` (
+`srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+ `title` VARCHAR( 255 ) NOT NULL ,
+ `writer` VARCHAR( 50 ) NOT NULL ,
+ `created_time` DATETIME NOT NULL ,
+ `modified_time` DATETIME NOT NULL ,
+ `hits` INT( 11 ) NOT NULL ,
+ `is_deleted` TINYINT( 1 ) NOT NULL ,
+ `is_blind` TINYINT( 1 ) NOT NULL ,
+ `is_closed` TINYINT( 1 ) NOT NULL ,
+ `is_notice` TINYINT( 1 ) NOT NULL ,
+ `text` TEXT NOT NULL ,
+ `goods` INT( 11 ) NOT NULL ,
+ `board_name` INT( 11 ) NOT NULL ,
+ `group_id` INT( 11 ) NOT NULL ,
+PRIMARY KEY (  `srl` )
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
+<--------------------------BOARD TABLE END--------------------------> 
 
 <--------------------------SESSION TABLE START--------------------------> 
->>>>>>> 24dc2e5edcf1da79a346e773eb088394581367f0
 CREATE TABLE  `icanc`.`ci_sessions` (
 `session_id` VARCHAR( 40 ) NOT NULL DEFAULT  '0',
  `ip_address` VARCHAR( 16 ) NOT NULL DEFAULT  '0',
