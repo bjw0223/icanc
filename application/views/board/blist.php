@@ -49,7 +49,9 @@
             {
                 echo "<tr>
                         <td>$data->srl</td>
-                        <td><a href='".base_url()."index.php/board/doc_view/$board/$page/$data->srl'>$data->title</a></td>
+                        <td style='text-align:left;'>
+							<a href='".base_url()."index.php/board/doc_view/$board/$page/$data->srl'>$data->title</a>
+						</td>
                         <td>$data->writer</td>
                         <td>$data->modified_time</td>
                         <td>$data->hits</td>
