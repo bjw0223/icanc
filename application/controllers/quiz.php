@@ -8,6 +8,22 @@ class Quiz extends CI_Controller {
     }
  //지웅 
     
+    public function index()
+    {
+        $this->load->view('header');
+        $this->load->view('quiz_navbar');
+        $this->load->view('quiz_contents');
+        $this->load->view('footer');
+    }
+
+    public function title($arg)
+    {
+        $this->load->view('header');
+        $this->load->view('quiz_navbar');
+        $this->load->view('quiz_'.$arg);
+        $this->load->view('footer');
+    }
+    
     public function objectiveQuiz($srl)
     {
         $this->load->model('quiz_model');

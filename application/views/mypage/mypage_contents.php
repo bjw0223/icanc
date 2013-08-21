@@ -20,11 +20,6 @@
                 </a>
             </li>
             <li class="active">
-                <a href="<?=base_url();?>index.php/mypage/invitation">
-                    초대장발송
-                </a>
-            </li>
-            <li class="active">
                 <a href="<?=base_url();?>index.php/mypage/signout">
                     회원탈퇴
                 </a>
