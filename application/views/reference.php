@@ -4,6 +4,11 @@ $(document).ready(function() {
     $('#reference').hide();
     $('#referenceBody').hide('');
     $('#refSearchDiv').hide('');
+    $("#refSearchDiv tbody > tr").click(function() {
+        var mvlocation = $(this).attr('href');
+        location.href = mvlocation;
+        
+    });
     $('.reference_btn').click(function(){
         $('#reference').toggle('blind');
         if( $(this).hasClass('active') == true )
@@ -55,7 +60,7 @@ $(document).ready(function() {
                     var temp="<table class='table'><thead><tr><th>이름</th><th>헤더</th><th>형식</th></tr></thead><tbody>";
                     for( var i = 0 ; i < data['total_rows'] ; i++ )
                     {
-                       temp+="<tr><td><a class='refBtn' data-in='" +data['data'][i].name+"'>"+data['data'][i].name+"</a></td><td>" +data['data'][i].header+"</td><td>" +data['data'][i].form+"</td></tr>";
+                       temp+="<tr class='refBtn' data-in='" +data['data'][i].name+"'><td>"+data['data'][i].name+"</td><td>" +data['data'][i].header+"</td><td>" +data['data'][i].form+"</td></tr>";
                     }
                     temp+="</tbody></table>";
                     $('#refSearchDiv').html(temp);
@@ -101,10 +106,15 @@ $(document).ready(function() {
 <style>
 
 .refBtn{
-    font-size:13px;
-    color:#b1b1b1;
+    font-size:15px;
+    color:white;
+}
+.refBtn:hover{
+    font-size:15px;
+    color:white;
     font-weight:bold;
 }
+
 #reference > div{
   /*  border-bottom:1px solid #333333;*/
 }
@@ -130,13 +140,23 @@ $(document).ready(function() {
     margin-top:10px;
 }
 #referenceCode {
-    height:400px;
+    height:444px;
 }
 #refTip{
     margin-top:30px;
 }
 #refSearchDiv {
-
+    background-color: #232c31;
+    color:white;
+    margin-top:60px;
+    margin-bottom:60px;
+}
+#refSearchDiv th {
+    color:white;
+    font-size:20px;
+}
+#refSearchDiv tbody > tr:hover {
+    background-color: #111111;
 }
 #refTip {
     background-color: #232c31;
@@ -490,7 +510,6 @@ $(document).ready(function() {
         </div>
         <div class="row">
             <div id="refSearchDiv" class="col-lg-6 col-offset-3">
-
             </div>
         </div>
 

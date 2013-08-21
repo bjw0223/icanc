@@ -100,7 +100,6 @@
         });
         </script>
         <style type="text/css">
-        /*
     ::-webkit-scrollbar {
             width: 11px;
     }
@@ -118,7 +117,6 @@
     ::-webkit-scrollbar-thumb:window-inactive {
         background: #cccccc; 
     }
-    */
 
 .bs-sidebar .nav > .active > a, .bs-sidebar .nav > .active:hover > a, .bs-sidebar .nav > .active:focus > a {
 font-weight: bold;
