@@ -10,16 +10,18 @@ class Quiz extends CI_Controller {
     
     public function index()
     {
+        $data['active']='quiz';
         $this->load->view('header');
-        $this->load->view('quiz_navbar');
+        $this->load->view('navbar',$data);
         $this->load->view('quiz_contents');
         $this->load->view('footer');
     }
 
     public function title($arg)
     {
+        $data['active']='quiz';
         $this->load->view('header');
-        $this->load->view('quiz_navbar');
+        $this->load->view('navbar',$data);
         $this->load->view('quiz_'.$arg);
         $this->load->view('footer');
     }
