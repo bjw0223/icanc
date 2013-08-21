@@ -1,7 +1,7 @@
 <script>
 
 $(document).ready(function() {
-    $(".my-nav-tap > div").click(function() {
+    $(".my-nav-tap > div, #logout_div > div , #login_div > div").click(function() {
         var mvlocation = $(this).attr('href');
         if(mvlocation)
             location.href = $(this).attr('href');
@@ -103,14 +103,14 @@ $(document).ready(function() {
         <div id="login_div" class="col-lg-3" style="text-align:right;">
             <!--login or sign up  button-->
             <div class="col-lg-6"></div>
-            <div class="col-lg-3"><a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/register">JOIN</a></div>
-            <div class="col-lg-3"><a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/login">LOGIN</a></div>
+            <div class="col-lg-3" href="<?=base_url()?>index.php/auth/register">JOIN</div>
+            <div class="col-lg-3" href="<?=base_url()?>index.php/auth/login">LOGIN</div>
         </div>
         <!--logout button-->
         <div id="logout_div" class="col-lg-3" style="text-align:right;">
             <div class="col-lg-6 name" style="text-align:right;"><a id="welcome" href="<?=base_url()?>index.php/mypage"><?=$this->session->userdata('user_nickname');?>님</a></div>
-            <div class="col-lg-3"><a href="<?=base_url()?>index.php/mypage">mypage</a></div>
-            <div class="col-lg-3"><a href="<?=base_url()?>index.php/auth/logout">logout</a></div>
+            <div class="col-lg-3" href="<?=base_url()?>index.php/mypage">mypage</div>
+            <div class="col-lg-3" href="<?=base_url()?>index.php/auth/logout">logout</div>
         </div>
     </div>
 </div>
