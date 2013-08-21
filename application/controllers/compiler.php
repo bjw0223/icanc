@@ -14,10 +14,11 @@ class Compiler extends CI_Controller {
     {
         $head = $_POST['head'];
         $code = $_POST['code'];
+        $autoCode = $_POST['autoCode'];
         $tail = $_POST['tail'];
 
         // textarea에 text값 가져와 \n처리
-        $finalCode = $head."\r".$code."\r".$tail;
+        $finalCode = $head."\r".$autoCode."\r".$code."\r".$tail;
         
         $filePath = $this->_createFile($finalCode);
             

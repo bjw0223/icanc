@@ -131,8 +131,7 @@ body {
 
 $(document).ready(function(){
     
-    var regExp = /((for|while|do|switch|main|scanf|gets|getchar|getc)\s*\()|(goto\s*\:)/;
-    
+    var regExp = /((for|while|do|switch|main|scanf|gets|getchar|getc)\s*\()|(goto\s*\:)<?=$regExp?>/;
     // head textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
                 mode: "text/x-csrc",
@@ -178,27 +177,29 @@ $(document).ready(function(){
         $code.save();
 
         var $headStr = document.getElementById("head").value;
+        var $autoCodeStr = "<?=$autoCode?>";
         var $codeStr = document.getElementById("code").value;
         var $tailStr = document.getElementById("tail").value;
         
-        // 반복문, 선택문, goto 문 사용 불가 정규식 판별
+        // 반복문, 선택문, goto 문등 사용 불가 정규식 판별
         if( ($checkCodeStr = regExp.exec($codeStr)) != null )
         {
             // 사용불가 알림창 표시위한 공백 및 'i', ':' 제거
-            $codeStr = $checkCodeStr[0].replace("(","");
-            $codeStr = $codeStr.replace(":","");
-            $codeStr = $codeStr.replace(/^\s*|\s*$/g,"");
+            $errorStr = $checkCodeStr[0].replace(/^\s*|\s*$/g,"");
             
-            alert($codeStr+"문은 사용할 수 없습니다"); 
+            alert($errorStr+"는 사용할 수 없습니다"); 
         }
         else
         {
             // code textarea 특수문자 처리
+            $headStr = encodeURIComponent($headStr);
+            $autoCodeStr = encodeURIComponent($autoCodeStr);
             $codeStr = encodeURIComponent($codeStr);
+            $tailStr = encodeURIComponent($tailStr);
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/compile",
-                    data : "head="+$headStr+"&code="+$codeStr+"&tail="+$tailStr,
+                    data : "head="+$headStr+"&autoCode="+$autoCodeStr+"&code="+$codeStr+"&tail="+$tailStr,
                     dataType : "json",
                     success : function($result) {
                                 var $codeResult= "";
@@ -287,7 +288,7 @@ $(document).ready(function() {
                         <i class="icon-file-alt icon-large"></i> quiz.c
                     </div>
                     <div class="col-lg-8"> 
-                        <p class="text-warning"><?=$question?></p>
+                       <small> <p class="text-warning"><?=$question?></p> </small>
                     </div>
                 </div>
             </div>
