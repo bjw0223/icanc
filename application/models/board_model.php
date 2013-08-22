@@ -5,33 +5,43 @@ class Board_model extends CI_Model {
     {
         parent::__construct();
     }
-	
-	function get($board ,$srl)
+
+	function _getBoard($board)
 	{
 		if($board=='faq'){
 			$this->db->where('board_name', 1);
 		}else if($board=='qna'){
 			$this->db->where('board_name', 2);
+		}else if($board=='free'){
+			$this->db->where('board_name', 3);
+		}else{
+			//게시판 추가
+		}
+	}
+
+	function _setBoard($board)
+	{
+		if($board=='faq'){
+			$this->db->set('board_name', 1);
+		}else if($board=='qna'){
+			$this->db->set('board_name', 2);
+		}else if($board=='free'){
+			$this->db->set('board_name', 3);
 		}else {
 			//게시판 추가
 		}
-		
-		$this->_hit($board, $srl);
+	}
+
+	function get($srl)
+	{
+		$this->_hit($srl);
 		$this->db->where('srl',$srl);
 		$query=$this->db->get('board');
 		return $query->row();
 	}
 	
-	function _hit($board, $srl)
+	function _hit($srl)
 	{		
-		if($board=='faq'){
-			$this->db->where('board_name', 1);
-		}else if($board=='qna'){
-			$this->db->where('board_name', 2);
-		}else {
-			//게시판 추가
-		}
-
 		$this->db->where('srl', $srl);
 		$this->db->set('hits', 'hits+1', false);
 		$this->db->update('board');
@@ -46,14 +56,16 @@ class Board_model extends CI_Model {
 		$this->db->where('is_blind', 0);	//블라인드 확인
 		$this->db->where('is_closed', 0);	//비공개 확인
 		
-		if($board=='faq'){
+/*		if($board=='faq'){
 			$this->db->where('board_name', 1);
 		}else if($board=='qna'){
 			$this->db->where('board_name', 2);
 		}else {
 			//게시판 추가
 		}
-		
+*/		
+		$this->_getBoard($board);
+
         if($search_param == null) {  
 		  	$query=$this->db->get('board')->result();
 
@@ -68,14 +80,16 @@ class Board_model extends CI_Model {
 		$this->db->where('is_blind', 0);	//블라인드 확인
 		$this->db->where('is_closed', 0);	//비공개 확인
 		
-		if($board=='faq'){
+/*		if($board=='faq'){
 			$this->db->where('board_name', 1);
 		}else if($board=='qna'){
 			$this->db->where('board_name', 2);
 		}else {
 			//게시판 추가
 		}
-		
+*/
+		$this->_getBoard($board);
+
 		$total_rows = $this->db->count_all_results('board');
         
 		$data['list'] = $query;
@@ -91,13 +105,15 @@ class Board_model extends CI_Model {
     {
 		$total_rows = $this->db->count_all_results('board');
 		
-		if($board=='faq'){
+/*		if($board=='faq'){
 			$this->db->set('board_name', 1);
 		}else if($board=='qna'){
 			$this->db->set('board_name', 2);
 		}else {
 			//게시판 추가
 		}
+*/
+		$this->_setBoard($board);
 
         $this->db->set('created_time','NOW()',false);
         $this->db->set('modified_time','NOW()',false);
@@ -127,14 +143,16 @@ class Board_model extends CI_Model {
 		$this->db->set('reply_cnt', 'reply_cnt+1', false);
 		$this->db->update('board');
 
-		if($board=='faq'){
+/*		if($board=='faq'){
 			$this->db->set('board_name', 1);
 		}else if($board=='qna'){
 			$this->db->set('board_name', 2);
 		}else {
 			//게시판 추가
 		}
-     	
+*/
+		$this->_setBoard($board);
+
 		$this->db->set('created_time','NOW()',false);
       	$this->db->set('modified_time','NOW()',false);
       	$this->db->set('group_id', $srl);
@@ -150,16 +168,8 @@ class Board_model extends CI_Model {
 		$this->db->update('board');
 	}
 
-	function good($board, $srl)
+	function good($srl)
 	{	
-		if($board=='faq'){
-			$this->db->where('board_name', 1);
-		}else if($board=='qna'){
-			$this->db->where('board_name', 2);
-		}else {
-			//게시판 추가
-		}
-		
 		$this->db->where('srl', $srl);
 		$this->db->set('goods', 'goods+1', false);
 		$this->db->update('board');

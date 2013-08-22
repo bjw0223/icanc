@@ -44,7 +44,7 @@ class Board extends CI_Controller {
 	{	
 
        	$this->load->model('board_model');
-       	$list = $this->board_model->get($board, $srl);
+       	$list = $this->board_model->get($srl);
 		$result['data'] = $list;
 
 		$this->_head();
@@ -191,7 +191,7 @@ class Board extends CI_Controller {
 			if(($nick=$this->session->userdata('user_nickname'))==$writer)//일치했을때 삭제
 			{
 				$this->load->model('board_model');
-				$list = $this->board_model->get($board, $srl);
+				$list = $this->board_model->get($srl);
 				$result['data'] = $list;
 	
 				$this->_head();
@@ -217,7 +217,7 @@ class Board extends CI_Controller {
 	function good($board, $page, $srl)
 	{
 		$this->load->model('board_model');
-		$this->board_model->good($board, $srl);
+		$this->board_model->good($srl);
 		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
 	}
 
