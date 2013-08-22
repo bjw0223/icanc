@@ -102,8 +102,7 @@ $(document).ready(function() {
 
         <div id="login_div" class="col-lg-3" style="text-align:right;">
             <!--login or sign up  button-->
-            <div class="col-lg-6"></div>
-            <div class="col-lg-3" href="<?=base_url()?>index.php/auth/register">JOIN</div>
+            <div class="col-lg-3 col-offset-6" href="<?=base_url()?>index.php/auth/register">JOIN</div>
             <div class="col-lg-3" href="<?=base_url()?>index.php/auth/login">LOGIN</div>
         </div>
         <!--logout button-->
