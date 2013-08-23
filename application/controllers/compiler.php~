@@ -5,7 +5,6 @@ class Compiler extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper('file');
-        $this->load->model('quiz_model');
     }
     function index()
     {
@@ -13,27 +12,22 @@ class Compiler extends CI_Controller {
     
     function compile()
     {
-
-        $rawData = $this->quiz_model->getCodingCode(1);
-        $data = (array)$rawData;
-
-        $threadCodeHead = $data['threadCodeHead'];
+        $head = $_POST['head'];
         $code = $_POST['code'];
-        $threadCodeTail = $data['threadCodeTail'];
+        $tail = $_POST['tail'];
 
         // textarea에 text값 가져와 \n처리
-        $finalCode = $threadCodeHead."\r".$code."\r".$threadCodeTail;
-
+        $finalCode = $head."\r".$autoCode."\r".$code."\r".$tail;
         
         $filePath = $this->_createFile($finalCode);
             
         // 저장된 code GCC
-        $gcc = 'gcc -o '.$filePath.'test '.$filePath.'test.c -lpthread 2> '.$filePath.'errmsg.txt';
+        $gcc = 'gcc -o '.$filePath.'test '.$filePath.'test.c 2> '.$filePath.'errmsg.txt';
         $run = $filePath.'test';
         
         // compile
-        exec($gcc, $gccOutput, $gccStatus);
-        exec($run, $runOutput, $runStatus);
+        //exec($gcc, $gccOutput, $gccStatus);
+        //exec($run, $runOutput, $runStatus);
         
         // 컴파일시 에러 발견됐을때 에러출력
          if($gccOutput == $runOutput)
@@ -41,13 +35,12 @@ class Compiler extends CI_Controller {
              $error = array( read_file($filePath.'errmsg.txt') );
              $error = str_replace("\n","<br>", $error);
              $error = str_replace($filePath.'test.c:',"--> ", $error);
-             $error = str_replace("'runCode'","'main'",$error);
              echo json_encode($error);
          }
         // 컴파일 오류가 없을시 실행결과 출력
          else
          {
-                echo json_encode($runOutput);
+             echo json_encode($runOutput);
          }
     }
     

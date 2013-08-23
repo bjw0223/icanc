@@ -37,7 +37,10 @@ class Quiz extends CI_Controller {
     }
     public function quizTest($id)
     {
-        $data = $this->quiz_model->getCodingQuiz($id);
+        $quizData = $this->quiz_model->getCodingQuiz($id);
+        $codeData = $this->quiz_model->getCodingCode(1);
+        $data = array_merge((array)$quizData,(array)$codeData);
+        $data = (object)$data;
         $result['result'] = null;
         $this->load->view('header');
         $this->load->view('quiz_navbar');
