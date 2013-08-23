@@ -41,9 +41,10 @@ class Quiz extends CI_Controller {
         $codeData = $this->quiz_model->getCodingCode(1);
         $data = array_merge((array)$quizData,(array)$codeData);
         $data = (object)$data;
+        $temp['active'] = 'quiz';
         $result['result'] = null;
         $this->load->view('header');
-        $this->load->view('quiz_navbar');
+        $this->load->view('navbar',$temp);
         $this->load->view('quizStyle',$data);
         $this->load->view('footer');
     }

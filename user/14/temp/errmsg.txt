@@ -1,2 +1,0 @@
-/var/www/user/14//temp/test.c: In function 'main':
-/var/www/user/14//temp/test.c:9:6: error: expected ';' before 'printf'
