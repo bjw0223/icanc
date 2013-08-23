@@ -73,10 +73,11 @@ class Mypage extends CI_Controller {
         $result=$this->board_model->getMyList($search_param,$page,$list_count,$nickname);
 
         $data['active'] = 'mypage';
+        $data['selected'] = 'my document';
         $this->load->view('header');
         $this->load->view('navbar',$data);
         $this->load->view('reference');
-        $this->load->view('mypage/mypage_contents');
+        $this->load->view('mypage/mypage_contents',$data);
         $this->load->view('mypage/showdir',$result);
         $this->load->view('footer');
 	}

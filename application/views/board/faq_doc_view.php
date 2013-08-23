@@ -32,7 +32,7 @@
         </div>
         <div class="row well" style="padding:8px;margin-bottom:0px;">
             <div class="col-lg-9">
-                <a href="<?=base_url()?>/index.php/board/good/<?=$data->srl?>/faq"><button type="button" class="btn btn-info">좋아요 <?=$data->goods?></button></a>
+                <a href="<?=base_url();?>index.php/board/good/<?=$data->srl?>/faq"><button type="button" class="btn btn-info">좋아요 <?=$data->goods?></button></a>
             </div>
             <div class="col-lg-1">
 				<button type="button" class="btn"><i class="icon-pencil icon-large"></i></button>
@@ -44,7 +44,7 @@
 				$page=$this->uri->segment(4);
 			?>
 			<div class="col-lg-1">
-                <a href="<?=base_url()?>/index.php/board/faq/<?=$page?>"><button type="button" class="btn"><i class="icon-reorder icon-large"></i></button></a>
+                <a href="<?=base_url()?>index.php/board/faq/<?=$page?>"><button type="button" class="btn"><i class="icon-reorder icon-large"></i></button></a>
             </div>
 
         </div>

@@ -39,6 +39,7 @@
             
         <?php
 			$uri_num=$this->uri->total_segments();
+            
 			if($uri_num!=4){
 				$page=1;
 			}else{
