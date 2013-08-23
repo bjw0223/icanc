@@ -131,7 +131,9 @@ body {
 
 $(document).ready(function(){
     
-    var forbidRegExp = /((switch|main|scanf|gets|getchar|getc)\s*\()|(goto\s*\:)/g;
+    var forbidRegExp = /((switch|main|scanf|gets|getchar|getc)\s*\()|(goto\s*\:)<?=$regExp?>/g;
+    var preventRegExp = /(for(\s*)\((\s*\S*);(\s*\S*);(\s*\S*)\)(\s*\n*))|((while)(\s*)\((\s*\S*)\)(\s*\n*)[^(\S*)](\{*)(\s*)(;*))/g;
+    var preventRegExp1 = /while(\s*)\((\s*\S*)\)/g;
 
     // head textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
@@ -177,7 +179,13 @@ $(document).ready(function(){
         // CodeMirror에서 code textare로 값 보내기
         $code.save();
 
+        var $headStr = document.getElementById("head").value;
         var $codeStr = document.getElementById("code").value;
+        var $tailStr = document.getElementById("tail").value;
+        var $finalCodeStr = ""; // 최종 코드
+        var $codeFirstIndex = 0;
+        var $codeLastIndex;
+        var $count = 0;
 
         // 반복문, 선택문, goto 문등 사용 불가 정규식 판별
         if( ($checkCodeStr = forbidRegExp.exec($codeStr)) != null )
@@ -188,13 +196,50 @@ $(document).ready(function(){
         }
         else
         {
+            while( ( $preventCodeStr = preventRegExp.exec($codeStr) ) != null)
+            {
+                if($count>=1)
+                {
+                    $finalCodeStr = $finalCodeStr + $codeStr.substring($codeFirstIndex,preventRegExp.lastIndex-$preventCodeStr[0].length) + "}" + $preventCodeStr[0] + "{X";
+                }
+                else
+                {
+                    $finalCodeStr = $finalCodeStr + $preventCodeStr[0] + "{X";
+                }
+                $codeFirstIndex = preventRegExp.lastIndex;
+                $count++;
+                //alert($preventCodeStr[0]);
+            }
+                alert("count="+$count);
+                if( $count ==1)
+                {
+                    $finalCodeStr = $finalCodeStr + "}";
+                }
+                var $name;
+                var $preventCodeSt
+                $name = $codeStr.substring($codeFirstIndex,$codeStr.length);
+                preventRegExp1.lastIndex = 0;
+                
+                while( ($preventCodeSt = preventRegExp1.exec($name)) != null){
+                $finalCodeStr = $finalCodeStr + $name.substring(0,preventRegExp1.lastIndex-$preventCodeSt[0].length) +$preventCodeSt[0] +"{X}";
+                $name = $name.substring(preventRegExp1.lastIndex,$name.length);
+                    if( $name != "")
+                     {
+                        preventRegExp1.lastIndex = 0;
+                    }
+                }
+                $finalCodeStr = $finalCodeStr + $name; 
+                alert($finalCodeStr);
+                    
             // code textarea 특수문자 처리
+            $headStr = encodeURIComponent($headStr);
             $codeStr = encodeURIComponent($codeStr);
+            $tailStr = encodeURIComponent($tailStr);
 
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/compile",
-                    data : "code="+$codeStr,
+                    data : "head="+$headStr+"&code="+$codeStr+"&tail="+$tailStr,
                     dataType : "json",
                     success : function($result) {
                                 var $codeResult= "";
@@ -218,10 +263,7 @@ $(document).ready(function(){
                                         $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
                                     }
 
-                            },
-                   error : function() { 
-                                alert("시간이 초과되었습니다"); 
-                           }
+                            }
                     });
         }
     });
@@ -292,7 +334,7 @@ $(document).ready(function() {
             </div>
             <div class="quiz-middle-desc col-lg-12">
                 <div id="headDiv">
-                    <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
+                    <textarea class="form-control" id="head" name="head"><?=$head?></textarea>
                 </div>
 
                 <div id="codeDiv">
@@ -300,7 +342,7 @@ $(document).ready(function() {
                 </div>
 
                 <div id="tailDiv">
-                    <textarea class="form-control" id="tail" name="tail"><?=$mainCodeTail?></textarea>
+                    <textarea class="form-control" id="tail" name="tail"><?=$tail?></textarea>
                 </div>
 
             </div>
