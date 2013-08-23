@@ -1,5 +1,5 @@
 <div class="container">
-<div class="row-fluid"> 
+<div class="row"> 
 
 <div id="board_contents" class="col-lg-3" >
 <!-- -->

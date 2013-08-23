@@ -61,9 +61,8 @@ $(document).ready(function() {
     color:white;
 }
 .my-navbar .my-nav-tap > div:hover, #logout_div > div:hover, #login_div > div:hover {
-    padding-top:10px;
     border-radius:10px;
-    background-color:#26444F;
+/*    background-color:#26444F;*/
     color:gold;
 }
 

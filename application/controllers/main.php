@@ -5,7 +5,7 @@ class Main extends CI_Controller {
 	public function index()
 	{
 		$this->_head();
-        //$this->load->view('navbar');
+        $this->load->view('navbar');
 		$this->load->view('reference');
 		$this->load->view('main');
 		$this->load->view('footer');
