@@ -5,6 +5,8 @@ class Quiz extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('quiz_model');
+        $this->load->model('user_model');
+        $this->load->helper('alert');
     }
  //지웅 
     
@@ -51,19 +53,26 @@ class Quiz extends CI_Controller {
    // 코딩퀴즈 문제
    public function quizTest($id)
     {
-        $quizData = $this->quiz_model->getCodingQuiz($id);
-        $codeData = $this->quiz_model->getCodingCode(1);
-        $data = array_merge((array)$quizData,(array)$codeData);
-        $data = (object)$data;
-        $temp['active'] = 'quiz';
-        $result['result'] = null;
-        $this->load->view('header');
-        $this->load->view('navbar',$temp);
-        $this->load->view('quizStyle',$data);
-        $this->load->view('footer');
+        if($this->session->userdata('user_finishQuestionNo')+1 >= $id)
+        {
+            $quizData = $this->quiz_model->getCodingQuiz($id);
+            $codeData = $this->quiz_model->getCodingCode(1);
+            $data = array_merge((array)$quizData,(array)$codeData);
+            $data = (object)$data;
+            $temp['active'] = 'quiz';
+            $result['result'] = null;
+            $this->load->view('header');
+            $this->load->view('navbar',$temp);
+            $this->load->view('quizStyle',$data);
+            $this->load->view('footer');
+        }
+        else
+        {
+            alert("진행할 수 없는 퀴즈 입니다");
+        }
     }
 
-    // freeCoding 문제
+    // freeCoding
     public function freeCoding()
     {
         $codeData = $this->quiz_model->getCodingCode(1);
