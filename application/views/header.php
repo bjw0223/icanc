@@ -165,6 +165,7 @@
     });
     $('.nav-subtitle').click(function(){
          $('.nav-subtitle').parent().attr('class','');
+         $(this).parent().attr('class', 'active');
          $(this).parent().attr('class','active');
          var load_href = $(this).attr('load-href');
          $('.tutorial_desc').load(load_href);
