@@ -8,6 +8,24 @@ class Quiz extends CI_Controller {
     }
  //지웅 
     
+    public function index()
+    {
+        $data['active']='quiz';
+        $this->load->view('header');
+        $this->load->view('navbar',$data);
+        $this->load->view('quiz_contents');
+        $this->load->view('footer');
+    }
+
+    public function title($arg)
+    {
+        $data['active']='quiz';
+        $this->load->view('header');
+        $this->load->view('navbar',$data);
+        $this->load->view('quiz_'.$arg);
+        $this->load->view('footer');
+    }
+    
     public function objectiveQuiz($srl)
     {
         $this->load->model('quiz_model');
@@ -19,10 +37,21 @@ class Quiz extends CI_Controller {
     }
     public function quizTest($id)
     {
-        $data = $this->quiz_model->getCodingQuiz($id);
+        $quizData = $this->quiz_model->getCodingQuiz($id);
+        $codeData = $this->quiz_model->getCodingCode(1);
+        $data = array_merge((array)$quizData,(array)$codeData);
+        $data = (object)$data;
+        $temp['active'] = 'quiz';
         $result['result'] = null;
         $this->load->view('header');
+        $this->load->view('navbar',$temp);
         $this->load->view('quizStyle',$data);
+        $this->load->view('footer');
+    }
+    public function quizContents()
+    {
+        $this->load->view('header');
+        $this->load->view('quiz_contents');
         $this->load->view('footer');
     }
 //지웅끝

@@ -1,0 +1,32 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="row">
+            <div class="col-lg-3" style="text-align:right;background-color:blue;">
+                <p style="background-color:green;text-align:center;">
+                    <a class="navbar-brand logo" href="<?=base_url();?>index.php/main" style="font-size:25px;background-color:red;">I CAN C</a>
+                </p>
+            </div>
+            <div class="col-lg-6" style="background-color:;">
+                <ul class="nav navbar-nav">
+                    <li class="<?=$active == 'startIcanc' ? 'active':'';?>"><a href="<?=base_url();?>index.php/start">Start ICANC</a></li>
+                    <li class=""><a class="reference_btn">Reference</a></li>
+                    <li class="<?=$active == 'tutorial' ? 'active':'';?>"><a href="<?=base_url();?>index.php/tutorial">Tutorial</a></li>
+                    <li class="<?=$active == 'freeCoding' ? 'active':'';?>"><a href="<?=base_url();?>index.php/quiz">Quiz</a></li>
+                    <li class="<?=$active == 'freeCoding' ? 'active':'';?>"><a href="<?=base_url();?>index.php/quiz/codingQuiz/1">Free Coding</a></li>
+                    <li class="<?=$active == 'board' ? 'active':'';?>"><a href="<?=base_url();?>index.php/board/blist">Board</a></li>
+                </ul>
+
+            </div>
+            <!--login or sign up  button-->
+            <div id="login_div" class="col-lg-3" style="text-align:right;">
+                <a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/register">JOIN</a>
+                <a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/login">LOGIN</a>
+            </div>
+            <!--logout button-->
+            <div id="logout_div" class="col-lg-3" style="text-align:right;">
+                <a id="welcome" class="navbar-brand" href="<?=base_url()?>index.php/mypage"><b><?=$this->session->userdata('user_nickname');?>님</b></a>
+                <a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/mypage">mypage</a>
+                <a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/logout">logout</a>
+            </div>
+        </div>
+</div>
+

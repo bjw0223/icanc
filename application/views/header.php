@@ -28,9 +28,6 @@
 
         <script type="text/javascript">
         $(document).ready(function() {
-                $('#reference').hide();
-                $('#referenceBody').hide('');
-                $('#refSearchDiv').hide('');
                 var postSelecter = null;
             $('.contents_list').click(function(){
                 if(postSelecter){
@@ -41,95 +38,7 @@
                 $(this).parent().removeClass('inactive').addClass('active');
                 $('#description').load("<?=base_url();?>index.php/main/show/"+path);
             });
-/*reference Start*/
-            $('.reference_btn').click(function(){
-                $('#reference').toggle('blind');
-                if( $(this).parent().attr('class') == 'active')
-                {
-                    $(this).parent().attr('class','');
-                }
-                else
-                {
-                    $(this).parent().attr('class','active');
-                }
-            });
-            $('#showAllRefBtn').click(function(){
-                $('#referenceContents').show('blind');
-                $('#referenceBody').hide('blind');
-                $('#refSearchDiv').hide('blind');
-            });
-            $('.refBtn').click(function(){
-                var $name = $(this).attr("data-in");
-                var $flag = false; 
-                $('#referenceContents').hide('blind');
-                getReference($name,$flag);   
-            })
-            $('#refSearchBtn').click(function(){
-                var $name= $("#refSearch").val();
-                var $flag = true; 
-                getReference($name,$flag);   
-            })
 
-            function getReference($name,$flag)
-            {
-                $.ajax({
-                    type : "GET",
-                    url : "<?=base_url()?>index.php/reference/getReference",
-                    contentType : "application/json; charset=utf-8",
-                    dataType : "json",
-                    data : "name=" + $name + "&flag=" + $flag,
-                    error : function() {
-                        alert("error");
-                    },
-                    success : function(data) {
-                        if( data['total_rows'] == 0 ){
-                            alert("검색결과없당");
-                        }
-                        else if( data['total_rows']  > 1 )
-                        {
-                            $('#refSearchDiv').show('blind');
-                            $('#referenceContents').hide('blind');
-                            $('#referenceBody').hide('blind');
-                            var temp="<table class='table'><thead><tr><th>이름</th><th>헤더</th><th>형식</th></tr></thead><tbody>";
-                            for( var i = 0 ; i < data['total_rows'] ; i++ )
-                            {
-                               temp+="<tr><td><a class='refBtn' data-in='" +data['data'][i].name+"'>"+data['data'][i].name+"</a></td><td>" +data['data'][i].header+"</td><td>" +data['data'][i].form+"</td></tr>";
-                            }
-                            temp+="</tbody></table>";
-                            $('#refSearchDiv').html(temp);
-                            $('.refBtn').click(function(){
-                                var $name = $(this).attr("data-in");
-                                var $flag = false; 
-                                getReference($name,$flag);   
-                                $('#refSearchDiv').hide('blind');
-                            })
-
-                        }
-                        else
-                        {
-                            $('#referenceContents').hide('blind');
-                            for( var i = 0 ; i < data['total_rows'] ; i++ )
-                            {
-                                $('#referenceBody').show('blind');
-                                $('#referenceCode').html(data['data'][i].code);
-                                $('#refName').html(data['data'][i].name);
-                                $('#refHeader').html(data['data'][i].header);
-                                $('#refForm').html(data['data'][i].form);
-                                $('#refParameter').html(data['data'][i].parameter);
-                                $('#refReturn').html(data['data'][i].return);
-                                $('#refTip').html(data['data'][i].tip);
-                                    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                                    lineNumbers: true,
-                                    matchBrackets: true,
-                                    mode: "text/x-csrc"
-                                });
-                            }
-                        }
-                    }
-                });
-            }
-
-/*reference End*/
             $('.dropdown-toggle').dropdown();
             <?php 
                  if($this->session->userdata('is_login') === true )
@@ -161,24 +70,54 @@
      $('.nav-title').click(function(){
          $('.nav-title').parent().attr('class','');
          $('.nav-subtitle').parent().attr('class','');
-         $(this).parent().attr('class', 'active');
+         $('.nav-subCategory').parent().attr('class','');
+
+         $(this).parent('li').attr('class', 'active');
     });
     $('.nav-subtitle').click(function(){
+         $('.nav-title').parent().attr('class','');
          $('.nav-subtitle').parent().attr('class','');
-         $(this).parent().attr('class', 'active');
-         $(this).parent().attr('class','active');
+         $('.nav-subCategory').parent().attr('class','');
+
+         $(this).parent('li').attr('class','active');
+         $(this).parent().parent().parent('li').attr('class','active');
+         $(this).parent().parent().parent().parent().parent('li').attr('class','active');
          var load_href = $(this).attr('load-href');
          $('.tutorial_desc').load(load_href);
+         $('.tutorial-title').load(load_href+"/true");
     });
     $('.nav-subCategory').click(function(){
+         $('.nav-title').parent().attr('class','');
+         $('.nav-subtitle').parent().attr('class','');
          $('.nav-subCategory').parent().attr('class','');
-         $(this).parent().attr('class', 'active');
+
+         $(this).parent('li').attr('class','active');
+         $(this).parent().parent().parent('li').attr('class','active');
+            
     });
-       
+
 
         });
         </script>
         <style type="text/css">
+    ::-webkit-scrollbar {
+            width: 11px;
+    }
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 8px;
+        border-radius: 8px;
+        background: #cccccc; 
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.5); 
+    }
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: #cccccc; 
+    }
+
 .bs-sidebar .nav > .active > a, .bs-sidebar .nav > .active:hover > a, .bs-sidebar .nav > .active:focus > a {
 font-weight: bold;
 color: #36545F;

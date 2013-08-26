@@ -34,6 +34,12 @@ class Quiz_model extends CI_Model {
         return $result;
     }
 
+    function getCodingCode($id)
+    {
+        $result = $this->db->get_where('coding_code',array('id'=>$id))->row();
+        return $result;
+    }
+
     function setCodingQuiz($data)
     {
         var_dump($data);

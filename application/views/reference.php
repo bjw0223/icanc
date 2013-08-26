@@ -1,22 +1,241 @@
+<link rel="stylesheet" href="<?=base_url();?>asset/lib/codemirror/theme/lesser-dark.css">
+<script>
+$(document).ready(function() {
+    $('#reference').hide();
+    $('#referenceBody').hide('');
+    $('#refSearchDiv').hide('');
+    $("#refSearchDiv tbody > tr").click(function() {
+        var mvlocation = $(this).attr('href');
+        location.href = mvlocation;
+        
+    });
+    $('.reference_btn').click(function(){
+        $('#reference').toggle('blind');
+        if( $(this).hasClass('active') == true )
+        {
+            $(this).removeClass('active');
+        }
+        else
+        {
+            $(this).addClass('active');
+        }
+    });
+    $('#showAllRefBtn').click(function(){
+        $('#referenceContents').show('blind');
+        $('#referenceBody').hide('blind');
+        $('#refSearchDiv').hide('blind');
+    });
+    $('.refBtn').click(function(){
+        var $name = $(this).attr("data-in");
+        var $flag = false; 
+        $('#referenceContents').hide('blind');
+        getReference($name,$flag);   
+    })
+    $('#refSearchBtn').click(function(){
+        var $name= $("#refSearch").val();
+        var $flag = true; 
+        getReference($name,$flag);   
+    })
+
+    function getReference($name,$flag)
+    {
+        $.ajax({
+            type : "GET",
+            url : "<?=base_url()?>index.php/reference/getReference",
+            contentType : "application/json; charset=utf-8",
+            dataType : "json",
+            data : "name=" + $name + "&flag=" + $flag,
+            error : function() {
+                alert("error");
+            },
+            success : function(data) {
+                if( data['total_rows'] == 0 ){
+                    alert("검색결과없당");
+                }
+                else if( data['total_rows']  > 1 )
+                {
+                    $('#refSearchDiv').show('blind');
+                    $('#referenceContents').hide('blind');
+                    $('#referenceBody').hide('blind');
+                    var temp="<table class='table'><thead><tr><th>이름</th><th>헤더</th><th>형식</th></tr></thead><tbody>";
+                    for( var i = 0 ; i < data['total_rows'] ; i++ )
+                    {
+                       temp+="<tr class='refBtn' data-in='" +data['data'][i].name+"'><td>"+data['data'][i].name+"</td><td>" +data['data'][i].header+"</td><td>" +data['data'][i].form+"</td></tr>";
+                    }
+                    temp+="</tbody></table>";
+                    $('#refSearchDiv').html(temp);
+                    $('.refBtn').click(function(){
+                        var $name = $(this).attr("data-in");
+                        var $flag = false; 
+                        getReference($name,$flag);   
+                        $('#refSearchDiv').hide('blind');
+                    })
+
+                }
+                else
+                {
+                    $('#referenceContents').hide('blind');
+                    for( var i = 0 ; i < data['total_rows'] ; i++ )
+                    {
+                        $('#referenceBody').show('blind');
+                        $('#referenceCode').html(data['data'][i].code);
+                        $('#refName').html(data['data'][i].name);
+                        $('#refHeader').html(data['data'][i].header);
+                        $('#refForm').html(data['data'][i].form);
+                        $('#refParameter').html(data['data'][i].parameter);
+                        $('#refReturn').html(data['data'][i].return);
+                        $('#refTip').html(data['data'][i].tip);
+                        $('#ref-result-desc').html(data['data'][i].result);
+                            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                            mode: "text/x-csrc",
+                            theme: "lesser-dark",
+                            matchBrackets: true,
+                            smartIndent : true,
+                            lineNumbers: true,
+                            matchBrackets: true,
+                            readOnly: true,
+                            mode: "text/x-csrc"
+                        });
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
 <style>
+
 .refBtn{
-    font-size:13px;
-    color:#b1b1b1;
+    font-size:15px;
+    color:white;
+}
+.refBtn:hover{
+    font-size:15px;
+    color:white;
     font-weight:bold;
 }
+
 #reference > div{
-    border-bottom:1px solid #333333;
+  /*  border-bottom:1px solid #333333;*/
+}
+#reference {
+    background-color:#2C3E49;
+}
+#referenceContents {
+    background-color:#2C3E49;
+}
+#referenceDesc {
+    background-color: #232c31;
+    padding:10px;
+    margin-top:30px;
+    margin-bottom:10px;
+    height:500px;
+    color:white;
 }
 #referenceNavbar > div{
     padding-right:30px;
+}
+#ref-code {
+ /*   padding-top:30px;*/
+    margin-top:10px;
+}
+#referenceCode {
+    height:444px;
+}
+#refTip{
+    margin-top:30px;
+}
+#refSearchDiv {
+    background-color: #232c31;
+    color:white;
+    margin-top:60px;
+    margin-bottom:60px;
+}
+#refSearchDiv th {
+    color:white;
+    font-size:20px;
+}
+#refSearchDiv tbody > tr:hover {
+    background-color: #111111;
+}
+#refTip {
+    background-color: #232c31;
+    height:500px;
+    color:white;
+    padding-top:10px;
+    line-height:40px;
+}
+
+#refName {
+    padding-left:10px;
+    font-size:30px;
+}
+#referenceBody {
+    padding-left:20px;
+    padding-right:20px;
+}
+#referenceNavbar {
+    height:50px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+#showAllRefBtn { 
+    margin-left:10px;
+}
+#ref-result {
+}
+#ref-info {
+    height:200px;
+    overflow-y:auto;
+}
+#ref-result-desc {
+    background-color:black;
+    min-height:180px;
+    max-height:180px;
+    overflow-y:auto;
+    padding:10px;
+}
+#ref-example {
+    background-color: #232c31;
+}
+#ref-example >h3 {
+    margin:none;
+    padding:10px;
+    color:white;
+}
+.CodeMirror {
+    border: 0px solid #eee;
+    width: 100%;
+}
+#referenceCode .CodeMirror {
+    height: 444px;
+}
+
+#codeDiv > .CodeMirror {
+    width : 100%;
+}
+
+#headDiv > .CodeMirror, #tailDiv > #CodeMirror {
+    width : 100%;
+    overflow-x : hidden;
+}
+
+.CodeMirror-scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.CodeMirror-linenumber {
+    width:30px;
+    text-align:center;
 }
 
 </style>
 
 <div id="reference">
-    <div class="row" id="referenceNavbar" style="height:50px;padding-top:5px;padding-bottom:5px;">
-        <div class="col-lg-1" style="">
-            <button id="showAllRefBtn" type="button" class="btn btn-danger" style="margin-left:10px;"> 목 록 </button>
+    <div class="row" id="referenceNavbar">
+        <div class="col-lg-1">
+            <button id="showAllRefBtn" type="button" class="btn btn-danger"> 목 록 </button>
         </div>
         <div class="col-lg-8" style="">
         </div>
@@ -241,10 +460,11 @@
                 </div>
             </div>
         </div><!--referenceContents-->
-        <div id="referenceBody" class="row"  style="padding-left:20px;padding-right:20px;">
-            <div id="referenceDesc"class="col-lg-4" style="padding:10px;background-color:white;margin-top:30px;margin-bottom:30px;height:500px">
-                <label id="refName" style="padding-left:10px;font-size:30px;">
+        <div id="referenceBody" class="row">
+            <div id="referenceDesc"class="col-lg-4">
+                <label id="refName">
                 </label>
+                <div id="ref-info">
                 <table class="table">
                     <thead>
                         <tr>
@@ -271,17 +491,25 @@
                         </tr>
                     </tbody>
                 </table>
-                <div id="refTip">
+                </div>
+                <div id="ref-result">
+                    <p><h3>실행결과</h3></p>
+                    <div id="ref-result-desc">
+                    </div>
                 </div>
             </div>
-            <div id="referenceCode" class="col-lg-4" style="padding-top:30px;">
+            <div id="ref-code" class="col-lg-4">
+                <div id="ref-example">
+                    <h3>실행예제</h3>
+                    <div id="referenceCode">
+                    </div>
+                </div>
             </div>
-            <div id="" class="col-lg-4" style="margin-top:30px;background-color:white;">
+            <div id="refTip" class="col-lg-4">
             </div>
         </div>
         <div class="row">
-            <div id="refSearchDiv" class="col-lg-6 col-offset-3" style="background-color:white;">
-
+            <div id="refSearchDiv" class="col-lg-6 col-offset-3">
             </div>
         </div>
 

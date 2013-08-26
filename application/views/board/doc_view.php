@@ -39,23 +39,44 @@
             </div> 
         </div>
         <div class="row well" style="padding:8px;margin-bottom:0px;">
-            <div class="col-lg-9">
-                <a href="<?=base_url()?>/index.php/board/good/<?=$board?>/<?=$page?>/<?=$data->srl?>"><button type="button" class="btn btn-info">좋아요 <?=$data->goods?></button></a>
+            <div class="col-lg-8">
+                <a href="<?=base_url();?>index.php/board/good/<?=$board?>/<?=$page?>/<?=$data->srl?>"><button type="button" class="btn btn-info">좋아요 <?=$data->goods?></button></a>
             </div>
             <div class="col-lg-1">
-				<button type="button" class="btn"><i class="icon-pencil icon-large"></i></button>
-            </div>
-			<div class="col-lg-1">
-				<form action="<?=base_url()?>/index.php/board/delDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
-				<!--	<input type="hidden" name="board" value="<?=$board?>">
-					<input type="hidden" name="page" value="<?=$page?>">
-					<input type="hidden" name="srl" value="<?=$data->srl?>">-->
+				<form action="<?=base_url();?>index.php/board/modifyDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
 					<input type="hidden" name="writer" value="<?=$data->writer?>">
-                	<button class="btn" value=""><i class="icon-trash icon-large"></i></button>
+					<?php
+						if(($nick=$this->session->userdata('user_nickname'))==$data->writer){
+                			echo "<button class='btn'><i class='icon-pencil icon-large'></i></button>";
+						}
+					?>
 				</form>
             </div>
 			<div class="col-lg-1">
-                <a href="<?=base_url()?>/index.php/board/blist/<?=$board?>/<?=$page?>"><button type="button" class="btn"><i class="icon-reorder icon-large"></i></button></a>
+				<form action="<?=base_url();?>index.php/board/delDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
+					<input type="hidden" name="writer" value="<?=$data->writer?>">
+					<?php
+						if(($nick=$this->session->userdata('user_nickname'))==$data->writer){
+                			echo "<button class='btn'><i class='icon-trash icon-large'></i></button>";
+						}
+					?>
+				</form>
+            </div>
+			<div class="col-lg-1">
+				<form action="<?=base_url();?>index.php/board/replyDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
+					<input type="hidden" name="title" value="<?=$data->title?>">
+					<input type="hidden" name="reply_cnt" value="<?=$data->reply_cnt?>">
+					<?php 
+						//답글에 답글을 달지 못하도록 하는 부분
+						if($data->reply_srl==0){
+							echo "<button class='btn'><i class='icon-reply icon-large'></i></button>";
+						}
+						
+					?>
+				</form>
+			</div>
+			<div class="col-lg-1">
+                <a href="<?=base_url();?>index.php/board/blist/<?=$board?>/<?=$page?>"><button type="button" class="btn"><i class="icon-reorder icon-large"></i></button></a>
             </div>
 
         </div>

@@ -1,5 +1,5 @@
 <div class="container">
-<div class="row-fluid"> 
+<div class="row"> 
 
 <div id="board_contents" class="col-lg-3" >
 <!-- -->
@@ -14,6 +14,12 @@
         <li class="">
             <a href="<?=base_url()?>index.php/board/blist/qna">
                 Q&A 
+                <i class="icon-chevron-right pull-right"></i>
+            </a>
+        </li>
+		<li class="">
+            <a href="<?=base_url()?>index.php/board/blist/free">
+                Free Board 
                 <i class="icon-chevron-right pull-right"></i>
             </a>
         </li>
