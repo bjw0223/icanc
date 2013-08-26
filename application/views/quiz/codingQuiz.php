@@ -46,7 +46,7 @@
 
 $(document).ready(function(){
     
-    var regExp = /((for|while|do|switch|main|scanf|gets|getchar|getc)\s*\()|(goto\s*\:)/;
+    var regExp = /((main|scanf|gets|getchar|getc)\s*\()|(goto\s*\:)/;
     
     // head textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
@@ -112,8 +112,8 @@ $(document).ready(function(){
             $codeStr = encodeURIComponent($codeStr);
             $.ajax({
                     type : "POST",
-                    url : "<?=base_url()?>index.php/compiler/compile",
-                    data : "head="+$headStr+"&code="+$codeStr+"&tail="+$tailStr,
+                    url : "<?=base_url()?>index.php/compiler/createCode",
+                    data : "code="+$codeStr+"&flag=1",
                     dataType : "json",
                     success : function($result) {
                                 var $codeResult= "";
@@ -121,20 +121,11 @@ $(document).ready(function(){
                                 {
                                     $codeResult = $codeResult + $result[$value] + "<br>";
                                 }
-                                    if( $codeResult == ("<?=$answer?>"+"<br>") )
-                                    {
-                                        alert("정답입니다");
-                                        var $description = "설명<br/><?=$description?>";
-                                        $("#description").html($description);
                                         $("#result").html("컴파일 결과<br/>"+$codeResult+"<br/>");
-                                    }
-                                    else
-                                    {
-                                        alert("오답 또는 컴파일 에러입니다\n컴파일 결과창을 확인하세요");
-                                        $("#description").html("");
-                                        $("#result").html("컴파일 결과<br/>"+$codeResult);
-                                    }
 
+                            },
+                    error : function() {
+                                alert("Time Over");
                             }
                     });
         }
@@ -145,16 +136,15 @@ $(document).ready(function(){
 
 <form id"codingQuiz" method="post">
     <div id="questionDiv">
-        <legend style="text-align:center"> <?=$question?> </legend>
+        <legend style="text-align:center"> Free Coding </legend>
     </div>
 
     <div id="answerDiv">
-        <h3> <span class="label label-success">결과 : <?=$answer?></span> </h3>
     </div>
     <br/>
 
     <div id="headDiv">
-        <textarea class="form-control" id="head" name="head"><?=$head?></textarea>
+        <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
     </div>
 
     <div id="codeDiv">
@@ -162,7 +152,7 @@ $(document).ready(function(){
     </div>
 
     <div id="tailDiv">
-        <textarea class="form-control" id="tail" name="tail"><?=$tail?></textarea>
+        <textarea class="form-control" id="tail" name="tail"><?=$mainCodeTail?></textarea>
     </div>
 
     <div>

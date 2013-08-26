@@ -101,8 +101,8 @@ class Mypage extends CI_Controller {
     {
         // 탈퇴 회원에 대한 user폴더 내의 해당 id폴더 삭제
         require(APPPATH.'/controllers/compiler'.EXT);
-        $filePath = new compiler;        
-        $userPath = $filePath->filePath();
+        $compiler = new compiler;        
+        $userPath = $compiler->filePath();
         
         $rmdir = "rm -r ".$userPath;
         

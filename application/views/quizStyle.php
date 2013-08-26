@@ -193,8 +193,8 @@ $(document).ready(function(){
 
             $.ajax({
                     type : "POST",
-                    url : "<?=base_url()?>index.php/compiler/compile",
-                    data : "code="+$codeStr,
+                    url : "<?=base_url()?>index.php/compiler/createCode",
+                    data : "code="+$codeStr+"&flag=0",
                     dataType : "json",
                     success : function($result) {
                                 var $codeResult= "";
