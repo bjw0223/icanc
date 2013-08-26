@@ -35,7 +35,21 @@ class Quiz extends CI_Controller {
         $this->load->view('footer');
         //$this->load->view('quiz/textQuiz',$data);
     }
-    public function quizTest($id)
+    
+    public function quizContents()
+    {
+        $this->load->view('header');
+        $this->load->view('quiz_contents');
+        $this->load->view('footer');
+    }
+//지웅끝
+
+
+
+//진영시작
+
+   // 코딩퀴즈 문제
+   public function quizTest($id)
     {
         $quizData = $this->quiz_model->getCodingQuiz($id);
         $codeData = $this->quiz_model->getCodingCode(1);
@@ -48,22 +62,12 @@ class Quiz extends CI_Controller {
         $this->load->view('quizStyle',$data);
         $this->load->view('footer');
     }
-    public function quizContents()
+
+    // freeCoding 문제
+    public function freeCoding()
     {
-        $this->load->view('header');
-        $this->load->view('quiz_contents');
-        $this->load->view('footer');
-    }
-//지웅끝
-
-
-
-//진영시작
-   
-    // 코딩퀴즈 문제
-    public function codingQuiz($id)
-    {
-        $data = $this->quiz_model->getCodingQuiz($id);
+        $codeData = $this->quiz_model->getCodingCode(1);
+        $data = (array)$codeData;
         $this->load->view('header');
         $result['result'] = null;
         $this->load->view('quiz/codingQuiz',$data);

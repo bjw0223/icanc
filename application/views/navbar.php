@@ -94,7 +94,7 @@ $(document).ready(function() {
             <div class="col-lg-2 reference_btn">Reference</div>
             <div class="col-lg-2 <?=$active == 'tutorial' ? 'active':'';?>" href="<?=base_url();?>index.php/tutorial">Tutorial</div>
             <div class="col-lg-2 <?=$active == 'quiz' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz">Quiz</div>
-            <div class="col-lg-2 <?=$active == 'freeCoding' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz/codingQuiz/1">Free Coding</div>
+            <div class="col-lg-2 <?=$active == 'freeCoding' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz/freeCoding">Free Coding</div>
             <div class="col-lg-2 <?=$active == 'board' ? 'active':'';?>" href="<?=base_url();?>index.php/board/blist">Board</div>
         </div>
 
