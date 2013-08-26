@@ -1,0 +1,3 @@
+/tmp/cccSxhLm.o: In function `runCode34567':
+freeCode.c:(.text+0x17): undefined reference to `Printf'
+collect2: ld returned 1 exit status

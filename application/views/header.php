@@ -73,6 +73,9 @@
          $('.nav-subCategory').parent().attr('class','');
 
          $(this).parent('li').attr('class', 'active');
+         var load_href = $(this).attr('load-href');
+         $('.tutorial_desc').load(load_href);
+         $('.tutorial-title').load(load_href+"/true");
     });
     $('.nav-subtitle').click(function(){
          $('.nav-title').parent().attr('class','');
@@ -94,6 +97,9 @@
          $(this).parent('li').attr('class','active');
          $(this).parent().parent().parent('li').attr('class','active');
             
+         var load_href = $(this).attr('load-href');
+         $('.tutorial_desc').load(load_href);
+         $('.tutorial-title').load(load_href+"/true");
     });
 
 
@@ -170,13 +176,13 @@ color:#36545F;
         background-color:gray;
     }
 	.tutorial_main{
-	   margin-top:40px;
-           font-size:40px;
-	   color:#36545F;
-           font-weight:bold;
+	     margin-top:40px;
+         font-size:40px;
+	     color:#36545F;
+         font-weight:bold;
 	}
 	.tutorial_main_sub{
-           font-size:18px;
+       font-size:18px;
 	   font-family:"Helvetica Neue, Helvetica, Arial, sans-serif";
 	   color:#36545F;
 	}
@@ -184,28 +190,26 @@ color:#36545F;
 	   margin-top:40px;
 	}
  	.tutorial_desc{
-  	   margin-top:30px;
+  	  /* margin-top:30px;*/
 	   line-height:30px;	
 	}
 	.tutorial_desc .title{
 	   font-size:32px;
 	   font-weight:bold;
 	}
-	.tutorial_desc .subTitle{
-	   font-size:24px;
-	}
-	.tutorial_desc .general > li{
-	   font-size:18px;
-	}
 	.tutorial_desc .general{
-	   font-size:18px;
+	   font-size:19px;
 	   color:#36545F;
 	}
 	.tutorial_desc .general_sub{
-           font-size:16px;
-           color:#36545F;
-        }
+       font-size:18px;
+       color:#36545F;
+    }
 	.tutorial_desc .general_sub2{
+	   font-size:16px;
+	   color:"#36545F";
+	}
+	.tutorial_desc .general_sub3{
 	   font-size:15px;
 	   color:"#36545F";
 	}
