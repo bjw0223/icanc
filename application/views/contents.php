@@ -75,15 +75,7 @@ $(window).scroll(function(){
                 </ul>
             </li>  
             <li class="">
-                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/arithmetic">연산자</a>
-                <ul class="nav">
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/arithmetic">산술</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/logic">관계 / 논리</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/bit">비트</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/member_reference">멤버참조</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/sizeof">sizeof</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/precedence">우선순위</a></li>
-                </ul>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/operator">연산자</a>
             </li>  
             <li class="">
                 <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/summary">함수</a>
