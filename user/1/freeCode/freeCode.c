@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 void *runCode34567(void *id34567)
-{Printf("main");}
+{}
 
 void *checkTime34567(void *id34567)
 {

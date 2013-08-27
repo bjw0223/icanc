@@ -57,8 +57,7 @@ class Auth extends CI_Controller {
         $this->session->set_flashdata('message','회원가입에 성공했습니다.');
         $this->_createFolder($this->input->post('email'));
         $this->load->view('footer');
-		var_dump('dddd');
-        //redirect( base_url().'index.php/main');
+        redirect( base_url().'index.php/main');
     }
     
     // 회원가입 후 회원만의 저장 공간 생성
