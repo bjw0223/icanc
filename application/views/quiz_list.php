@@ -56,18 +56,8 @@ $(document).ready( function(){
             <div class="row" id="quizDiv">
 
                 <div class="quiz-body col-lg-12">
-<!--quiz 2 start-->
-                    <div class="row quiz-body-div">
-                        <div class="col-lg-10">
-                            <a href="<?=base_url();?>index.php/quiz/quizTest/1" class="quiz-title">Quiz 2</a>
-                            <p class="quiz-description">discription</p>
-                        </div>
-                        <div class="col-lg-2">
-                            not start 
-                        </div>
-                    </div>
-<!--quiz 2 end-->
-                </div>
+                <!-- -->
+               </div>
 
             </div>
         </div>

@@ -63,11 +63,15 @@ class Compiler extends CI_Controller {
         // compile
         exec($gcc, $gccOutput, $gccStatus);
         exec($run, $runOutput, $runStatus);
-        
+
+        $fp = fopen($filePath.'errmsg.txt','r');
+        $errmsgSize = filesize($filePath.'errmsg.txt'); 
+
         // 컴파일시 에러 발견됐을때 에러출력
-         if($gccOutput == $runOutput)
+         if($errmsgSize > 0)
          {
-            $error = array( readfile($filePath.'errmsg.txt') );
+            $error = (array)fread($fp,$errmsgSize);
+            fclose($fp);
             $error = str_replace("\n","<br>", $error);
             $error = str_replace($filePath.$target.'.c:',"--> ", $error);
             $error = str_replace("'runCode34567'","'main'",$error);
@@ -85,13 +89,11 @@ class Compiler extends CI_Controller {
     {
         $filePath = $this->filePath().$path."/";
         
-        delete_files($filePath);
+        //delete_files($filePath);
 
         umask(0);  //권한 해제
         $fp = fopen($filePath.$fileName,'w');
-        umask(0);  //권한 해제
         fwrite($fp,$code);
-        umask(0);  //권한 해제
         fclose($fp);
 
         return $filePath;

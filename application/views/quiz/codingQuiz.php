@@ -119,14 +119,14 @@ $(document).ready(function(){
                                 var $codeResult= "";
                                 for (var $value in $result) 
                                 {
-                                    $codeResult = $codeResult + $result[$value] + "<br>";
+                                    $codeResult = $codeResult + $result[$value]+"<br>";
                                 }
                                         $("#result").html("컴파일 결과<br/>"+$codeResult+"<br/>");
 
                             },
                     error : function() {
-                                alert("Time Over");
-                            }
+                                alert("Time Out");
+                    }
                     });
         }
     });
