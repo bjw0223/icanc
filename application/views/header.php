@@ -198,11 +198,11 @@ color:#36545F;
 	   font-weight:bold;
 	}
 	.tutorial_desc .general{
-	   font-size:19px;
+	   font-size:18px;
 	   color:#36545F;
 	}
 	.tutorial_desc .general_sub{
-       font-size:18px;
+       font-size:17px;
        color:#36545F;
     }
 	.tutorial_desc .general_sub2{
