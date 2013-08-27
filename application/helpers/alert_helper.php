@@ -31,8 +31,9 @@ function alert_only($msg) {
         $CI =& get_instance();
 
             echo "<meta http-equiv=\"content-type\" content=\"text/html; charset=".$CI->config->item('charset')."\">";
-                echo "<script type='text/javascript'> alert('".$msg."'); </script>";
-                    exit;
+                echo "<script type='text/javascript'> alert('".$msg."');";
+                echo 'document.returnUrl.action = "/main";';
+                echo 'document.returnUrl.submit() </script>;';
 }
 
 function alert_continue($msg){

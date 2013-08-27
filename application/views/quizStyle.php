@@ -209,6 +209,13 @@ $(document).ready(function(){
                                         $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
                                         $(".quiz-description").show("blind");
                                         $(".quiz-description-desc").html($description);
+
+                                        $.ajax({
+                                                type : "POST",
+                                                url : "<?base_url()?>index.php/quiz/updateFinishQuestionNo",
+                                                data : "finishQuestionNo=<?=$id?>",
+                                                dataType : "json"
+                                                });
                                     }
                                     else
                                     {

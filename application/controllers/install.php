@@ -368,7 +368,7 @@ class Install extends CI_Controller {
                 );
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('srl', TRUE);
-        $this->dbforge->create_table('board');
+        $this->dbforge->create_table('board',TRUE);
     }
 
 

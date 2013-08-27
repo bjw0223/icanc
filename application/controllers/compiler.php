@@ -11,7 +11,8 @@ class Compiler extends CI_Controller {
     function index()
     {
     }
-    
+   
+    // 컴파일을 위한 코드 생성
     function createCode()
     {
         $flag = $_POST['flag'];
@@ -28,28 +29,31 @@ class Compiler extends CI_Controller {
         
         if($flag == 0)
         {
-            $this->_preProcessCodingQuiz($finalCode);
+            $this->_preprocessCodingQuiz($finalCode);
         }
         else if($flag == 1)
         {
-            $this->_preProcessFreeCoding($finalCode);
+            $this->_preprocessFreeCoding($finalCode);
         }
     }
     
-    function _preProcessCodingQuiz($code)
+    // CodingQuiz 실행
+    function _preprocessCodingQuiz($code)
     {
         $filePath = $this->_createFile($code,'quiz','quiz.c');
-        $this->_compile($filePath,'quiz');
-        delete_files($filePath);
+        $result = $this->_compile($filePath,'quiz');
+        //delete_files($filePath);
     }
 
-    function _preProcessFreeCoding($code)
+    // FreeCoding 실행
+    function _preprocessFreeCoding($code)
     {
         $filePath = $this->_createFile($code,'freeCode','freeCode.c');
         $this->_compile($filePath,'freeCode');
         //delete_files($filePath);
     }
-    
+
+    // 컴파일
     function _compile($filePath,$target)
     {
         // 저장된 code GCC
@@ -63,29 +67,31 @@ class Compiler extends CI_Controller {
         // 컴파일시 에러 발견됐을때 에러출력
          if($gccOutput == $runOutput)
          {
-             $error = array( read_file($filePath.'errmsg.txt') );
-             $error = str_replace("\n","<br>", $error);
-             $error = str_replace($filePath.$target.'.c:',"--> ", $error);
-             $error = str_replace("'runCode34567'","'main'",$error);
-             echo json_encode($error);
+            $error = array( readfile($filePath.'errmsg.txt') );
+            $error = str_replace("\n","<br>", $error);
+            $error = str_replace($filePath.$target.'.c:',"--> ", $error);
+            $error = str_replace("'runCode34567'","'main'",$error);
+            echo json_encode($error);
          }
         // 컴파일 오류가 없을시 실행결과 출력
          else
          {
-                echo json_encode($runOutput);
+            echo json_encode($runOutput);
          }
     }
     
     // c파일 생성
     function _createFile($code,$path,$fileName)
     {
-        umask(0);  //권한 해제
         $filePath = $this->filePath().$path."/";
         
         delete_files($filePath);
 
+        umask(0);  //권한 해제
         $fp = fopen($filePath.$fileName,'w');
+        umask(0);  //권한 해제
         fwrite($fp,$code);
+        umask(0);  //권한 해제
         fclose($fp);
 
         return $filePath;
