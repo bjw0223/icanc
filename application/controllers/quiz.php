@@ -12,19 +12,25 @@ class Quiz extends CI_Controller {
     
     public function index()
     {
+        $data = $this->quiz_model->getCategory();
+
         $data['active']='quiz';
         $this->load->view('header');
         $this->load->view('navbar',$data);
-        $this->load->view('quiz_contents');
+        $this->load->view('quiz_contents',array('data'=>$data));
         $this->load->view('footer');
     }
 
-    public function title($arg)
+    public function title($category)
     {
+        $countData= $this->quiz_model->getCountQuestion($category);
+        $idData =$this->quiz_model->getQuestionId($category);
+        $data = array_merge($countData,(array)$idData);
+
         $data['active']='quiz';
         $this->load->view('header');
         $this->load->view('navbar',$data);
-        $this->load->view('quiz_'.$arg);
+        $this->load->view('quiz_list',array('data'=>$data));
         $this->load->view('footer');
     }
     
@@ -55,8 +61,8 @@ class Quiz extends CI_Controller {
     {
         if($this->session->userdata('user_finishQuestionNo')+1 >= $id)
         {
-            $quizData = $this->quiz_model->getCodingQuiz($id);
-            $codeData = $this->quiz_model->getCodingCode(1);
+            $quizData = $this->quiz_model->getCodingQuiz($id); 
+            $codeData = $this->quiz_model->getCodingCode(1); // thread 코드 가져오기
             $data = array_merge((array)$quizData,(array)$codeData);
             $data = (object)$data;
             $temp['active'] = 'quiz';
@@ -81,6 +87,14 @@ class Quiz extends CI_Controller {
         $result['result'] = null;
         $this->load->view('quiz/codingQuiz',$data);
         $this->load->view('footer');
+    }
+    
+    // 최종 퀴즈 기록 변경
+    public function updateFinishQuestionNo()
+    {
+       $data['email'] = $this->session->userdata('user_email');
+       $data['finishQuestionNo'] = $_POST['finishQuestionNo'];
+       //$this->user_model->updateFinishQuestionNo($data);
     }
 
     // 코딩퀴즈 만들기 폼

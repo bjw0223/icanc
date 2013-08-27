@@ -51,6 +51,32 @@ $(document).ready(function() {
         target.addClass("quiz-btn");     
         target.html(data);
     });
+     
+    var $categoryDiv = document.getElementById("categoryDiv");
+    var $data = <?=json_encode($data)?>; // 각 퀴즈에 대한 값과 총개수
+    
+    // 퀴즈 목록 생성
+    $categoryDiv.innerHTML = "";
+    for(var $i=0; $i<$data['count']; $i++)
+    {
+        $categoryDiv.innerHTML =$categoryDiv.innerHTML + 
+            '<div class=\"row quiz-body-div\">'+
+            '<div class=\"col-lg-12\">'+
+            '<p class=\"quiz-title\">'+$data[$i]['category']+'</p>'+
+            '<p class=\"quiz-description">temp quiz description</p>'+
+            '<div class=\"row\">'+
+            '<div class=\"col-lg-10 col-offset-1 quiz-box\">'+
+            '<div class=\"col-lg-9 quiz-box-description\">'+
+            'temp quiz view'+ 
+            '</div>'+
+            '<div class=\"col-lg-3 quiz-btn-box\">'+
+            '<a href=\"<?=base_url();?>index.php/quiz/title/'+$data[$i]['category']+'\" class=\"quiz-btn\" data-in=\"data-in\">data-in</a>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>';
+     }       
 
 });
 </script>
@@ -69,44 +95,9 @@ $(document).ready(function() {
     <div class="row">
         <div class="col-lg-8">
             <div class="row">
-                <div class="quiz-body col-lg-12">
-<!--quiz 1 start-->
-                    <div class="row quiz-body-div">
-                        <div class="col-lg-12">
-                            <p class="quiz-title">1. welcome to C language</p>
-                            <p class="quiz-description">temp quiz description</p>
-                            <div class="row">
-                                <div class="col-lg-10 col-offset-1 quiz-box">
-                                    <div class="col-lg-9 quiz-box-description">
-                                       temp quiz view 
-                                    </div>
-                                    <div class="col-lg-3 quiz-btn-box">
-                                        <a href="<?=base_url();?>index.php/quiz/title/temp" class="quiz-btn" data-in="data-in">data-in</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-<!--quiz 1 end-->
-<!--quiz 2 start-->
-                    <div class="row quiz-body-div">
-                        <div class="col-lg-12">
-                            <p class="quiz-title">2. hi eugene</p>
-                            <p class="quiz-description">discription</p>
-                            <div class="row">
-                                <div class="col-lg-10 col-offset-1 quiz-box">
-                                    <div class="col-lg-9 quiz-box-description">
-                                       asdfghjklqweruyiozvcxnm,.b 
-                                    </div>
-                                    <div class="col-lg-3 quiz-btn-box">
-                                        <a href="#" class="quiz-btn" data-in="data-in">data-in</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-<!--quiz 2 end-->
-                </div>
+                <div class="quiz-body col-lg-12" id="categoryDiv">
+                <!-- -->
+               </div>
             </div>
         </div>
         <div class="col-lg-4">
