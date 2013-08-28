@@ -1,12 +1,30 @@
 <script>
 
 $(document).ready(function() {
-    $(".my-nav-tap > div, #logout_div > div , #login_div > div").click(function() {
+
+    // navbar click 비로그인시 사용 불가
+    $(".my-nav-tap > div").click(function() {
+        var mvlocation = $(this).attr('href');
+        if(mvlocation && ("<?=$this->session->userdata('is_login')?>"==true))
+        {
+            location.href = $(this).attr('href');
+        }
+        else
+        {
+            alert("로그인이 필요한 서비스 입니다");
+            document.location.href = "<?=base_url()?>index.php/auth/login";
+        }
+    });
+
+    // login, join, logout click
+    $("#logout_div > div , #login_div > div").click(function() {
         var mvlocation = $(this).attr('href');
         if(mvlocation)
+        {
             location.href = $(this).attr('href');
+        }
     });
-});
+}); // document.ready close
 
 </script>
 

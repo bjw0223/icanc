@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 void *runCode34567(void *id34567)
-{}
+{printf("정답은 i_int=1004 입니다\n");}
 
 void *checkTime34567(void *id34567)
 {
