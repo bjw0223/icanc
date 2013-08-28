@@ -15,6 +15,12 @@ class Install extends CI_Controller {
 	{
         $this->_checkEnvironment();
     }
+    public function copyTable()
+    {
+        $this->load->model('install_model');
+        $string = read_file('./application/views/install/reference.txt');
+        $this->install_model->setupTable($string);
+    }
     public function nextStep($arg)
     {
         $this->load->view('install/header');
@@ -368,7 +374,7 @@ class Install extends CI_Controller {
                 );
         $this->dbforge->add_field($fields);
         $this->dbforge->add_key('srl', TRUE);
-        $this->dbforge->create_table('board');
+        $this->dbforge->create_table('board',true);
     }
 
 

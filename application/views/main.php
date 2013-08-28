@@ -39,12 +39,10 @@ $(document).ready(function() {
 </script>
 <div id="main">
     <div class="row" style="color:white;">
-<!--
         <div class="col-lg-12 text-center icanc-main" style="margin-top:120px;background-color:white;">
             <p style="font-size:100px;margin-top:80px;"><strong>I CAN C</strong></p>
             <p style="font-size:30px;"> Massive Open Online Course, MOOC </p>
         <div>
--->
     </div>
 </div>
 <!--

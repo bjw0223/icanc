@@ -42,6 +42,21 @@ class Quiz extends CI_Controller {
         $this->load->view('quiz_contents');
         $this->load->view('footer');
     }
+
+
+    public function showFiles()
+    {
+        $this->load->helper('file');
+        $files = get_filenames('./user/14/freeCode/save');
+        echo json_encode($files);
+    }
+    public function deletFile()
+    {
+        $this->load->helper('file');
+        $fname = $this->input->get_post('fname');
+        delete_files("./user/14/freeCode/save/$fname");
+        echo json_encode( $fname);
+    }
 //지웅끝
 
 
@@ -70,6 +85,8 @@ class Quiz extends CI_Controller {
         $data = (array)$codeData;
         $this->load->view('header');
         $result['result'] = null;
+        $temp['active'] = 'freeCoding';
+        $this->load->view('navbar',$temp);
         $this->load->view('quiz/codingQuiz',$data);
         $this->load->view('footer');
     }
