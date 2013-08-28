@@ -1,6 +1,15 @@
 <script>
 
 $(document).ready(function() {
+    
+    // login, join, logout click
+    $("#logout_div > div , #login_div > div").click(function() {
+        var mvlocation = $(this).attr('href');
+        if(mvlocation)
+        {
+            location.href = $(this).attr('href');
+        }
+    });
 
     // navbar click 비로그인시 사용 불가
     $(".my-nav-tap > div").click(function() {
@@ -13,15 +22,6 @@ $(document).ready(function() {
         {
             alert("로그인이 필요한 서비스 입니다");
             document.location.href = "<?=base_url()?>index.php/auth/login";
-        }
-    });
-
-    // login, join, logout click
-    $("#logout_div > div , #login_div > div").click(function() {
-        var mvlocation = $(this).attr('href');
-        if(mvlocation)
-        {
-            location.href = $(this).attr('href');
         }
     });
 }); // document.ready close
@@ -109,7 +109,7 @@ $(document).ready(function() {
         </div>
         <div class="col-lg-7 my-nav-tap">
             <div class="col-lg-2 <?=$active == 'startIcanc' ? 'active':'';?>" href="<?=base_url();?>index.php/start">Start ICANC</div>
-            <div class="col-lg-2 reference_btn">Reference</div>
+            <div class="col-lg-2 reference_btn" href="#">Reference</div>
             <div class="col-lg-2 <?=$active == 'tutorial' ? 'active':'';?>" href="<?=base_url();?>index.php/tutorial">Tutorial</div>
             <div class="col-lg-2 <?=$active == 'quiz' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz">Quiz</div>
             <div class="col-lg-2 <?=$active == 'freeCoding' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz/freeCoding">Free Coding</div>

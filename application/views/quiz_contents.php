@@ -20,6 +20,7 @@
     padding-right:0px;
     margin-top:10px;
     background-color:#eeeeee;
+height:52px;
 }
 .quiz-box:hover {
     background-color:#dddddd;
@@ -30,20 +31,47 @@
 }
 .quiz-btn-box {
     line-height:38px;
-    text-align:center;
+    text-align:right;
 }
 .quiz-btn {
+    border-radius:10px;
 
 }
 </style>
 <script>
-$(document).ready(function() {
 
-    $(".quiz-box").hover(function(){
+$(document).ready(function() {
+        
+       var $categoryDiv = document.getElementById("categoryDiv");
+    var $data = <?=json_encode($data)?>; // 각 퀴즈에 대한 값과 총개수
+    
+    // 퀴즈 목록 생성
+    $categoryDiv.innerHTML = "";
+    for(var $i=0; $i<$data['count']; $i++)
+    {
+        $categoryDiv.innerHTML =$categoryDiv.innerHTML + 
+            '<div class="row quiz-body-div">'+
+            '<div class="col-lg-12">'+
+            '<p class="quiz-title">'+$data[$i]['category']+'</p>'+
+            '<p class="quiz-description">temp quiz description</p>'+
+            '<div class="row">'+
+            '<div class="col-lg-10 col-offset-1 quiz-box">'+
+            '<div class="col-lg-9 quiz-box-description">'+
+            'temp quiz view'+ 
+            '</div>'+
+            '<div class="col-lg-3 quiz-btn-box">'+
+            '<a href="<?=base_url();?>index.php/quiz/title/'+$data[$i]['category']+'" class="quiz-btn" data-in="data-in">data-in</a>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>';
+     }       
+   $(".quiz-box").hover( function(){
         target = $(this).children().children('.quiz-btn');
         target.removeClass();     
-        target.addClass("btn btn-info btn-lg btn-block quiz-btn");     
-        target.html("go quiz");
+        target.addClass("btn btn-info quiz-btn");     
+        target.html("GO");
     },function(){
         target = $(this).children().children('.quiz-btn');
         data = target.attr('data-in');
@@ -52,31 +80,8 @@ $(document).ready(function() {
         target.html(data);
     });
      
-    var $categoryDiv = document.getElementById("categoryDiv");
-    var $data = <?=json_encode($data)?>; // 각 퀴즈에 대한 값과 총개수
-    
-    // 퀴즈 목록 생성
-    $categoryDiv.innerHTML = "";
-    for(var $i=0; $i<$data['count']; $i++)
-    {
-        $categoryDiv.innerHTML =$categoryDiv.innerHTML + 
-            '<div class=\"row quiz-body-div\">'+
-            '<div class=\"col-lg-12\">'+
-            '<p class=\"quiz-title\">'+$data[$i]['category']+'</p>'+
-            '<p class=\"quiz-description">temp quiz description</p>'+
-            '<div class=\"row\">'+
-            '<div class=\"col-lg-10 col-offset-1 quiz-box\">'+
-            '<div class=\"col-lg-9 quiz-box-description\">'+
-            'temp quiz view'+ 
-            '</div>'+
-            '<div class=\"col-lg-3 quiz-btn-box\">'+
-            '<a href=\"<?=base_url();?>index.php/quiz/title/'+$data[$i]['category']+'\" class=\"quiz-btn\" data-in=\"data-in\">data-in</a>'+
-            '</div>'+
-            '</div>'+
-            '</div>'+
-            '</div>'+
-            '</div>';
-     }       
+
+
 
 });
 </script>

@@ -250,26 +250,32 @@ $(document).ready(function(){
 
 <script>
 $(document).ready(function() {
-    setupLayout(); 
-    $(window).resize(function(){
-        setupLayout(); 
-    });
-    $("#next").hide();
-});
-function setupLayout(){
-    var windowHeight = $(window).height();
-    $('.quiz-left-desc').css('height', (windowHeight - 140) + 'px' );
-    $('.quiz-middle-desc').css('height', (windowHeight - 170) + 'px' );
-    $('.quiz-right-desc').css('height', (windowHeight - 170) + 'px' );
-    $(".quiz-description").hide();
+
+        var windowHeight = $(window).height();
+        $('.quiz-left-desc').css('height', windowHeight -140 );
         
+  /*  
+    var windowHeight =  $(window).height() - $('.quiz-right-footer').offset().top - 20;
+    $('.quiz-left-desc').css('height', windowHeight + 30 );
+    $('.quiz-middle-desc').css('height', windowHeight );
+    $('.quiz-right-desc').css('height', windowHeight );
+    $(".quiz-description").hide();
+  /*  
+    var target = $('.quiz-right-bar');
+    $('.quiz-result').css('top',target.offset().top + 30  );
+    $('.quiz-result').css('left',target.offset().left - 80 );
+    $('.quiz-result').css('height',$(window).height()/5*2);
+    $('.quiz-result').css('width',target.width());
+    */
     $('.quiz-result').css('height',$('.quiz-right-desc').height()/2);
     $('.quiz-description').css('height',$('.quiz-right-desc').height()/2 - 10);
     $('.quiz-error').css('left',$('.quiz-middle-bar').offset().left);
     $('.quiz-error').css('bottom',$(window).height() - $('.quiz-middle-footer').offset().top);
     $('.quiz-error').css('min-height',70);
     $('.quiz-error').css('width',$('.quiz-middle-bar').width());
-}
+    
+    $("#next").hide();
+});
 </script>
 <style>
 .quiz-id {
@@ -374,7 +380,7 @@ margin:0px;
             </div>
             <div class="quiz-right-desc col-lg-12">
                 <div class="quiz-result">
-                   <div class="quiz-result-desc">
+                    <div class="quiz-result-desc">
                     </div>
                 </div>
                 <div class="quiz-description">

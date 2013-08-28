@@ -18,7 +18,7 @@
 
 $(document).ready( function(){
     
-    var $quizDiv = document.getElementById("quizDiv");
+    var $quizDiv = document.getElementById("quiz-body");
     var $data = <?=json_encode($data)?>; // 각 퀴즈에 대한 값과 총개수
     
     // 퀴즈 목록 생성
@@ -26,15 +26,15 @@ $(document).ready( function(){
     for(var $i=0; $i<$data['count']; $i++)
     {
         $quizDiv.innerHTML =$quizDiv.innerHTML + 
-         "<div class=\"row quiz-body-div\">"+
-         "<div class=\"col-lg-10\">"+
-         "<a href=\"<?=base_url();?>index.php/quiz/quizTest/"+$data[$i]['id']+"\" class=\"quiz-title\">Quiz "+($i+1)+"</a>"+
-         "<p class=\"quiz-description\">"+$data[$i]['question']+"</p>"+
-         "</div>"+
-         "<div class=\"col-lg-2\">"+
-         "not start"+ 
-         "</div>"+
-         "</div>";
+         '<div class="row quiz-body-div">'+
+         '<div class="col-lg-10">'+
+         '<a href="<?=base_url();?>index.php/quiz/quizTest/'+$data[$i]['id']+'" class="quiz-title">Quiz '+($i+1)+'</a>'+
+         '<p class="quiz-description">'+$data[$i]['question']+'</p>'+
+         '</div>'+
+         '<div class="col-lg-2">'+
+         'not start'+ 
+         '</div>'+
+         '</div>';
      }       
 });
 </script>
@@ -45,8 +45,7 @@ $(document).ready( function(){
     <div class="row">
         <div class="quiz-head col-lg-12">
             <legend>
-                <p><h3><strong>welcome to c language</strong></h3></p>
-                <span>bla~ bla ~ bla <span>
+                <span><h2><strong><?=$data[0]['category']?></strong></h2><span>
             </legend>
         </div>
     </div>
@@ -55,7 +54,7 @@ $(document).ready( function(){
         <div class="col-lg-8">
             <div class="row" id="quizDiv">
 
-                <div class="quiz-body col-lg-12">
+                <div id="quiz-body" class="quiz-body col-lg-12">
                 <!-- -->
                </div>
 
