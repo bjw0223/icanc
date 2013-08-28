@@ -5,6 +5,7 @@ class Auth extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper('file');
+        $this->load->helper('alert');
         $this->load->model('user_model');
     }
 
@@ -52,7 +53,6 @@ class Auth extends CI_Controller {
                                      'job'=>$job,
                                      'dateOfBirth'=>$dateOfBirth
                                    ));
-
         $this->session->set_flashdata('message','회원가입에 성공했습니다.');
         $this->_createFolder($this->input->post('email'));
         $this->load->view('footer');
@@ -91,6 +91,7 @@ class Auth extends CI_Controller {
                              'user_nickname' => $verifyResult->nickname,
                              'user_job' => $verifyResult->job,
                              'user_dateOfBirth' => $verifyResult->dateOfBirth,
+                             'user_finishQuestionNo' => $verifyResult->finishQuestionNo,
                              'is_login' => true
                             );
            $this->session->set_userdata($sess_add);

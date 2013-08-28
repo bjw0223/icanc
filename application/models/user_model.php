@@ -81,5 +81,13 @@ class User_model extends CI_Model {
         return $result;
     }
 
+    // 해결된 문제 번호 변경
+    function updateFinishQuestionNo($option)
+    {
+       $this->db->where('email',$option['email']);
+       $this->db->set('finishQuestionNo',$option['finishQuestionNo']);
+       $this->db->update('user');
+    }
+
 
 }

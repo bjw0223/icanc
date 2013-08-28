@@ -33,18 +33,18 @@
               <li class="general_sub2">상수 = 상수 꼴 형태는 Read-Only 영역이므로 bit copy 불가</li>
             </ul><br>
           <li>예 제</li>
-            <pre class="brush:cpp">
-            #include &lt;stdio.h&gt;
-            int main()
-            {
-               int a = 12;
-               char str[10] = "apple";
-               printf("%d\n", a);
-               printf("%s\n", str);
-               printf("%s\n", &amp;str[0]);
-               return 0;
-            }
-            </pre>
+<pre class="brush:cpp">
+#include &lt;stdio.h&gt;
+int main()
+{
+    int a = 12;
+    char str[10] = "apple";
+    printf("%d\n", a);
+    printf("%s\n", str);
+    printf("%s\n", &amp;str[0]);
+    return 0;
+}
+</pre>
             <img src="<?=base_url()?>asset\lib\img\tutorial\variable\6.PNG" width=260px; height=100px; style="margin-bottom:20px; margin-left:30px"><br>
             <ul>
               <li class="general_sub2">printf("%s\n", str[0]); &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:green">//변환문자열 %s는 대상을 주소로 인식</span></li>

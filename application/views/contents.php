@@ -28,7 +28,7 @@ $(window).scroll(function(){
     <div class="bs-sidebar">
        <ul class="nav bs-sidebar"> 
             <li class="">
-                <a class="nav-title" href="#">프로그램</a>
+                <a class="nav-title" href="#"  load-href="<?=base_url();?>index.php/tutorial/show/program/understanding">프로그램</a>
                 <ul class="nav">
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/program/understanding">이해</a></li>
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/program/constitute">구성</a></li>
@@ -46,28 +46,28 @@ $(window).scroll(function(){
                 <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/storage_class/storage_class">기억클래스</a>
             </li>
             <li class="">
-                <a class="nav-title" href="#">자료형</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/integer">자료형</a>
                 <ul class="nav">
                     <li class="">
-			<a class="nav-subCategory" href="#">기본</a>
-            		<ul class="nav" style="margin-left:10px">
-                         <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/integer">정수</a></li>
-                         <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/real_number">실수</a></li>
-                         <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/character">문자</a></li>
-                    </ul>
-                </li>
+					<a class="nav-subCategory" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/integer">기본</a>
+						<ul class="nav" style="margin-left:10px">
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/integer">정수</a></li>
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/real_number">실수</a></li>
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/character">문자</a></li>
+						</ul>
+					</li>
                     <li class="">
-                <a class="nav-subCategory" href="#">응용</a>
-            		<ul class="nav" style="margin-left:10px">
-          	 	     <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/array">배열</a></li>
-            		     <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/pointer">포인터</a></li>
-              		     <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/structure">구조체</a></li>
-                        </ul>
-		    </li>
+						<a class="nav-subCategory" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/array">응용</a>
+						<ul class="nav" style="margin-left:10px">
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/array">배열</a></li>
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/pointer">포인터</a></li>
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/structure">구조체</a></li>
+						</ul>
+					</li>
                 </ul>
             </li>
             <li class="">
-                <a class="nav-title" href="#">제어문</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/control_statement/selection">제어문</a>
                 <ul class="nav">
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/control_statement/selection">선택</a></li>
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/control_statement/repetition">반복</a></li>
@@ -75,7 +75,7 @@ $(window).scroll(function(){
                 </ul>
             </li>  
             <li class="">
-                <a class="nav-title" href="#">연산자</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/arithmetic">연산자</a>
                 <ul class="nav">
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/arithmetic">산술</a></li>
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/logic">관계 / 논리</a></li>
@@ -86,7 +86,7 @@ $(window).scroll(function(){
                 </ul>
             </li>  
             <li class="">
-                <a class="nav-title" href="#">함수</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/summary">함수</a>
                 <ul class="nav">
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/summary">개요</a></li>
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/many_form">여러 형태</a></li>
@@ -98,7 +98,7 @@ $(window).scroll(function(){
                 </ul>
             </li>  
             <li class="">
-                <a class="nav-title" href="#">파일</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/stream">파일</a>
                 <ul class="nav">
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/stream">스트림</a></li>
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/open">개방</a></li>

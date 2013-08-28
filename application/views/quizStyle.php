@@ -200,15 +200,22 @@ $(document).ready(function(){
                                 var $codeResult= "";
                                 for (var $value in $result) 
                                 {
-                                    $codeResult = $codeResult + $result[$value] + "<br>";
+                                    $codeResult = $codeResult + $result[$value]+"<br>";
                                 }
-                                    if( $codeResult == ("<?=$answer?>"+"<br>") )
+                                    if( $codeResult == ("<?=$answer?>") )
                                     {
                                         alert("정답입니다");
                                         var $description = "DESCRIPTION<br/><br/><?=$description?>";
                                         $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
                                         $(".quiz-description").show("blind");
                                         $(".quiz-description-desc").html($description);
+
+                                        $.ajax({
+                                                type : "POST",
+                                                url : "<?base_url()?>index.php/quiz/updateFinishQuestionNo",
+                                                data : "finishQuestionNo=<?=$id?>",
+                                                dataType : "json"
+                                                });
                                     }
                                     else
                                     {
