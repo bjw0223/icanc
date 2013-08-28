@@ -84,9 +84,22 @@ class User_model extends CI_Model {
     // 해결된 문제 번호 변경
     function updateFinishQuestionNo($option)
     {
-       $this->db->where('email',$option['email']);
-       $this->db->set('finishQuestionNo',$option['finishQuestionNo']);
-       $this->db->update('user');
+        $beforeData = $this->db->get_where('user',array('email'=>$option['email']))->row_array();
+        
+        if( $beforeData['finishQuestionNo'] < $option['finishQuestionNo'] )
+        {
+            $this->db->where_in('email',$option['email']);
+            $this->db->set('finishQuestionNo',$option['finishQuestionNo']);
+            $this->db->update('user');
+            $result = $option['finishQuestionNo'];
+        }
+        else
+        {
+            $result = $beforeData['finishQuestionNo'];
+        }
+
+        return $result;
+       
     }
 
 

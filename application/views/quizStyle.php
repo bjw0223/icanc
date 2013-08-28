@@ -86,7 +86,7 @@ body {
 .quiz-description {
     margin-top:10px;
 }
-.compileBtn {
+.compileBtn, .nextBtn {
     background-color:#08c;
     color:#ffffff;
 }
@@ -99,6 +99,8 @@ body {
         border: 0px solid #eee;
         width: 100%;
         height: auto;
+        font-size : 1.063em;
+        font-family : Nanum Gothic;
     }
     
     #codeDiv > .CodeMirror {
@@ -132,6 +134,7 @@ body {
 $(document).ready(function(){
     
     var forbidRegExp = /((switch|main|scanf|gets|getchar|getc)\s*\()|(goto\s*\:)/g;
+    var $codeResult= "";
 
     // head textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
@@ -190,29 +193,33 @@ $(document).ready(function(){
         {
             // code textarea 특수문자 처리
             $codeStr = encodeURIComponent($codeStr);
-
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/createCode",
                     data : "code="+$codeStr+"&flag=0",
                     dataType : "json",
                     success : function($result) {
-                                var $codeResult= "";
+                                if($result == "")
+                                {
+                                    $codeResult = $codeResult+"<br>";
+                                }
+
                                 for (var $value in $result) 
                                 {
                                     $codeResult = $codeResult + $result[$value]+"<br>";
                                 }
-                                    if( $codeResult == ("<?=$answer?>") )
+                                    if( $codeResult == ("<?=$answer?><br>") )
                                     {
                                         alert("정답입니다");
                                         var $description = "DESCRIPTION<br/><br/><?=$description?>";
                                         $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
                                         $(".quiz-description").show("blind");
                                         $(".quiz-description-desc").html($description);
+                                        $("#next").show("blind");
 
                                         $.ajax({
                                                 type : "POST",
-                                                url : "<?base_url()?>index.php/quiz/updateFinishQuestionNo",
+                                                url : "<?=base_url()?>index.php/quiz/updateFinishQuestionNo",
                                                 data : "finishQuestionNo=<?=$id?>",
                                                 dataType : "json"
                                                 });
@@ -227,11 +234,19 @@ $(document).ready(function(){
 
                             },
                    error : function() { 
-                                alert("시간이 초과되었습니다"); 
+                                alert("Time Ove"); 
                            }
                     });
         }
     });
+
+    // 다음 문제로
+    $("#next").click( function()
+    {
+       document.location.href= "<?=base_url()?>index.php/quiz/quizTest/<?=$id+1?>"
+    });
+
+
 
 }); //ready close 
 </script>
@@ -256,6 +271,8 @@ $(document).ready(function() {
     $('.quiz-error').css('bottom',$(window).height() - $('.quiz-middle-footer').offset().top);
     $('.quiz-error').css('min-height',70);
     $('.quiz-error').css('width',$('.quiz-middle-bar').width());
+    
+    $("#next").hide();
 });
 </script>
 <div class="row">
@@ -313,6 +330,7 @@ $(document).ready(function() {
             </div>
             <div class="quiz-middle-footer col-lg-12">
                 <button class="btn compileBtn" id="compile" name="compile"> Compile </button>
+                <button class="btn nextBtn" id="next" name="next"> Next Quiz </button>
             </div>
         </div>
    </div>
