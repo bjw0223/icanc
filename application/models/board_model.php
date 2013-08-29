@@ -178,6 +178,7 @@ class Board_model extends CI_Model {
     function getMyList($search_param=null,$page=1,$list_count=10,$nickname)
     {
 		$this->db->where('writer', $nickname);
+		$this->db->where('is_deleted', 0);
         $this->db->order_by("srl", "desc");
         $this->db->limit($list_count , ($page-1)*$list_count );
 
@@ -204,6 +205,14 @@ class Board_model extends CI_Model {
 		return $data;
 
     }
+    function getWriter($srl)
+    {
+        $this->db->select('writer');
+		$this->db->where('srl', $srl);
+        $query=$this->db->get('board')->row();
+        return $query;
+    }
+
 }
 
 
