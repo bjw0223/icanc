@@ -48,7 +48,6 @@ class Board extends CI_Controller {
 		$result['data'] = $list;
 
 		$comments = $this->board_model->getComments($srl);
-		$result['comments'] = $comments;	
 
 		$this->_head();
 		$this->load->view('navbar');
@@ -239,7 +238,11 @@ class Board extends CI_Controller {
 		
 		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$parent_srl);
 	}
-
+	
+	function delComment($srl)
+	{
+		
+	}
 /*	
 	function returnList($srl, $board)
 	{

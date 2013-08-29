@@ -14,27 +14,27 @@
 	
         $time = date("Y-m-d g:i a", strtotime($data->modified_time));
 		
-		echo "<div class='row'>
-				<div class='col-lg-7 col-offset-4'>
-					<div class='row' style='margin:0px 0px 0px 0px;background-color:#eeeeee;'>
-						<div class='col-lg-3'>".
+		echo "<div class='row'>".
+				"<div class='col-lg-7 col-offset-4'>".
+					"<div class='row' style='margin:0px 0px 0px 0px;background-color:#eeeeee;'>".
+						"<div class='col-lg-3'>".
 							$data->writer.
-						"</div>
-						<div class='col-lg-3'>
-						</div>
-						<div class='col-lg-3'>".
+						"</div>".
+						"<div class='col-lg-3'>".
+						"</div>".
+						"<div class='col-lg-3'>".
 							$time.
-						"</div>
-						<div class='col-lg-3'>
-						</div>
-					</div>
-					<div class='row' style='margin:0px 0px 0px 0px;background-color:#eee0e0;'>
-						<div class='col-lg-11'>".
+						"</div>".
+						"<div class='col-lg-3'>".
+						"</div>".
+					"</div>".
+					"<div class='row' style='margin:0px 0px 0px 0px;background-color:#eee0e0;'>".
+						"<div class='col-lg-11'>".
 							$data->text.
-						"</div>
-					</div>
-				</div>
-			</div>";
+						"</div>".
+					"</div>".
+				"</div>".
+			"</div>";
 	}
 ?>
 

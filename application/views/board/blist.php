@@ -100,7 +100,11 @@ table th {
                 echo "<tr>". 
                         "<td>$data->srl</td>". 
                         "<td style='text-align:left;'>".
-							"<a href='".base_url()."index.php/board/doc_view/$board/$page/$data->srl'>$data->title</a>".
+							"<a href='".base_url()."index.php/board/doc_view/$board/$page/$data->srl'>$data->title";
+								if($data->comments>0){
+									echo " [".$data->comments."]";
+								}
+				echo		"</a>".
 						"</td>".
                         "<td>$data->writer</td>".
                         "<td>$time</td>".
