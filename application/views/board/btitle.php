@@ -15,6 +15,8 @@
 				echo 'FAQ';
 			}else if($board=='qna'){
 				echo 'Q&A';
+			}else if($board=='free'){
+				echo 'Free Board';
 			}
 		?>
 		</div>

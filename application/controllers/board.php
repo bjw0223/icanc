@@ -47,12 +47,17 @@ class Board extends CI_Controller {
        	$list = $this->board_model->get($srl);
 		$result['data'] = $list;
 
+		$comments = $this->board_model->getComments($srl);
+		$result['comments'] = $comments;	
+
 		$this->_head();
 		$this->load->view('navbar');
 		$this->load->view('reference');
 		$this->load->view('board/board_contents');
 		$this->load->view('board/doc_view',$result);
+		$this->load->view('board/comment', $comments);
 		$this->load->view('footer');
+
 	}
 
 	function documentWrite($board) //문서작성
@@ -219,6 +224,20 @@ class Board extends CI_Controller {
 		$this->load->model('board_model');
 		$this->board_model->good($srl);
 		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
+	}
+
+	function addComment($board, $page, $parent_srl)
+	{
+		$text = $_POST['text'];
+		$nickname = $this->session->userdata('user_nickname');
+
+        $insert_data['writer'] = $nickname;
+        $insert_data['text'] = $text;
+
+		$this->load->model('board_model');
+		$this->board_model->addComment($parent_srl, $insert_data);
+		
+		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$parent_srl);
 	}
 
 /*	
