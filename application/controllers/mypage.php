@@ -22,14 +22,6 @@ class Mypage extends CI_Controller {
         $this->load->view('footer');
 	}
 	
-    // 회원 초대 폼
-    public function invitation()
-    {
-        $this->load->view('header');
-        $this->_head('invitation');
-        $this->load->view('footer');
-	}
-	
     // 정보 수정 폼
     public function modification()
     {
@@ -84,8 +76,27 @@ class Mypage extends CI_Controller {
     // 파일삭제	
     function delDoc($srl)
     {
-       	$this->load->model('board_model');
-		$this->board_model->delDoc($srl);
+        $this->load->model('board_model');
+		$data = $this->board_model->getWriter($srl);
+		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
+		{
+			if(($nick=$this->session->userdata('user_nickname'))==$data->writer)
+			{
+				$this->board_model->delDoc($srl);
+                redirect( base_url().'index.php/mypage/showdir');
+			}
+			else
+			{	
+				$this->session->set_flashdata("message",'작성자만 삭제 가능합니다');
+                redirect( base_url().'index.php/mypage/showdir');
+			}
+		}
+		else // 비로그인시 로그인창으로 리다이렉트
+        {
+            $this->session->set_flashdata("message","로그인후 사용 가능합니다");
+            redirect( base_url()."index.php/auth/login" );
+        }
+
         redirect( base_url().'index.php/mypage/showdir');
     }
     // 회원 탈퇴 폼
