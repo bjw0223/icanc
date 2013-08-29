@@ -209,6 +209,7 @@ $(document).ready(function(){
                                     {
                                         alert("정답입니다");
                                         var $description = "DESCRIPTION<br/><br/><?=$description?>";
+                                        $(".quiz-result-desc").html("");
                                         $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
                                         $(".quiz-description").show("blind");
                                         $(".quiz-description-desc").html($description);

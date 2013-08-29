@@ -28,10 +28,11 @@ class Quiz_model extends CI_Model {
 
 // 진영시작
     
-    // 퀴즈 생성
+    // 코딩 에디터 퀴즈 생성
     function getCodingQuiz($id)
     {
-        $result = $this->db->get_where('coding_quiz',array('id'=>$id))->row();
+        $this->db->join('quiz_category','coding_quiz.categoryNo = quiz_category.id','rigth');
+        $result = $this->db->get_where('coding_quiz',array('coding_quiz.id'=>$id))->row();
         return $result;
     }
 
@@ -41,29 +42,35 @@ class Quiz_model extends CI_Model {
         $result = $this->db->get_where('coding_code',array('id'=>$id))->row();
         return $result;
     }
-
-    // 해당 카테고리 내의 문제 개수 확인 
-    function getCountQuestion($category)
-    {
-        $this->db->where(array('category'=>$category));
-        $result['count'] = $this->db->count_all_results('coding_quiz');
-        return $result;
-    }
     
     // 카테고리 종류 및 개수
     function getCategory()
     {
-        $query = $this->db->query('SELECT DISTINCT * FROM coding_quiz GROUP BY category ORDER BY id ASC');
+        // 카테고리 목록  
+        $query = $this->db->query('SELECT * FROM quiz_category ORDER BY id ASC');
         $count['count'] = $query->num_rows();
         $data = $query->result_array();
-        $result = array_merge($count,(array)$data); 
+
+        // 카테고리별 문제 개수
+        $query = $this->db->query('SELECT DISTINCT * FROM (SELECT *  FROM coding_quiz ORDER BY categoryNo ASC, questionNo DESC) AS coding GROUP BY coding.categoryNo');
+        $rawData = $query->result_array();
+        for($i=0; $i<$query->num_rows(); $i++)
+        {
+           $data[$i]['numInCategory'] = $rawData[$i]['questionNo'];
+        }
+
+        $result = array_merge($count,$data); 
+
         return $result;
     }
     
-    // 해당 카테고리 내의 레코드 가져오기 
-    function getQuestionId($category)
+    // 해당 카테고리 내의 문제 및 개수 
+    function getCategoryQuestion($categoryNo)
     {
-        $result = $this->db->get_where('coding_quiz',array('category'=>$category))->result_array();
+        $query = $this->db->query('SELECT * FROM quiz_category JOIN coding_quiz ON coding_quiz.categoryNo = quiz_category.id WHERE categoryNo='.$categoryNo);
+        $count['count'] = $query->num_rows();
+        $data = $query->result_array();
+        $result = array_merge($count,$data);
         return $result;
     }
 

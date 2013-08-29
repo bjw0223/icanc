@@ -8,7 +8,6 @@ class Quiz extends CI_Controller {
         $this->load->model('user_model');
         $this->load->helper('alert');
     }
- //지웅 
     
     public function index()
     {
@@ -20,12 +19,11 @@ class Quiz extends CI_Controller {
         $this->load->view('quiz_contents',array('data'=>$data));
         $this->load->view('footer');
     }
-
-    public function title($category)
+    
+    // quiz list 
+    public function title($id)
     {
-        $countData= $this->quiz_model->getCountQuestion($category);
-        $idData =$this->quiz_model->getQuestionId($category);
-        $data = array_merge($countData,(array)$idData);
+        $data =$this->quiz_model->getCategoryQuestion($id);
 
         $data['active']='quiz';
         $this->load->view('header');
@@ -65,8 +63,6 @@ class Quiz extends CI_Controller {
         delete_files("./user/14/freeCode/save/$fname");
         echo json_encode( $fname);
     }
-//지웅끝
-
 
 
 //진영시작

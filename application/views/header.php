@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css' rel='stylesheet' type='text/css'>
         <link href="<?=base_url();?>asset/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" media="screen"> 
         <link href="<?=base_url();?>asset/lib/bootstrap/dist/css/docs.css" rel="stylesheet" media="screen"> 
         <!--<link href="<?=base_url();?>asset/lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen">-->
@@ -260,12 +260,11 @@ color:#36545F;
        #reference .bs-sidenav > li > a:hover {
            font-size:15px;
        }
-
         </style>
 
         <title></title>
     </head>
-    <body>
+    <body style="font-family:Nanum Gothic Coding">
     <!--세션 플래시의 메세지 --!>
     <?php
         if( $this->session->flashdata('message'))

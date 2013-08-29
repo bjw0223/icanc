@@ -42,7 +42,7 @@ height:52px;
 
 $(document).ready(function() {
         
-       var $categoryDiv = document.getElementById("categoryDiv");
+    var $categoryDiv = document.getElementById("categoryDiv");
     var $data = <?=json_encode($data)?>; // 각 퀴즈에 대한 값과 총개수
     
     // 퀴즈 목록 생성
@@ -53,14 +53,15 @@ $(document).ready(function() {
             '<div class="row quiz-body-div">'+
             '<div class="col-lg-12">'+
             '<p class="quiz-title">'+$data[$i]['category']+'</p>'+
-            '<p class="quiz-description">temp quiz description</p>'+
+            '<p class="quiz-description">'+$data[$i]['categoryDescription']+'</p>'+
             '<div class="row">'+
             '<div class="col-lg-10 col-offset-1 quiz-box">'+
             '<div class="col-lg-9 quiz-box-description">'+
-            'temp quiz view'+ 
             '</div>'+
             '<div class="col-lg-3 quiz-btn-box">'+
-            '<a href="<?=base_url();?>index.php/quiz/title/'+$data[$i]['category']+'" class="quiz-btn" data-in="data-in">data-in</a>'+
+            '<a href="<?=base_url();?>index.php/quiz/title/'+$data[$i]['id']+
+            '" class="quiz-btn" data-in="'+$data[$i]['numInCategory']+' Exercises">'+
+            $data[$i]['numInCategory']+' Esxercises</a>'+
             '</div>'+
             '</div>'+
             '</div>'+

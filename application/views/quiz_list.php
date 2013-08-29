@@ -20,11 +20,20 @@ $(document).ready( function(){
     
     var $quizDiv = document.getElementById("quiz-body");
     var $data = <?=json_encode($data)?>; // 각 퀴즈에 대한 값과 총개수
+    var $flag = "";
     
     // 퀴즈 목록 생성
     $quizDiv.innerHTML = "";
     for(var $i=0; $i<$data['count']; $i++)
     {
+        if( $data[$i]['id'] <= <?=$this->session->userdata('user_finishQuestionNo')?>)
+        {
+            $flag = 'SUCCESS';
+        }
+        else
+        {
+            $flag = 'Not SUCCESS';
+        }
         $quizDiv.innerHTML =$quizDiv.innerHTML + 
          '<div class="row quiz-body-div">'+
          '<div class="col-lg-10">'+
@@ -32,7 +41,7 @@ $(document).ready( function(){
          '<p class="quiz-description">'+$data[$i]['question']+'</p>'+
          '</div>'+
          '<div class="col-lg-2">'+
-         'not start'+ 
+         $flag + 
          '</div>'+
          '</div>';
      }       
