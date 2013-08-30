@@ -35,7 +35,7 @@
 	$srl=$this->uri->segment($uri_num);
 ?>
 
-<div id="faq" class="col-lg-9">
+<div id="doc_view" class="col-lg-9">
         <div class="row">
             <div class="col-lg-12 title-block">
                 <div class="col-lg-9">
