@@ -15,7 +15,7 @@ class Board extends CI_Controller {
 	/*게시판 리스트 출력 함수*/
 	public function blist($board='faq', $page=1, $list_count=10)
     {
-//      $data['selected']="FAQ";
+        $selected['selected']=$board;
         $search_param = null;
         $data['search_key'] = '';
         $data['search_keyword'] = '';
@@ -35,7 +35,7 @@ class Board extends CI_Controller {
         $this->load->view('navbar');
         $this->load->view('reference');
         $this->load->view('board/btitle', $data);
-		$this->load->view('board/board_contents');
+		$this->load->view('board/board_contents',$selected);
         $this->load->view('board/blist',$list);
         $this->load->view('footer');
 	}

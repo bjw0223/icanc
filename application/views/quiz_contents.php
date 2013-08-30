@@ -18,24 +18,25 @@
     padding-left:0px;
     padding-bottom:5px;
     padding-right:0px;
-    margin-top:10px;
-    background-color:#eeeeee;
-height:52px;
-}
-.quiz-box:hover {
-    background-color:#dddddd;
-
+    padding-top:45px;
 }
 .quiz-box-description {
     line-height:38px;
 }
 .quiz-btn-box {
-    line-height:38px;
     text-align:right;
 }
+.quiz-box:hover {
+    padding-top:0px;
+    font-size:35px;
+}
 .quiz-btn {
-    border-radius:10px;
-
+    height:60px;
+    width:60px;
+    border-radius:30px;
+}
+.quiz-btn:hover {
+    text-decoration:none;
 }
 </style>
 <script>
@@ -51,33 +52,28 @@ $(document).ready(function() {
     {
         $categoryDiv.innerHTML =$categoryDiv.innerHTML + 
             '<div class="row quiz-body-div">'+
-            '<div class="col-lg-12">'+
-            '<p class="quiz-title">'+$data[$i]['category']+'</p>'+
-            '<p class="quiz-description">'+$data[$i]['categoryDescription']+'</p>'+
-            '<div class="row">'+
-            '<div class="col-lg-10 col-offset-1 quiz-box">'+
-            '<div class="col-lg-9 quiz-box-description">'+
-            '</div>'+
-            '<div class="col-lg-3 quiz-btn-box">'+
-            '<a href="<?=base_url();?>index.php/quiz/title/'+$data[$i]['id']+
-            '" class="quiz-btn" data-in="'+$data[$i]['numInCategory']+' Exercises">'+
-            $data[$i]['numInCategory']+' Esxercises</a>'+
-            '</div>'+
-            '</div>'+
-            '</div>'+
-            '</div>'+
+                '<div class="col-lg-8">'+
+                    '<p class="quiz-title">'+$data[$i]['category']+'</p>'+
+                    '<p class="quiz-description">'+$data[$i]['categoryDescription']+'</p>'+
+                '</div>'+
+                '<div class="col-lg-4">'+
+                    '<div class="col-lg-12 quiz-box">'+
+                        '<div class="col-lg-6 quiz-box-description">'+
+                        '</div>'+
+                        '<div class="col-lg-6 quiz-btn-box">'+
+                            '<a href="<?=base_url();?>index.php/quiz/title/'+$data[$i]['id']+
+                                '" class="quiz-btn" data-in="'+$data[$i]['numInCategory']+' Exercises">'+
+                                $data[$i]['numInCategory']+' Esxercises</a>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
             '</div>';
      }       
    $(".quiz-box").hover( function(){
-        target = $(this).children().children('.quiz-btn');
-        target.removeClass();     
-        target.addClass("btn btn-info quiz-btn");     
-        target.html("GO");
+        target = $(this).children().children('.quiz-btn').html("<i class='icon-gamepad icon-2x'></i>");
     },function(){
         target = $(this).children().children('.quiz-btn');
         data = target.attr('data-in');
-        target.removeClass();     
-        target.addClass("quiz-btn");     
         target.html(data);
     });
      

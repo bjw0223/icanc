@@ -12,6 +12,19 @@
     margin:20px 0px 10px 20px;
     font-size:15px;
 }
+.my-icon-check {
+    color:#5BBD43;
+}
+.my-icon-unlock {
+    color:rgb(168, 168, 168);
+}
+.my-icon-lock {
+    color:rgb(253, 74, 74);
+}
+.quiz-back-btn {
+padding:5px 20px 5px 20px;
+        background-color:#36545F;
+}
 </style>
 
 <script>
@@ -26,23 +39,27 @@ $(document).ready( function(){
     $quizDiv.innerHTML = "";
     for(var $i=0; $i<$data['count']; $i++)
     {
-        if( $data[$i]['id'] <= <?=$this->session->userdata('user_finishQuestionNo')?>)
+        var $id  = parseInt($data[$i]['id']); 
+        var $finishQuestionNo = parseInt("<?=$this->session->userdata('user_finishQuestionNo')?>")+1;
+        if( $id < $finishQuestionNo )
         {
-            $flag = 'SUCCESS';
+            $flag = '<i class="icon-ok my-icon-check"></i>';
+        }
+        else if(  $id  == $finishQuestionNo ) 
+        {
+            $flag = '<i class="icon-unlock my-icon-unlock"></i>';
         }
         else
         {
-            $flag = 'Not SUCCESS';
+            $flag = '<i class="icon-lock my-icon-lock"></i>';
         }
+
         $quizDiv.innerHTML =$quizDiv.innerHTML + 
          '<div class="row quiz-body-div">'+
-         '<div class="col-lg-10">'+
-         '<a href="<?=base_url();?>index.php/quiz/quizTest/'+$data[$i]['id']+'" class="quiz-title">Quiz '+($i+1)+'</a>'+
-         '<p class="quiz-description">'+$data[$i]['question']+'</p>'+
-         '</div>'+
-         '<div class="col-lg-2">'+
-         $flag + 
-         '</div>'+
+             '<div class="col-lg-10">'+
+                 '<a href="<?=base_url();?>index.php/quiz/quizTest/'+$data[$i]['id']+'" class="quiz-title">Quiz '+($i+1)+" "+$flag+'</a>'+
+                 '<p class="quiz-description">'+$data[$i]['question']+'</p>'+
+             '</div>'+
          '</div>';
      }       
 });
@@ -75,7 +92,7 @@ $(document).ready( function(){
     </div>
     <div class="row">
         <div class="quiz-tail">
-            <a href="<?=base_url();?>index.php/quiz" class="btn btn-default">back to contents</a>
+            <a href="<?=base_url();?>index.php/quiz" class="btn btn-default quiz-back-btn"><i class="icon-arrow-left icon-1x"></i></a>
         </div>
     </div> 
 

@@ -13,8 +13,7 @@ $(document).ready(function() {
         "insertdatetime media nonbreaking save table contextmenu directionality",
         "emoticons template paste textcolor "
         ],
-        toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-        toolbar2: "print preview media | forecolor backcolor emoticons",
+        toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | forecolor backcolor emoticons",
         image_advtab: true,
         templates: [
         {title: 'Test template 1', content: 'Test 1'},
@@ -28,37 +27,46 @@ $(document).ready(function() {
         window.setTimeout(function() {
             ed.setProgressState(0); // Hide progress
             $(".modal-body").html(ed.getContent());
+            $(".modal-head").html($("#docTitle").val());
             $("#myModal").modal("show");
-            }, 1000);
+            }, 500);
     });
-    /*
-    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-                                    lineNumbers: true,
-                                    matchBrackets: true,
-                                    mode: "text/x-csrc"
-                                });
-                                */
-
-/*    
-function ajaxLoad() {
-    var ed = tinyMCE.get('content');
-
-    // Do you ajax call here, window.setTimeout fakes ajax call
-    ed.setProgressState(1); // Show progress
-    window.setTimeout(function() {
-            ed.setProgressState(0); // Hide progress
-            ed.setContent('HTML content that got passed from server.');
-            }, 3000);
-}
-*/
 });
 
 </script>
-<div id="document_write" class="col-lg-9" style="margin-top:30px;">
+<style>
+#document_write {
+    background-color:#f5f5f5;
+    padding:5px;
+    border-radius:5px;
+    border:1px solid #e3e3e3;
+    margin-bottom:30px;
+    margin-top:30px;
+}
+.title-block, .editor-block, .btn-block {
+    margin-bottom:10px;
+}
+.modal {
+    top:50px;
+}
+.modal-dialog {
+    width:70%;
+}
+.modal-header {
+    font-size:15px;
+    font-weight:bold;
+    color:#716b7a;
+          line-height:15px;
+}
+</style>
+
+<div id="document_write" class="col-lg-9">
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">
-            <div class="modal-content"  style="width:850px;">
+            <div class="modal-content" >
                 <div class="modal-header">
+                    <span class="modal-head">
+                    </span>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -68,23 +76,23 @@ function ajaxLoad() {
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <div class="row">
 <?php
 	$board=$this->uri->segment(3);
 ?>
     <form action="<?=base_url()?>index.php/board/saveModifiedDoc/<?=$board?>/<?=$data->srl?>" method="POST">
-            <div class="col-lg-12 well">
+    <div class="row title-block">
+        <div class="col-lg-12">
             <input type="text" id="docTitle" name="docTitle" value="<?=$data->title?>" class="form-control" placeholder="제목"/>
-            </div>
         </div>
-    <div class="row">
-        <div class="col-lg-12 well">
+    </div>
+    <div class="row editor-block">
+        <div class="col-lg-12">
             <textarea id="textEditor" name="textEditor" style="min-height:300px;"><?=$data->text?></textarea>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-lg-12 well text-right">
+    <div class="btn-block">
+        <div class="text-right">
             <button type="button" id="previewBtn" class="btn btn-info">미리보기</button>
             <button type="submit" id="saveBtn" class="btn btn-success">작성하기</button>
         </div>

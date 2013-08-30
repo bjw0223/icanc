@@ -27,6 +27,7 @@ $(document).ready(function() {
         window.setTimeout(function() {
             ed.setProgressState(0); // Hide progress
             $(".modal-body").html(ed.getContent());
+            $(".modal-head").html($("#docTitle").val());
             $("#myModal").modal("show");
             }, 500);
     });
@@ -64,7 +65,8 @@ $(document).ready(function() {
         <div class="modal-dialog">
             <div class="modal-content" >
                 <div class="modal-header">
-                    미리보기
+                    <span class="modal-head">
+                    </span>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
