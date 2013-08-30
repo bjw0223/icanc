@@ -42,7 +42,7 @@ class Board extends CI_Controller {
 	
 	function doc_view($board, $page, $srl)
 	{	
-
+        $selected['selected']=$board;
        	$this->load->model('board_model');
        	$list = $this->board_model->get($srl);
 		$result['data'] = $list;
@@ -52,7 +52,7 @@ class Board extends CI_Controller {
 		$this->_head();
 		$this->load->view('navbar');
 		$this->load->view('reference');
-		$this->load->view('board/board_contents');
+		$this->load->view('board/board_contents', $selected);
 		$this->load->view('board/doc_view',$result);
 		$this->load->view('board/comment', $comments);
 		$this->load->view('footer');
@@ -63,10 +63,11 @@ class Board extends CI_Controller {
     {
         if( $this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
         {   
+        	$selected['selected']=$board;
             $this->_head();
             $this->load->view('navbar');
             $this->load->view('reference');
-            $this->load->view('board/board_contents');
+            $this->load->view('board/board_contents', $selected);
             $this->load->view('board/document_write');
             $this->load->view('footer');
         }
@@ -172,10 +173,12 @@ class Board extends CI_Controller {
 
 		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
 		{
-		    $this->_head();
+        	$selected['selected']=$board;
+		    
+			$this->_head();
             $this->load->view('navbar');
             $this->load->view('reference');
-            $this->load->view('board/board_contents');
+            $this->load->view('board/board_contents', $selected);
             $this->load->view('board/document_reply', $data);
             $this->load->view('footer');
       	}
@@ -194,6 +197,8 @@ class Board extends CI_Controller {
 		{
 			if(($nick=$this->session->userdata('user_nickname'))==$writer)//일치했을때 삭제
 			{
+        		$selected['selected']=$board;
+				
 				$this->load->model('board_model');
 				$list = $this->board_model->get($srl);
 				$result['data'] = $list;
@@ -201,7 +206,7 @@ class Board extends CI_Controller {
 				$this->_head();
         		$this->load->view('navbar');
         		$this->load->view('reference');
-        		$this->load->view('board/board_contents');
+        		$this->load->view('board/board_contents', $selected);
         		$this->load->view('board/document_modify', $result);
         		$this->load->view('footer');
 			}
