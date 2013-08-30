@@ -9,7 +9,7 @@
 	$srl=$this->uri->segment($uri_num);
 ?>
 
-<div id="faq" class="col-lg-9" style="margin:30px 0px 50px 0px;background-color:#eeeeee;">
+<div id="doc_view" class="col-lg-9" style="margin:30px 0px 50px 0px;background-color:#eeeeee;">
         <div class="row well" style="padding:8px;margin-bottom:0px;">
             <div class="col-lg-12" style="min-height:60px;background-color:white;">
                 <div style="padding:10px 0px 0px 5px;">
