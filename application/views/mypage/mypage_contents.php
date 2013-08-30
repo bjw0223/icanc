@@ -25,26 +25,26 @@
 <!-- -->
     <div class="bs-sidebar my-sidebar" style="padding:0px 10px 0px 10px;">
         <ul class="nav bs-sidenav my-sidenav"> 
-            <li class="active">
+            <li class="<?=$selected == 'info' ? 'active' : '';?>">
                 <a href="<?=base_url();?>index.php/mypage/info">
                     내정보
                 </a>
             </li>
-            <li class="active">
+            <li class="<?=$selected == 'modification' || $selected == 'basicinfomodify' || $selected == 'pwdmodify' ? 'active' : '';?>">
                 <a href="<?=base_url();?>index.php/mypage/modification">
                     정보수정
                 </a>
             </li>
-            <li class="active">
+            <li class="<?=$selected == 'my document' ? 'active' : '';?>">
                 <a href="<?=base_url();?>index.php/mypage/showdir">
                     파일관리
                 </a>
             </li>
-            <li class="active">
+            <li class="<?=$selected == 'signout' ? 'active' : '';?>">
                 <a href="<?=base_url();?>index.php/mypage/signout">
                     회원탈퇴
                 </a>
-                    </li>
+            </li>
         </ul>
     </div>
 

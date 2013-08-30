@@ -14,10 +14,12 @@ $(document).ready(function() {
         if( $(this).hasClass('active') == true )
         {
             $(this).removeClass('active');
+            $(this).html("Reference<i class='icon-chevron-up icon-large'></i>");
         }
         else
         {
             $(this).addClass('active');
+            $(this).html("Reference<i class='icon-chevron-down icon-large'></i>");
         }
     });
     $('#showAllRefBtn').click(function(){

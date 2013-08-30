@@ -82,6 +82,7 @@ $(document).ready(function() {
     border-radius:10px;
 /*    background-color:#26444F;*/
     color:gold;
+    cursor:pointer;
 }
 
 .my-navbar .my-nav-tap > div >a, #logout_div > div > a,#login_div > div > a{
@@ -109,7 +110,7 @@ $(document).ready(function() {
         </div>
         <div class="col-lg-7 my-nav-tap">
             <div class="col-lg-2 <?=$active == 'startIcanc' ? 'active':'';?>" href="<?=base_url();?>index.php/start">Start ICANC</div>
-            <div class="col-lg-2 reference_btn" href="#">Reference</div>
+            <div class="col-lg-2 reference_btn" href="#">Reference<i class='icon-chevron-up icon-large'></i></div>
             <div class="col-lg-2 <?=$active == 'tutorial' ? 'active':'';?>" href="<?=base_url();?>index.php/tutorial">Tutorial</div>
             <div class="col-lg-2 <?=$active == 'quiz' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz">Quiz</div>
             <div class="col-lg-2 <?=$active == 'freeCoding' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz/freeCoding">Free Coding</div>
@@ -125,7 +126,7 @@ $(document).ready(function() {
         <!--logout button-->
         <div id="logout_div" class="col-lg-3" style="text-align:right;">
             <div class="col-lg-6 name" style="text-align:right;"><a id="welcome" href="<?=base_url()?>index.php/mypage"><?=$this->session->userdata('user_nickname');?>님</a></div>
-            <div class="col-lg-3" href="<?=base_url()?>index.php/mypage">mypage</div>
+            <div class="col-lg-3" href="<?=base_url()?>index.php/mypage/checkPwd">mypage</div>
             <div class="col-lg-3" href="<?=base_url()?>index.php/auth/logout">logout</div>
         </div>
     </div>

@@ -1,5 +1,31 @@
 <style>
-
+#faq {
+    padding:5px;
+    border-radius:5px;
+    border:1px solid #e3e3e3;
+    margin-top:30px;
+    margin-bottom:30px;
+    color:#716b7a;
+}
+.title-block {
+    padding:10px;
+}
+.title-block > div {
+    padding-left:20px;
+    padding-right:20px;
+}
+.title-block span {
+    font-size:18px;
+    font-weight:bold;
+}
+.text-block {
+    padding:10px;
+}
+.text-block > div {
+    padding: 10px 20px 10px 20px;
+    border-top:1px solid #eeeeee;
+    border-bottom:1px solid #eeeeee;
+}
 </style>
 <?php
 	$uri_num=$this->uri->total_segments();
@@ -9,37 +35,37 @@
 	$srl=$this->uri->segment($uri_num);
 ?>
 
-<div id="doc_view" class="col-lg-9" style="margin:30px 0px 50px 0px;background-color:#eeeeee;">
-        <div class="row well" style="padding:8px;margin-bottom:0px;">
-            <div class="col-lg-12" style="min-height:60px;background-color:white;">
-                <div style="padding:10px 0px 0px 5px;">
-                    <span class="col-lg-9" style="font-size:28px;font-weight:bold;"><?=$data->title?></span>
+<div id="doc_view" class="col-lg-9">
+        <div class="row">
+            <div class="col-lg-12 title-block">
+                <div class="col-lg-9">
+                    <span><?=$data->title?></span>
                 </div>
-                <div style="padding:12px 10px 0px 0px;">
-                    <p class="pull-right" style="font-weight:bold;"><?=$data->modified_time?></p>
-                </div>
-            </div>
-        </div>
-        <div class="row well" style="padding:8px;margin-bottom:0px;">
-            <div class="col-lg-12" style="min-height:35px;background-color:white;">
-                <div class="col-lg-8" style="padding:10px 0px 0px 20px;">
-                    <p style="font-weight:bold;">작성자 : <?=$data->writer?></p>
-                </div>
-                <div  class="col-lg-2" style="padding:10px 10px 0px 0px;">
-                    <p class="pull-right" style="font-weight:bold;">조회수 : <?=$data->hits?></p>
-                </div>
-                <div  class="col-lg-2" style="padding:10px 10px 0px 0px;">
-                    <p class="pull-right" style="font-weight:bold;">추천수 : <?=$data->goods?></p>
+                <div class="col-lg-3">
+                    <p class="pull-right"><?=$data->modified_time?></p>
                 </div>
             </div>
         </div>
-        <div class="row well" style="padding:8px;margin-bottom:0px;">
-            <div class="col-lg-12" style="padding:20px 30px 20px 30px;overflow:auto;min-height:350px;background-color:white;">
+        <div class="row info-block">
+            <div class="col-lg-12 info-block">
+                <div class="col-lg-8">
+                    <p>작성자 : <?=$data->writer?></p>
+                </div>
+                <div  class="col-lg-2">
+                    <p class="pull-right">조회수 : <?=$data->hits?></p>
+                </div>
+                <div  class="col-lg-2">
+                    <p class="pull-right">추천수 : <?=$data->goods?></p>
+                </div>
+            </div>
+        </div>
+        <div class="row text-block">
+            <div class="col-lg-12">
                 <?=$data->text?>
             </div> 
         </div>
-        <div class="row well" style="padding:8px;margin-bottom:0px;">
-            <div class="col-lg-8">
+        <div class="row button-block">
+            <div class="col-lg-8 button-block">
                 <a href="<?=base_url();?>index.php/board/good/<?=$board?>/<?=$page?>/<?=$data->srl?>"><button type="button" class="btn btn-info">좋아요 <?=$data->goods?></button></a>
             </div>
             <div class="col-lg-1">
@@ -47,7 +73,7 @@
 					<input type="hidden" name="writer" value="<?=$data->writer?>">
 					<?php
 						if(($nick=$this->session->userdata('user_nickname'))==$data->writer){
-                			echo "<button class='btn'><i class='icon-pencil icon-large'></i></button>";
+                			echo "<button class='btn' title='수정'><i class='icon-pencil icon-large'></i></button>";
 						}
 					?>
 				</form>
@@ -57,7 +83,7 @@
 					<input type="hidden" name="writer" value="<?=$data->writer?>">
 					<?php
 						if(($nick=$this->session->userdata('user_nickname'))==$data->writer){
-                			echo "<button class='btn'><i class='icon-trash icon-large'></i></button>";
+                			echo "<button class='btn' title='삭제'><i class='icon-trash icon-large'></i></button>";
 						}
 					?>
 				</form>
@@ -69,14 +95,14 @@
 					<?php 
 						//답글에 답글을 달지 못하도록 하는 부분
 						if($data->reply_srl==0){
-							echo "<button class='btn'><i class='icon-reply icon-large'></i></button>";
+							echo "<button class='btn' title='댓글'><i class='icon-reply icon-large'></i></button>";
 						}
 						
 					?>
 				</form>
 			</div>
 			<div class="col-lg-1">
-                <a href="<?=base_url();?>index.php/board/blist/<?=$board?>/<?=$page?>"><button type="button" class="btn"><i class="icon-reorder icon-large"></i></button></a>
+                <a href="<?=base_url();?>index.php/board/blist/<?=$board?>/<?=$page?>"><button type="button" class="btn" title="목록"><i class="icon-reorder icon-large"></i></button></a>
             </div>
 
         </div>

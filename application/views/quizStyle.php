@@ -87,7 +87,6 @@ body {
     background-color:#08c;
     color:#ffffff;
 }
-
 </style>
 
 <style>
@@ -175,6 +174,8 @@ $(document).ready(function(){
     $("#compile").click( function()
     {
         // CodeMirror에서 code textare로 값 보내기
+            $("#myModal").css('top',($(window).height()/2-70) +"px");
+            $("#myModal").modal("show");
         $code.save();
 
         var $codeStr = document.getElementById("code").value;
@@ -183,6 +184,7 @@ $(document).ready(function(){
         if( ($checkCodeStr = forbidRegExp.exec($codeStr)) != null )
         {
             // 사용불가 알림창 표시위한 공백 및 'i', ':' 제거
+            $("#myModal").modal("hide");
             $errorStr = $checkCodeStr[0].replace(/^\s*|\s*$/g,"");
             alert($errorStr+"는 사용할 수 없습니다"); 
         }
@@ -207,6 +209,7 @@ $(document).ready(function(){
                                 }
                                     if( $codeResult == ("<?=$answer?><br>") )
                                     {
+                                        $("#myModal").modal("hide");
                                         alert("정답입니다");
                                         var $description = "DESCRIPTION<br/><br/><?=$description?>";
                                         $(".quiz-result-desc").html("");
@@ -225,6 +228,7 @@ $(document).ready(function(){
                                     else
                                     {
                                         $(".quiz-description").hide("blind");
+                                        $("#myModal").modal("hide");
                                         alert("오답 또는 컴파일 에러입니다\n컴파일 결과창을 확인하세요");
                                         $(".quiz-description-desc").html("");
                                         $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
@@ -232,6 +236,7 @@ $(document).ready(function(){
 
                             },
                    error : function() { 
+                                $("#myModal").modal("hide");
                                 alert("Time Ove"); 
                            }
                     });
@@ -305,7 +310,21 @@ margin:0px;
 .color-silver {
     color:silver;
 }
+#myModal {
+position:absolute;
+text-align:center;
+}
+.compile-waiting {
+font-size:100px;
+color:#eeeeee;
+}
 </style>
+    <div class="modal fade" id="myModal">
+        <div class="compile-waiting">
+                <i class="icon-spinner icon-spin"></i>
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 <div class="row">
     <div class="quiz-left col-lg-3">
         <div class="quiz-left-div row">
@@ -389,5 +408,3 @@ margin:0px;
     </div>
 
 </div>
-
-    
