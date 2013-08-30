@@ -244,9 +244,9 @@ $config['encryption_key'] = 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'icanc_session';
-$config['sess_expiration']		= 7200;
-$config['sess_expire_on_close']	= FALSE;
+$config['sess_cookie_name']		= 'icanc';
+$config['sess_expiration']		= 3600;
+$config['sess_expire_on_close']	= TRUE;
 $config['sess_encrypt_cookie']	= FALSE;
 $config['sess_use_database']	= TRUE;
 $config['sess_table_name']		= 'ci_sessions';
