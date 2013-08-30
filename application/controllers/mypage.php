@@ -41,7 +41,11 @@ class Mypage extends CI_Controller {
     // 현재 비밀번호 확인
     public function checkPwd()
     {
+        $data['active'] = "";
+        $data['selected'] = "password check";
         $this->load->view('header');
+        $this->load->view('navbar',$data);
+        $this->load->view('mypage/mypage_contents',$data);
         $this->load->view('mypage/checkPwd');
         $this->load->view('footer');
     }
