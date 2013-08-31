@@ -11,24 +11,46 @@ class Quiz extends CI_Controller {
     
     public function index()
     {
+        $data['active']='quiz';
+        $this->load->view('header');
+        $this->load->view('navbar',$data);
+        $this->load->view('quiz_main');
+        $this->load->view('footer');
+    }
+
+    public function categoryList()
+    {
         $data = $this->quiz_model->getCategory();
 
         $data['active']='quiz';
         $this->load->view('header');
         $this->load->view('navbar',$data);
-        $this->load->view('quiz_contents',array('data'=>$data));
+        $this->load->view('category_list',array('data'=>$data));
         $this->load->view('footer');
     }
     
-    // quiz list 
-    public function title($id)
+    // 카테고리 내의 기본문제 리스트 생성 
+    public function basicQuizList($id)
     {
         $data =$this->quiz_model->getCategoryQuestion($id);
-
+        
         $data['active']='quiz';
         $this->load->view('header');
         $this->load->view('navbar',$data);
-        $this->load->view('quiz_list',array('data'=>$data));
+        $this->load->view('basic_list',array('data'=>$data));
+        $this->load->view('footer');
+    }
+
+    // 실전문제 리스트 생성
+    public function practiceQuizList()
+    {
+        // 실전문제 개수와 제목 가져오기
+        $data =$this->quiz_model->getPracticeQuestion();
+
+        $data['active'] = 'quiz';
+        $this->load->view('header');
+        $this->load->view('navbar',$data);
+        $this->load->view('practice_list',array('data'=>$data));
         $this->load->view('footer');
     }
     
@@ -69,25 +91,33 @@ class Quiz extends CI_Controller {
 //진영시작
 
    // 코딩퀴즈 문제
-   public function quizTest($id)
+   public function codingQuiz($target,$id)
     {
-        if($this->session->userdata('user_finishQuestionNo')+1 >= $id)
+        $codeData = $this->quiz_model->getCodingCode(1); // thread 코드 가져오기
+        $temp['active'] = 'quiz';
+        $result['result'] = null;
+        $this->load->view('header');
+        $this->load->view('navbar',$temp);
+
+        if($target == 'basic' && $this->session->userdata('user_finishQuestionNo')+1 >= $id)
         {
             $quizData = $this->quiz_model->getCodingQuiz($id); 
-            $codeData = $this->quiz_model->getCodingCode(1); // thread 코드 가져오기
-            $data = array_merge((array)$codeData,(array)$quizData);
-            $data = (object)$data;
-            $temp['active'] = 'quiz';
-            $result['result'] = null;
-            $this->load->view('header');
-            $this->load->view('navbar',$temp);
-            $this->load->view('quizStyle',$data);
-            $this->load->view('footer');
+            $name ="basicResult";
+        }
+        else if($target == 'practice' && $this->session->userdata('user_level')+1 >= $id)
+        {
+            $quizData = $this->quiz_model->getPracticeQuiz($id);
+            $name ="practiceResult";
         }
         else
         {
-            alert("진행할 수 없는 퀴즈 입니다");
+            alert('진행할수 없는 퀴즈입니다');
+            return 0;
         }
+            $data = array_merge((array)$codeData,(array)$quizData);
+            $data = (object)$data;
+            $this->load->view($name,$data);
+            $this->load->view('footer');
     }
 
     // freeCoding
@@ -99,7 +129,7 @@ class Quiz extends CI_Controller {
         $result['result'] = null;
         $temp['active'] = 'freeCoding';
         $this->load->view('navbar',$temp);
-        $this->load->view('quiz/codingQuiz',$data);
+        $this->load->view('quiz/freeCoding',$data);
         $this->load->view('footer');
     }
     
@@ -108,10 +138,17 @@ class Quiz extends CI_Controller {
     {
        $data['email'] = $this->session->userdata('user_email');
        $data['finishQuestionNo'] = $_POST['finishQuestionNo'];
-       var_dump($data['finishQuestionNo']);
        $finishQuestionNo = $this->user_model->updateFinishQuestionNo($data);
        $this->session->set_userdata(array('user_finishQuestionNo'=>$finishQuestionNo));
-       var_dump($this->session->userdata('user_finishQuestionNo'));
+    }
+
+    // 최종 레벨 기록 변경
+    public function updateLevel()
+    {
+       $data['email'] = $this->session->userdata('user_email');
+       $data['level'] = $_POST['level'];
+       $level = $this->user_model->updateLevel($data);
+       $this->session->set_userdata(array('user_level'=>$level));
     }
 
     // 코딩퀴즈 만들기 폼
