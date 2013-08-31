@@ -101,6 +101,27 @@ class User_model extends CI_Model {
         return $result;
        
     }
+    
+    // 해결된 문제 번호 변경
+    function updateLevel($option)
+    {
+        $beforeData = $this->db->get_where('user',array('email'=>$option['email']))->row_array();
+        
+        if( $beforeData['level'] < $option['level'] )
+        {
+            $this->db->where_in('email',$option['email']);
+            $this->db->set('level',$option['level']);
+            $this->db->update('user');
+            $result = $option['level'];
+        }
+        else
+        {
+            $result = $beforeData['level'];
+        }
+
+        return $result;
+       
+    }
 
 
 }

@@ -92,6 +92,7 @@ class Auth extends CI_Controller {
                              'user_job' => $verifyResult->job,
                              'user_dateOfBirth' => $verifyResult->dateOfBirth,
                              'user_finishQuestionNo' => $verifyResult->finishQuestionNo,
+                             'user_level' => $verifyResult->level,
                              'is_login' => true
                             );
            $this->session->set_userdata($sess_add);

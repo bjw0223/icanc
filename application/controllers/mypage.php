@@ -14,7 +14,7 @@ class Mypage extends CI_Controller {
         $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        if( $this->verifyPassword($email, $password) != null)
+        if( ($this->verifyPassword($email, $password) != null) && ($this->session->userdata('user_email') == $email))
         {
             $this->session->set_userdata(array('user_checkPwd'=>true));
             $this->info();
@@ -26,6 +26,7 @@ class Mypage extends CI_Controller {
 
 	}
 
+    // mypage id,비밀번호 확인여부
     function _checkSession()
     {
         if( $this->session->userdata('user_checkPwd') == true)
@@ -43,6 +44,7 @@ class Mypage extends CI_Controller {
     {
         $data['active'] = "";
         $data['selected'] = "password check";
+        $this->session->set_userdata(array('user_checkPwd'=>false));
         $this->load->view('header');
         $this->load->view('navbar',$data);
         $this->load->view('mypage/mypage_contents',$data);
@@ -342,15 +344,52 @@ class Mypage extends CI_Controller {
     {
         $data['email'] = $this->session->userdata('user_email');
         $data['nickname'] = $this->session->userdata('user_nickname');
-        $data['job'] = $this->session->userdata('user_job');
+        if( $address == 'info')
+        {
+            $data['job'] = $this->_restoreJob($this->session->userdata('user_job'));
+        }
+        else
+        {   
+            $data['job'] = $this->session->userdata('user_job');
+        }
         $data['dateOfBirth'] = $this->session->userdata('user_dateOfBirth');
         $data['selected'] = $address;
         $data['active'] = 'mypage';
+        
         $this->load->view('navbar',$data);
         $this->load->view('reference');
         $this->load->view('mypage/mypage_contents',$data);
         $this->load->view('mypage/'.$address);
     }
+
+    // 직업 값 변경 ( 초딩 ~ 기타 )
+    function _restoreJob($job)
+    {
+        $resulut = null;
+        switch($job)
+        {
+            case 0 : $result = "초등학생";
+                                break;
+            case 1 : $result = '중학생';
+                                break;
+            case 2 : $result = '고등학생';
+                                break;
+            case 3 : $result = '대학생';
+                                break;
+            case 4 : $result = '대학원생';
+                                break;
+            case 5 : $result = '회사원';
+                                break;
+            case 6 : $result = '자영업';
+                               break;
+            case 7 : $result = '무직';
+                               break;
+            case 8 : $result = '기타';
+                               break;
+        }
+        return $result;
+    }
+
 
 }
 
