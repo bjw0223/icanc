@@ -8,92 +8,177 @@ class Mypage extends CI_Controller {
         $this->load->model('user_model');
         $this->load->helper('file');
     }
-	
+
     public function index()
 	{
-        $this->info();
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+
+        if( $this->verifyPassword($email, $password) != null)
+        {
+            $this->session->set_userdata(array('user_checkPwd'=>true));
+            $this->info();
+        }
+        else
+        {
+            $this->checkPwd();
+        }
+
 	}
+
+    function _checkSession()
+    {
+        if( $this->session->userdata('user_checkPwd') == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    // 현재 비밀번호 확인
+    public function checkPwd()
+    {
+        $this->load->view('header');
+        $this->load->view('mypage/checkPwd');
+        $this->load->view('footer');
+    }
 	
     // 회원정보 폼
     public function info()
     {
-        $this->load->view('header');
-        $this->_head('info');
-        $this->load->view('footer');
-	}
-	
-    // 회원 초대 폼
-    public function invitation()
-    {
-        $this->load->view('header');
-        $this->_head('invitation');
-        $this->load->view('footer');
+        if($this->_checkSession() == true)
+        {
+            $this->load->view('header');
+            $this->_head('info');
+            $this->load->view('footer');
+        }
+        else
+        {
+            $this->checkPwd();
+        }
 	}
 	
     // 정보 수정 폼
     public function modification()
     {
-        $this->load->view('header');
-        $this->_head('modification');
-        $this->load->view('footer');
+        if($this->_checkSession() == true)
+        {
+            $this->load->view('header');
+            $this->_head('modification');
+            $this->load->view('footer');
+        }
+        else
+        {
+            $this->checkPwd();
+        }
 	}
     
     // 기본정보 변경 폼
     function basicinfoModify()
     {
-        $this->load->view('header');
-        $this->_head('basicinfomodify');
-        $this->load->view('footer');
+        if($this->_checkSession() == true)
+        {
+            $this->load->view('header');
+            $this->_head('basicinfomodify');
+            $this->load->view('footer');
+        }
+        else
+        {
+            $this->checkPwd();
+        }
     }
 
     // 비밀번호 변경 폼
     function pwdmodify()
     {
-        $this->load->view('header');
-        $this->_head('pwdmodify');
-        $this->load->view('footer');
+        if($this->_checkSession() == true)
+        {
+            $this->load->view('header');
+            $this->_head('pwdmodify');
+            $this->load->view('footer');
+        }
+        else
+        {
+            $this->checkPwd();
+        }
     }     
 
     // 파일 관리 폼
     public function showdir($page=1,$list_count=10)
     {
-        $nickname = $this->session->userdata('user_nickname');
-        $search_param = null;
-        $data['search_key'] = '';
-        $data['search_keyword'] = '';
+        if($this->_checkSession() == true)
+        {
+            $nickname = $this->session->userdata('user_nickname');
+            $search_param = null;
+            $data['search_key'] = '';
+            $data['search_keyword'] = '';
 
-        if($this->input->get_post('search_key') && $this->input->get_post('search_keyword')){
-            $search_param = array();
-            $data['search_key'] =  $search_param['search_key'] = $this->input->get_post('search_key');
-            $data['search_keyword'] = $search_param['search_keyword'] = $this->input->get_post('search_keyword');
+            if($this->input->get_post('search_key') && $this->input->get_post('search_keyword')){
+                $search_param = array();
+                $data['search_key'] =  $search_param['search_key'] = $this->input->get_post('search_key');
+                $data['search_keyword'] = $search_param['search_keyword'] = $this->input->get_post('search_keyword');
+            }
+
+
+            $this->load->model('board_model');
+            $result=$this->board_model->getMyList($search_param,$page,$list_count,$nickname);
+
+            $data['active'] = 'mypage';
+            $data['selected'] = 'my document';
+            $this->load->view('header');
+            $this->load->view('navbar',$data);
+            $this->load->view('reference');
+            $this->load->view('mypage/mypage_contents',$data);
+            $this->load->view('mypage/showdir',$result);
+            $this->load->view('footer');
         }
-
-
-        $this->load->model('board_model');
-        $result=$this->board_model->getMyList($search_param,$page,$list_count,$nickname);
-
-        $data['active'] = 'mypage';
-        $data['selected'] = 'my document';
-        $this->load->view('header');
-        $this->load->view('navbar',$data);
-        $this->load->view('reference');
-        $this->load->view('mypage/mypage_contents',$data);
-        $this->load->view('mypage/showdir',$result);
-        $this->load->view('footer');
+        else
+        {
+            $this->checkPwd();
+        }
 	}
     // 파일삭제	
     function delDoc($srl)
     {
-       	$this->load->model('board_model');
-		$this->board_model->delDoc($srl);
+        $this->load->model('board_model');
+		$data = $this->board_model->getWriter($srl);
+		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
+		{
+			if(($nick=$this->session->userdata('user_nickname'))==$data->writer)
+			{
+				$this->board_model->delDoc($srl);
+                redirect( base_url().'index.php/mypage/showdir');
+			}
+			else
+			{	
+				$this->session->set_flashdata("message",'작성자만 삭제 가능합니다');
+                redirect( base_url().'index.php/mypage/showdir');
+			}
+		}
+		else // 비로그인시 로그인창으로 리다이렉트
+        {
+            $this->session->set_flashdata("message","로그인후 사용 가능합니다");
+            redirect( base_url()."index.php/auth/login" );
+        }
+
         redirect( base_url().'index.php/mypage/showdir');
     }
     // 회원 탈퇴 폼
     public function signout()
     {
-        $this->load->view('header');       
-        $this->_head('signout');
-        $this->load->view('footer');
+        if($this->_checkSession() == true)
+        {
+            $this->load->view('header');       
+            $this->_head('signout');
+            $this->load->view('footer');
+        }
+        else
+        {
+            $this->checkPwd();
+        }
     }
     
     // 회원 정보 삭제

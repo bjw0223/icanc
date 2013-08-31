@@ -35,6 +35,10 @@ class Board_model extends CI_Model {
 	function get($srl)
 	{
 		$this->_hit($srl);
+		$this->db->where('is_deleted', 0);	//삭제 확인
+		$this->db->where('is_blind', 0);	//블라인드 확인
+		$this->db->where('is_closed', 0);	//비공개 확인
+	
 		$this->db->where('srl',$srl);
 		$query=$this->db->get('board');
 		return $query->row();
@@ -56,14 +60,6 @@ class Board_model extends CI_Model {
 		$this->db->where('is_blind', 0);	//블라인드 확인
 		$this->db->where('is_closed', 0);	//비공개 확인
 		
-/*		if($board=='faq'){
-			$this->db->where('board_name', 1);
-		}else if($board=='qna'){
-			$this->db->where('board_name', 2);
-		}else {
-			//게시판 추가
-		}
-*/		
 		$this->_getBoard($board);
 
         if($search_param == null) {  
@@ -80,14 +76,6 @@ class Board_model extends CI_Model {
 		$this->db->where('is_blind', 0);	//블라인드 확인
 		$this->db->where('is_closed', 0);	//비공개 확인
 		
-/*		if($board=='faq'){
-			$this->db->where('board_name', 1);
-		}else if($board=='qna'){
-			$this->db->where('board_name', 2);
-		}else {
-			//게시판 추가
-		}
-*/
 		$this->_getBoard($board);
 
 		$total_rows = $this->db->count_all_results('board');
@@ -178,6 +166,7 @@ class Board_model extends CI_Model {
     function getMyList($search_param=null,$page=1,$list_count=10,$nickname)
     {
 		$this->db->where('writer', $nickname);
+		$this->db->where('is_deleted', 0);
         $this->db->order_by("srl", "desc");
         $this->db->limit($list_count , ($page-1)*$list_count );
 
@@ -204,6 +193,52 @@ class Board_model extends CI_Model {
 		return $data;
 
     }
+   
+	function getWriter($srl)
+    {
+        $this->db->select('writer');
+		$this->db->where('srl', $srl);
+        $query=$this->db->get('board')->row();
+        return $query;
+    }
+	
+	function addComment($parent_srl, $data)
+	{
+		$this->db->where('parent_srl', $parent_srl);
+		$total_cmts = $this->db->count_all_results('comment');
+
+		$this->db->set('parent_srl', $parent_srl);
+		$this->db->set('order', $total_cmts+1, false);
+		$this->db->set('created_time','NOW()',false);
+        $this->db->set('modified_time','NOW()',false);
+		$this->db->insert('comment',$data);
+
+		$this->db->where('srl', $parent_srl);
+		$this->db->set('comments', 'comments+1', false);
+		$this->db->update('board');
+
+	}
+
+	function delComments($srl)
+	{
+
+	}
+
+	function getComments($parent_srl)
+	{
+		$this->db->order_by('order', 'desc');
+		$this->db->where('parent_srl', $parent_srl);
+		$query = $this->db->get('comment')->result();
+		
+		$this->db->where('parent_srl', $parent_srl);
+		$this->db->where('is_deleted', 0);
+		$total_cmts = $this->db->count_all_results('comment');
+		
+		$result['comments'] = $query;
+		$result['total_cmts'] = $total_cmts;
+		
+		return $result;
+	}
 }
 
 

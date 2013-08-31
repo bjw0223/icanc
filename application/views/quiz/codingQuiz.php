@@ -22,9 +22,10 @@
 
 <style type="text/css">
     .CodeMirror {
-        border: 1px solid #eee;
-        width: 100%;
+        border-top: 1px solid #eee;
+        border-bottom: 0px solid #eee;
         height: auto;
+        width:100%;
     }
     
     .CodeMirror-scroll {
@@ -119,14 +120,14 @@ $(document).ready(function(){
                                 var $codeResult= "";
                                 for (var $value in $result) 
                                 {
-                                    $codeResult = $codeResult + $result[$value] + "<br>";
+                                    $codeResult = $codeResult + $result[$value]+"<br>";
                                 }
                                         $("#result").html("컴파일 결과<br/>"+$codeResult+"<br/>");
 
                             },
                     error : function() {
-                                alert("Time Over");
-                            }
+                                alert("Time Out");
+                    }
                     });
         }
     });
@@ -134,37 +135,171 @@ $(document).ready(function(){
 }); //ready close 
 </script>
 
-<form id"codingQuiz" method="post">
-    <div id="questionDiv">
-        <legend style="text-align:center"> Free Coding </legend>
-    </div>
+<style>
+.freeCoding-navbar {
+    height:50px;
+    background-color:#eeeeee;
+    text-align:right;
+    line-height:48px;
+    padding-right:20px;
+    padding-left:20px;
+}
+.freeCoding {
+    margin:0px;
+    padding:0px;
+}
+.freeCoding-editor {
+    margin:0px;
+    padding:0px;
+    overflow-y:auto;
+    height:400px;
+    background-color:#232c31;
+    border-bottom: 1px solid #eee;
+}
+.freeCoding-contents {
+    margin:0px;
+    padding:10px;
+    overflow-y:auto;
+}
+.freeCoding-contents > div {
+    background-color:;
+    height:100%;
 
-    <div id="answerDiv">
-    </div>
-    <br/>
+}
+.freeCoding-result {
+    margin:0px;
+    padding:15px 15px 15px 15px;
+    background-color:black;
+    color:white;
+    font-weight:bold;
+    height:100px;
+    overflow-y:auto;
+}
+.freeCoding-files {
+    padding:0px;
+    margin:0px;
+    font-weight:bold;
+}
+.freeCoding-files p {
+    padding-top:1px;
+}
+</style>
+  
+<script>
+$(document).ready(function(){
+    var windowHeight = $(window).height();
+    $('.freeCoding-editor').css('height',(windowHeight - 200) +'px');
+    $('.freeCoding-contents').css('height',(windowHeight - 100) +'px');
+    $('.freeCoding-saveBtn').click(function(){
+            var filename = $('.file-name').val();
+            var len = filename.length;
+            if( len == 0 )
+            {
+                alert("파일이름을 입력하세요!");
+            }
+            else if( len >= 30 )
+            {
+                alert("파일이름은 30자 이하로 입력하세요!");
+            }
+    });
 
-    <div id="headDiv">
-        <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
-    </div>
+function setupContents(){
+    $.ajax({
+        type : "GET",
+        url : "<?=base_url()?>index.php/quiz/showFiles",
+        contentType : "application/json; charset=utf-8",
+        dataType : "json",
+        data :"" ,
+        error : function() {
+            alert("error");
+        },
+        success : function(files) {
+            var result = '<table class="table"><tbody>';
+            for( i in files)
+            {
+                result += '<tr>' 
+                          + '<td>' + '<p class="file">' + files[i] + '</p>' + '</td>'
+                          + '<td>' + '<a class="btn btn-success btn-small" data-in="'+ files[i] +'">불러오기</a>' + '</td>'
+                          + '<td>' + '<a class="delet-btn btn btn-danger btn-small"  data-in="'+ files[i] +'">삭제</a>' + '</td>'
+                          + '</tr>'; 
+            }
+            result += '</tbody></table>';
+            $('.freeCoding-files').html(result);
+       }
+    });
+}
+function setupEvents(){
+     $('.file').live('click',function(){
+         $('.file-name').val($(this).html()); 
+     });
+     $('.delet-btn').live('click',function(){
+          var target = $(this).attr('data-in');
+          $.ajax({
+            type : "GET",
+            url : "<?=base_url()?>index.php/quiz/deletFile",
+            contentType : "application/json; charset=utf-8",
+            dataType : "json",
+            data :"fname="+target ,
+            error : function() {
+                alert("error");
+            },
+            success : function() {
+                alert('success'); 
+                setupContents();
+                setupEvents();
+            }
+        });
+     });
+}
+    setupContents();
+    setupEvents();
 
-    <div id="codeDiv">
-        <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
-    </div>
-
-    <div id="tailDiv">
-        <textarea class="form-control" id="tail" name="tail"><?=$mainCodeTail?></textarea>
-    </div>
-
-    <div>
-        <input type="button" class="form-control btn-warning" id="compile" name="compile" value="Compile"> </input>
-    </div>
-    
-    <h2>
-        <div id="result">
+});
+</script>
+<div class="freeCoding-navbar row">
+<form id="codingQuiz" method="post">
+    <div class="col-lg-4">
+        <div class="input-group">
+            <input type="text" class="file-name form-control" placeholder="파일명" value="">
+            <span class="input-group-btn">
+                <button class="freeCoding-saveBtn btn btn-info" type="button"> 저 장  </button>
+            </span>
         </div>
-        <div id="description">
+    </div>
+    <div class="col-lg-4">
+    </div>
+    <div class="col-lg-4">
+        <a class="btn btn-warning" id="compile" name="compile">Compile</a>
+    </div>
+</div>
+<div class="freeCoding row">
+    <div class="col-lg-4">
+        <div class="freeCoding-contents row">
+            <div class="col-lg-12 freeCoding-files">
+            </div>
         </div>
-    </h2>
+    </div>
 
+    <div class="col-lg-8">
+        <div class="freeCoding-editor row">
+            <div id="headDiv">
+                <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
+            </div>
+
+            <div id="codeDiv">
+                <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
+            </div>
+
+            <div id="tailDiv">
+                <textarea class="form-control" id="tail" name="tail"><?=$mainCodeTail?></textarea>
+            </div>
+        </div>
+        <div class="freeCoding-result row">
+            <div id="result">
+            </div>
+        </div>
+    </div>
 </form>
-    
+</div>
+
+

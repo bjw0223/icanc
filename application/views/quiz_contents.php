@@ -18,40 +18,31 @@
     padding-left:0px;
     padding-bottom:5px;
     padding-right:0px;
-    margin-top:10px;
-    background-color:#eeeeee;
-}
-.quiz-box:hover {
-    background-color:#dddddd;
-
+    padding-top:45px;
 }
 .quiz-box-description {
     line-height:38px;
 }
 .quiz-btn-box {
-    line-height:38px;
-    text-align:center;
+    text-align:right;
+}
+.quiz-box:hover {
+    padding-top:0px;
+    font-size:35px;
 }
 .quiz-btn {
-
+    height:60px;
+    width:60px;
+    border-radius:30px;
+}
+.quiz-btn:hover {
+    text-decoration:none;
 }
 </style>
 <script>
-$(document).ready(function() {
 
-    $(".quiz-box").hover(function(){
-        target = $(this).children().children('.quiz-btn');
-        target.removeClass();     
-        target.addClass("btn btn-info btn-lg btn-block quiz-btn");     
-        target.html("go quiz");
-    },function(){
-        target = $(this).children().children('.quiz-btn');
-        data = target.attr('data-in');
-        target.removeClass();     
-        target.addClass("quiz-btn");     
-        target.html(data);
-    });
-     
+$(document).ready(function() {
+        
     var $categoryDiv = document.getElementById("categoryDiv");
     var $data = <?=json_encode($data)?>; // 각 퀴즈에 대한 값과 총개수
     
@@ -60,23 +51,34 @@ $(document).ready(function() {
     for(var $i=0; $i<$data['count']; $i++)
     {
         $categoryDiv.innerHTML =$categoryDiv.innerHTML + 
-            '<div class=\"row quiz-body-div\">'+
-            '<div class=\"col-lg-12\">'+
-            '<p class=\"quiz-title\">'+$data[$i]['category']+'</p>'+
-            '<p class=\"quiz-description">temp quiz description</p>'+
-            '<div class=\"row\">'+
-            '<div class=\"col-lg-10 col-offset-1 quiz-box\">'+
-            '<div class=\"col-lg-9 quiz-box-description\">'+
-            'temp quiz view'+ 
-            '</div>'+
-            '<div class=\"col-lg-3 quiz-btn-box\">'+
-            '<a href=\"<?=base_url();?>index.php/quiz/title/'+$data[$i]['category']+'\" class=\"quiz-btn\" data-in=\"data-in\">data-in</a>'+
-            '</div>'+
-            '</div>'+
-            '</div>'+
-            '</div>'+
+            '<div class="row quiz-body-div">'+
+                '<div class="col-lg-8">'+
+                    '<p class="quiz-title">'+$data[$i]['category']+'</p>'+
+                    '<p class="quiz-description">'+$data[$i]['categoryDescription']+'</p>'+
+                '</div>'+
+                '<div class="col-lg-4">'+
+                    '<div class="col-lg-12 quiz-box">'+
+                        '<div class="col-lg-6 quiz-box-description">'+
+                        '</div>'+
+                        '<div class="col-lg-6 quiz-btn-box">'+
+                            '<a href="<?=base_url();?>index.php/quiz/title/'+$data[$i]['id']+
+                                '" class="quiz-btn" data-in="'+$data[$i]['numInCategory']+' Exercises">'+
+                                $data[$i]['numInCategory']+' Esxercises</a>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
             '</div>';
      }       
+   $(".quiz-box").hover( function(){
+        target = $(this).children().children('.quiz-btn').html("<i class='icon-gamepad icon-2x'></i>");
+    },function(){
+        target = $(this).children().children('.quiz-btn');
+        data = target.attr('data-in');
+        target.html(data);
+    });
+     
+
+
 
 });
 </script>

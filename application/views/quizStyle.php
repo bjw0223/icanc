@@ -66,9 +66,6 @@ body {
     background-color:#0099FF;
     border:1px solid #0052FF; 
 }
-.quiz-left-tip{
-    line-height : 30px;
-}
 .quiz-description, .quiz-result {
     background-color:#FFFFFF;
     border-radius:10px;
@@ -86,11 +83,10 @@ body {
 .quiz-description {
     margin-top:10px;
 }
-.compileBtn {
+.compileBtn, .nextBtn {
     background-color:#08c;
     color:#ffffff;
 }
-
 </style>
 
 <style>
@@ -99,6 +95,8 @@ body {
         border: 0px solid #eee;
         width: 100%;
         height: auto;
+        font-size : 1.063em;
+        font-family : Nanum Gothic;
     }
     
     #codeDiv > .CodeMirror {
@@ -132,6 +130,7 @@ body {
 $(document).ready(function(){
     
     var forbidRegExp = /((switch|main|scanf|gets|getchar|getc)\s*\()|(goto\s*\:)/g;
+    var $codeResult= "";
 
     // head textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
@@ -175,6 +174,8 @@ $(document).ready(function(){
     $("#compile").click( function()
     {
         // CodeMirror에서 code textare로 값 보내기
+            $("#myModal").css('top',($(window).height()/2-70) +"px");
+            $("#myModal").modal("show");
         $code.save();
 
         var $codeStr = document.getElementById("code").value;
@@ -183,6 +184,7 @@ $(document).ready(function(){
         if( ($checkCodeStr = forbidRegExp.exec($codeStr)) != null )
         {
             // 사용불가 알림창 표시위한 공백 및 'i', ':' 제거
+            $("#myModal").modal("hide");
             $errorStr = $checkCodeStr[0].replace(/^\s*|\s*$/g,"");
             alert($errorStr+"는 사용할 수 없습니다"); 
         }
@@ -190,29 +192,35 @@ $(document).ready(function(){
         {
             // code textarea 특수문자 처리
             $codeStr = encodeURIComponent($codeStr);
-
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/createCode",
                     data : "code="+$codeStr+"&flag=0",
                     dataType : "json",
                     success : function($result) {
-                                var $codeResult= "";
+                                if($result == "")
+                                {
+                                    $codeResult = $codeResult+"<br>";
+                                }
+
                                 for (var $value in $result) 
                                 {
-                                    $codeResult = $codeResult + $result[$value] + "<br>";
+                                    $codeResult = $codeResult + $result[$value]+"<br>";
                                 }
-                                    if( $codeResult == ("<?=$answer?>"+"<br>") )
+                                    if( $codeResult == ("<?=$answer?><br>") )
                                     {
+                                        $("#myModal").modal("hide");
                                         alert("정답입니다");
                                         var $description = "DESCRIPTION<br/><br/><?=$description?>";
+                                        $(".quiz-result-desc").html("");
                                         $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
                                         $(".quiz-description").show("blind");
                                         $(".quiz-description-desc").html($description);
+                                        $("#next").show("blind");
 
                                         $.ajax({
                                                 type : "POST",
-                                                url : "<?base_url()?>index.php/quiz/updateFinishQuestionNo",
+                                                url : "<?=base_url()?>index.php/quiz/updateFinishQuestionNo",
                                                 data : "finishQuestionNo=<?=$id?>",
                                                 dataType : "json"
                                                 });
@@ -220,6 +228,7 @@ $(document).ready(function(){
                                     else
                                     {
                                         $(".quiz-description").hide("blind");
+                                        $("#myModal").modal("hide");
                                         alert("오답 또는 컴파일 에러입니다\n컴파일 결과창을 확인하세요");
                                         $(".quiz-description-desc").html("");
                                         $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
@@ -227,50 +236,113 @@ $(document).ready(function(){
 
                             },
                    error : function() { 
-                                alert("시간이 초과되었습니다"); 
+                                $("#myModal").modal("hide");
+                                alert("Time Ove"); 
                            }
                     });
         }
     });
+
+    // 다음 문제로
+    $("#next").click( function()
+    {
+       document.location.href= "<?=base_url()?>index.php/quiz/quizTest/<?=$id+1?>"
+    });
+
+
 
 }); //ready close 
 </script>
 
 <script>
 $(document).ready(function() {
-    var windowHeight =  $(window).height() - $('.quiz-right-footer').offset().top - 20;
-    $('.quiz-left-desc').css('height', windowHeight + 30 );
-    $('.quiz-middle-desc').css('height', windowHeight );
-    $('.quiz-right-desc').css('height', windowHeight );
+    setupLayout(); 
+    $(window).resize(function(){
+        setupLayout(); 
+    });
+    $("#next").hide();
+});
+function setupLayout(){
+    var windowHeight = $(window).height();
+    $('.quiz-left-desc').css('height', (windowHeight - 140) + 'px' );
+    $('.quiz-middle-desc').css('height', (windowHeight - 170) + 'px' );
+    $('.quiz-right-desc').css('height', (windowHeight - 170) + 'px' );
     $(".quiz-description").hide();
-  /*  
-    var target = $('.quiz-right-bar');
-    $('.quiz-result').css('top',target.offset().top + 30  );
-    $('.quiz-result').css('left',target.offset().left - 80 );
-    $('.quiz-result').css('height',$(window).height()/5*2);
-    $('.quiz-result').css('width',target.width());
-    */
+        
     $('.quiz-result').css('height',$('.quiz-right-desc').height()/2);
     $('.quiz-description').css('height',$('.quiz-right-desc').height()/2 - 10);
     $('.quiz-error').css('left',$('.quiz-middle-bar').offset().left);
     $('.quiz-error').css('bottom',$(window).height() - $('.quiz-middle-footer').offset().top);
     $('.quiz-error').css('min-height',70);
     $('.quiz-error').css('width',$('.quiz-middle-bar').width());
-});
+}
 </script>
+<style>
+.quiz-id {
+    line-height:50px;
+    font-weight:bold;
+    font-size:18px;
+    padding-left:10px;
+    color:#999999;
+
+}
+.quiz-left-context {
+    padding:5px;
+}
+.quiz-left-answer {
+    padding:5px;
+}
+.left-title {
+    font-size:16px;
+    font-weight:bold;
+margin:0px;
+}
+.quiz-left-tip{
+    padding:5px;
+}
+.quiz-left-desc {
+    line-height:25px;
+    overflow-y:auto;
+}
+.left-desc {
+    padding:5px 10px 5px 10px;
+}
+.color-silver {
+    color:silver;
+}
+#myModal {
+position:absolute;
+text-align:center;
+}
+.compile-waiting {
+font-size:100px;
+color:#eeeeee;
+}
+</style>
+    <div class="modal fade" id="myModal">
+        <div class="compile-waiting">
+                <i class="icon-spinner icon-spin"></i>
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 <div class="row">
     <div class="quiz-left col-lg-3">
         <div class="quiz-left-div row">
             <div class="quiz-left-bar col-lg-12">
-                problem : <?=$id?> <br/>
+                <p class="quiz-id"><?=$category?>(<?=$questionNo?>)</p>
             </div>
             <div class="quiz-left-desc col-lg-12">
-                <div class="quiz-left-tip col-lg-12">
-                <br/> 
-                <h1><p class="muted"><?=$category?></p></h1> <br/>
-                    <?=$context?> <br/><br/>
-                    결과 : <?=$answer?> <br/></br>
-                    힌트 : <?=$hint?> <br/>
+                <div class="quiz-left-context">
+                    <p class="left-title"><?=$question?></p>
+                    <p class="left-desc"><?=$context?></p>
+                </div>
+                <div class="quiz-left-answer">
+                    <p class="left-title">결과값</p>
+                    <p class="left-desc"><?=$answer?></p>
+                </div>
+                <div class="quiz-left-tip">
+                    <p class="left-title">힌트</p>
+                    <p class="left-desc"><?=$hint?></p>
                 </div>
             </div>
             <div class="quiz-left-footer col-lg-12">
@@ -293,7 +365,6 @@ $(document).ready(function() {
                         <i class="icon-file-alt icon-large"></i> quiz.c
                     </div>
                     <div class="col-lg-8"> 
-                       <small> <p class="text-warning"><?=$question?></p> </small>
                     </div>
                 </div>
             </div>
@@ -313,6 +384,7 @@ $(document).ready(function() {
             </div>
             <div class="quiz-middle-footer col-lg-12">
                 <button class="btn compileBtn" id="compile" name="compile"> Compile </button>
+                <button class="btn nextBtn" id="next" name="next"> Next Quiz </button>
             </div>
         </div>
    </div>
@@ -322,7 +394,7 @@ $(document).ready(function() {
             </div>
             <div class="quiz-right-desc col-lg-12">
                 <div class="quiz-result">
-                    <div class="quiz-result-desc">
+                   <div class="quiz-result-desc">
                     </div>
                 </div>
                 <div class="quiz-description">
@@ -336,5 +408,3 @@ $(document).ready(function() {
     </div>
 
 </div>
-
-    

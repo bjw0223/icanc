@@ -75,17 +75,27 @@ CREATE TABLE  `icanc`.`board` (
  `group_id` INT( 11 ) NOT NULL ,
  `reply_cnt` INT( 11 ) NOT NULL ,
  `reply_srl` INT( 11 ) NOT NULL ,
+ `comments` INT( 11 ) NOT NULL ,
 PRIMARY KEY (  `srl` )
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
 
 <--------------------------BOARD TABLE END--------------------------> 
 
 
+<--------------------------COMMENT TABLE START--------------------------> 
+CREATE TABLE  `icanc`.`comment1` (
+`srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+ `parent_srl` INT( 11 ) NOT NULL ,
+ `order` INT( 11 ) NOT NULL ,
+ `text` TEXT NOT NULL ,
+ `writer` VARCHAR( 50 ) NOT NULL ,
+ `created_time` DATETIME NOT NULL ,
+ `modified_time` DATETIME NOT NULL ,
+ `is_deleted` TINYINT( 4 ) NOT NULL ,
+PRIMARY KEY (  `srl` )
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
 
-
-
-
-
+<--------------------------COMMENT TABLE END--------------------------> 
 
 
 <--------------------------SESSION TABLE START--------------------------> 
