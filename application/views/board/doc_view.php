@@ -26,6 +26,9 @@
     border-top:1px solid #eeeeee;
     border-bottom:1px solid #eeeeee;
 }
+.text {
+    overflow:auto;
+}
 </style>
 <?php
 	$uri_num=$this->uri->total_segments();
@@ -60,7 +63,7 @@
             </div>
         </div>
         <div class="row text-block">
-            <div class="col-lg-12">
+            <div class="col-lg-12 text">
                 <?=$data->text?>
             </div> 
         </div>

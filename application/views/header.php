@@ -77,6 +77,8 @@
          var load_href = $(this).attr('load-href');
          $('.tutorial_desc').load(load_href);
          $('.tutorial-title').load(load_href+"/true");
+         SyntaxHighlighter.config.bloggerMode = true;
+         SyntaxHighlighter.all();
     });
     $('.nav-subtitle').click(function(){
          $('.nav-title').parent().attr('class','');
@@ -89,6 +91,8 @@
          var load_href = $(this).attr('load-href');
          $('.tutorial_desc').load(load_href);
          $('.tutorial-title').load(load_href+"/true");
+         SyntaxHighlighter.config.bloggerMode = true;
+         SyntaxHighlighter.all();
     });
     $('.nav-subCategory').click(function(){
          $('.nav-title').parent().attr('class','');
@@ -101,6 +105,8 @@
          var load_href = $(this).attr('load-href');
          $('.tutorial_desc').load(load_href);
          $('.tutorial-title').load(load_href+"/true");
+         SyntaxHighlighter.config.bloggerMode = true;
+         SyntaxHighlighter.all();
     });
 
 
