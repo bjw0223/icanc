@@ -60,8 +60,9 @@ class Quiz extends CI_Controller {
     {
         $this->load->helper('file');
         $fname = $this->input->get_post('fname');
-        delete_files("./user/14/freeCode/save/$fname");
-        echo json_encode( $fname);
+        $path = './user/14/freeCode/save/'.$fname;
+        unlink($path);
+        echo json_encode( $path);
     }
 
 

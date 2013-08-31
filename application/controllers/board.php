@@ -46,12 +46,14 @@ class Board extends CI_Controller {
        	$this->load->model('board_model');
        	$list = $this->board_model->get($srl);
 		$result['data'] = $list;
+		$data['board'] = $board;
 
 		$comments = $this->board_model->getComments($srl);
 
 		$this->_head();
 		$this->load->view('navbar');
 		$this->load->view('reference');
+        $this->load->view('board/btitle', $data);
 		$this->load->view('board/board_contents', $selected);
 		$this->load->view('board/doc_view',$result);
 		$this->load->view('board/comment', $comments);

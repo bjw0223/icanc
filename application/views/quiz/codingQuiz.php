@@ -91,6 +91,8 @@ $(document).ready(function(){
     $("#compile").click( function()
     {
         // CodeMirror에서 code textare로 값 보내기
+            $("#myModal").css('top',($(window).height()/2-70) +"px");
+            $("#myModal").modal("show");
         $code.save();
 
         var $headStr = document.getElementById("head").value;
@@ -101,6 +103,7 @@ $(document).ready(function(){
         if( ($checkCodeStr = regExp.exec($codeStr)) != null )
         {
             // 사용불가 알림창 표시위한 공백 및 'i', ':' 제거
+            $("#myModal").modal("hide");
             $codeStr = $checkCodeStr[0].replace("(","");
             $codeStr = $codeStr.replace(":","");
             $codeStr = $codeStr.replace(/^\s*|\s*$/g,"");
@@ -122,10 +125,12 @@ $(document).ready(function(){
                                 {
                                     $codeResult = $codeResult + $result[$value]+"<br>";
                                 }
-                                        $("#result").html("컴파일 결과<br/>"+$codeResult+"<br/>");
+                                        $("#myModal").modal("hide");
+                                        $(".quiz-result-desc").html("COMPILE RESULT<br/><br/>"+$codeResult);
 
                             },
                     error : function() {
+                                        $("#myModal").modal("hide");
                                 alert("Time Out");
                     }
                     });
@@ -134,55 +139,183 @@ $(document).ready(function(){
 
 }); //ready close 
 </script>
+<script>
+$(document).ready(function() {
+    setupLayout(); 
+    $(window).resize(function(){
+        setupLayout(); 
+    });
+    $("#next").hide();
+});
+function setupLayout(){
+    var windowHeight = $(window).height();
+    $('.quiz-left-desc').css('height', (windowHeight - 140) + 'px' );
+    $('.quiz-middle-desc').css('height', (windowHeight - 170) + 'px' );
+    $('.quiz-right-desc').css('height', (windowHeight - 170) + 'px' );
+        
+    $('.quiz-result').css('height',$('.quiz-right-desc').height());
+    $('.quiz-error').css('left',$('.quiz-middle-bar').offset().left);
+    $('.quiz-error').css('bottom',$(window).height() - $('.quiz-middle-footer').offset().top);
+    $('.quiz-error').css('min-height',70);
+    $('.quiz-error').css('width',$('.quiz-middle-bar').width());
+}
+</script>
 
 <style>
-.freeCoding-navbar {
+body {
+    overflow-y:hidden;
+}
+.quiz-left-bar {
     height:50px;
-    background-color:#eeeeee;
-    text-align:right;
-    line-height:48px;
-    padding-right:20px;
-    padding-left:20px;
+    background-color:#E6E6E6;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
 }
-.freeCoding {
-    margin:0px;
-    padding:0px;
+.quiz-left-footer {
+    height:40px;
+    border-top: 1px solid rgba(0,0,0,0.15);
 }
-.freeCoding-editor {
-    margin:0px;
-    padding:0px;
+.quiz-middle-bar,.quiz-right-bar {
+    height:50px;
+    background-color:#1F1D1D;
+    border-bottom: 1px solid #000000;
+    text-align:center;
+    font-size: 13px;
+    line-height: 50px;
+    color: #646464;
+    font-weight:bold;
+    text-transform: uppercase;
+}
+.quiz-middle-desc, .quiz-right-desc{
+    background-color:#232C31;
     overflow-y:auto;
-    height:400px;
-    background-color:#232c31;
-    border-bottom: 1px solid #eee;
 }
-.freeCoding-contents {
-    margin:0px;
-    padding:10px;
-    overflow-y:auto;
+.quiz-middle-footer, .quiz-right-footer{
+    border-top: 1px solid #3d3e3e;
+    background-color:#232C31;
+    height:70px;
+    padding-top:16px;
 }
-.freeCoding-contents > div {
-    background-color:;
-    height:100%;
+
+.quiz-tap {
+    height:50px;
+    background-color:#232C31;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 0px solid #3d3e3e;
+    border-left: 1px solid #000000;
+    color:white;
+    font-size:15px;
+    font-weight:bold;
+    text-transform: none;
 
 }
-.freeCoding-result {
-    margin:0px;
-    padding:15px 15px 15px 15px;
-    background-color:black;
-    color:white;
-    font-weight:bold;
-    height:100px;
+.quiz-left-question {
+    text-align:center;
+    height:40px;
+
+    font-size: 13px;
+    line-height: 35px;
+    color: #646464;
+}
+.quiz-left-question:hover {
+    background-color:#0099FF;
+    border:1px solid #0052FF; 
+}
+.quiz-description, .quiz-result {
+    background-color:#FFFFFF;
+    border-radius:10px;
+    border: 1px solid #FFFFFF;
+    padding:5px;
+}
+.quiz-description-desc, .quiz-result-desc{
+    background-color:#204420;
+    height:100%;
+    width:100%;
+    color:#ffffff;
+    padding: 10px 20px 10px 20px;
     overflow-y:auto;
 }
-.freeCoding-files {
-    padding:0px;
-    margin:0px;
+.quiz-description {
+    margin-top:10px;
+}
+.compileBtn, .nextBtn {
+    background-color:#08c;
+    color:#ffffff;
+}
+    .CodeMirror {
+        border: 0px solid #eee;
+        width: 100%;
+        height: auto;
+        font-size : 1.063em;
+        font-family : Nanum Gothic;
+    }
+    
+    #codeDiv > .CodeMirror {
+        width : 100%;
+    /*    height : 580px; */
+    }
+
+    #headDiv > .CodeMirror, #tailDiv > #CodeMirror {
+        width : 100%;
+        overflow-x : hidden;
+    }
+    
+    .CodeMirror-scroll {
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
+    .CodeMirror-linenumber {
+        width:50px;
+        text-align:center;
+    }
+    
+    .CodeMirror pre.CodeMirror-placeholder { 
+        color: #999; 
+    }
+
+
+.quiz-id {
+    line-height:50px;
     font-weight:bold;
+    font-size:18px;
+    padding-left:10px;
+    color:#999999;
+
 }
-.freeCoding-files p {
-    padding-top:1px;
+.quiz-left-context {
+    padding:5px;
 }
+.quiz-left-answer {
+    padding:5px;
+}
+.left-title {
+    font-size:16px;
+    font-weight:bold;
+margin:0px;
+}
+.quiz-left-tip{
+    padding:5px;
+}
+.quiz-left-desc {
+    line-height:25px;
+    overflow-y:auto;
+}
+.left-desc {
+    padding:5px 10px 5px 10px;
+}
+.color-silver {
+    color:silver;
+}
+#myModal {
+position:absolute;
+text-align:center;
+}
+.compile-waiting {
+font-size:100px;
+color:#eeeeee;
+}
+
 </style>
   
 <script>
@@ -224,7 +357,7 @@ function setupContents(){
                           + '</tr>'; 
             }
             result += '</tbody></table>';
-            $('.freeCoding-files').html(result);
+            $('.coding-files').html(result);
        }
     });
 }
@@ -234,6 +367,7 @@ function setupEvents(){
      });
      $('.delet-btn').live('click',function(){
           var target = $(this).attr('data-in');
+          alert(target);
           $.ajax({
             type : "GET",
             url : "<?=base_url()?>index.php/quiz/deletFile",
@@ -244,9 +378,7 @@ function setupEvents(){
                 alert("error");
             },
             success : function() {
-                alert('success'); 
                 setupContents();
-                setupEvents();
             }
         });
      });
@@ -256,50 +388,79 @@ function setupEvents(){
 
 });
 </script>
-<div class="freeCoding-navbar row">
-<form id="codingQuiz" method="post">
-    <div class="col-lg-4">
-        <div class="input-group">
-            <input type="text" class="file-name form-control" placeholder="파일명" value="">
-            <span class="input-group-btn">
-                <button class="freeCoding-saveBtn btn btn-info" type="button"> 저 장  </button>
-            </span>
+
+    <div class="modal fade" id="myModal">
+        <div class="compile-waiting">
+                <i class="icon-spinner icon-spin"></i>
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+<div class="row">
+    <div class="quiz-left col-lg-3">
+        <div class="quiz-left-div row">
+            <div class="quiz-left-bar col-lg-12">
+                <p class="quiz-id"></p>
+            </div>
+            <div class="quiz-left-desc col-lg-12">
+                <div class="coding-files">
+                </div>
+            </div>
+            <div class="quiz-left-footer col-lg-12">
+                <div class="row">
+                    <div class="quiz-left-question col-lg-12">
+                        질문하기
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="quiz-middle col-lg-5">
+        <div class="quiz-middle-div row">
+            <div class="quiz-middle-bar col-lg-12">
+                <div class="row">
+                    <div class="quiz-tap-title col-lg-2">
+                        files :
+                    </div>
+                    <div class="quiz-tap col-lg-2" style="">
+                        <i class="icon-file-alt icon-large"></i> quiz.c
+                    </div>
+                    <div class="col-lg-8"> 
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-middle-desc col-lg-12">
+                <div id="headDiv">
+                    <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
+                </div>
+
+                <div id="codeDiv">
+                    <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
+                </div>
+
+                <div id="tailDiv">
+                    <textarea class="form-control" id="tail" name="tail"><?=$mainCodeTail?></textarea>
+                </div>
+
+            </div>
+            <div class="quiz-middle-footer col-lg-12">
+                <button class="btn compileBtn" id="compile" name="compile"> Compile </button>
+                <button class="btn nextBtn" id="next" name="next"> Next Quiz </button>
+            </div>
+        </div>
+   </div>
+    <div class="quiz-right col-lg-4">
+        <div class="quiz-right-div row">
+            <div class="quiz-right-bar col-lg-12">
+            </div>
+            <div class="quiz-right-desc col-lg-12">
+                <div class="quiz-result">
+                   <div class="quiz-result-desc">
+                    </div>
+                </div>
+            </div>
+            <div class="quiz-right-footer col-lg-12">
+            </div>
+        </div>
     </div>
-    <div class="col-lg-4">
-        <a class="btn btn-warning" id="compile" name="compile">Compile</a>
-    </div>
+
 </div>
-<div class="freeCoding row">
-    <div class="col-lg-4">
-        <div class="freeCoding-contents row">
-            <div class="col-lg-12 freeCoding-files">
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-8">
-        <div class="freeCoding-editor row">
-            <div id="headDiv">
-                <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
-            </div>
-
-            <div id="codeDiv">
-                <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
-            </div>
-
-            <div id="tailDiv">
-                <textarea class="form-control" id="tail" name="tail"><?=$mainCodeTail?></textarea>
-            </div>
-        </div>
-        <div class="freeCoding-result row">
-            <div id="result">
-            </div>
-        </div>
-    </div>
-</form>
-</div>
-
-
