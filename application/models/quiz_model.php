@@ -46,21 +46,25 @@ class Quiz_model extends CI_Model {
     // 기본문제 카테고리 종류 및 개수
     function getCategory()
     {
-        // 카테고리 목록  
+        // 카테고리 총 개수 및 내용  
         $query = $this->db->query('SELECT * FROM coding_category ORDER BY id ASC');
         $count['count'] = $query->num_rows();
         $data = $query->result_array();
 
         // 카테고리별 문제 개수
-        $query = $this->db->query('SELECT * FROM (SELECT *  FROM coding_basic ORDER BY categoryNo ASC, questionNo DESC) AS coding GROUP BY coding.categoryNo');
+        $query = $this->db->query('SELECT DISTINCT * FROM (SELECT *  FROM coding_basic ORDER BY categoryNo ASC, questionNo DESC) AS coding GROUP BY coding.categoryNo');
         $rawData = $query->result_array();
-        var_dump($rawData);
-
-        for($i=0; $i<$query->num_rows(); $i++)
+        for($i=0; $i<$count['count']; $i++)
         {
-           $data[$i]['numInCategory'] = $rawData[$i]['questionNo'];
+            for($j=0; $j<$query->num_rows(); ++$j)
+            {
+                if( $data[$i]['id'] == $rawData[$j]['categoryNo'])
+                {
+                    $data[$i]['numInCategory'] = $rawData[$j]['questionNo'];
+                }
+            }
         }
-
+        
         $result = array_merge($count,$data); 
 
         return $result;
