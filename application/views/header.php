@@ -205,19 +205,19 @@ color:#36545F;
 	   font-weight:bold;
 	}
 	.tutorial_desc .general{
-	   font-size:18px;
+	   font-size:17px;
 	   color:#36545F;
 	}
 	.tutorial_desc .general_sub{
-       font-size:17px;
+       font-size:16px;
        color:#36545F;
     }
 	.tutorial_desc .general_sub2{
-	   font-size:16px;
+	   font-size:15px;
 	   color:"#36545F";
 	}
 	.tutorial_desc .general_sub3{
-	   font-size:15px;
+	   font-size:14px;
 	   color:"#36545F";
 	}
 	.tutorial_desc .blue{
