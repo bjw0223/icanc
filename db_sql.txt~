@@ -72,6 +72,13 @@ PRIMARY KEY (  `srl` )
 <--------------------------BOARD TABLE END--------------------------> 
 
 
+<<<<<<< HEAD
+
+
+
+
+
+=======
 <--------------------------COMMENT TABLE START--------------------------> 
 CREATE TABLE  `icanc`.`comment1` (
 `srl` INT( 11 ) NOT NULL AUTO_INCREMENT ,
@@ -86,6 +93,7 @@ PRIMARY KEY (  `srl` )
 ) ENGINE = INNODB DEFAULT CHARSET = utf8;
 
 <--------------------------COMMENT TABLE END--------------------------> 
+>>>>>>> 826a580d5f06b359d9284c6a428e154290999bdb
 
 
 <--------------------------SESSION TABLE START--------------------------> 

@@ -1,41 +1,72 @@
 <div class="col-lg-9 tutorial_desc">
-<span class="general">    
-     <ul>
-         <li>정수형 데이터의 크기는 limit.h 헤더파일에서 확인 가능</li><br>
- <!--        <li>종류 : float, double (대표 type : double)</li><br>
-         <li>저장 방식 : IEEE754 방식</li>
-             <ul>
-                 <li class="general_sub2">단정도 부동소수(32bit - float)</li>
-                 <li class="general_sub2 purple" id="list">sign-bit : 1bit &nbsp;/&nbsp; 지수부 : 8bit &nbsp;/&nbsp; 가수부(유효숫자부) : 23bit</li>
-                 <li class="general_sub2" id="list">ex) float fa = 10.0</li>
-                    <ol>
-                        <li class="general_sub2">2진수로 변환 : 1010.0(2)</li>
-                        <li class="general_sub2">2진 정규화 : 1.<span class="red">0100</span> x 2^<span class="blue">3</span></li>
-                        <li class="general_sub2" id="list">1) 1.0100의 맨 앞의 1은 저장하지 않는다(항상 1이기 때문에)</li>
-                        <li class="general_sub2" id="list">2) 0100을 가수부에 저장(실수형은 맨 앞에서부터 저장)</li>
-                        <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\integer\1.PNG" width=450px; height=95px; style="margin-top:10px; margin-left:20px; margin-bottom:20px"><br>
-                        <li class="general_sub2" id="list">3) Bias 값과 2^3의 지수값을 더하여 지수부에 저장 : 127 + 3 --><!--&gt; 10000010(2)<br><span style="margin-left:20px">(단정도 부동소수 방식이므로 Bias 값이 127, 자릿수는 8비트)</span></li>
-                        <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\integer\2.PNG" width=480px; height=140px; style="margin-left:20px; margin-bottom:20px"><br>
-                    </ol>
-                 <li class="general_sub2">배정도 부동소수(64bit - double)</li>
-                 <li class="general_sub2 purple" id="list">sign-bit : 1bit &nbsp;/&nbsp; 지수부 : 11bit &nbsp;/&nbsp; 가수부(유효숫자부) : 52bit</li>
-                    <ul>
-                        <li class="general_sub2">signed bit : 가수부(유효숫자부)의 sign (양수 : 0, 음수 : 1)</li>
-                        <li class="general_sub2">지수부 저장방식 : 지수승 + Bias 값 (Bias 값 : 지수부 최대 값 / 2 --><!--&gt; float : 127, double : 1023)</li>
-                        <li class="general_sub2">가수부 저장방식 : 2진수로 표현된 유효숫자를 2진수 정규화 (유효숫자 첫 자리를 2의 0승 자리에 고정)한 후<br>소수점 이하 유효숫자만 가수부에 저장</li>
-                        <li class="general_sub2" id="list">ex) double da = -7.25</li>
-                           <ol>
-                               <li class="general_sub2">2진수로 변환 : -111.01(2)</li>
-                               <li class="general_sub2">2진 정규화 : -1.<span class="red">1101</span> x 2^<span class="blue">2</span></li>
-                               <li class="general_sub2" id="list">1) -1.1101의 맨 앞의 1은 저장하지 않는다(항상 1이기 때문에)</li>
-                               <li class="general_sub2" id="list">2) 1101을 가수부에 저장(실수형은 맨 앞에서부터 저장)</li>
-                               <li class="general_sub2" id="list">3) Bias 값과 2^2의 지수값을 더하여 지수부에 저장 : 1023 + 2 --><!--&gt; 10000000001(2)<br><span style="margin-left:20px">(배정도 부동소수 방식이므로 Bias 값이 1023, 자릿수는 11비트)</span></li>
-                               <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\integer\3.PNG" width=480px; height=140px; style="margin-left:20px;"><br>
-                           </ol>
-                    </ul>
-             </ul>-->
-     </ul>
+    <span class="general">    
+        <ul>
+            <li>정수형의 종류는 (unsigned)char, (unsigned)short, (unsigned)int, (unsigned)long이 있으며 이 중 정수형을 대표하는 type은 int형이다.</li>
+			  <li id="list">* 실수형의 대표 type은 double형이다.</li><br>
+			<li>자료형의 범위(limits.h 헤더 파일에 저장되어 있다)</li>
+              <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\integer\11.PNG" width=650px; height=400px;><br>
+<pre class="brush:cpp" style="margin-bottom:20px">
+short i;
+for (i = 0; i &gt;= 0; i++)
+{
+
+}
+이 문장은 끝날 수 있는가?
+-&gt; i 값이 32,767에서 1이 증가하면 –32,768이 되어 정상 종료된다.
+</pre>
+			<li>signed와 unsigned의 차이는 무엇인가?</li>
+			  <li id="list">signed 형의 자료형은 맨 앞 비트가 sign 비트로서 이 비트가 0이면 양수, 1이면 음수로 판단하는데 쓰인다.</li>
+              <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\integer\22.PNG" width=460px; height=90px><br><br>
+			<li>음의 정수의 표현 방법</li>
+			  <li id="list" class="general_sub">2의 보수 표현</li>
+			  <li id="list" class="general_sub2">: 대상 숫자를 2진수로 변환한 후 모든 비트를 반전(0은 1로, 1은 0으로)시키고 그 값에 + 1을 취해준다.</li><br>
+	        <li>signed 형과 unsigned 형의 표현</li>
+<pre class="brush:cpp">
+short sh = -32767;
+unsigned short u_sh = sh;
+</pre>
+              <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\integer\33.PNG" width=500px; height=130px;><br>
+			  <li id="list" class="general_sub">물리적으로 저장되어 있는 형태는 동일하기 때문에 출력 시 형식변환문자에 따라서 동일한 값을 표현할 수 있다. 이럼에도 불구하고 signed형과 unsigned형이 나뉘어져 있는 경우는 <span class="red">연산 시 원래 type대로 가기 때문이다.</span></li><br>
+	        <li>형변환</li>
+			   <ul>
+			       <li class="general_sub">C언어에서는 자동형변환과 강제형변환의 두가지 형변환이 존재한다.</li>
+		           <li class="general_sub">강제형변환은 사용자가 직접 (type) 연산자를 사용하여 원하는 형으로 바꿔준다.</li>
+		           <li class="general_sub">C에서는 이항 연산 시 Left Value(이하 Lv)와 Right Value(이하 Rv)의 type이 다르면 연산이 불가능하므로 이를 가능하게 하기 위해서 자동형변환이 일어난다.</li>
+				   <li class="general_sub">자동형변환 규칙</li>
+				      <ul>
+					      <li class="general_sub2">CPU에 의해 1회성으로 실행되며 연산이 끝나면 바로 돌아온다.</li>
+		                  <li class="general_sub2">작은 타입에서 큰 타입으로 변경된다(값 손실 예방, 메모리의 확장)</li>
+	                      <li class="general_sub2">대입연산(=)시에는 무조건 Rv가 Lv 타입으로 변경된다(이 규칙으로 인해서 큰 값이 작아질수도 있다)</li>
+	                      <li id="list" class="red" style="font-size:15px">** 메모리 확장 공식</li>
+	                      <li id="list" class="general_sub2">signed 자료형의 확장은 부호 비트를 따른다.</li>
+	                      <li id="list" class="general_sub2">unsigned 자료형의 확장은 무조건 0으로 확장된다.</li>
+				      </ul>
+				   <li class="general_sub">응용자료형과 주소는 자동형변환이 불가(강제형변환은 모두 가능)</li>
+				   <li class="general_sub">연산 시 존재하지 않는 타입</li>
+	                 <li id="list" class="general_sub2">(unsigned) char, (unsigned) short, enum(열거형)</li>
+	                 <li id="list" class="general_sub2">위 형들은 연산 시 레지스터 크기에 맞게 형변환된다.</li>
+                     <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\integer\44.PNG" width=500px; height=100px;><br><br>
+			   </ul>
+	        <li>signed 형과 unsigned 형의 연산 시 변화</li>
+<pre class="brush:cpp">
+int main()
+{
+    short sh;
+    unsigned u_sh;
+    int a, b;
+    sh = u_sh = -1;
+    a = sh * 3;
+    b = u_sh * 3;
+    return 0;
+}
+</pre>
+               <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\integer\55.PNG" width=800px; height=330px;><br><br>
+               <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\integer\66.PNG" width=650px; height=490px;><br><br>
 
 
-</span>
+
+
+        </ul>
+
+    </span>    
 </div>

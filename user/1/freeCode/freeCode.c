@@ -3,7 +3,16 @@
 #include <stdlib.h>
 #include <stdio.h>
 void *runCode34567(void *id34567)
-{printf("정답은 i_int=1004 입니다\n");}
+{	int i,j;
+	
+	for(i=1; i<10; ++i)
+    {
+		for(j=1; j<10; ++j)
+        {
+          printf("%d * %d = %d\n",i,j,i*j);
+        }
+      	printf("\n");
+    }}
 
 void *checkTime34567(void *id34567)
 {

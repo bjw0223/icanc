@@ -29,7 +29,17 @@ CREATE TABLE  `icanc`.`reference` (
     `code` TEXT CHARACTER SET utf8 NOT NULL ,
     `header` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
     `form` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
-    `parameter` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
+    `parameter` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,REATE TABLE  `icanc`.`user` (
+`id` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+ `email` VARCHAR( 50 ) NOT NULL ,
+ `nickname` VARCHAR( 20 ) NOT NULL ,
+ `job` INT( 11 ) NOT NULL ,
+ `dateOfBirth` VARCHAR( 10 ) NOT NULL ,
+ `password` VARCHAR( 255 ) NOT NULL ,
+ `created` DATETIME NOT NULL ,
+PRIMARY KEY (  `id` ) ,
+UNIQUE KEY  `email_idx` (  `email` )
+) ENGINE = INNODB DEFAULT CHARSET = utf8;
     `return` VARCHAR( 255 ) CHARACTER SET utf8 NOT NULL ,
     `tip` TEXT CHARACTER SET utf8 NOT NULL ,
     PRIMARY KEY (  `srl` ) ,

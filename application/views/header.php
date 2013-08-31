@@ -77,6 +77,8 @@
          var load_href = $(this).attr('load-href');
          $('.tutorial_desc').load(load_href);
          $('.tutorial-title').load(load_href+"/true");
+         SyntaxHighlighter.config.bloggerMode = true;
+         SyntaxHighlighter.all();
     });
     $('.nav-subtitle').click(function(){
          $('.nav-title').parent().attr('class','');
@@ -89,6 +91,8 @@
          var load_href = $(this).attr('load-href');
          $('.tutorial_desc').load(load_href);
          $('.tutorial-title').load(load_href+"/true");
+         SyntaxHighlighter.config.bloggerMode = true;
+         SyntaxHighlighter.all();
     });
     $('.nav-subCategory').click(function(){
          $('.nav-title').parent().attr('class','');
@@ -101,6 +105,8 @@
          var load_href = $(this).attr('load-href');
          $('.tutorial_desc').load(load_href);
          $('.tutorial-title').load(load_href+"/true");
+         SyntaxHighlighter.config.bloggerMode = true;
+         SyntaxHighlighter.all();
     });
 
 
@@ -199,19 +205,19 @@ color:#36545F;
 	   font-weight:bold;
 	}
 	.tutorial_desc .general{
-	   font-size:18px;
+	   font-size:17px;
 	   color:#36545F;
 	}
 	.tutorial_desc .general_sub{
-       font-size:17px;
+       font-size:16px;
        color:#36545F;
     }
 	.tutorial_desc .general_sub2{
-	   font-size:16px;
+	   font-size:15px;
 	   color:"#36545F";
 	}
 	.tutorial_desc .general_sub3{
-	   font-size:15px;
+	   font-size:14px;
 	   color:"#36545F";
 	}
 	.tutorial_desc .blue{
