@@ -12,7 +12,9 @@ class Auth extends CI_Controller {
     // 로그인 창
     function login()
     {
+        $data['active'] = '';
         $this->_head();
+        $this->load->view('navbar',$data);
         $this->load->view('login');
         $this->load->view('footer');
     }
@@ -28,7 +30,9 @@ class Auth extends CI_Controller {
     function register()
     {
         $data['nickname'] = "";
+        $data['active'] = '';
         $this->_head();
+        $this->load->view('navbar',$data);
         $this->load->view('register',$data);
         $this->load->view('footer');
     }   
@@ -92,6 +96,7 @@ class Auth extends CI_Controller {
                              'user_job' => $verifyResult->job,
                              'user_dateOfBirth' => $verifyResult->dateOfBirth,
                              'user_finishQuestionNo' => $verifyResult->finishQuestionNo,
+                             'user_level' => $verifyResult->level,
                              'is_login' => true
                             );
            $this->session->set_userdata($sess_add);

@@ -3,7 +3,15 @@
 #include <stdlib.h>
 #include <stdio.h>
 void *runCode34567(void *id34567)
-{}
+{int i,j;
+for ( i = 1 ; i < 10 ; i++ )
+{
+    printf("%d단\n",i);
+  for( j = 1 ; j < 10 ; j++)
+  {
+  	printf("%d * %d = %d \n",i,j,i*j);
+  }
+}}
 
 void *checkTime34567(void *id34567)
 {

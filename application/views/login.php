@@ -1,15 +1,33 @@
-<div class="navbar navbar-fixed-top" style="height:60px;padding-top:2px;">
-</div>
-<div class="container" style="margin-top:50px;">
-   <div class="row"> 
+<style>
+.login-block {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid #dddddd;
+    color:#36545F;
+}
+.login-legend {
+    font-weight:bold;
+    border-bottom:3px solid #36545F;
+    padding-bottom:3px;
+    color:#36545F;
+}
+body {
+    background-color:#36545F;
+}
 
+</style>
+
+
+<div class="container" style="margin-top:110px;">
+   <div class="row"> 
         <div class="col-lg-8"> 
         </div>
 
-        <div class="col-lg-4" style="background-color:#eeeeee;padding:15px;border:1px solid #dddddd">
+        <div class="col-lg-4 login-block" style="">
             <form class="navbar-formt" action="<?=base_url()?>index.php/auth/authentication" method="post">
                 <fieldset>
-                    <legend style="border-bottom-color:white;border-bottom:3px solid white;padding-bottom:3px;">Login</legend>
+                    <legend class="login-legend">Login</legend>
                     <div class="form-group">
                         <label for="exampleInputEmail">Email</label>
                         <input type="text" class="form-control" id="email" name="email" placeholder="Enter email">
@@ -35,6 +53,5 @@
                 </fieldset>
             </form>
         </div>
-
     </div>
 </div> 

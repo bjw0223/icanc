@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-lg-10 col-offset-1">
            <form id="registerForm" class="form-horizontal" action="<?=base_url()?>index.php/auth/registerResult" method="post">
-    	        <legend align="center"><h1> 회 원 가 입 </h1></legend>
+    	        <legend ><h1> 회 원 가 입 </h1></legend>
                 <small color="gold"> 회원님의 정보 중 변경된 내용이 있는 경우, 아래에서 수정해주세요. <br/>
                 회원정보는 개인정보취급방침에 따라 안전하게 보호되며, 회원님의 명백한 동의 없이 공개 또는 제 3자에게 
                 제공되지 않습니다. <br/><br/><br/>
