@@ -55,6 +55,7 @@ $(document).ready(function() {
         {
             $data[$i]['numInCategory'] = 0;
         }
+
         $categoryDiv.innerHTML =$categoryDiv.innerHTML + 
             '<div class="row quiz-body-div">'+
                 '<div class="col-lg-8">'+

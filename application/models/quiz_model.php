@@ -52,8 +52,10 @@ class Quiz_model extends CI_Model {
         $data = $query->result_array();
 
         // 카테고리별 문제 개수
-        $query = $this->db->query('SELECT DISTINCT * FROM (SELECT *  FROM coding_basic ORDER BY categoryNo ASC, questionNo DESC) AS coding GROUP BY coding.categoryNo');
+        $query = $this->db->query('SELECT * FROM (SELECT *  FROM coding_basic ORDER BY categoryNo ASC, questionNo DESC) AS coding GROUP BY coding.categoryNo');
         $rawData = $query->result_array();
+        var_dump($rawData);
+
         for($i=0; $i<$query->num_rows(); $i++)
         {
            $data[$i]['numInCategory'] = $rawData[$i]['questionNo'];
