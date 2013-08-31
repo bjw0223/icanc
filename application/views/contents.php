@@ -78,25 +78,21 @@ $(window).scroll(function(){
                 <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/operator">연산자</a>
             </li>  
             <li class="">
-                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/summary">함수</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/function">함수</a>
                 <ul class="nav">
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/summary">개요</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/many_form">여러 형태</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/array_handling">배열 처리</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/string_handling">문자열 처리</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/dynamic_allocation">동적 할당</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/scanf">입력</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/printf">출력</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/printf">PRINTF</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/scanf">SCANF</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/dynamic_allocation">동적할당</a></li>
                 </ul>
             </li>  
             <li class="">
-                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/stream">파일</a>
-                <ul class="nav">
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/fileio/fileio">파일 입출력</a>
+            <!--    <ul class="nav">
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/stream">스트림</a></li>
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/open">개방</a></li>
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/file_input">입력</a></li>
                     <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/file_output">출력</a></li>
-                </ul>
+                </ul>  --!>
             </li>  
 
 
