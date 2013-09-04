@@ -54,6 +54,7 @@
 .comment-text {
     font-size:13px;
     overflow:auto;
+	word-break:break-all;
 }
 .comment-editor-block {
     margin-top:20px;
