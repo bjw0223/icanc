@@ -125,7 +125,7 @@ $(document).ready(function() {
         </div>
         <!--logout button-->
         <div id="logout_div" class="col-lg-3" style="text-align:right;">
-            <div class="col-lg-6 name" style="text-align:right;"><a id="welcome" href="<?=base_url()?>index.php/mypage"><?=$this->session->userdata('user_nickname');?>님</a></div>
+            <div class="col-lg-6 name" style="text-align:right;"><a id="welcome" href="<?=base_url()?>index.php/mypage"><small>Lv.<?=$this->session->userdata('user_level')?></small> <?=$this->session->userdata('user_nickname');?>님</a></div>
             <div class="col-lg-3" href="<?=base_url()?>index.php/mypage/checkPwd">mypage</div>
             <div class="col-lg-3" href="<?=base_url()?>index.php/auth/logout">logout</div>
         </div>
