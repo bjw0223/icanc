@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS `coding_code` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `threadCodeHead` text NOT NULL,
+  `threadCodeTail` text NOT NULL,
+  `mainCodeHead` text NOT NULL,
+  `mainCodeTail` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;

@@ -80,7 +80,7 @@ class Install extends CI_Controller {
         umask(0);
         write_file('./application/config/autoload.php', $string);
     }
-    
+   /* 
     public function setupTables()
     {
         $this->load->database();
@@ -95,6 +95,50 @@ class Install extends CI_Controller {
         $this->_setupAutoload();
 
         redirect(base_url()."index.php/main",'refresh');
+    }
+    */
+    public function setupTables()
+    {
+        $this->load->database();
+
+        //$this->load->view('header');
+
+        $this->_createTable('user');
+        //$this->_insertData('user');
+        $this->_createTable('coding_basic');
+        //$this->_insertData('coding_basic');
+        $this->_createTable('coding_practice');
+        //$this->_insertData('coding_practice');
+        $this->_createTable('coding_category');
+        //$this->_insertData('coding_category');
+        $this->_createTable('coding_code');
+        //$this->_insertData('coding_code');
+        $this->_createTable('reference');
+        //$this->_insertData('reference');
+        $this->_createTable('board');
+        //$this->_insertData('board');
+        $this->_createTable('comment');
+        //$this->_insertData('comment');
+        $this->_createTable('ci_sessions');
+        //$this->_insertData('ci_sessions');
+        $this->_createTable('objective_quiz');
+        //$this->_insertData('objective_quiz');
+        echo "dd";
+
+
+    }
+
+    public function _createTable($name)
+    {
+        $string = read_file('./icanc_database/'.$name.'_struct.txt');
+        $this->load->model('install_model');
+        $this->install_model->run($string);
+    }
+    public function _insertData($name)
+    {
+        $string = read_file('./icanc_database/'.$name.'_data.txt');
+        $this->load->model('install_model');
+        $this->install_model->run($string);
     }
 
     public function _createUserTable()

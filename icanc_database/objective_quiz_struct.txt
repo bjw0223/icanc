@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS `objective_quiz` (
+  `srl` int(11) NOT NULL AUTO_INCREMENT,
+  `question` text CHARACTER SET utf8 NOT NULL,
+  `example1` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `example2` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `example3` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `example4` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `answer` int(11) NOT NULL,
+  `explanation` text CHARACTER SET utf8 NOT NULL,
+  `code` text CHARACTER SET utf8 NOT NULL,
+  `img_path` varchar(255) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`srl`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;

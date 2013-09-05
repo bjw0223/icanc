@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS `comment` (
+  `srl` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_srl` int(11) NOT NULL,
+  `order` int(11) NOT NULL,
+  `text` text NOT NULL,
+  `writer` varchar(50) NOT NULL,
+  `created_time` datetime NOT NULL,
+  `modified_time` datetime NOT NULL,
+  `is_deleted` tinyint(4) NOT NULL,
+  PRIMARY KEY (`srl`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
