@@ -6,7 +6,7 @@ class Install_model extends CI_Model {
         parent::__construct();
     }
 
-	function setupTable($query)
+	function run($query)
 	{
         $this->db->query($query);
     }

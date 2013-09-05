@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS `reference` (
+  `srl` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `code` text CHARACTER SET utf8 NOT NULL,
+  `header` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `form` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `parameter` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `return` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `tip` text CHARACTER SET utf8 NOT NULL,
+  `result` text CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`srl`),
+  UNIQUE KEY `name` (`name`),
+  KEY `srl` (`srl`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
