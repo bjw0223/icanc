@@ -176,9 +176,10 @@ $(document).ready(function(){
         $("#myModal").css('top',($(window).height()/2-70) +"px");
         $("#myModal").modal("show");
         $code.save();
+        $tail.save();
 
         var $codeStr = document.getElementById("code").value;
-        var $answerCodeStr = '<?=$answerCode?>';
+        var $answerCodeStr = document.getElementById("tail").value.replace("return 0;\n}","");
 
         // 반복문, 선택문, goto 문등 사용 불가 정규식 판별
         if( ($checkCodeStr = forbidRegExp.exec($codeStr)) != null )
