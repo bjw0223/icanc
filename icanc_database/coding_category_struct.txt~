@@ -1,8 +1,0 @@
-
-CREATE TABLE IF NOT EXISTS `coding_category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category` varchar(50) NOT NULL,
-  `categoryEng` varchar(50) NOT NULL,
-  `categoryDescription` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
