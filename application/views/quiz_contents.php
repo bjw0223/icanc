@@ -45,8 +45,8 @@ $(document).ready(function() {
         
     var $categoryDiv = document.getElementById("categoryDiv");
     var $data = <?=json_encode($data)?>; // 각 퀴즈에 대한 값과 총개수
-    
-    // 퀴즈 목록 생성
+
+	// 퀴즈 목록 생성
     $categoryDiv.innerHTML = "";
     for(var $i=0; $i<$data['count']; $i++)
     {
