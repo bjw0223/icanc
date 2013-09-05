@@ -24,15 +24,16 @@ class Compiler extends CI_Controller {
         $code = $_POST['code'];
         $threadCodeTail = $data['threadCodeTail'];
         
-        // textarea에 text값 가져와 \n처리
-        $finalCode = $threadCodeHead."\r".$code."\r".$threadCodeTail;
-        
         if($flag == 0)
         {
+            // textarea에 text값 가져와 \n처리
+            $finalCode = $threadCodeHead."\r".$code."\r".$threadCodeTail;
             $this->_preprocessCodingQuiz($finalCode);
         }
         else if($flag == 1)
         {
+            // textarea에 text값 가져와 \n처리
+            $finalCode = $threadCodeHead."\r".$code."\r".$threadCodeTail;
             $this->_preprocessFreeCoding($finalCode);
         }
     }
