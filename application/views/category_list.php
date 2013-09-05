@@ -59,7 +59,7 @@ $(document).ready(function() {
         $categoryDiv.innerHTML =$categoryDiv.innerHTML + 
             '<div class="row quiz-body-div">'+
                 '<div class="col-lg-8">'+
-                    '<p class="quiz-title">'+$data[$i]['category']+'<small>('+$data[$i]['categoryEng']+')</small>'+'</p>'+
+                    '<p class="quiz-title">'+($i+1)+'. '+$data[$i]['category']+'<small>('+$data[$i]['categoryEng']+')</small>'+'</p>'+
                     '<p class="quiz-description">'+$data[$i]['categoryDescription']+'</p>'+
                 '</div>'+
                 '<div class="col-lg-4">'+

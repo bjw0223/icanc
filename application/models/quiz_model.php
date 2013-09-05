@@ -28,7 +28,7 @@ class Quiz_model extends CI_Model {
 
 // 진영시작
     
-    // 기본문제 에디터 퀴즈 생성
+    // 기본문제 퀴즈 생성
     function getCodingQuiz($id)
     {
         $this->db->join('coding_category','coding_basic.categoryNo = coding_category.id','rigth');

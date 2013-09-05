@@ -164,7 +164,6 @@ $(document).ready(function(){
                 viewportMargin: 10,
                 readOnly : true,
             }); 
-    
     // tail의 line number 실시간 변경
     $code.on("change", function($code, change) {   
                 $tail.setOption("firstLineNumber", $head.lineCount()+$code.lineCount()+1); 
@@ -174,11 +173,13 @@ $(document).ready(function(){
     $("#compile").click( function()
     {
         // CodeMirror에서 code textare로 값 보내기
-            $("#myModal").css('top',($(window).height()/2-70) +"px");
-            $("#myModal").modal("show");
+        $("#myModal").css('top',($(window).height()/2-70) +"px");
+        $("#myModal").modal("show");
         $code.save();
+        $tail.save();
 
         var $codeStr = document.getElementById("code").value;
+        var $answerCodeStr = document.getElementById("tail").value.replace("return 0;\n}","");
 
         // 반복문, 선택문, goto 문등 사용 불가 정규식 판별
         if( ($checkCodeStr = forbidRegExp.exec($codeStr)) != null )
@@ -190,8 +191,10 @@ $(document).ready(function(){
         }
         else
         {
+            $codeResult = "";
+
             // code textarea 특수문자 처리
-            $codeStr = encodeURIComponent($codeStr);
+            $codeStr = encodeURIComponent($codeStr+$answerCodeStr);
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/createCode",
@@ -376,9 +379,9 @@ color:#eeeeee;
                 <div id="codeDiv">
                     <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
                 </div>
-
+                 
                 <div id="tailDiv">
-                    <textarea class="form-control" id="tail" name="tail"><?=$mainCodeTail?></textarea>
+                    <textarea class="form-control" id="tail" name="tail"><?=$answerCode."\n"?><?=$mainCodeTail?></textarea>
                 </div>
 
             </div>

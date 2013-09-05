@@ -1,43 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 3.4.10.1deb1
--- http://www.phpmyadmin.net
---
--- 호스트: localhost
--- 처리한 시간: 13-08-31 11:50 
--- 서버 버전: 5.5.32
--- PHP 버전: 5.3.10-1ubuntu3.7
-
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- 데이터베이스: `icanc`
---
-
--- --------------------------------------------------------
-
---
--- 테이블 구조 `coding_category`
---
-
-CREATE TABLE IF NOT EXISTS `coding_category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category` varchar(50) NOT NULL,
-  `categoryEng` varchar(50) NOT NULL,
-  `categoryDescription` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
-
---
--- 테이블의 덤프 데이터 `coding_category`
---
-
 INSERT INTO `coding_category` (`id`, `category`, `categoryEng`, `categoryDescription`) VALUES
 (1, '시작하기', 'Start', 'C언어의 기본 틀을 이해합니다.'),
 (2, '상수', 'Constant', '변하지 않는 값인 상수에 대해서 알아봅니다.'),
@@ -51,6 +11,3 @@ INSERT INTO `coding_category` (`id`, `category`, `categoryEng`, `categoryDescrip
 (10, '구조체', 'Struct', '서로 다른 데이터형을 하나의 묶음으로 처리하기 위한 구조체에 대하여 알아봅니다.'),
 (11, '포인터', 'Pointer', '메모리를 직접 접근하기 위해 사용하는 포인터에 대해서 알아봅니다.');
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS `coding_basic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '문제번호',
+  `categoryNo` int(11) NOT NULL,
+  `questionNo` int(11) NOT NULL,
+  `question` text NOT NULL COMMENT '문제',
+  `context` text NOT NULL COMMENT '내용',
+  `answer` text NOT NULL COMMENT '정답',
+  `hint` text NOT NULL COMMENT '힌트',
+  `description` text NOT NULL COMMENT '정답 설명',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
