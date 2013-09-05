@@ -32,10 +32,16 @@ class Install extends CI_Controller {
         $checklist = array();
         $checklist['permission'] = symbolic_permissions(fileperms('./'));
         $checklist['permission_check'] = false;
+        $checklist['user_permission'] = symbolic_permissions(fileperms('./user'));
+        $checklist['user_permission_check'] = false;
+        $checklist['config_permission'] = symbolic_permissions(fileperms('./application/config'));
+        $checklist['config_permission_check'] = false;
         $checklist['phpversion'] = phpversion();
         $checklist['phpversion_check'] = false;
        
         if( is_writable('./') ) $checklist['permission_check'] = true;
+        if( is_writable('./user') ) $checklist['permission_check'] = true;
+        if( is_writable('./application/config') ) $checklist['permission_check'] = true;
         if( phpversion() >= '5.0.0' ) $checklist['phpversion_check'] = true;
 
         $data['checklist'] = $checklist;
@@ -106,15 +112,15 @@ class Install extends CI_Controller {
         $this->_createTable('user');
         //$this->_insertData('user');
         $this->_createTable('coding_basic');
-        //$this->_insertData('coding_basic');
+        $this->_insertData('coding_basic');
         $this->_createTable('coding_practice');
-        //$this->_insertData('coding_practice');
+        $this->_insertData('coding_practice');
         $this->_createTable('coding_category');
-        //$this->_insertData('coding_category');
+        $this->_insertData('coding_category');
         $this->_createTable('coding_code');
-        //$this->_insertData('coding_code');
+        $this->_insertData('coding_code');
         $this->_createTable('reference');
-        //$this->_insertData('reference');
+        $this->_insertData('reference');
         $this->_createTable('board');
         //$this->_insertData('board');
         $this->_createTable('comment');
@@ -122,9 +128,9 @@ class Install extends CI_Controller {
         $this->_createTable('ci_sessions');
         //$this->_insertData('ci_sessions');
         $this->_createTable('objective_quiz');
-        //$this->_insertData('objective_quiz');
-        echo "dd";
+        $this->_insertData('objective_quiz');
 
+		echo "서엉고옹";
 
     }
 

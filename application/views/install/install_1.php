@@ -25,6 +25,19 @@
                                 <td><?=$checklist['permission']?></td>
                                 <td><?=$checklist['permission_check']?'ok..':'false';?></td>
                             </tr>
+
+                            <tr>
+                                <td>FILE permission</td>
+                                <td><?=$checklist['user_permission']?></td>
+                                <td><?=$checklist['user_permission_check']?'ok..':'false';?></td>
+                            </tr>
+
+                            <tr>
+                                <td>FILE permission</td>
+                                <td><?=$checklist['config_permission']?></td>
+                                <td><?=$checklist['config_permission_check']?'ok..':'false';?></td>
+                            </tr>
+
                             <tr>
                                 <td>php_version</td>
                                 <td><?=$checklist['phpversion']?></td>
