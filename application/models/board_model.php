@@ -213,21 +213,35 @@ class Board_model extends CI_Model {
         $this->db->set('modified_time','NOW()',false);
 		$this->db->insert('comment',$data);
 
+		$this->_getCommentCount($parent_srl);
+	}
+
+	function delComment($parent_srl, $comment_srl)
+	{
+		$this->db->where('srl', $comment_srl);
+		$this->db->set('is_deleted', 1);
+		$this->db->update('comment');
+	
+		$this->_getCommentCount($parent_srl);
+	}
+
+	function _getCommentCount($parent_srl) // 문서당 댓글 개수 동기화
+	{
+		$this->db->where('parent_srl', $parent_srl);
+		$this->db->where('is_deleted', 0);
+		$real_cmts = $this->db->count_all_results('comment');
+		
 		$this->db->where('srl', $parent_srl);
-		$this->db->set('comments', 'comments+1', false);
+		$this->db->set('comments', $real_cmts, false);
 		$this->db->update('board');
 
 	}
-
-	function delComments($srl)
-	{
-
-	}
-
+	
 	function getComments($parent_srl)
 	{
-		$this->db->order_by('order', 'desc');
+		$this->db->order_by('order', 'asc');
 		$this->db->where('parent_srl', $parent_srl);
+		$this->db->where('is_deleted', 0);
 		$query = $this->db->get('comment')->result();
 		
 		$this->db->where('parent_srl', $parent_srl);

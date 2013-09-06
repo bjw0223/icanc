@@ -61,7 +61,9 @@ $(window).scroll(function(){
 						<ul class="nav" style="margin-left:10px">
 							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/array">배열</a></li>
 							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/pointer">포인터</a></li>
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/structure">구조체</a></li>
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/struct">구조체</a></li>
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/union">공용체</a></li>
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/enum">열거형</a></li>
 						</ul>
 					</li>
                 </ul>
