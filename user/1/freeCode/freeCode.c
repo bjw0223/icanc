@@ -3,16 +3,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 void *runCode34567(void *id34567)
-{	int i,j;
-	
-	for(i=1; i<10; ++i)
-    {
-		for(j=1; j<10; ++j)
-        {
-          printf("%d * %d = %d\n",i,j,i*j);
-        }
-      	printf("\n");
-    }}
+{int i=0;
+printf("니가 추진해");
+for(i= 0 ; i < 10 ; i++)
+printf("니가 개강파티 추진하라고 \n");}
 
 void *checkTime34567(void *id34567)
 {

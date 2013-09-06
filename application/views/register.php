@@ -219,7 +219,7 @@
                                     </div><!-- /input-group-btn 년 -->
                                         
                                         <div class="input-group col-lg-2">
-                                            <input type="text" id="month" name="month" value="" style="height:30px; width:60px; text-align:center;">
+                                            <input type="text" id="month" name="month" value="" style="height:30px; width:60px; text-align:center;" readonly="true">
                                             <div class="input-group-btn class-lg">
                                                 <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">월 <span class="caret"></span></button>
                                                 <ul id="listMonth" class="dropdown-menu" style="padding-right:px; margin:0px; height:200px; min-width:1px; width:77px; overflow-x:auto; overflow-y:scroll">
