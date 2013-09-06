@@ -92,7 +92,7 @@ $(document).ready( function(){
     </div>
     <div class="row">
         <div class="quiz-tail">
-            <a href="<?=base_url();?>index.php/quiz" class="btn btn-default quiz-back-btn"><i class="icon-arrow-left icon-1x"></i></a>
+            <a href="<?=base_url();?>index.php/quiz/categoryList" class="btn btn-default quiz-back-btn"><i class="icon-arrow-left icon-1x"></i></a>
         </div>
     </div> 
 
