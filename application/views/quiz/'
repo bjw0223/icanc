@@ -47,7 +47,7 @@
 
 $(document).ready(function(){
     
-    var regExp = /((main|gets|getc)\s*\()|(goto\s*\:)/;
+    var regExp = /((main|gets|getchar|getc)\s*\()|(goto\s*\:)/;
     
     // head textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
@@ -90,7 +90,8 @@ $(document).ready(function(){
     // compile button click Event
     $("#compile").click( function()
     {
-        var $stdin = document.getElementById("stdin").value;
+        var $lineFeed = document.getElementById("lineFeed").value;
+        var $nonLineFeed = document.getElementById("nonLineFeed").value;
         // CodeMirror에서 code textare로 값 보내기
         
         $("#myModal").css('top',($(window).height()/2-70) +"px");
@@ -116,11 +117,10 @@ $(document).ready(function(){
         {
             // code textarea 특수문자 처리
             $codeStr = encodeURIComponent($codeStr);
-            $stdin = encodeURIComponent($stdin);
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/createCode",
-                    data : "code="+$codeStr+"&flag=1&stdin="+$stdin,
+                    data : "code="+$codeStr+"&flag=1&lineFeed="+$lineFeed+"&nonLineFeed="+$nonLineFeed,
                     dataType : "json",
                     success : function($result) {
                                 var $codeResult= "";
@@ -408,16 +408,10 @@ function setupEvents(){
                 <div class="coding-files">
                 </div>
                     <div>
-                        <b> 도움말 <br/></b>
-                        <small>
-                        stdin은 ','로 각각을 구분합니다.<br/>
-                        ex) a,b,1 - 세개의 char형 a,b,1이 차례대로 stdin으로 입력되어 집니다.<br/>
-                        또한 숫자의 경우 '##'을 붙여줌으로써 구분합니다.<br/>
-                        ex) ##1,##2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.<br/><br/>
-                        </small>
+                        LineFeed : <input type="text" id="lineFeed" name="lineFeed"></input>
                     </div>
                     <div>
-                        stdin : <input type="text" id="stdin" name="stdin"></input>
+                        NonLineFeed : <input type="text" id="nonLineFeed" name="nonLineFeed" placehoder="아직 사용불가"></input>
                     </div>
             </div>
             <div class="quiz-left-footer col-lg-12">
