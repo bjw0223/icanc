@@ -5,6 +5,7 @@ class Compiler extends CI_Controller {
     {
         parent::__construct();
         $this->load->helper('file');
+        $this->load->helper('alert');
         $this->load->model('quiz_model');
         $this->load->model('user_model');
     }
@@ -15,7 +16,9 @@ class Compiler extends CI_Controller {
     // 컴파일을 위한 코드 생성
     function createCode()
     {
+        // view에서 ajax로 POST값 가져오기 
         $flag = $_POST['flag'];
+        $stdin = explode(',',$_POST['stdin']); 
 
         $rawData = $this->quiz_model->getCodingCode(1);
         $data = (array)$rawData;
@@ -34,28 +37,28 @@ class Compiler extends CI_Controller {
         {
             // textarea에 text값 가져와 \n처리
             $finalCode = $threadCodeHead."\r".$code."\r".$threadCodeTail;
-            $this->_preprocessFreeCoding($finalCode);
+            $this->_preprocessFreeCoding($finalCode,$stdin);
         }
     }
     
     // CodingQuiz 실행
-    function _preprocessCodingQuiz($code)
+    function _preprocessCodingQuiz($code,$stdin)
     {
         $filePath = $this->_createFile($code,'quiz','quiz.c');
-        $result = $this->_compile($filePath,'quiz');
+        $result = $this->_compile($filePath,'quiz',$stdin);
         //delete_files($filePath);
     }
 
     // FreeCoding 실행
-    function _preprocessFreeCoding($code)
+    function _preprocessFreeCoding($code,$stdin)
     {
         $filePath = $this->_createFile($code,'freeCode','freeCode.c');
-        $this->_compile($filePath,'freeCode');
+        $this->_compile($filePath,'freeCode',$stdin);
         //delete_files($filePath);
     }
 
     // 컴파일
-    function _compile($filePath,$target)
+    function _compile($filePath,$target,$stdin)
     {
         // 저장된 code GCC
         $gcc = 'gcc -o '.$filePath.$target.' '.$filePath.$target.'.c -lpthread 2> '.$filePath.'errmsg.txt';
@@ -63,8 +66,8 @@ class Compiler extends CI_Controller {
         
         // compile
         exec($gcc, $gccOutput, $gccStatus);
-        exec($run, $runOutput, $runStatus);
-
+        //exec($run, $runOutput, $runStatus);
+        
         $fp = fopen($filePath.'errmsg.txt','r');
         $errmsgSize = filesize($filePath.'errmsg.txt'); 
 
@@ -81,7 +84,30 @@ class Compiler extends CI_Controller {
         // 컴파일 오류가 없을시 실행결과 출력
          else
          {
-            echo json_encode($runOutput);
+            $descriptorspec = array(
+                0 => array("pipe", "r"),
+                1 => array("pipe", "w"), );
+        
+            $process = proc_open("./".$target,$descriptorspec, $pipes, $filePath);
+
+            if (is_resource($process)) 
+            {   
+                foreach( $stdin as $value)
+                {
+                    $value = str_replace("##","\n",$value);
+                    fwrite($pipes[0],$value);
+                }
+                    fclose($pipes[0]);
+            }
+
+            $result = "";
+            while($pdf_content = fgets($pipes[1]))
+            {
+                $result = $result.$pdf_content."<br/>";
+            }
+                fclose($pipes[1]);
+                //echo json_encode($runOutput);
+                echo json_encode($result);
          }
     }
     

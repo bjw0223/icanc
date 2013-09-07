@@ -246,9 +246,12 @@ class Board extends CI_Controller {
 		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$parent_srl);
 	}
 	
-	function delComment($srl)
+	function delComment($board, $page, $srl, $comment_srl)
 	{
+		$this->load->model('board_model');
+		$this->board_model->delComment($srl,$comment_srl);
 		
+		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
 	}
 /*	
 	function returnList($srl, $board)
