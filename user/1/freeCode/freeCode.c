@@ -1,12 +1,13 @@
-#include <pthread.h>
+#include <pthread.h> 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-void *runCode34567(void *id34567)
-{int i=0;
-printf("니가 추진해");
-for(i= 0 ; i < 10 ; i++)
-printf("니가 개강파티 추진하라고 \n");}
+void *runCode34567(void *id34567) {	char a[10];
+	int b;
+
+	scanf("%s",a);
+	scanf("%d",&b);
+	printf("%s\n%d",a,b);}
 
 void *checkTime34567(void *id34567)
 {
