@@ -407,18 +407,19 @@ function setupEvents(){
             <div class="quiz-left-desc col-lg-12">
                 <div class="coding-files">
                 </div>
-                    <div>
-                        <b> 도움말 <br/></b>
-                        <small>
-                        stdin은 ','로 각각을 구분합니다.<br/>
-                        ex) a,b,1 - 세개의 char형 a,b,1이 차례대로 stdin으로 입력되어 집니다.<br/>
-                        또한 숫자의 경우 '##'을 붙여줌으로써 구분합니다.<br/>
-                        ex) ##1,##2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.<br/><br/>
-                        </small>
-                    </div>
-                    <div>
-                        stdin : <input type="text" id="stdin" name="stdin"></input>
-                    </div>
+                <div class="coding-help col-lg-12">
+                    <p><b> 도움말 </b></p>
+                    <small>
+                        <p><b>stdin은 ','로 각각을 구분합니다.</b></p>
+                        <p>ex) a,b,1 - 세개의 char형 a,b,1이 차례대로 stdin으로 입력되어 집니다.</p>
+                        <p><b>또한 숫자의 경우 '##'을 붙여줌으로써 구분합니다.</b></p>
+                        <p>ex) ##1,##2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.</p>
+                    </small>
+                </div>
+                <div class="coding-input col-lg-12">
+                    <p><b> stdin : </b></p>
+                    <input type="text" id="stdin" name="stdin" class="form-control"></input>
+                </div>
             </div>
             <div class="quiz-left-footer col-lg-12">
                 <div class="row">
