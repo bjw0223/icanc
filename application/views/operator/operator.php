@@ -2,8 +2,7 @@
     <span class="general">    
        <ul>
 	       <li>종류 및 우선순위</li>
-              <img src="<?=base_url()?>asset\lib\img\tutorial\operator\1.PNG" width=600px; height=500px;><br>
-			  <img src="<?=base_url()?>asset\lib\img\tutorial\operator\.PNG" width=600px; height=500px;><br><br>
+              <img src="<?=base_url()?>asset\lib\img\lecture\operator\1.PNG" width=600px; height=500px style="margin-bottom:20px"><br>
 			  <ul>
 	              <li class="general_sub">( ) : 우선순위를 최고로 높이고 싶을 때 사용한다.</li>
 		          <li id="list" class="general_sub2">ex) (a + 3) * b;</li>
@@ -71,7 +70,7 @@ int main()
     return 0;
 }
 </pre>
-                 <img src="<?=base_url()?>asset\lib\img\tutorial\operator\2.PNG" width=400px; height=130px; style="margin-bottom:20px"><br>
+                 <img src="<?=base_url()?>asset\lib\img\lecture\operator\2.PNG" width=400px; height=130px; style="margin-bottom:20px"><br>
 	             <li class="general_sub">&amp; : 주소 연산자</li>
 				    <ul>
 					    <li class="general_sub2">선언문 : 사용불가.</li>
@@ -85,16 +84,16 @@ printf(“%p\n”, &amp;a);
                     <ul>
 					    <li class="general_sub">선언문 : 포인터변수 선언 시 사용, 차원을 올린다.</li>
                         <li class="general_sub">실행문 : 포인터변수가 가리키는 값을 의미한다, 차원을 내린다.</li>
-                        <img src="<?=base_url()?>asset\lib\img\tutorial\operator\3.PNG" width=550px; height=180px; style="margin-bottom:20px"><br>
+                        <img src="<?=base_url()?>asset\lib\img\lecture\operator\3.PNG" width=550px; height=180px; style="margin-bottom:20px"><br>
                     </ul>
                  <li id="list" class="red" style="font-size:16px">*** 참고사항</li>
-                   <img src="<?=base_url()?>asset\lib\img\tutorial\operator\4.PNG" width=550px; height=350px; style="margin-bottom:20px"><br>
-                   <img src="<?=base_url()?>asset\lib\img\tutorial\operator\5.PNG" width=500px; height=220px; style="margin-left:22px; margin-bottom:20px"><br>
+                   <img src="<?=base_url()?>asset\lib\img\lecture\operator\4.PNG" width=550px; height=350px; style="margin-bottom:20px"><br>
+                   <img src="<?=base_url()?>asset\lib\img\lecture\operator\5.PNG" width=500px; height=220px; style="margin-left:22px; margin-bottom:20px"><br>
 			     <li class="general_sub">% : 나머지 연산자</li>
                  <li id="list" class="general_sub2">ex) 10 % 3 = 1 (나머지)</li>
                  <li class="general_sub">&lt;&lt;, &gt;&gt; : shift 연산자로 비트 단위로 이동 시킨다.</li>
                  <li id="list" class="general_sub2">비트를 좌로 이동시킬 때 좌측의 밀려나는 비트는 사라지며 우측에 새로운 비트들은 무조건 0으로 채워진다.<br>비트를 우로 이동 시킬 때 우측의 밀려나는 비트는 사라지며 좌측의 새로운 비트틀은 기존의 자료형이 signed일 때 sign bit의 값으로 채워지며 unsigned일 경우 0으로 채워진다. shift 연산을 사용하여 곱 연산을 하게 되면 직접 곱 연산을 한 것보다 훨씬 빠르다.</li>
-                   <img src="<?=base_url()?>asset\lib\img\tutorial\operator\6.PNG" width=350px; height=220px; style="margin-bottom:20px"><br>
+                   <img src="<?=base_url()?>asset\lib\img\lecture\operator\6.PNG" width=350px; height=220px; style="margin-bottom:20px"><br>
                  <li class="general_sub">==, != : 등가 연산자로 결과 값은 true or false 이다.</li>
 <pre class="brush:cpp" style="margin-bottom:20px">
 int a = 3, b = 2;

@@ -1,7 +1,7 @@
 <div class="col-lg-9 tutorial_desc">
     <span class="general">    
         <ul>
-			<img src="<?=base_url()?>asset\lib\img\tutorial\data_type\pointer\1.PNG" width=600px; height=150px; style="margin-left:-30px; margin-bottom:20px"><br>
+			<img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\1.PNG" width=600px; height=150px; style="margin-left:-30px; margin-bottom:20px"><br>
 		    <li>자료형에 따라 크기는 다르지만 모든 값은 메모리의 연속적인 기억공간에 할당된다.</li><br>
 			<li>할당된 기억공간 중 맨 첫 번째 기억공간의 주소값을 가지고 전체 기억공간의 값을 조작할 수 있다.</li><br>
 			<li>일반 변수는 주소추출 연산자(&amp;)를 사용하면 해당 변수의 주소값을 구할 수 있다.</li>
@@ -13,7 +13,7 @@
                 <li id="list" class="general_sub">[type] [*][변수명];</li>
 			    <li id="list" class="general_sub">int a = 3;</li>
 			    <li id="list" class="general_sub">int *p = &a;</li>
-			    <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\pointer\2.PNG" width=370px; height=90px; style="margin-bottom:40px"><br>
+			    <img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\2.PNG" width=370px; height=90px; style="margin-bottom:40px"><br>
 			<li>참조연산자(*)는 선언문에서 사용할 때와 실행문에서 사용할 때 뜻이 다르다.</li>
 				<li id="list" class="general_sub">int *p = &a; -&gt; 선언문, 이 때는 포인터변수 p 자체의 공간을 의미한다.</li>
 				<li id="list" class="general_sub">*p = 3; -&gt; 실행문, 이 때는 포인터변수가 가리키는 기억공간을 의미한다.</li><br>
@@ -72,7 +72,7 @@ int main()
 					   <li class="general_sub2">2차원, 3차원의 배열에서 구성요소는 여러 파트로 나눌 수 있었는데 그 중 가장 큰 요소가 배열의 첫 번째 요소가 된다.</li>
 					   <li class="general_sub2">2차원 배열의 경우는 가장 큰 배열요소가 1차원 배열이기 때문에 배열명이 가리키는 것은 1차원 배열(부분배열)이 된다.</li>
                             <li id="list" class="general_sub3">ex) int a[4][3] = {{1,1,1},{2,2,2},{3,3,3},{4,4,4}};</li>
-			                <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\pointer\3.PNG" width=580px; height=160px; style="margin-bottom:40px"><br>
+			                <img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\3.PNG" width=580px; height=160px; style="margin-bottom:40px"><br>
                        <li class="general_sub2">배열의 요소를 참조할 때 첨자를 사용하는 경우와 참조연산자를 사용하는 경우의 비교 (2차원 배열)</li>
 	                        <li id="list" class="general_sub3">ex) int a[4][3] = {{1,1,1},{2,2,2},{3,3,3},{4,4,4}};</li>
                      	         <li id="list" class="general_sub3" style="text-indent:30px">1) 첨자를 사용하는 경우</li>
@@ -114,7 +114,7 @@ func = trans;
 			        <li class="general_sub">포인터배열의 선언</li>
 		      	        <li id="list" class="general_sub2">[type] *배열명[첨자 크기];</li>
 			            <li id="list" class="general_sub2">char *ch[3] = {“I”, “CAN”, “C”};</li>
-			        <img src="<?=base_url()?>asset\lib\img\tutorial\data_type\pointer\4.PNG" width=330px; height=200px; style="margin-bottom:40px"><br>
+			        <img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\4.PNG" width=330px; height=200px; style="margin-bottom:40px"><br>
                     <li class="general_sub">위의 예제에서 배열 요소의 주소값에 해당하는 공간은 이미 고정으로 할당이 되어 있기 때문에 공간의 사용에 제약이 있다.</li>
                         <li id="list" class="general_sub2">*ch[1] = “CAN”; (x)</li><br>
 			    </ul>

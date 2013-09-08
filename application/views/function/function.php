@@ -119,7 +119,7 @@ void sum(int *a, int *b)
               </ul><br>
            <li>함수 내부 메모리 개념도</li>
 		   <li id="list">void sjm(), void bjw() 라는 함수가 존재할 때.</li>
-          <img src="<?=base_url()?>asset\lib\img\tutorial\function\3.PNG" width=630px; height=390px;><br>
+          <img src="<?=base_url()?>asset\lib\img\tutorial\function\3.PNG" width=700px; height=420px;><br>
 		   
        <ul>
     <span class="general">    
