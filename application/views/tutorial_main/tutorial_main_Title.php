@@ -1,6 +1,6 @@
 <div class="container">
    <div class="col-lg-12">
-	<div class="tutorial_main">TUTORIAL</div>
+	<div class="tutorial_main">Lecture</div>
    </div>
 </div>
 
