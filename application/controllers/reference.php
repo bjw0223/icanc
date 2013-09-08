@@ -14,5 +14,16 @@ class Reference extends CI_Controller {
         $data = $this->reference_model->getReference($name,$flag);
         echo json_encode( $data);
     }
-
+    function get()
+    {
+        $this->load->view('header');
+        $this->load->view('reference/reference_list');
+        $this->load->view('footer');
+    }
+    function fseek()
+    {
+        $this->load->view('header');
+        $this->load->view('reference/fseek');
+        $this->load->view('footer');
+    }
 }
