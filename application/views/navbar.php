@@ -111,7 +111,7 @@ $(document).ready(function() {
         <div class="col-lg-7 my-nav-tap">
             <div class="col-lg-2 <?=$active == 'startIcanc' ? 'active':'';?>" href="<?=base_url();?>index.php/start">Start ICANC</div>
             <div class="col-lg-2 reference_btn" href="#">Reference <i class='icon-chevron-up icon-small'></i></div>
-            <div class="col-lg-2 <?=$active == 'tutorial' ? 'active':'';?>" href="<?=base_url();?>index.php/tutorial">Tutorial</div>
+            <div class="col-lg-2 <?=$active == 'lecture' ? 'active':'';?>" href="<?=base_url();?>index.php/lecture">Lecture</div>
             <div class="col-lg-2 <?=$active == 'quiz' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz">Quiz</div>
             <div class="col-lg-2 <?=$active == 'freeCoding' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz/freeCoding">Free Coding</div>
             <div class="col-lg-2 <?=$active == 'board' ? 'active':'';?>" href="<?=base_url();?>index.php/board/blist">Board</div>

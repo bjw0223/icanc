@@ -422,11 +422,6 @@ function setupEvents(){
                 </div>
             </div>
             <div class="quiz-left-footer col-lg-12">
-                <div class="row">
-                    <div class="quiz-left-question col-lg-12">
-                        질문하기
-                    </div>
-                </div>
             </div>
         </div>
     </div>
