@@ -28,72 +28,72 @@ $(window).scroll(function(){
     <div class="bs-sidebar">
        <ul class="nav bs-sidebar"> 
             <li class="">
-                <a class="nav-title" href="#"  load-href="<?=base_url();?>index.php/tutorial/show/program/understanding">프로그램</a>
+                <a class="nav-title" href="#"  load-href="<?=base_url();?>index.php/lecture/show/program/understanding">프로그램</a>
                 <ul class="nav">
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/program/understanding">이해</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/program/constitute">구성</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/program/execution_process">실행과정</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/program/reference">참고사항</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/understanding">이해</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/constitute">구성</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/execution_process">실행과정</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/reference">참고사항</a></li>
                 </ul>
             </li>
             <li class="">
-                <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/constant/constant">상수</a>
+                <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/constant/constant">상수</a>
             </li>  
             <li class="">
-                <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/variable/variable">변수</a>
+                <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/variable/variable">변수</a>
             </li>
             <li class="">
-                <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/storage_class/storage_class">기억클래스</a>
+                <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/storage_class/storage_class">기억클래스</a>
             </li>
             <li class="">
-                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/integer">자료형</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/integer">자료형</a>
                 <ul class="nav">
                     <li class="">
-					<a class="nav-subCategory" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/integer">기본</a>
+					<a class="nav-subCategory" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/integer">기본</a>
 						<ul class="nav" style="margin-left:10px">
-							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/integer">정수</a></li>
-							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/real_number">실수</a></li>
-							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/character">문자</a></li>
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/integer">정수</a></li>
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/real_number">실수</a></li>
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/character">문자</a></li>
 						</ul>
 					</li>
                     <li class="">
-						<a class="nav-subCategory" href="#" load-href="<?=base_url();?>index.php/tutorial/show/data_type/array">응용</a>
+						<a class="nav-subCategory" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/array">응용</a>
 						<ul class="nav" style="margin-left:10px">
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/array">배열</a></li>
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/pointer">포인터</a></li>
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/struct">구조체</a></li>
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/union">공용체</a></li>
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/tutorial/show/data_type/enum">열거형</a></li>
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/lecture/show/data_type/array">배열</a></li>
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/lecture/show/data_type/pointer">포인터</a></li>
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/lecture/show/data_type/struct">구조체</a></li>
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/lecture/show/data_type/union">공용체</a></li>
+							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/lecture/show/data_type/enum">열거형</a></li>
 						</ul>
 					</li>
                 </ul>
             </li>
             <li class="">
-                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/control_statement/selection">제어문</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/lecture/show/control_statement/selection">제어문</a>
                 <ul class="nav">
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/control_statement/selection">선택</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/control_statement/repetition">반복</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/control_statement/branch_statement">분기</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/control_statement/selection">선택</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/control_statement/repetition">반복</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/control_statement/branch_statement">분기</a></li>
                 </ul>
             </li>  
             <li class="">
-                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/operator/operator">연산자</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/lecture/show/operator/operator">연산자</a>
             </li>  
             <li class="">
-                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/function">함수</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/lecture/show/function/function">함수</a>
                 <ul class="nav">
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/printf">PRINTF</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/scanf">SCANF</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/function/dynamic_allocation">동적할당</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/function/printf">PRINTF</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/function/scanf">SCANF</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/function/dynamic_allocation">동적할당</a></li>
                 </ul>
             </li>  
             <li class="">
-                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/tutorial/show/fileio/fileio">파일 입출력</a>
+                <a class="nav-title" href="#" load-href="<?=base_url();?>index.php/lecture/show/fileio/fileio">파일 입출력</a>
             <!--    <ul class="nav">
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/stream">스트림</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/open">개방</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/file_input">입력</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/tutorial/show/file/file_output">출력</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/file/stream">스트림</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/file/open">개방</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/file/file_input">입력</a></li>
+                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/file/file_output">출력</a></li>
                 </ul>  --!>
             </li>  
 
@@ -109,20 +109,20 @@ $(window).scroll(function(){
 
 	</ul>
   <!--        <ul class="nav">
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/program/understanding">이해</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/program/constitute">구성</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/program/execution_process">실행과정</a></li>
-                    <li><a load-href="<?=base_url();?>index.php/tutorial/show/program/reference">참고사항</a></li>
+                    <li><a load-href="<?=base_url();?>index.php/lecture/show/program/understanding">이해</a></li>
+                    <li><a load-href="<?=base_url();?>index.php/lecture/show/program/constitute">구성</a></li>
+                    <li><a load-href="<?=base_url();?>index.php/lecture/show/program/execution_process">실행과정</a></li>
+                    <li><a load-href="<?=base_url();?>index.php/lecture/show/program/reference">참고사항</a></li>
 
 		   
                     <li class="">
-			<a load-href="<?=base_url();?>index.php/tutorial/show/program/reference">사고뭉치</a>
+			<a load-href="<?=base_url();?>index.php/lecture/show/program/reference">사고뭉치</a>
 
 			<ul class="nav">
-			    <li><a load-href="<?=base_url();?>index.php/tutorial/show/program/understanding">a</a></li>
-			    <li><a load-href="<?=base_url();?>index.php/tutorial/show/program/constitute">b</a></li>
-			    <li><a load-href="<?=base_url();?>index.php/tutorial/show/program/execution_process">c</a></li>
-			    <li><a load-href="<?=base_url();?>index.php/tutorial/show/program/reference">d</a></li>
+			    <li><a load-href="<?=base_url();?>index.php/lecture/show/program/understanding">a</a></li>
+			    <li><a load-href="<?=base_url();?>index.php/lecture/show/program/constitute">b</a></li>
+			    <li><a load-href="<?=base_url();?>index.php/lecture/show/program/execution_process">c</a></li>
+			    <li><a load-href="<?=base_url();?>index.php/lecture/show/program/reference">d</a></li>
 			</ul>
 
 		   </li>

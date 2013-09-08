@@ -7,13 +7,18 @@ class Start extends CI_Controller {
     }
     function index()
     {
+        $this->overview('tutorial');
+    }
+    function overview($arg)
+    {
         $data['active']='startIcanc';
+        $data['selected']=$arg;
 
         $this->load->view('header');
         $this->load->view('navbar',$data);
         $this->load->view('reference');
-		$this->load->view('start_contents');
-        $this->load->view('startIcanc');
+		$this->load->view('start/start_contents',$data);
+        $this->load->view("start/$arg");
         $this->load->view('footer');
     }
 }
