@@ -1,3 +1,14 @@
+<script>
+
+$(document).ready(function(){
+    $('.main-btn').click(function(){
+            document.location.href = "<?=base_url()?>index.php/auth/login";
+        
+    });
+
+});
+
+</script>
 <style>
 #main {
     border-top: 1px solid #536166;
@@ -6,27 +17,40 @@
     padding-right:50px;
 }
 body{ 
-    background-color:#36545F;
 }
 .icanc-main {
     color:white;
 }
 .main-title {
-    font-size:70px;
+    margin-top:30px;
+    font-size:110px;
     font-weight:bold;
     letter-spacing:10px;
+    color:#36545f;
+    text-align:center;
+}
+.main-subtitle {
+    font-size:40px;
+    font-weight:bold;
+    letter-spacing:10px;
+    color:#36545f;
+    text-align:center;
 }
 .main-btn { 
     border-radius:10px;
-    border:2px solid white;
-    color:white;
+    border:3px solid #34545f;
+    color:#36545f;
     cursor:pointer;
     font-weight:bold;
+    font-size:35px;
     padding:15px;
+    margin-top:50px;
+    text-align:center;
+    letter-spacing:10px;
 }
 .main-btn:hover { 
-    background-color:white;
-    color:#36545F;
+    background-color:#36545f;
+    color:white;
     cursor:pointer;
     font-weight:bold;
     padding:15px;
@@ -37,22 +61,14 @@ body{
 </script>
 <div id="main" class="">
     <div class="row icanc-main">
-        <div class="main-title col-lg-7 col-sm-7">
-           ICANC is MOOC 
+        <div class="main-title col-lg-12 col-sm-12">
+           ICANC PROJECT 
         </div>
-        <div class="col-lg-5 col-sm-5">
-            <p><h1><strong>M</strong><small>Massive</small></h1></p>
-            <p><h1><strong>O</strong><small>Open</small></h1></p>
-            <p><h1><strong>O</strong><small>Online</small></h1></p>
-            <p><h1><strong>C</strong><small>Course</small></h1></p>
+        <div class="main-subtitle col-lg-12 col-sm-12">
+        Online C language learner support
         </div>
-    </div>
-    <div class="row">
-        <div class="main-btn main-login col-lg-6 col-sm-6">
-            Login    
-        </div>
-        <div class="main-btn main-Join col-lg-6 col-sm-6">
-            Join
+        <div class="main-btn col-lg-4 col-sm-4 col-offset-4">
+            LOGIN
         </div>
     </div>
 </div>
