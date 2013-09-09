@@ -248,7 +248,7 @@
                               <td class="active"> 직업 </td>
                               <td > 
                                 <div class="row">
-                                    <div class="input-group col-lg-2 col-sm-22">
+                                    <div class="input-group col-lg-2 col-sm-2">
                                         <input type="text" id="job" name="job" style="height:30px; width:90px; text-align:center;" readonly="true">
                                             <div class="input-group-btn class-lg">
                                                 <button type="button" class="btn btn-default dropdown-toggle btn-small" style="width:100px;" data-toggle="dropdown">직업 <span class="caret"></span></button>

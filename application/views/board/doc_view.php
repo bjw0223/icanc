@@ -72,24 +72,26 @@
                 <a href="<?=base_url();?>index.php/board/good/<?=$board?>/<?=$page?>/<?=$data->srl?>"><button type="button" class="btn btn-info">좋아요 <?=$data->goods?></button></a>
             </div>
             <div class="col-lg-1 col-sm-1">
-				<form action="<?=base_url();?>index.php/board/modifyDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
-					<input type="hidden" name="writer" value="<?=$data->writer?>">
-					<?php
-						if(($nick=$this->session->userdata('user_nickname'))==$data->writer){
-                			echo "<button class='btn' title='수정'><i class='icon-pencil icon-large'></i></button>";
-						}
-					?>
-				</form>
+				<?php
+					if(($nick=$this->session->userdata('user_nickname'))==$data->writer){
+               			echo "<a href=".base_url()."index.php/board/modifyDoc/".$board."/".$page."/".$data->srl.">".
+								"<button class='btn' title='수정'>".
+									"<i class='icon-pencil icon-large'></i>".
+								"</button>".
+							"</a>";
+					}
+				?>
             </div>
 			<div class="col-lg-1 col-sm-1">
-				<form action="<?=base_url();?>index.php/board/delDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
-					<input type="hidden" name="writer" value="<?=$data->writer?>">
-					<?php
-						if(($nick=$this->session->userdata('user_nickname'))==$data->writer){
-                			echo "<button class='btn' title='삭제'><i class='icon-trash icon-large'></i></button>";
-						}
-					?>
-				</form>
+				<?php
+					if(($nick=$this->session->userdata('user_nickname'))==$data->writer){
+						echo "<a href=".base_url()."index.php/board/delDoc/".$board."/".$page."/".$data->srl.">".
+								"<button class='btn' title='삭제'>".
+									"<i class='icon-trash icon-large'></i>".
+								"</button>".
+							"</a>";
+					}
+				?>
             </div>
 			<div class="col-lg-1 col-sm-1">
 				<form action="<?=base_url();?>index.php/board/replyDoc/<?=$board?>/<?=$page?>/<?=$data->srl?>" method="POST">
@@ -98,7 +100,7 @@
 					<?php 
 						//답글에 답글을 달지 못하도록 하는 부분
 						if($data->reply_srl==0){
-							echo "<button class='btn' title='댓글'><i class='icon-reply icon-large'></i></button>";
+							echo "<button class='btn' title='답글'><i class='icon-reply icon-large'></i></button>";
 						}
 						
 					?>
