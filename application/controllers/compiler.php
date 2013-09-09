@@ -31,7 +31,7 @@ class Compiler extends CI_Controller {
         {
             // textarea에 text값 가져와 \n처리
             $finalCode = $threadCodeHead."\r".$code."\r".$threadCodeTail;
-            $this->_preprocessCodingQuiz($finalCode);
+            $this->_preprocessCodingQuiz($finalCode,$stdin);
         }
         else if($flag == 1)
         {
@@ -76,7 +76,7 @@ class Compiler extends CI_Controller {
          {
             $error = (array)fread($fp,$errmsgSize);
             fclose($fp);
-            $error = str_replace("\n","<br>", $error);
+            $error = str_replace("\n","<br/>", $error);
             $error = str_replace($filePath.$target.'.c:',"--> ", $error);
             $error = str_replace("'runCode34567'","'main'",$error);
             echo json_encode($error);
@@ -103,8 +103,9 @@ class Compiler extends CI_Controller {
             $result = "";
             while($pdf_content = fgets($pipes[1]))
             {
-                $result = $result.$pdf_content."<br/>";
+                $result = $result.$pdf_content;
             }
+                $result = str_replace("\n","<br/>",$result);
                 fclose($pipes[1]);
                 //echo json_encode($runOutput);
                 echo json_encode($result);

@@ -128,7 +128,7 @@ class Quiz extends CI_Controller {
         $this->load->view('header');
         $result['result'] = null;
         $temp['active'] = 'freeCoding';
-        $this->load->view('navbar',$temp);
+        $this->load->view('freecoding-navbar',$temp);
         $this->load->view('quiz/freeCoding',$data);
         $this->load->view('footer');
     }

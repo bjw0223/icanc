@@ -2,12 +2,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-void *runCode34567(void *id34567) {	int i,j;
+void *runCode34567(void *id34567) {int i;
 
-	scanf("%d",&i);
-	scanf("%d",&j);
-
-	printf("%d and %d",i,j);}
+	for(i=1; i<=9; i++)
+    {
+		printf("9 * %d = %d\n",i,i*9);
+    }}
 
 void *checkTime34567(void *id34567)
 {

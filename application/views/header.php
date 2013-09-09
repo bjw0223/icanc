@@ -12,9 +12,12 @@
         <script src="<?=base_url();?>asset/lib/bootstrap/js/dropdown.js"></script>
         <script src="<?=base_url();?>asset/lib/bootstrap/js/scrollspy.js"></script>
 <!-- highlight -->
-        <!-- <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shCore.js"></script>
-        //<script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shBrushCpp.js"></script>
-        <link rel="stylesheet" type="text/css" href="<?=base_url();?>asset/lib/syntaxhighlighter/styles/shCoreDefault.css"> -->
+<!--
+        <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shCore.js"></script>
+        <script type="text/javascript" src="<?=base_url();?>asset/lib/syntaxhighlighter/scripts/shBrushCpp.js"></script>
+        <link rel="stylesheet" type="text/css" href="<?=base_url();?>asset/lib/syntaxhighlighter/styles/shCoreDefault.css">
+-->
+
 <!-- tinyMCE -->
         <script type="text/javascript" src="<?=base_url();?>asset/lib/tinymce/js/tinymce/tinymce.min.js"></script>
 <!--  codemirror -->

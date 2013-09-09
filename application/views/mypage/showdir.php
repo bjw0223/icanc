@@ -112,7 +112,7 @@ table th {
                         "<td>$time</td>".
                         "<td>$data->hits</td>".
                         "<td>$data->goods</td>".
-                        "<td><a class='btn btn-danger btn-small' href='http://localhost/index.php/mypage/delDoc/$data->srl'>삭제</a></td>".
+                        "<td><a class='btn btn-danger btn-small' href='".base_url()."/index.php/mypage/delDoc/$data->srl'>삭제</a></td>".
                     "</tr>";
             } 
             echo "<tr><td colspan='8'></td></tr>";

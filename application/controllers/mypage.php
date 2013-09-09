@@ -149,11 +149,12 @@ class Mypage extends CI_Controller {
     // 파일삭제	
     function delDoc($srl)
     {
+		$table='board';
         $this->load->model('board_model');
-		$data = $this->board_model->getWriter($srl);
+		$writer = $this->board_model->getWriter($table, $srl);
 		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
 		{
-			if(($nick=$this->session->userdata('user_nickname'))==$data->writer)
+			if(($nick=$this->session->userdata('user_nickname'))==$writer)
 			{
 				$this->board_model->delDoc($srl);
                 redirect( base_url().'index.php/mypage/showdir');
