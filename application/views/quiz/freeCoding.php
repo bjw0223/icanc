@@ -412,8 +412,8 @@ function setupEvents(){
                     <small>
                         <p><b>stdin은 ','로 각각을 구분합니다.</b></p>
                         <p>ex) a,b,1 - 세개의 char형 a,b,1이 차례대로 stdin으로 입력되어 집니다.</p>
-                        <p><b>또한 숫자의 경우 '##'을 붙여줌으로써 구분합니다.</b></p>
-                        <p>ex) ##1,##2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.</p>
+                        <p><b>또한 숫자의 경우 '#'을 붙여줌으로써 구분합니다.</b></p>
+                        <p>ex) #1,#2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.</p>
                     </small>
                 </div>
                 <div class="coding-input col-lg-12">
@@ -443,8 +443,8 @@ function setupEvents(){
                 <div id="headDiv">
                     <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
                 </div>
-
-                <div id="codeDiv">
+                
+                <div id="codeDiv" style="padding:0px;">
                     <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
                 </div>
 

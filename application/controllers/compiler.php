@@ -94,7 +94,7 @@ class Compiler extends CI_Controller {
             {   
                 foreach( $stdin as $value)
                 {
-                    $value = str_replace("##","\n",$value);
+                    $value = str_replace("#","\n",$value);
                     fwrite($pipes[0],$value);
                 }
                     fclose($pipes[0]);
