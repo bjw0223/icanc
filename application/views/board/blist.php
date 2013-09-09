@@ -48,8 +48,17 @@ table th {
     <div class="col-lg-2">
         <div class="row">
             <div class='col-lg-12 text-right write-btn-div'>
-                <a class="btn btn-default" href="<?=base_url();?>index.php/board/documentWrite/<?=$board?>">글쓰기</a>
-            </div>
+			<?php
+				if($board!='faq')
+					echo "<a class='btn btn-default' href=".base_url()."index.php/board/documentWrite/"."$board".">글쓰기</a>";
+				if($board=='faq')
+				{
+					$nickname = $this->session->userdata('user_nickname');
+					if($nickname =='admin')
+						echo "<a class='btn btn-default' href=".base_url()."index.php/board/documentWrite/"."$board".">글쓰기</a>";
+            	}
+			?>
+			</div>
         </div>
     </div>
     <div class="col-lg-10">
@@ -90,6 +99,7 @@ table th {
             
 			if($uri_num!=4){
 				$page=1;
+
 			}else{
 				$page = $this->uri->segment($uri_num);
 			}

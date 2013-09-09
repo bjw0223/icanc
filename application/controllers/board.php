@@ -64,14 +64,23 @@ class Board extends CI_Controller {
 	function documentWrite($board) //문서작성
     {
         if( $this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
-        {   
-        	$selected['selected']=$board;
-            $this->_head();
-            $this->load->view('navbar');
-            $this->load->view('reference');
-            $this->load->view('board/board_contents', $selected);
-            $this->load->view('board/document_write');
-            $this->load->view('footer');
+        { 
+			$nick = $this->session->userdata('user_nickname');
+			if(($board == 'faq') && ($nick != 'admin'))
+			{
+            	$this->session->set_flashdata("message","FAQ 게시판은 관리자 계정만 글쓰기 가능합니다.");
+            	redirect( base_url()."index.php/board/blist/faq" );
+			}
+			else
+			{
+				$selected['selected']=$board;
+           	 	$this->_head();
+           	 	$this->load->view('navbar');
+            	$this->load->view('reference');
+            	$this->load->view('board/board_contents', $selected);
+            	$this->load->view('board/document_write');
+            	$this->load->view('footer');
+			}
         }
         else // 비로그인시 로그인창으로 리다이렉트
         {
@@ -142,11 +151,14 @@ class Board extends CI_Controller {
    	
 	function delDoc($board, $page, $srl)
 	{
-		$writer = $this->input->get_post('writer');
-        
 		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
 		{
-			if(($nick=$this->session->userdata('user_nickname'))==$writer)
+			$table='board';
+			$this->load->model('board_model');
+			$writer = $this->board_model->getWriter($table, $srl);
+			$nick = $this->session->userdata('user_nickname');
+
+			if($nick==$writer)
 			{
 				$this->load->model('board_model');
 				$this->board_model->delDoc($srl);
@@ -193,15 +205,17 @@ class Board extends CI_Controller {
 
 	function modifyDoc($board, $page, $srl)
 	{
-		$writer = $this->input->get_post('writer');
-
 		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
 		{
-			if(($nick=$this->session->userdata('user_nickname'))==$writer)//일치했을때 삭제
+			$table='board';
+			$this->load->model('board_model');
+			$writer = $this->board_model->getWriter($table, $srl);
+			$nick = $this->session->userdata('user_nickname');
+
+			if($nick==$writer)//일치했을때 삭제
 			{
         		$selected['selected']=$board;
 				
-				$this->load->model('board_model');
 				$list = $this->board_model->get($srl);
 				$result['data'] = $list;
 	
