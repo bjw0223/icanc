@@ -103,8 +103,8 @@
          $(this).parent().parent().parent('li').attr('class','active');
             
          var load_href = $(this).attr('load-href');
-         $('.tutorial_desc').load(load_href);
-         $('.tutorial-title').load(load_href+"/true");
+         $('.lecture_desc').load(load_href);
+         $('.lecture-title').load(load_href+"/true");
          SyntaxHighlighter.config.bloggerMode = true;
          SyntaxHighlighter.all();
     });

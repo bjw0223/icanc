@@ -28,13 +28,7 @@ $(window).scroll(function(){
     <div class="bs-sidebar">
        <ul class="nav bs-sidebar"> 
             <li class="">
-                <a class="nav-title" href="#"  load-href="<?=base_url();?>index.php/lecture/show/program/understanding">프로그램</a>
-                <ul class="nav">
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/understanding">이해</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/constitute">구성</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/execution_process">실행과정</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/reference">참고사항</a></li>
-                </ul>
+                <a class="nav-title" href="#"  load-href="<?=base_url();?>index.php/lecture/show/program/program">프로그램</a>
             </li>
             <li class="">
                 <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/constant/constant">상수</a>
