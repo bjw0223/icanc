@@ -194,12 +194,12 @@ class Board_model extends CI_Model {
 
     }
    
-	function getWriter($srl)
+	function getWriter($table, $srl)
     {
         $this->db->select('writer');
 		$this->db->where('srl', $srl);
-        $query=$this->db->get('board')->row();
-        return $query;
+        $query=$this->db->get($table)->row();
+        return $query->writer;
     }
 	
 	function addComment($parent_srl, $data)

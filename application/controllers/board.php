@@ -248,11 +248,36 @@ class Board extends CI_Controller {
 	
 	function delComment($board, $page, $srl, $comment_srl)
 	{
-		$this->load->model('board_model');
-		$this->board_model->delComment($srl,$comment_srl);
-		
+		if($this->session->userdata('is_login') == "ture" ) // 로그인 여부 확인
+		{
+			$table='comment';
+			$this->load->model('board_model');
+			$writer = $this->board_model->getWriter($table, $comment_srl);
+			$nickname = $this->session->userdata('user_nickname');
+
+			if($writer==$nickname)
+			{
+				$this->board_model->delComment($srl, $comment_srl);
+				redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
+			}
+			else
+			{
+				$this->session->set_flashdata("message",'작성자만 수정 가능합니다');
+        		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
+			}
+		}
+		else
+		{
+            $this->session->set_flashdata("message","로그인후 사용 가능합니다");
+            redirect( base_url()."index.php/auth/login" );
+		}
+	}
+
+	function modifyComment($board, $page, $srl, $comment_srl)
+	{
 		redirect( base_url().'index.php/board/doc_view/'.$board.'/'.$page.'/'.$srl);
 	}
+
 /*	
 	function returnList($srl, $board)
 	{

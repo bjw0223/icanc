@@ -169,21 +169,22 @@ body {
     overflow-y:hidden;
 }
 .quiz-left-bar {
-    height:40px;
+    height:50px;
     background-color:#E6E6E6;
     border-bottom: 1px solid rgba(0,0,0,0.15);
 }
 .quiz-left-footer {
     height:40px;
+    border-top: 1px solid rgba(0,0,0,0.15);
 }
-.quiz-left-bar,.quiz-middle-bar,.quiz-right-bar {
-    height:40px;
+.quiz-middle-bar,.quiz-right-bar {
+    height:50px;
     background-color:#1F1D1D;
     border-bottom: 1px solid #000000;
     text-align:center;
-    font-size: 18px;
-    line-height: 40px;
-    color: #bebebe;
+    font-size: 13px;
+    line-height: 50px;
+    color: #646464;
     font-weight:bold;
     text-transform: uppercase;
 }
@@ -224,13 +225,13 @@ body {
     border:1px solid #0052FF; 
 }
 .quiz-description, .quiz-result {
-    background-color#7C7C7C;
+    background-color:#FFFFFF;
     border-radius:10px;
-    border: 1px solid #928E8E;;
+    border: 1px solid #FFFFFF;
     padding:5px;
 }
 .quiz-description-desc, .quiz-result-desc{
-    background-color:#000000;
+    background-color:#204420;
     height:100%;
     width:100%;
     color:#ffffff;
@@ -241,7 +242,7 @@ body {
     margin-top:10px;
 }
 .compileBtn, .nextBtn {
-    background-color:#2F8143;
+    background-color:#08c;
     color:#ffffff;
 }
     .CodeMirror {
@@ -294,7 +295,7 @@ body {
 .left-title {
     font-size:16px;
     font-weight:bold;
-	margin:0px;
+margin:0px;
 }
 .quiz-left-tip{
     padding:5px;
@@ -310,34 +311,12 @@ body {
     color:silver;
 }
 #myModal {
-	position:absolute;
-	text-align:center;
+position:absolute;
+text-align:center;
 }
 .compile-waiting {
-	font-size:100px;
-	color:#eeeeee;
-}
-body {
-	padding-top:30px;
-}
-.freecoding-footer {
-	height:30px;
-	background-color:#e6e6e6;
-}
-.my-footer-logo
-{
-    height:30px;
-    line-height:30px;
-    font-size:15px;
-    font-weight:bold;
-    text-align:right;
-}
-.my-footer-logo > a {
-    color:rgb(37, 35, 35);
-}
-.my-footer-logo > a:hover {
-    text-decoration:none;
-    color:gold;
+font-size:100px;
+color:#eeeeee;
 }
 
 </style>
@@ -450,13 +429,13 @@ function setupEvents(){
         <div class="quiz-middle-div row">
             <div class="quiz-middle-bar col-lg-12">
                 <div class="row">
-                    <div class="quiz-tap col-lg-2">
-                        <i class="icon-file-alt icon-large"></i>
+                    <div class="quiz-tap-title col-lg-2">
+                        files :
                     </div>
-                    <div class="quiz-tap-title col-lg-6">
-						Free Coding Editor
+                    <div class="quiz-tap col-lg-2" style="">
+                        <i class="icon-file-alt icon-large"></i> quiz.c
                     </div>
-                    <div class="col-lg-6"> 
+                    <div class="col-lg-8"> 
                     </div>
                 </div>
             </div>
@@ -475,7 +454,7 @@ function setupEvents(){
 
             </div>
             <div class="quiz-middle-footer col-lg-12">
-                <button class="btn compileBtn" id="compile" name="compile"> Compile + Run </button>
+                <button class="btn compileBtn" id="compile" name="compile"> Compile </button>
                 <button class="btn nextBtn" id="next" name="next"> Next Quiz </button>
             </div>
         </div>
@@ -495,9 +474,4 @@ function setupEvents(){
         </div>
     </div>
 
-</div>
-<div class="freecoding-footer">
-        <div class="col-lg-12 my-footer-logo">
-            <a href="#">Design by icanc</a>
-        </div>
 </div>
