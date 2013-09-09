@@ -1,3 +1,40 @@
+<script>
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+	var editor = CodeMirror.fromTextArea(document.getElementById("code2"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+	var editor = CodeMirror.fromTextArea(document.getElementById("code3"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+	var editor = CodeMirror.fromTextArea(document.getElementById("code4"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+</script>
+<style>
+	.codearea {
+	padding:10px 0px 10px 30px;
+	}
+    .CodeMirror {
+        border-top: 1px solid #eee;
+        border-bottom: 0px solid #eee;
+        height: auto;
+        width:100%;
+    }
+</style>
 <div class="col-lg-9 tutorial_desc">
     <span class="general">    
        <ul>
@@ -15,13 +52,15 @@
 	              <li class="general_sub">User Define Function : 제공되는 함수 이외에 사용자가 직접 만들어<br>사용하는 함수</li>
 			  </ul><br>
 	       <li>형식</li>
-<pre class="brush:cpp">
-type 함수명 (전달인자)
-{
-    변수 선언 및 수행 문장;
-    return (값 or 수식);
-}
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code">
+	type 함수명 (전달인자)
+	{
+		변수 선언 및 수행 문장;
+		return (값 or 수식);
+	}
+			</textarea>
+		</div>
 	          <ul>
 			      <li class="general_sub">맨 첫부분의 type은 함수의 리턴값의 type으로서 해당 함수의 type을 의미한다.</li>
                   <li class="general_sub">함수명은 변수명을 만드는 규칙만 지키면 자유로우나 대개 해당 함수의 기능을 예측할 수 있는 이름을 권장한다.</li>
@@ -32,18 +71,20 @@ type 함수명 (전달인자)
            <li>선언부, 호출부, 정의부</li>
 		      <ul>
 			      <li class="general_sub">선언부 : 함수에 대한 기본 정보를 컴파일러에게 알려주는 부분으로 main() 함수 앞에 정의부가 위치 했을 경우에 생략이 가능하다. 또한 사용자가 함수 호출시 잘못 사용하는 경우에 교정 역할을 해준다.</li>
-<pre style="margin-bottom:20px" class="brush:cpp">
-char sum(int);
-int main()
-{
-    sum(3.3);         --&gt; 이때 int 형으로 변환되어 날아간다.
-    return 0;
-}
-void sum(int a)
-{
-    printf(“%d\n”, a+3);
-}
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code2">
+	char sum(int);
+	int main()
+	{
+		sum(3.3);         --&gt; 이때 int 형으로 변환되어 날아간다.
+		return 0;
+	}
+	void sum(int a)
+	{
+		printf(“%d\n”, a+3);
+	}
+			</textarea>
+		</div>
                   <li class="general_sub">호출부 : 함수를 실제 사용할 때 쓰이며 여러 번 반복 호출이 가능하다. 호출부에서는 type을 표시하지 않는다.</li>
                   <li class="general_sub">정의부 : 기능을 기술한 부분으로 시스템 라이브러리 함수는 이 부분이 필요없으나 사용자 정의 함수는 모든 부분이 필요하다.</li>
                   <img src="<?=base_url()?>asset\lib\img\tutorial\function\1.PNG" width=440px; height=430px; style="margin-top:20px"><br>
@@ -79,37 +120,41 @@ void sum(int a)
                   <li class="general_sub">전달방법</li>
                      <ul>
 					     <li class="general_sub2">Call by Value : 직접 값을 전달하는 방식으로 실 매개변수의 값을 레지스터로 복사하여 넘긴다. 실 매개변수의 값은 임의로 변경되지 않는다.</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-int main()
-{
-    int a = 1;
-    int b = 2;
-    sum(a, b);
-    return 0;
-}
-void sum(int a, int b)
-{
-    printf(“%d\n”, a+b);
-}
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code3">
+	#include &lt;stdio.h&gt;
+	int main()
+	{
+		int a = 1;
+		int b = 2;
+		sum(a, b);
+		return 0;
+	}
+	void sum(int a, int b)
+	{
+		printf(“%d\n”, a+b);
+	}
+			</textarea>
+		</div>
 					     <li class="general_sub2">Call by Pointer : 값이 아닌 주소를 전달하는 방식으로 실제 주소가 넘어가기 때문에 호출된 함수 내부에서의 값 변경이 실제로 영향을 미친다.</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-int main()
-{
-    int a = 1;
-    int b = 2;
-    sum(&amp;a, &amp;b);
-    return 0;
-}
-void sum(int *a, int *b)
-{
-    int c = *a;
-    int d = *b
-    printf(“%d\n”, c + d);
-}
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code4">
+	#include &lt;stdio.h&gt;
+	int main()
+	{
+		int a = 1;
+		int b = 2;
+		sum(&amp;a, &amp;b);
+		return 0;
+	}
+	void sum(int *a, int *b)
+	{
+		int c = *a;
+		int d = *b
+		printf(“%d\n”, c + d);
+	}
+			</textarea>
+		</div>
                      </ul>
 		      </ul><br>
            <li>재귀호출함수</li>
@@ -119,7 +164,7 @@ void sum(int *a, int *b)
               </ul><br>
            <li>함수 내부 메모리 개념도</li>
 		   <li id="list">void sjm(), void bjw() 라는 함수가 존재할 때.</li>
-          <img src="<?=base_url()?>asset\lib\img\tutorial\function\3.PNG" width=630px; height=390px;><br>
+          <img src="<?=base_url()?>asset\lib\img\tutorial\function\3.PNG" width=700px; height=420px;><br>
 		   
        <ul>
     <span class="general">    

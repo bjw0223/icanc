@@ -8,8 +8,6 @@ class Install_model extends CI_Model {
 
 	function run($query)
 	{
-        $this->db->query($query);
+       $this->db->query($query);
     }
-
-
 }

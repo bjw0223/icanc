@@ -1,5 +1,6 @@
 <div class="col-lg-9 tutorial_desc">
     <img src="<?=base_url()?>asset\lib\img\tutorial\program\understanding\1.PNG" width=350px; Height=250px style="margin-left:20px"><br><br>
+    <img src="<?=base_url()?>asset\lib\img\tutorial\program\1.png" width=350px; Height=250px style="margin-left:20px"><br><br>
     <span class="general">
 	   <ul>
 	       <li>Programming Language</li>

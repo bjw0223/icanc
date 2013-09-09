@@ -1,252 +1,193 @@
+<script>
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+	var editor = CodeMirror.fromTextArea(document.getElementById("code2"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+	var editor = CodeMirror.fromTextArea(document.getElementById("code3"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+</script>
+<style>
+	.codearea {
+	padding:10px 0px 10px 30px;
+	}
+    .CodeMirror {
+        border-top: 1px solid #eee;
+        border-bottom: 0px solid #eee;
+        height: auto;
+        width:100%;
+    }
+</style>
 <div class="col-lg-9 tutorial_desc">
 <div class="general">
     <ul>
-	<li>기억클래스 지정</li>
-	    <ul>
-		<li class="general_sub2"><span class="blue">[Storage class]</span> Type 변수명; &nbsp;&nbsp;&nbsp;---&gt; ex) <span class="blue">auto</span> int num;</li>
-                <li class="general_sub2">[Storage class] 생략 시 bloack 내에서는 auto, block 밖에서는 extern 으로 인식</li>
-		<li class="general_sub2" id="list">* 기억클래스의 default 는 auto 이며, block 밖에서는 원래 쓰지 않는다</li>
-		<li class="general_sub2" id="list" style="margin-left:15px">(꼭 생략해야 한다)</li>
-            </ul><br>
-	<li>실행파일과 메모리 영역</li>
-	    <ul>
-		<li class="general_sub2">C 언어로 작성한 실행파일이 Memory(RAM) 내에서 실행될 때에는 Code 영역에 실행파일이 올라가고, Data 영역에 프로그램 내에서 선언된 변수나 동적메모리 할당된 기억공간이 잡히게 된다.</li>
-            </ul>
-                <img src="<?=base_url()?>asset\lib\img\tutorial\storage_class\1.PNG" width=600px; height=300px; style="margin-top:10px; margin-left:40px"><br><br>
-	<li>기억클래스 표</li>
-            <img src="<?=base_url()?>asset\lib\img\tutorial\storage_class\2.PNG" width=670px; height=300px; style="margin-bottom:10px"><br>
-	       <ul>
-	           <li class="general_sub2">유효범위 : 명령어 block, 함수 block, Program, File</li>
-                   <li class="general_sub2">Program &gt; File : 1개의 Program 은 여러 개의 File 로 이루어질 수 있다.</li>
-		   <li class="general_sub2">(비) 초기화 영역 : 최초에 초기화 안해도 이 영역에 잡힌다.</li>
-		   <li class="general_sub2" id="list">cf) 쓰레기 값을 사용하면 error, 쓰레기 값의 주소를 사용하는 것은 가능하다.</li>
-               </ul><br>
-	<li>auto 기억클래스</li>
-	    <ul>
-		<li class="general_sub2">auto 변수 값의 출력</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-int main()
-{
-    auto int a = 1;
-    printf("a = %d\n", a);
-    {
-        a = 2;
-        printf("a = %d\n", a);
-        {
-            a += 1;
-            printf("a = %d\n", a);
-        }
-        printf("a = %d\n", a);
-    }
-    printf("a = %d\n", a);
-    return 0;
-}
-</pre>
-		<li class="general_sub2">형식 매개변수의 기억클래스는?</li>
-		   <pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-void workover(int);
-int reset(int);
-int main()
-{
-    auto int a = 5;
-    reset(a / 2);        printf("%d\n", a);
-    reset(a /= 2);       printf("%d\n", a);
-    a = reset(a / 2);    printf("%d\n", a);
-    workover(a);         printf("%d\n", a);
-    return 0;
-}
-void workover(int a)   
-{
-    a = ( (a * a) / (2 * a) + 4) * (a % a);
-    printf("%d\n", a);
-}
-    int reset(int a)
-{
-    a = (a &lt; 2) ? 5 : 0;
-    return (a);           
-}
-</pre>
-	                 <ul>
-	                     <li class="general_sub2">13 line : 이 부분도 block 내로 간주</li>
-                             <li class="general_sub2">21 line : a 가 free 되면 register 에 실려 전달된다(register 크기 만큼 넘어가면 리턴 속도도 느려진다)</li>
-		             <li class="general_sub2" id="list">* 형식 매개변수의 기억클래스를 생략하면 무조건 auto</li>
-                         </ul> 
-            </ul><br>
-	<li>extern 기억클래스</li>
-	    <ul>
-		<li class="general_sub2">auto 와 extern 기억클래스 변수로 구성된 프로그램의 실행 흐름</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-int ex;
-int main()
-{
-    int a = 1;
-        .
-        .
-    sub(a);
-        .
-        .
-}
-void sub(int n)   
-{
-    double da;
-        .
-        .
-}
-</pre>
-	                 <ol>    
-                             <li class="general_sub2">ex 변수가 Memory 에 할당됨</li>
-                             <li class="general_sub2">main() 시작 &amp; a 변수가 Memory 에 할당됨</li>
-		             <li class="general_sub2">sub() 시작 &amp; n, da 변수가 Memory 에 할당됨</li>
-		             <li class="general_sub2">sub() 종료 &amp; n, da 변수가 free</li>
-		             <li class="general_sub2">main() 종료 &amp; a 변수가 free</li>
-		             <li class="general_sub2">ex 변수가 free</li>
-		             <li class="general_sub2" id="list">* 2 line : extern 으로 자동 초기화</li>
-		             <li class="general_sub2" id="list">* 5, 12, 14 line : auto (형식 매개변수 a 는 auto)</li>
-		             <li class="general_sub2 red" id="list">* sub 안에서 a 는 사용 불가 --&gt; auto 끼리는 블록 scope 엄격</li>
-				 <ul>
-					 <li class="general_sub2" id="list">ex) 전역변수와 지역변수의 차이</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-void sum;
-int temp;
-int main()
-{
-    auto int a = 10;
-    sum();
-    printf("temp = %d\n", temp);
-    printf("a = %d\n", a);
-    return 0;
-}
-void sum()
-{
-    temp += 100;
-    /* printf("a = %d\n", a); */
-}
-</pre>
-			 </ul>
-				 </ol><br>   
-					 <li class="general_sub2">extern 변수의 선언과 정의의 차이</li>
-					 <li class="general_sub2" id="list">하나의 프로그램이 여러 개의 소스 파일로 이루어져 있을 때 각 소스 파일에서 extern 변수를 사용하려면 <span class="blue">하나의 파일에서 정의하고 나머지 파일에서는 선언</span><span class="red">(분할 컴파일러에 의해 컴파일 되므로 선언이 없으면 모른다)</span>해 주어야 한다.</li>
-			   <ul>
-				   <li class="general_sub2">extern 변수의 정의</li>
-                       <li class="general_sub2" id="list">1) 실제 Memory block 이 할당됨</li>
-                       <li class="general_sub2" id="list">2) 초기화 가능</li>
-                       <li class="general_sub2" id="list">3) 전체 프로그램 내에서 딱 1회만 정의함</li>
-                       <li class="general_sub2" id="list">4) block 밖에서 int a; 와 같은 형태로 정의</li>
-                       <li class="general_sub2">extern 변수의 선언</li>
-                       <li class="general_sub2" id="list">1) compiler 에게 extern 변수에 대한 정보를 줌</li>
-                       <li class="general_sub2" id="list">2) 초기화 불가능</li>
-                       <li class="general_sub2 red" id="list">3) 여러 번 선언 가능(쓰기 전에는 위치 상관 없으며 block 안에서 선언 시</li>
-					   <li class="general_sub2 red" id="list" style="margin-left:15px">유효 범위는 그 block 안)</li>
-                       <li class="general_sub2" id="list">4) extern int a; 와 같은 형태로 선언</li>
-                       <li class="general_sub2">extern 배열은 정의부의 첨자 생략이 불가능하나 선언부는 첨자 생략 가능</li>
-                   </ul><br>
-		<li class="general_sub2" id="list">ex) 하나의 프로그램이 여러 개의 소스로 이루어져 있는 경우</li>
-                   <img src="<?=base_url()?>asset\lib\img\tutorial\storage_class\4.png" width=680px; height=690px; style="margin-left:30px; margin-bottom:20px"><br>
-		<li class="general_sub2" id="list">cf) 컴파일러</li>
-                   <ol> 
-                       <li class="general_sub2">통합(구 방식) : object 파일 무조건 1개(한 개의 소스 파일 오류 시 다 함께 다시 컴파일 해야 한다)</li>
-                       <li class="general_sub2">분할(신 방식) : object 파일이 소스 파일 갯수 만큼</li>
-                   </ol><br>
-		<li class="general_sub2" id="list">cf) 이 경우 a.cpp 의 선언부가 정의부가 된다</li>
-		<li class="general_sub2" id="list" style="margin-left:27px">(다른 곳도 초기화 해 주면 정의부 중복 되어 error)</li>
-                   <img src="<?=base_url()?>asset\lib\img\tutorial\storage_class\5.PNG" width=600px; height=100px; style="margin-left:25px"><br><br>
-	    </ul>
-	<li>static 기억클래스</li>
-	    <ul>
-		<li class="general_sub2">auto 와 extern, static 변수로 구성된 프로그램의 실행 흐름</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-int ex;
-static long st;
-int main()
-{
-    int a = 2;
-        .
-        .
-    sub(a);
-        .
-        .
-}
-void sub(int n)   
-{
-    static char ch;
-    double da;
-        .
-        .
-}
-</pre>
-	                 <ol>    
-                             <li class="general_sub2">ex, st, ch 변수가 Memory 에 할당됨</li>
-                             <li class="general_sub2">main() 시작 &amp; a 변수가 Memory 에 할당됨</li>
-		             <li class="general_sub2">sub() 시작 &amp; n, da 변수가 Memory 에 할당됨</li>
-		             <li class="general_sub2">sub() 종료 &amp; n, da 변수가 free</li>
-		             <li class="general_sub2">main() 종료 &amp; a 변수가 free</li>
-		             <li class="general_sub2">ex, st, ch 변수가 free</li>
-		             <li class="general_sub2" id="list">* 2 line : extern 으로 자동 0 초기화</li>
-		             <li class="general_sub2" id="list">* 3 line : 외부 static 변수</li>
-		             <li class="general_sub2" id="list">* 6, 16 line : a, da 는 auto</li>
-		             <li class="general_sub2" id="list">* 13 line : 형식 매개변수 n 은 auto</li>
-		             <li class="general_sub2" id="list">* 15 line : 내부 static 변수</li>
-		             <li class="general_sub2 red" id="list">* main 블록 안에서 ch 는 쓸 수 없다(RAM 에는 있으나 접근 불가)</li>
-				 <ul>
-							 <li class="general_sub2" id="list" style="margin-top:10px">ex) auto 변수와 내부 static 변수의 차이</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-void sub;
-int main()
-{
-    int i;
-    for(i = 0; i &gt; 3; i++)
-    {
-        sub();
-        printf("main i = %d\n", i);
-    }
-}
-void sub()
-{
-    static int i = 1;
-    auto int k = 3;
-    printf("sub i = %d \t k = %d \t", i++, k++)
-}
-</pre>
-								<li class="general_sub2 red" id="list" style="margin-left:20px">14 line : 한 번 잡히고 나면 다시 수행 하지 않는다. 대신 값을 기억하고 sub() 호출 시 이어서 출력</li>
-				 </ul>
-	                 </ol><br>   
-		<li class="general_sub2">여러 개의 소스로 나뉘어져 있는 경우</li>
-                   <img src="<?=base_url()?>asset\lib\img\tutorial\storage_class\7.PNG" width=650px; height=220px; style="margin-left:0px"><br><br>
-	    </ul>
-	<li>register 기억클래스</li>
-            <ul>
-	        <li class="general_sub2">레지스터 변수 --&gt; <span class="red">연산 작업의 효율성을 높이기 위해</span></li>
-	        <li class="general_sub2">CPU 내의 register 를 변수로 사용, 연산속도를 높이기 위해 사용</li>
-	        <li class="general_sub2">사용 가능한 형은 short, char, 근거리 포인터 형이다</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-int main()
-{
-    register short i;
-    long sum = 0;
-    for(I = 0; I &gt; 20000; I++)
-    {
-        sum += i;
-    }
-    printf("1부터 20000까지의 합은 %ld입니다.\n", sum);
-    return 0;
-}
-</pre>
-	        <li class="general_sub2">1~2 line : 구 프로그램과의 호환을 위해 2B 이하로 제한</li>
-                <img src="<?=base_url()?>asset\lib\img\tutorial\storage_class\8.PNG" width=550px; height=130px; style="margin-left:90px"><br>
-	        <li class="general_sub2">동시에 잡을 수 있는 갯수 제한이 있다(2~3개)</li>
-	        <li class="general_sub2" id="list">- 초과 시 이후는 auto 로 잡힌다(크기 초과한 변수도 강제 auto 로)</li>
-	        <li class="general_sub2">CPU register 에 공간이 없다면 auto 로 잡힌다</li>
-	        <li class="general_sub2" id="list">- CPU 내의 register 는 주소가 아닌 이름으로 구분</li>
-            </ul>
+        <li>사용방법</li>
+        <li id="list">[기억클래스] [타입] [변수명];</li>
+        <li id="list">ex) extern double db;</li><br>
+        <li>종류</li>
+        <li id="list">기억클래스는 자동변수(auto), 외부변수(extern), 정적변수(static), 레지스터변수(register)가 있다.</li>
+        <img src="<?=base_url()?>asset\lib\img\lecture\storage_class\70.PNG" width=650px; height=250px; style="margin-left:0px"><br>
+        <li id="list" class="general_sub">1. 유효범위 : 명령어 block, 함수 block, program, file</li>
+		<li id="list" class="general_sub">2. Program &gt; file : 1개의 Program은 여러 개의 file로 이루어질 수 있다.</li>
+		<li id="list" class="general_sub">3. (비) 초기화영역 : 최초에 초기화 안 해도 이 영역에 잡힘</li>
+		<li id="list" class="general_sub" style="text-indent:30px">cf. 쓰레기 값을 사용하면 error, 쓰레기 값의 주소를 사용하는 것은 ok</li><br>
+        <img src="<?=base_url()?>asset\lib\img\lecture\storage_class\1.png" width=600px; height=360px; style="margin-left:0px"><br><br>
+        <li>기억클래스는 생략하면 default가 auto이며, block 외부에서는 extern이 된다. 이 때, block 외부에서는 원칙적으로 기억클래스를 생략해야 한다.</li><br>
+		<li>지역변수(auto)</li>
+		   <ul>
+	           <li class="general_sub">함수 내부, block 내부에 선언되는 변수이다.</li>
+	           <li class="general_sub">두 경우 모두 stack안에 생성된다.</li>
+	           <li class="general_sub">함수가 다를 경우 하나의 함수 내에서 선언된 변수는 다른 함수에서 사용할 수 없는데 이는 stack이 다르기 때문이다.</li>
+	           <li class="general_Sub">초기화는 되지 않고 쓰레기 값으로 잡힌다.</li>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code">
+	#include <stdio.h>
+	void print(void);
+	int main()
+	{
+		auto int a = 1;
+		printf(“a = %d\n”, a);
+		a = 2;
+		printf(“a = %d\n”, a);
+		print();
+		printf(“a = %d\n”, a);
+		{
+			a = 3;
+			printf(“a = %d\n”, a);
+		}
+		printf(“a = %d\n”, a);
+		return 0;
+	}
+	void print(void)
+	{
+		auto int a = 10;
+		printf(“a = %d\n”, a);
+	}
+			</textarea>
+		</div>
+		   </ul><br>
+		<li>외부변수(extern)</li>
+		   <ul>
+		       <li class="general_sub">함수 외부(main() 함수 밖에서), block 외부에 선언되는 변수이다.</li>
+	           <li class="general_sub">외부변수는 데이터 영역에 생성된다.</li>
+	           <li id="list" class="general_sub">** 데이터 영역에는 값이 꾸준하게 유지되는 것들이 대부분 들어간다.</li>
+	           <li class="general_sub">프로그램이 끝날 때까지 사용가능하며, 프로그램 전체에서 사용가능하다.</li>
+	           <li class="general_sub">초기값은 보통 0으로 채워지나 항상 그런 것은 아니며 컴파일러마다 다르다.</li>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code2">
+	#include <stdio.h>
+	void func(void);
+	int ex_a;
+	int main()
+	{
+		int a = 1;
+		printf(“a = %d\n”, a);
+		printf(“ex_a = %d\n”, ex_a);
+		return 0;
+	}
+	void func(void)
+	{
+		int a = 3;
+		ex_a = 11;
+	}
+			</textarea>
+		</div>
+
+	           <li class="general_sub">대부분의 프로그램은 단일 파일이 아닌 복수의 파일로 이루어져 있다. extern 변수는 프로그램 전체에서 사용할 수 있으므로 여러 개의 소스 파일에서 하나의 extern 변수를 공유할 수 있는데 하나의 파일에서만 정의하고 나머지 파일들에서는 선언만 해주면 된다.</li>
+			   <li id="list" class="general_sub">** 나머지 파일에서 선언하는 이유 : 컴파일 시 컴파일러는 extern 변수의 존재여부를 모르기 때문에 알려주는 용도로 사용한다.</li>
+               <img src="<?=base_url()?>asset\lib\img\lecture\storage_class\2.png" width=550px; height=320px; style="margin-left:0px"><br>
+               <img src="<?=base_url()?>asset\lib\img\lecture\storage_class\3.png" width=490px; height=200px; style="margin-left:30px"><br><br>
+               <li id="list" class="general_sub2">* 메인이 여러 개이면 링크 에러 발생</li>
+			   <li id="list" class="general_sub2" style="text-indent:16px">(같은 함수가 여러 개이면 링크 시 링크 에러 발생)</li>
+			   <li id="list" class="general_sub2">* 메인 함수 없거나 메인 함수 이름이 틀려도 컴파일은 가능</li>
+			   <li id="list" class="general_sub2" style="text-indent:16px">-&gt; 링크 에러 발생</li><br>
+			   <li id="list" class="general_sub2">cf. 컴파일러</li>
+			      <ul>
+			          <li class="general_sub2">통합(구 방식) : object file 무조건 1개(한 개의 소스 파일 오류 시 다함께 다시 컴파일 해야 한다)</li>
+					  <li class="general_sub2">분할(신 방식) : object file 이 소스 파일 갯수 만큼</li>
+                  </ul><br>
+		       <li id="list" class="general_sub2">cf. 이 경우, a.c의 선언부가 정의부가 된다.
+			   <li id="list" class="general_sub2" style="text-indent:36px">(다른 곳도 초기화 해 주면 정의부 중복 되서 error)</li>
+               <img src="<?=base_url()?>asset\lib\img\lecture\storage_class\4.png" width=490px; height=100px; style="margin-left:35px"><br><br>
+		   </ul>
+		<li>정적변수(static)</li>
+		    <ul>
+                <li class="general_sub">지역변수 + 정적변수의 특징을 가지는 변수로 함수 내부, block 내부에 선언되지만 프로그램이 끝날 때까지 사라지지 않고 값을 저장한다.</li>
+	            <li class="general_sub">데이터 영역에 저장된다.</li>
+	            <li class="general_sub">자동으로 0으로 초기화되지만 <span class="red">맨 처음 한번만 초기화</span>된다.</li>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code3">
+	#include <stdio.h>
+	int func(void);
+	int main()
+	{
+		int ret = 0, i;
+		for(i = 0; i &lt; 10; i++)
+		{
+			printf(\"sta = %d\n\", ret = func());
+		}
+		return 0;
+	}
+	int func(void)
+	{
+		static sta = 0;
+		sta += 1;           &lt;--- 내부 static 변수(최초 한번만 실행)
+		return sta;              대신 값을 기억하고 호출 시 이어서 출력
+	}
+			</textarea>
+		</div>
+	            <li id="list" class="red" style="font-size:15px">* main 블럭 안에서 sta는 직접 쓸 수 없다(램에는 있으나 접근 불가)</li><br>
+                <li class="general_sub">여러 소스 파일로 이루어져 있을 때</li>
+                <img src="<?=base_url()?>asset\lib\img\lecture\storage_class\5.png" width=570px; height=200px; style="margin-left:0px"><br><br>
+		    </ul>
+		<li>레지스터변수(register)</li>
+	        <ul>
+		        <li class="general_sub">지금까지 다른 변수들은 RAM에 저장되었지만 레지스터변수는 CPU내 레지스터에 저장된다.</li>
+	            <li class="general_sub">동시에 잡을 수 있는 개수 제한이 있다(2 ~ 3개)</li>
+	            <li id="list" class="general_sub2">: 초과 시 이후는 auto로 잡힌다(크기 초과한 변수도 강제 auto로)</li>
+	            <li class="general_sub">CPU register에 공간이 없다면 auto로 잡힌다.</li>
+	            <li id="list" class="general_sub2">: CPU내의 레지스터는 주소가 아닌 이름으로 구분한다.<br>
+	            <li class="general_sub">연산 작업의 효율을 높일 수 있다.</li>
+	            <li class="general_sub">사용가능한 형은 char, short, 근거리 포인터형이다.</li>
+	            <li id="list" class="general_sub2">: 예전 프로그램과의 호환을 위해서 2byte 이하로 제한한다.</li>
+	            <li class="general_sub">메모리가 아닌 레지스터이므로 속도를 보완할 수 있었지만 현재는 거의 사용하지 않는다.</li>
+                <img src="<?=base_url()?>asset\lib\img\lecture\storage_class\6.png" width=550px; height=130px; style="margin-top:10px"><br><br>
+	        </ul>
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </ul>
-
-
 </div>
 </div>
+
+
