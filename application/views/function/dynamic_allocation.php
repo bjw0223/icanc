@@ -1,3 +1,22 @@
+<script>
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+</script>
+<style>
+	.codearea {
+	padding:10px 0px 10px 30px;
+	}
+    .CodeMirror {
+        border-top: 1px solid #eee;
+        border-bottom: 0px solid #eee;
+        height: auto;
+        width:100%;
+    }
+</style>
 <div class="col-lg-9 tutorial_desc">
     <span class="general">    
        <ul>
@@ -40,18 +59,20 @@
 	       <li>동적할당은 메모리(RAM)에서 heap 영역에 저장된다. 그러므로 프로그램 종료 시까지 사라지지 않는데 이는 메모리의 사용효율을 떨어뜨리게 된다(메모리는 한정되어 있기 때문에) 그렇기 때문에 동적할당으로 할당 받은 기억공간은 사용자가 꼭 반납해 주어야 한다. 반납을 위해서도 역시 함수를 이용한다.</li>
 		      <ul>
                   <li class="general_sub">함수원형 : void free(void *);</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-int main()
-{
-    int *p;
-    p = (int *)malloc(sizeof(int));
-         .
-         .
-    free(p);
-    return 0;
-}
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code">
+	#include &lt;stdio.h&gt;
+	int main()
+	{
+		int *p;
+		p = (int *)malloc(sizeof(int));
+			 .
+			 .
+		free(p);
+		return 0;
+	}
+			</textarea>
+		</div>
                   <li class="general_sub">동적할당 시 리턴값이 void형 포인터인 이유와 같은 맥락으로 free() 함수의 전달인자도 void형 포인터이다(모든 형이 반환되어야 하므로)</li>
 		      </ul><br>
 	       <li>동적할당이 실패할 경우 리턴값은 널 포인터이다.</li>

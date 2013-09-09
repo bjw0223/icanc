@@ -1,3 +1,34 @@
+<script>
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+	var editor = CodeMirror.fromTextArea(document.getElementById("code2"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+	var editor = CodeMirror.fromTextArea(document.getElementById("code3"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+</script>
+<style>
+	.codearea {
+	padding:10px 0px 10px 30px;
+	}
+    .CodeMirror {
+        border-top: 1px solid #eee;
+        border-bottom: 0px solid #eee;
+        height: auto;
+        width:100%;
+    }
+</style>
 <div class="col-lg-9 tutorial_desc">
 <div class="general">
     <ul>
@@ -19,30 +50,32 @@
 	           <li class="general_sub">두 경우 모두 stack안에 생성된다.</li>
 	           <li class="general_sub">함수가 다를 경우 하나의 함수 내에서 선언된 변수는 다른 함수에서 사용할 수 없는데 이는 stack이 다르기 때문이다.</li>
 	           <li class="general_Sub">초기화는 되지 않고 쓰레기 값으로 잡힌다.</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-void print(void);
-int main()
-{
-    auto int a = 1;
-    printf(“a = %d\n”, a);
-    a = 2;
-    printf(“a = %d\n”, a);
-    print();
-    printf(“a = %d\n”, a);
-    {
-        a = 3;
-        printf(“a = %d\n”, a);
-    }
-    printf(“a = %d\n”, a);
-    return 0;
-}
-void print(void)
-{
-    auto int a = 10;
-    printf(“a = %d\n”, a);
-}
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code">
+	#include <stdio.h>
+	void print(void);
+	int main()
+	{
+		auto int a = 1;
+		printf(“a = %d\n”, a);
+		a = 2;
+		printf(“a = %d\n”, a);
+		print();
+		printf(“a = %d\n”, a);
+		{
+			a = 3;
+			printf(“a = %d\n”, a);
+		}
+		printf(“a = %d\n”, a);
+		return 0;
+	}
+	void print(void)
+	{
+		auto int a = 10;
+		printf(“a = %d\n”, a);
+	}
+			</textarea>
+		</div>
 		   </ul><br>
 		<li>외부변수(extern)</li>
 		   <ul>
@@ -51,23 +84,26 @@ void print(void)
 	           <li id="list" class="general_sub">** 데이터 영역에는 값이 꾸준하게 유지되는 것들이 대부분 들어간다.</li>
 	           <li class="general_sub">프로그램이 끝날 때까지 사용가능하며, 프로그램 전체에서 사용가능하다.</li>
 	           <li class="general_sub">초기값은 보통 0으로 채워지나 항상 그런 것은 아니며 컴파일러마다 다르다.</li>
-<pre style="margin-bottom:30px" class="brush:cpp">
-#include &lt;stdio.h&gt;
-void func(void);
-int ex_a;
-int main()
-{
-    int a = 1;
-    printf(“a = %d\n”, a);
-    printf(“ex_a = %d\n”, ex_a);
-    return 0;
-}
-void func(void)
-{
-    int a = 3;
-    ex_a = 11;
-}
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code2">
+	#include <stdio.h>
+	void func(void);
+	int ex_a;
+	int main()
+	{
+		int a = 1;
+		printf(“a = %d\n”, a);
+		printf(“ex_a = %d\n”, ex_a);
+		return 0;
+	}
+	void func(void)
+	{
+		int a = 3;
+		ex_a = 11;
+	}
+			</textarea>
+		</div>
+
 	           <li class="general_sub">대부분의 프로그램은 단일 파일이 아닌 복수의 파일로 이루어져 있다. extern 변수는 프로그램 전체에서 사용할 수 있으므로 여러 개의 소스 파일에서 하나의 extern 변수를 공유할 수 있는데 하나의 파일에서만 정의하고 나머지 파일들에서는 선언만 해주면 된다.</li>
 			   <li id="list" class="general_sub">** 나머지 파일에서 선언하는 이유 : 컴파일 시 컴파일러는 extern 변수의 존재여부를 모르기 때문에 알려주는 용도로 사용한다.</li>
                <img src="<?=base_url()?>asset\lib\img\lecture\storage_class\2.png" width=550px; height=320px; style="margin-left:0px"><br>
@@ -90,25 +126,27 @@ void func(void)
                 <li class="general_sub">지역변수 + 정적변수의 특징을 가지는 변수로 함수 내부, block 내부에 선언되지만 프로그램이 끝날 때까지 사라지지 않고 값을 저장한다.</li>
 	            <li class="general_sub">데이터 영역에 저장된다.</li>
 	            <li class="general_sub">자동으로 0으로 초기화되지만 <span class="red">맨 처음 한번만 초기화</span>된다.</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-int func(void);
-int main()
-{
-    int ret = 0, i;
-    for(i = 0; i &lt; 10; i++)
-    {
-        printf(“sta = %d\n”, ret = func());
-    }
-    return 0;
-}
-int func(void)
-{
-    static sta = 0;
-    sta += 1;           &lt;--- 내부 static 변수(최초 한번만 실행)
-    return sta;              대신 값을 기억하고 호출 시 이어서 출력
-}
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code3">
+	#include <stdio.h>
+	int func(void);
+	int main()
+	{
+		int ret = 0, i;
+		for(i = 0; i &lt; 10; i++)
+		{
+			printf(\"sta = %d\n\", ret = func());
+		}
+		return 0;
+	}
+	int func(void)
+	{
+		static sta = 0;
+		sta += 1;           &lt;--- 내부 static 변수(최초 한번만 실행)
+		return sta;              대신 값을 기억하고 호출 시 이어서 출력
+	}
+			</textarea>
+		</div>
 	            <li id="list" class="red" style="font-size:15px">* main 블럭 안에서 sta는 직접 쓸 수 없다(램에는 있으나 접근 불가)</li><br>
                 <li class="general_sub">여러 소스 파일로 이루어져 있을 때</li>
                 <img src="<?=base_url()?>asset\lib\img\lecture\storage_class\5.png" width=570px; height=200px; style="margin-left:0px"><br><br>

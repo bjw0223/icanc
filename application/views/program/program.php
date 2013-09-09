@@ -1,3 +1,16 @@
+<script>
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+</script>
+<style>
+	.codearea {
+	padding:10px 0px 10px 30px;
+	}
+</style>
 <div class="col-lg-9 tutorial_desc">
   <span class="general_sub">
      <ul>
@@ -29,22 +42,24 @@
                  <img src="<?=base_url();?>asset\lib\img\lecture\program\3.png" width=420px; Height=210px">
 		     </ul><br>
          <li>흐름</li>
-<pre class="brush:cpp">
-1.  #include &lt;stdio.h&gt;
-2.  int sum(int, int);
-3.  int main()
-4.  {
-5.      int grade1 = 10, grade2 = 20, total = 0;
-6.      total = sum(grade1, grade2);
-7.      printf(“총 성적은 %d점입니다.\n”,total);
-8.      return 0;
-9.  }
-10. int sum(int a, int b)
-11. {
-12.     int c = a + b;
-13.     return c;
-14. }
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code">
+		#include <stdio.h>
+		int sum(int, int);
+		int main()
+		{
+			int grade1 = 10, grade2 = 20, total = 0;
+			total = sum(grade1, grade2);
+			printf(“총 성적은 %d점입니다.\n”,total);
+			return 0;
+		}
+		int sum(int a, int b)
+		{
+			int c = a + b;
+			return c;
+		}
+			</textarea>
+		</div>
          <li id="list">1. #include &lt;stdio.h&gt;</li>
             <ul>
 			    <li class="general_sub">작성한 소스코드가 실행파일로 만들어지기 위해서는 먼저 컴파일러를 통해 소스코드를 목적파일로 만들고 최종적으로 링크를 거쳐야 한다. 이 과정에서 컴파일러는 목적파일로 소스코드를 바꾸기 전에 특정 파일을 포함시키거나 특정 문장을 변환하는 작업을 수행하는데 이것을 전처리라 한다.</li>

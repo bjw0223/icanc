@@ -1,3 +1,17 @@
+<script>
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+</script>
+<style>
+	.codearea {
+	padding:10px 0px 10px 30px;
+	}
+</style>
+
 <div class="col-lg-9 tutorial_desc">
     <span class="general">
       <ul>
@@ -16,21 +30,24 @@
 		  <li id="list" class="general_sub">* 상수는 Ro-data 영역에 저장</li>
 		  <li id="list" class="general_sub" style="text-indent:17px">상수 = 상수 꼴 형태는 Read only 영역에 있기 때문에 bit copy 불가</li><br>
           <li>예제</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-int main()
-{
-    int a = 12;
-    char str[4] = "sky"
-    printf("%d\n", a);
-    printf("%s\n", str);
-    printf("%s\n", &amp;str[0]);
-          .
-          .
-          .
-    return 0;
-}
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code">
+	#include <stdio.h>
+	int main()
+	{
+		int a = 12;
+		char str[4] = "sky"
+		printf("%d\n", a);
+		printf("%s\n", str);
+		printf("%s\n", &amp;str[0]);
+			  .
+			  .
+			  .
+		return 0;
+	}
+			</textarea>
+		</div>
+
 		  <img src="<?=base_url()?>asset\lib\img\lecture\variable\4.png" width=360px; height=90px"><br><br>
           <li id="list" class="general_sub">cf. printf(“%s\n”, str[0]);</li>
 		     <ul>

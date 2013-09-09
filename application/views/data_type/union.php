@@ -1,21 +1,50 @@
+<script>
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+	var editor = CodeMirror.fromTextArea(document.getElementById("code2"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+</script>
+<style>
+	.codearea {
+	padding:10px 0px 10px 30px;
+	}
+    .CodeMirror {
+        border-top: 1px solid #eee;
+        border-bottom: 0px solid #eee;
+        height: auto;
+        width:100%;
+    }
+</style>
 <div class="col-lg-9 tutorial_desc">
     <span class="general">    
        <ul>
 	       <li>정 의</li>
-<pre class="brush:cpp">
-union 공용체명{
-    변수 선언;
-    기타 자료형 변수 선언;
-        .
-        .
-};
-</pre>
-<pre class="brush:cpp">
-union unity{
-    int num;
-    char ary[10];
-};
-</pre><br>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code">
+	union 공용체명{
+		변수 선언;
+		기타 자료형 변수 선언;
+			.
+			.
+	};
+			</textarea>
+		</div>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code2">
+	union unity{
+		int num;
+		char ary[10];
+	};
+			</textarea>
+		</div>
 	       <li>선 언</li>
               <li id="list" class="general_sub">[union] [공용체명] [공용체변수명];</li>
               <li id="list" class="general_sub">union unity u1;</li>

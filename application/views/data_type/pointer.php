@@ -1,3 +1,34 @@
+<script>
+	var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+	var editor = CodeMirror.fromTextArea(document.getElementById("code2"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+	var editor = CodeMirror.fromTextArea(document.getElementById("code3"), {
+		lineNumbers: true,
+		matchBrackets: true,
+		mode: "text/x-csrc",
+		readOnly: true
+	});
+</script>
+<style>
+	.codearea {
+	padding:10px 0px 10px 30px;
+	}
+    .CodeMirror {
+        border-top: 1px solid #eee;
+        border-bottom: 0px solid #eee;
+        height: auto;
+        width:100%;
+    }
+</style>
 <div class="col-lg-9 tutorial_desc">
     <span class="general">    
         <ul>
@@ -24,22 +55,24 @@
 		    		<li class="general_sub">32bit OS 기준이며 64bit OS는 8byte로 바뀐다.</li><br>
 				 </ul>
 			<li>지역변수의 유효범위는 해당 변수가 선언된 블록내인데 포인터를 활용하면 블록 밖의 영역에서도 변수의 값을 바꾸거나 사용할 수 있다.</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-void trans(int *, int *);
-int main()
-{
-    int num1 = 1, num2 = 0;
-    trans(&amp;num, &amp;num2);
-    printf(“num1 = %d, num2 = %d\n”, num1, num2);
-    return 0;
-}
-void trans(int *num1, int *num2)
-{
-    *num1 = 0;
-    *num2 = 1;
-}
-</pre><br>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code">
+	#include &lt;stdio.h&gt;
+	void trans(int *, int *);
+	int main()
+	{
+		int num1 = 1, num2 = 0;
+		trans(&amp;num, &amp;num2);
+		printf(“num1 = %d, num2 = %d\n”, num1, num2);
+		return 0;
+	}
+	void trans(int *num1, int *num2)
+	{
+		*num1 = 0;
+		*num2 = 1;
+	}
+			</textarea>
+		</div>
 			<li>포인터변수도 개념은 ‘변수’이기 때문에 일반 변수들의 주소값을 구했던 것처럼 주소값을 구할 수 있다. 포인터변수의 주소값도 상수이므로 변수에 담아서 사용하는데 이런식으로 확장해 나가면 2중, 3중 ... 의 포인터를 구할 수 있다.</li>
 	            <li id="list" class="general_sub">int a = 1;</li>
 	            <li id="list" class="general_sub">int *p = &a;</li>
@@ -59,16 +92,18 @@ void trans(int *num1, int *num2)
                             <li id="list" class="general_sub3">- 배열포인터변수 p는 3개의 배열요소를 가지고 있는 배열 자체를 나타낸다.</li>
                        <li class="general_sub2">배열은 동일 자료형의 복수개의 모임으로서 각 방을 참조할 때는 첨자를 사용하는데 첫 번째 방을 첨자를 사용해서 참조한 경우와 배열명으로 참조한 경우의 결과는 같다. 허나 실제 값을 대입하거나 연산을 취할 때는 첨자를 사용해야 한다.</li>
 					   <li class="general_sub2">위의 이유로서 배열명은 단순히 포인터로서의 주소값 역할과 배열 자체를 나타내는 두 가지의 기능을 동시에 가지고 있다.</li>
-<pre class="brush:cpp">
-#include &lt;stdio.h&gt;
-int main()
-{
-    int a[5] = {1, 2, 3, 4, 5};
-    printf(“a = %p, &amp;a = &p\n, a, &amp;a);
-    printf(“a + 1 = %p\n”, a+1);
-    return 0;
-}
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code2">
+	#include &lt;stdio.h&gt;
+	int main()
+	{
+		int a[5] = {1, 2, 3, 4, 5};
+		printf(“a = %p, &amp;a = &p\n, a, &amp;a);
+		printf(“a + 1 = %p\n”, a+1);
+		return 0;
+	}
+			</textarea>
+		</div>
 					   <li class="general_sub2">2차원, 3차원의 배열에서 구성요소는 여러 파트로 나눌 수 있었는데 그 중 가장 큰 요소가 배열의 첫 번째 요소가 된다.</li>
 					   <li class="general_sub2">2차원 배열의 경우는 가장 큰 배열요소가 1차원 배열이기 때문에 배열명이 가리키는 것은 1차원 배열(부분배열)이 된다.</li>
                             <li id="list" class="general_sub3">ex) int a[4][3] = {{1,1,1},{2,2,2},{3,3,3},{4,4,4}};</li>
@@ -92,18 +127,20 @@ int main()
 				       <li class="general_sub2">함수포인터변수의 구성은 함수의 형태와 같은데 리턴값, 변수명, 전달인자의 형태와 개수가 이에 해당한다.</li>
 				       <li class="general_sub2">함수포인터변수 선언</li>
 				           <li id="list" class="general_sub3">[type] (* 변수명) (전달인자의 형태와 개수 명시);</li>
-<pre class="brush:cpp">
-int trans(int a, int b)
-{
-    int c;
-    c = b;
-    b = a;
-    a = b;
-    return 0;
-}
-int (*func)(int, int);
-func = trans;
-</pre>
+		<div class="codearea">
+			<textarea class="code" name="code" id="code3">
+	int trans(int a, int b)
+	{
+		int c;
+		c = b;
+		b = a;
+		a = b;
+		return 0;
+	}
+	int (*func)(int, int);
+	func = trans;
+			</textarea>
+		</div>
 				       <li class="general_sub2">함수포인터변수에 들어가는 함수명의 경우 그 함수의 형태만 같으면 된다.</li>
                    </ul><br>
 			<li>포인터배열</li>

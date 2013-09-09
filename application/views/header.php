@@ -105,6 +105,7 @@
          var load_href = $(this).attr('load-href');
          $('.lecture_desc').load(load_href);
          $('.lecture-title').load(load_href+"/true");
+
          SyntaxHighlighter.config.bloggerMode = true;
          SyntaxHighlighter.all();
     });
