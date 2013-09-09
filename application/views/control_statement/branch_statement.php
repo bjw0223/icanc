@@ -22,8 +22,8 @@
         height: auto;
         width:100%;
     }
-</style
-<div class="col-lg-9 tutorial_desc">
+</style>
+<div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
        <ul>
               <li>break 문</li>

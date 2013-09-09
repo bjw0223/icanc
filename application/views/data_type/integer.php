@@ -29,7 +29,7 @@
         width:100%;
     }
 </style>
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9  col-sm-9 tutorial_desc">
     <span class="general">    
         <ul>
             <li>정수형의 종류는 (unsigned)char, (unsigned)short, (unsigned)int, (unsigned)long이 있으며 이 중 정수형을 대표하는 type은 int형이다.</li>

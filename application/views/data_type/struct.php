@@ -53,7 +53,7 @@
         width:100%;
     }
 </style>
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9  col-sm-9 tutorial_desc">
     <span class="general">    
        <ul>
 	       <li>서로 다른 자료형들을 모아서 새롭게 자료형을 정의한다.</li><br>

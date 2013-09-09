@@ -6,7 +6,7 @@
 <div class="container">
 <div class="row"> 
 
-<div id="board_contents" class="col-lg-3" >
+<div id="board_contents" class="col-lg-3 col-sm-3" >
 <!-- -->
     <div class="bs-sidebar">
        <ul class="nav bs-sidenav"> 

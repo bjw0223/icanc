@@ -13,7 +13,7 @@
 }
 </style>
 <div class="container" style="margin-top:40px;">
-    <div class="col-lg-12">
+    <div class="col-lg-12 col-sm-12">
         <div class="mypage-main"><?=$selected?></div>
     </div>
 </div>
@@ -21,7 +21,7 @@
 
 <div class="container" style="margin-top:">
 <div class="row"> 
-<div id="mypage_contents" class="col-lg-3" >
+<div id="mypage_contents" class="col-lg-3 col-sm-3" >
 <!-- -->
     <div class="bs-sidebar my-sidebar" style="padding:0px 10px 0px 10px;">
         <ul class="nav bs-sidenav my-sidenav"> 

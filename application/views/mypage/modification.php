@@ -37,9 +37,9 @@ $(document).ready(function() {
 });
 </script>
 
-<div id="modification" class="col-lg-9">
+<div id="modification" class="col-lg-9 col-sm-9">
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-5 col-sm-5">
             <div class="my-icon-box" href="<?=base_url()?>index.php/mypage/basicinfomodify">
                 <div class="my-icon">
                     <i class="icon-info icon-4x icon-spin"></i>
@@ -52,7 +52,7 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
-        <div class="col-lg-5 col-offset-1">
+        <div class="col-lg-5 col-sm-5 col-offset-1">
             <div class="my-icon-box" href="<?=base_url()?>index.php/mypage/pwdmodify">
                 <div class="my-icon">
                     <i class="icon-key icon-4x icon-spin"></i>

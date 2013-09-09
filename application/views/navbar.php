@@ -105,36 +105,36 @@ $(document).ready(function() {
 
 <div class="my-navbar">
     <div class="row">
-        <div class="col-lg-2 my-nav-logo">
+        <div class="col-lg-2 col-sm-2 my-nav-logo">
             <a href="<?=base_url();?>index.php/main">I CAN C</a>
         </div>
-        <div class="col-lg-7 my-nav-tap">
+        <div class="col-lg-7 col-sm-7 my-nav-tap">
 <?php
     if($this->session->userdata('is_login') == 'true')
     {
 ?>
-            <div class="col-lg-2 <?=$active == 'startIcanc' ? 'active':'';?>" href="<?=base_url();?>index.php/start">Start ICANC</div>
-            <div class="col-lg-2 reference_btn" href="#">Reference <i class='icon-chevron-up icon-small'></i></div>
-            <div class="col-lg-2 <?=$active == 'lecture' ? 'active':'';?>" href="<?=base_url();?>index.php/lecture">Lecture</div>
-            <div class="col-lg-2 <?=$active == 'quiz' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz">Quiz</div>
-            <div class="col-lg-2 <?=$active == 'freeCoding' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz/freeCoding">Free Coding</div>
-            <div class="col-lg-2 <?=$active == 'board' ? 'active':'';?>" href="<?=base_url();?>index.php/board/blist">Board</div>
+            <div class="col-lg-2 col-sm-2 <?=$active == 'startIcanc' ? 'active':'';?>" href="<?=base_url();?>index.php/start">Start ICANC</div>
+            <div class="col-lg-2 col-sm-2 reference_btn" href="#">Reference <i class='icon-chevron-up icon-small'></i></div>
+            <div class="col-lg-2 col-sm-2 <?=$active == 'lecture' ? 'active':'';?>" href="<?=base_url();?>index.php/lecture">Lecture</div>
+            <div class="col-lg-2 col-sm-2 <?=$active == 'quiz' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz">Quiz</div>
+            <div class="col-lg-2 col-sm-2 <?=$active == 'freeCoding' ? 'active':'';?>" href="<?=base_url();?>index.php/quiz/freeCoding">Free Coding</div>
+            <div class="col-lg-2 col-sm-2 <?=$active == 'board' ? 'active':'';?>" href="<?=base_url();?>index.php/board/blist">Board</div>
 <?php
     }
 ?>
         </div>
 
 
-        <div id="login_div" class="col-lg-3" style="text-align:right;">
+        <div id="login_div" class="col-lg-3 col-sm-3" style="text-align:right;">
             <!--login or sign up  button-->
-            <div class="col-lg-3 col-offset-6" href="<?=base_url()?>index.php/auth/register">JOIN</div>
-            <div class="col-lg-3" href="<?=base_url()?>index.php/auth/login">LOGIN</div>
+            <div class="col-lg-3 col-sm-3 col-offset-6" href="<?=base_url()?>index.php/auth/register">JOIN</div>
+            <div class="col-lg-3 col-sm-3" href="<?=base_url()?>index.php/auth/login">LOGIN</div>
         </div>
         <!--logout button-->
-        <div id="logout_div" class="col-lg-3" style="text-align:right;">
-            <div class="col-lg-6 name" style="text-align:right;"><a id="welcome" href="<?=base_url()?>index.php/mypage"><small>Lv.<?=$this->session->userdata('user_level')?></small> <?=$this->session->userdata('user_nickname');?>님</a></div>
-            <div class="col-lg-3" href="<?=base_url()?>index.php/mypage/checkPwd">MYPAGE</div>
-            <div class="col-lg-3" href="<?=base_url()?>index.php/auth/logout">LOGOUT</div>
+        <div id="logout_div" class="col-lg-3 col-sm-3" style="text-align:right;">
+            <div class="col-lg-6 col-sm-6 name" style="text-align:right;"><a id="welcome" href="<?=base_url()?>index.php/mypage"><small>Lv.<?=$this->session->userdata('user_level')?></small> <?=$this->session->userdata('user_nickname');?>님</a></div>
+            <div class="col-lg-3 col-sm-3" href="<?=base_url()?>index.php/mypage/checkPwd">MYPAGE</div>
+            <div class="col-lg-3 col-sm-3" href="<?=base_url()?>index.php/auth/logout">LOGOUT</div>
         </div>
     </div>
 </div>

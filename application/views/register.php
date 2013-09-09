@@ -6,7 +6,7 @@
 
 <div id="register" class="container">
     <div class="row">
-        <div class="col-lg-10 col-offset-1">
+        <div class="col-lg-10 col-sm-10 col-offset-1">
            <form id="registerForm" class="form-horizontal" action="<?=base_url()?>index.php/auth/registerResult" method="post">
     	        <legend ><h1> 회 원 가 입 </h1></legend>
                 <small color="gold"> 회원님의 정보 중 변경된 내용이 있는 경우, 아래에서 수정해주세요. <br/>
@@ -20,10 +20,10 @@
                           <th class="active" width="200px" style="padding-left:20px;">이메일</th>
                           <th>
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-sm-4">
                                     <input type="text" id="email" name="email" onkeyup="checkforEmail()" onfocusout="checkforEmail()" placeholder="Email">
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                     <label id="emailResult" style="margin-top:2px"> </label>
                                 </div>
                             </div>
@@ -42,10 +42,10 @@
                           <td class="active">별명</td>
                           <td>
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-sm-4">
                                     <input type="text" id="nickname" name="nickname" onkeyup="checkforNickname()" onfocus=" " onfocusout="checkforNickname()" placeholder="Nickname"> 
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                     <label id="nicknameResult" style="margin-top:2px"> </label>
                                 </div>
                              </div>
@@ -63,10 +63,10 @@
                           <td class="active" >비밀번호</td>
                           <td >
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-sm-4">
                                     <input type="password" id="password" name="password" onfocusout="checkforPassword()" placeholder="Password">
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                     <label id="passwordResult" style="margin-top:2px"> </label>
                                 </div>
                              </div>
@@ -81,10 +81,10 @@
                           <td class="active" >비밀번호확인</td>
                           <td>
                             <div class="row">
-                                <div class="col-lg-4">
+                                <div class="col-lg-4 col-sm-4">
                                     <input type="password" id="re_password" name="re_password" onfocusout="checkforRepassword()" placeholder="Password Check">
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                     <label id="re_passwordResult" style="margin-top:2px"> </label>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                           <td >
                             <!-- /btn-group -->
                                 <div class="row">
-                                    <div class="input-group col-lg-2">
+                                    <div class="input-group col-lg-2 col-sm-2">
                                         <input type="text" id="year" name="year" value="" style="height:30px; width:60px; text-align:center;" readonly="true">
                                         <div class="input-group-btn class-lg">
                                             <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">년 <span class="caret"></span></button>
@@ -218,7 +218,7 @@
                                         </div><!-- /input-group 년 -->
                                     </div><!-- /input-group-btn 년 -->
                                         
-                                        <div class="input-group col-lg-2">
+                                        <div class="input-group col-lg-2 col-sm-2">
                                             <input type="text" id="month" name="month" value="" style="height:30px; width:60px; text-align:center;" readonly="true">
                                             <div class="input-group-btn class-lg">
                                                 <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">월 <span class="caret"></span></button>
@@ -239,7 +239,7 @@
                                             </div><!-- /input-group 월 -->
                                         </div><!-- /input-group-btn 월 -->
                                         
-                                        <div class="input-group col-lg-2">
+                                        <div class="input-group col-lg-2 col-sm-2">
                                             <input type="text" id="day" name="day" value="" style="height:30px; width:60px; text-align:center;" readonly="true">
                                             <div class="input-group-btn class-lg">
                                                 <button type="button" class="btn btn-default dropdown-toggle btn-small" data-toggle="dropdown">일 <span class="caret"></span></button>
@@ -279,7 +279,7 @@
                                             </div><!-- /input-group 일 -->
                                         </div><!-- /input-group-btn 일 -->
                                         
-                                        <div class="col-lg-6"> </div> <!-- 여백 -->
+                                        <div class="col-lg-6 col-sm-6"> </div> <!-- 여백 -->
                                     </div><!-- /.row -->
                               </td>
                            </tr>
@@ -288,7 +288,7 @@
                               <td class="active"> 직업 </td>
                               <td > 
                                 <div class="row">
-                                    <div class="input-group col-lg-2">
+                                    <div class="input-group col-lg-2 col-sm-2">
                                         <input type="text" id="job" name="job" value="" style="height:30px; width:90px; text-align:center;" readonly="true">
                                             <div class="input-group-btn class-lg">
                                                 <button type="button" class="btn btn-default dropdown-toggle btn-small" style="width:100px;" data-toggle="dropdown">직업 <span class="caret"></span></button>

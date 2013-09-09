@@ -80,7 +80,7 @@
 ?>
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 col-offset-3 comment">
+            <div class="col-lg-9 col-sm-9 col-offset-3 comment">
                 <div>
                     <span class="comment-title">
                         <i class="icon-user"></i><b> <?=$data->writer?> </b><?=$data->modified_time?>
@@ -105,12 +105,12 @@
 <div class="container">
     <div class="row comment-editor-block">
         <form action=<?=base_url();?>index.php/board/addComment/<?=$board?>/<?=$page?>/<?=$srl?> method="POST">
-            <div class="col-lg-8 col-offset-3 no-margin">
-                <div class="col-lg-12">
+            <div class="col-lg-8 col-sm-8 col-offset-3 no-margin">
+                <div class="col-lg-12 col-sm-12">
                     <textarea class="comment-editor form-control" name="text" style="height:80px"></textarea>
                 </div>
             </div>
-            <div class="col-lg-1 no-margin">
+            <div class="col-lg-1 col-sm-1 no-margin">
                 <button type="submit" class="btn btn-primary comment-btn">댓글등록</button>
             </div>
         </form>

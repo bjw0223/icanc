@@ -17,7 +17,7 @@
         width:100%;
     }
 </style>
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
        <ul>
            <li>프로그램을 작성하는 과정에서 선언한 변수나 배열은 미리 예측 가능한 기억공간이다.</li><br>

@@ -1,4 +1,4 @@
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
        <ul>
 	       <li>크기가 큰 데이터는 프로그램에서 내부적으로 관리하기에 한계가 있으므로 외부에 저장한다.<br>(메모리의 양은 한정되어 있기 때문에 한번에 올리는 것도 제한이 있다)</li><br>

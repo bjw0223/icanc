@@ -40,7 +40,7 @@ $('.carousel').carousel({
 
 <div class="container" style="margin-top:110px;">
    <div class="row"> 
-        <div class="col-lg-8"> 
+        <div class="col-lg-8 col-sm-8"> 
             <div id="carousel-example-generic" class="carousel slide">
           <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -74,7 +74,7 @@ $('.carousel').carousel({
             </div>
         </div>
 
-        <div class="col-lg-4 login-block" style="">
+        <div class="col-lg-4 col-sm-4 login-block" style="">
             <form class="navbar-formt" action="<?=base_url()?>index.php/auth/authentication" method="post">
                 <fieldset>
                     <legend class="login-legend">Login</legend>

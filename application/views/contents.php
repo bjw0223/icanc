@@ -24,7 +24,7 @@ $(window).scroll(function(){
 <div class="container bs-docs-container" style="">
 <div class="row"> 
 
-<div id="tutorial_contents" class="col-lg-3" >
+<div id="tutorial_contents" class="col-lg-3 col-sm-3" >
     <div class="bs-sidebar">
        <ul class="nav bs-sidebar"> 
             <li class="">

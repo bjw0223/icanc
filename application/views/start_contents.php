@@ -60,7 +60,7 @@ $(window).scroll(function(){
 <div class="container bs-docs-container" style="">
 <div class="row"> 
 
-<div id="tutorial_contents" class="col-lg-3" >
+<div id="tutorial_contents" class="col-lg-3 col-sm-3" >
     <div class="bs-sidebar well" style="padding:10px;">
        <ul class="nav bs-sidenav"> 
             <li class="active">

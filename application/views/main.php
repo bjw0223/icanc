@@ -37,10 +37,10 @@ body{
 </script>
 <div id="main" class="">
     <div class="row icanc-main">
-        <div class="main-title col-lg-7">
+        <div class="main-title col-lg-7 col-sm-7">
            ICANC is MOOC 
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-5 col-sm-5">
             <p><h1><strong>M</strong><small>Massive</small></h1></p>
             <p><h1><strong>O</strong><small>Open</small></h1></p>
             <p><h1><strong>O</strong><small>Online</small></h1></p>
@@ -48,10 +48,10 @@ body{
         </div>
     </div>
     <div class="row">
-        <div class="main-btn main-login col-lg-6">
+        <div class="main-btn main-login col-lg-6 col-sm-6">
             Login    
         </div>
-        <div class="main-btn main-Join col-lg-6">
+        <div class="main-btn main-Join col-lg-6 col-sm-6">
             Join
         </div>
     </div>

@@ -25,11 +25,11 @@ $quizDiv.innerHTML = "";
     {
         $quizDiv.innerHTML =$quizDiv.innerHTML + 
         "<div class=\"row quiz-body-div\">"+
-         "<div class=\"col-lg-10\">"+
+         "<div class=\"col-lg-10 col-sm-10\">"+
          "<a href=\"<?=base_url();?>index.php/quiz/quizTest/1\" class=\"quiz-title\">Quiz 1</a>"+
          "<p class=\"quiz-description\">discription</p>"+
          " </div>"+
-         " <div class=\"col-lg-2\">"+
+         " <div class=\"col-lg-2 col-sm-2\">"+
          "     not start"+ 
          " </div>"+
          " </div>";
@@ -41,7 +41,7 @@ $quizDiv.innerHTML = "";
     <div class="container">
 <!-- quiz start -->
     <div class="row">
-        <div class="quiz-head col-lg-12">
+        <div class="quiz-head col-lg-12 col-sm-12">
             <legend>
                 <p><h3><strong>welcome to c language</strong></h3></p>
                 <span>bla~ bla ~ bla <span>
@@ -50,17 +50,17 @@ $quizDiv.innerHTML = "";
     </div>
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 col-sm-8">
             <div class="row" id="quizDiv">
 
-                <div class="quiz-body col-lg-12">
+                <div class="quiz-body col-lg-12 col-sm-12">
 <!--quiz 2 start-->
                     <div class="row quiz-body-div">
-                        <div class="col-lg-10">
+                        <div class="col-lg-10 col-sm-10">
                             <a href="<?=base_url();?>index.php/quiz/quizTest/1" class="quiz-title">Quiz 2</a>
                             <p class="quiz-description">discription</p>
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-2 col-sm-2">
                             not start 
                         </div>
                     </div>
@@ -69,7 +69,7 @@ $quizDiv.innerHTML = "";
 
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-sm-4">
 
         </div>
     </div>
