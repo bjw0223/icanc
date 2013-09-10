@@ -31,8 +31,9 @@ class Quiz_model extends CI_Model {
     // 기본문제 퀴즈 생성
     function getCodingQuiz($id)
     {
-        $this->db->join('coding_category','coding_basic.categoryNo = coding_category.id','rigth');
-        $result = $this->db->get_where('coding_basic',array('coding_basic.id'=>$id))->row();
+        $this->db->join('coding_basic','coding_basic.categoryNo = coding_category.id');
+        $result = $this->db->get_where('coding_category',array('coding_basic.id'=>$id))->row();
+        var_dump($result);
         return $result;
     }
 
@@ -52,7 +53,7 @@ class Quiz_model extends CI_Model {
         $data = $query->result_array();
 
         // 카테고리별 문제 개수
-        $query = $this->db->query('SELECT DISTINCT * FROM (SELECT *  FROM coding_basic ORDER BY categoryNo ASC, questionNo DESC) AS coding GROUP BY coding.categoryNo');
+        $query = $this->db->query('SELECT DISTINCT * FROM (SELECT * FROM coding_basic ORDER BY categoryNo ASC, questionNo DESC) AS coding GROUP BY coding.categoryNo');
         $rawData = $query->result_array();
         for($i=0; $i<$count['count']; $i++)
         {
@@ -98,7 +99,6 @@ class Quiz_model extends CI_Model {
 
     function setCodingQuiz($data)
     {
-        var_dump($data);
         $this->db->set('question',$data['question']);
         $this->db->set('answer',$data['answer']);
         $this->db->set('head',$data['head']);

@@ -128,7 +128,7 @@ body {
 <script type="text/javascript">
 
 $(document).ready(function(){
-    
+
     var forbidRegExp = /((main)\s*\()|(goto\s*\:)/g;
     var $codeResult= "";
 
@@ -225,7 +225,7 @@ $(document).ready(function(){
                                         $.ajax({
                                                 type : "POST",
                                                 url : "<?=base_url()?>index.php/quiz/updateFinishQuestionNo",
-                                                data : "finishQuestionNo=<?=$id+1?>",
+                                                data : "finishQuestionNo=<?=$id?>",
                                                 dataType : "json"
                                                 });
                                     }
@@ -250,7 +250,8 @@ $(document).ready(function(){
     // 다음 문제로
     $("#next").click( function()
     {
-       document.location.href= "<?=base_url()?>index.php/quiz/codingQuiz/basic/<?=$id+1?>"
+        alert("<?=$id?>");
+       // document.location.href= "<?=base_url()?>index.php/quiz/codingQuiz/basic/<?=$id+1?>"
     });
 
 
