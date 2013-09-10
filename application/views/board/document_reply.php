@@ -54,7 +54,7 @@ function ajaxLoad() {
 });
 
 </script>
-<div id="document_write" class="col-lg-9" style="margin-top:30px;">
+<div id="document_write" class="col-lg-9 col-sm-9" style="margin-top:30px;">
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content"  style="width:850px;">
@@ -75,18 +75,18 @@ function ajaxLoad() {
 	$srl=$this->uri->segment(5);
 ?>
     <form action="<?=base_url()?>index.php/board/saveReplyDoc/<?=$board?>/<?=$page?>/<?=$srl?>" method="POST">
-            <div class="col-lg-12 well">
+            <div class="col-lg-12 col-sm-12 well">
             <input type="text" id="docTitle" name="docTitle" value="Re <?=$reply_srl?> : <?=$title?>" class="form-control" placeholder="제목"/>
             </div>
         </div>
     <div class="row">
-        <div class="col-lg-12 well">
+        <div class="col-lg-12 col-sm-12 well">
             <textarea id="textEditor" name="textEditor" style="min-height:300px;"></textarea>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-lg-12 well text-right">
+        <div class="col-lg-12 col-sm-12 well text-right">
             <button type="button" id="previewBtn" class="btn btn-info">미리보기</button>
             <button type="submit" id="saveBtn" class="btn btn-success">작성하기</button>
         </div>

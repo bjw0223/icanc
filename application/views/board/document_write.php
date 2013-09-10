@@ -60,7 +60,7 @@ $(document).ready(function() {
 }
 </style>
 
-<div id="document_write" class="col-lg-9">
+<div id="document_write" class="col-lg-9 col-sm-9">
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content" >
@@ -81,12 +81,12 @@ $(document).ready(function() {
 ?>
     <form action="<?=base_url()?>index.php/board/saveDoc/<?=$board?>" method="POST">
     <div class="row title-block">
-        <div class="col-lg-12">
+        <div class="col-lg-12 col-sm-12">
             <input type="text" id="docTitle" name="docTitle" class="form-control" placeholder="제목"/>
         </div>
     </div>
     <div class="row editor-block">
-        <div class="col-lg-12">
+        <div class="col-lg-12 col-sm-12">
             <textarea id="textEditor" name="textEditor" style="min-height:300px;"></textarea>
         </div>
     </div>

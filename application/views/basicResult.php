@@ -129,7 +129,7 @@ body {
 
 $(document).ready(function(){
     
-    var forbidRegExp = /((switch|main|scanf|gets|getchar|getc)\s*\()|(goto\s*\:)/g;
+    var forbidRegExp = /((main)\s*\()|(goto\s*\:)/g;
     var $codeResult= "";
 
     // head textarea option
@@ -172,6 +172,7 @@ $(document).ready(function(){
     // Compile Button Click Event
     $("#compile").click( function()
     {
+		var $stdin = document.getElementById("stdin").value;
         // CodeMirror에서 code textare로 값 보내기
         $("#myModal").css('top',($(window).height()/2-70) +"px");
         $("#myModal").modal("show");
@@ -198,7 +199,7 @@ $(document).ready(function(){
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/createCode",
-                    data : "code="+$codeStr+"&flag=0",
+                    data : "code="+$codeStr+"&flag=0&stdin="+$stdin,
                     dataType : "json",
                     success : function($result) {
                                 if($result == "")
@@ -208,9 +209,9 @@ $(document).ready(function(){
 
                                 for (var $value in $result) 
                                 {
-                                    $codeResult = $codeResult + $result[$value]+"<br>";
+                                    $codeResult = $codeResult + $result[$value];
                                 }
-                                    if( $codeResult == ("<?=$answer?><br>") )
+                                    if( $codeResult == ("<?=$answer?>") )
                                     {
                                         $("#myModal").modal("hide");
                                         alert("정답입니다");
@@ -329,12 +330,12 @@ color:#eeeeee;
     </div><!-- /.modal -->
 
 <div class="row">
-    <div class="quiz-left col-lg-3">
+    <div class="quiz-left col-lg-3 col-sm-3">
         <div class="quiz-left-div row">
-            <div class="quiz-left-bar col-lg-12">
+            <div class="quiz-left-bar col-lg-12 col-sm-12">
                 <p class="quiz-id"><?=$category?>(<?=$questionNo?>)</p>
             </div>
-            <div class="quiz-left-desc col-lg-12">
+            <div class="quiz-left-desc col-lg-12 col-sm-12">
                 <div class="quiz-left-context">
                     <p class="left-title"><?=$question?></p>
                     <p class="left-desc"><?=$context?></p>
@@ -347,31 +348,45 @@ color:#eeeeee;
                     <p class="left-title">힌트</p>
                     <p class="left-desc"><?=$hint?></p>
                 </div>
-            </div>
-            <div class="quiz-left-footer col-lg-12">
+			<div class="coding-help col-lg-12">
+            	<p><b> 도움말 </b></p>
+                <small>
+					<p><b>stdin은 ','로 각각을 구분합니다.</b></p>
+					<p>ex) a,b,1 - 세개의 char형 a,b,1이 차례대로 stdin으로 입력되어 집니다.</p>
+					<p><b>또한 숫자의 경우 '#'을 붙여줌으로써 구분합니다.</b></p>
+					<p>ex) #1,#2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.</p>
+				</small>
+			</div>
+			<div class="coding-input col-lg-12">
+				<p><b> stdin : </b></p>
+				<input type="text" id="stdin" name="stdin" class="form-control"></input>
+			</div>
+
+            <div class="quiz-left-footer col-lg-12 col-sm-12">
                 <div class="row">
-                    <div class="quiz-left-question col-lg-12">
+                    <div class="quiz-left-question col-lg-12 col-sm-12">
                         질문하기
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </div>
-    <div class="quiz-middle col-lg-5">
+    <div class="quiz-middle col-lg-5 col-sm-5">
         <div class="quiz-middle-div row">
-            <div class="quiz-middle-bar col-lg-12">
+            <div class="quiz-middle-bar col-lg-12 col-sm-5">
                 <div class="row">
                     <div class="quiz-tap-title col-lg-2">
                         files :
                     </div>
-                    <div class="quiz-tap col-lg-2" style="">
+                    <div class="quiz-tap col-lg-2 col-sm-2" style="">
                         <i class="icon-file-alt icon-large"></i> quiz.c
                     </div>
-                    <div class="col-lg-8"> 
+                    <div class="col-lg-8 col-sm-8"> 
                     </div>
                 </div>
             </div>
-            <div class="quiz-middle-desc col-lg-12">
+            <div class="quiz-middle-desc col-lg-12 col-sm-12">
                 <div id="headDiv">
                     <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
                 </div>
@@ -385,17 +400,17 @@ color:#eeeeee;
                 </div>
 
             </div>
-            <div class="quiz-middle-footer col-lg-12">
+            <div class="quiz-middle-footer col-lg-12 col-sm-12">
                 <button class="btn compileBtn" id="compile" name="compile"> Compile </button>
                 <button class="btn nextBtn" id="next" name="next"> Next Quiz </button>
             </div>
         </div>
    </div>
-    <div class="quiz-right col-lg-4">
+    <div class="quiz-right col-lg-4 col-sm-4">
         <div class="quiz-right-div row">
-            <div class="quiz-right-bar col-lg-12">
+            <div class="quiz-right-bar col-lg-12 col-sm-12">
             </div>
-            <div class="quiz-right-desc col-lg-12">
+            <div class="quiz-right-desc col-lg-12 col-sm-12">
                 <div class="quiz-result">
                    <div class="quiz-result-desc">
                     </div>
@@ -405,7 +420,7 @@ color:#eeeeee;
                     </div>
                 </div>
             </div>
-            <div class="quiz-right-footer col-lg-12">
+            <div class="quiz-right-footer col-lg-12 col-sm-12">
             </div>
         </div>
     </div>

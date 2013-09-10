@@ -1,9 +1,9 @@
-<div id="faq" class="col-lg-9" style="margin-top:30px;background-color:#eeeeee;">
+<div id="faq" class="col-lg-9 col-sm-9" style="margin-top:30px;background-color:#eeeeee;">
 <div class="row well" style="margin-bottom:0px;padding:8px;">
-    <div class="col-lg-12" style="background-color:white;padding:3px 0px 3px 0px;">
+    <div class="col-lg-12 col-sm-12" style="background-color:white;padding:3px 0px 3px 0px;">
         <form class="form-inline">
             
-            <div class="input-group col-lg-2 col-offset-5 text-right" style="padding-right:0px;">
+            <div class="input-group col-lg-2 col-sm-2 col-offset-5 text-right" style="padding-right:0px;">
                 <select name="search_key" class="form-control">
                     <option value="title">제목</option>
                     <option value="writer">작성자</option>
@@ -11,7 +11,7 @@
                 </select>
                  
             </div>
-            <div class="input-group col-lg-5 text-right" style="padding-right:0px;">
+            <div class="input-group col-lg-5 col-sm-5 text-right" style="padding-right:0px;">
                      
                 <input id="searchInput" name="search_keyword" type="text" class="form-control" placeholder="검색">
                 <span class="input-group-btn">
@@ -24,16 +24,16 @@
     </div>
 </div>
 <div class="row well" style="margin-bottom:0px;padding:8px;">
-    <div class="col-lg-12" style="background-color:white;">
+    <div class="col-lg-12 col-sm-12" style="background-color:white;">
         <table class="table table-hover"  style="text-align:center;">
             <thead>
                 <tr>
-                    <th class="col-lg-1" style="text-align:center;"><h4>번호</h4></th>
-                    <th class="col-lg-5" style="text-align:center;"><h4>제목</h4></th>
-                    <th class="col-lg-2" style="text-align:center;"><h4>글쓴이</h4></th>
-                    <th class="col-lg-2" style="text-align:center;"><h4>날짜</h4></th>
-                    <th class="col-lg-1" style="text-align:center;"><h4>조회수</h4></th>
-                    <th class="col-lg-1" style="text-align:center;"><h4>추천수</h4></th>
+                    <th class="col-lg-1 col-sm-1" style="text-align:center;"><h4>번호</h4></th>
+                    <th class="col-lg-5 col-sm-5" style="text-align:center;"><h4>제목</h4></th>
+                    <th class="col-lg-2 col-sm-2" style="text-align:center;"><h4>글쓴이</h4></th>
+                    <th class="col-lg-2 col-sm-2" style="text-align:center;"><h4>날짜</h4></th>
+                    <th class="col-lg-1 col-sm-1" style="text-align:center;"><h4>조회수</h4></th>
+                    <th class="col-lg-1 col-sm-1" style="text-align:center;"><h4>추천수</h4></th>
                 </tr>				
             </thead>
             <tbody>
@@ -59,7 +59,7 @@
         ?>		
             </tbody>
         </table>
-        <div class="col-lg-12 text-center"> 
+        <div class="col-lg-12 col-sm-12 text-center"> 
 <?php
 if( $page_count >= 5 )
 {
@@ -155,7 +155,7 @@ else
     </div>
 </div>
 <div class="row well" style="margin-bottom:0px;padding:8px;">
-    <div class='col-lg-12 text-right'>
+    <div class='col-lg-12 col-sm-12 text-right'>
 <?php
 	$board='faq';
 ?>

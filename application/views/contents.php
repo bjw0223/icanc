@@ -24,17 +24,11 @@ $(window).scroll(function(){
 <div class="container bs-docs-container" style="">
 <div class="row"> 
 
-<div id="tutorial_contents" class="col-lg-3" >
+<div id="tutorial_contents" class="col-lg-3 col-sm-3" >
     <div class="bs-sidebar">
        <ul class="nav bs-sidebar"> 
             <li class="">
-                <a class="nav-title" href="#"  load-href="<?=base_url();?>index.php/lecture/show/program/understanding">프로그램</a>
-                <ul class="nav">
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/understanding">이해</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/constitute">구성</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/execution_process">실행과정</a></li>
-                    <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/program/reference">참고사항</a></li>
-                </ul>
+                <a class="nav-title" href="#"  load-href="<?=base_url();?>index.php/lecture/show/program/program">프로그램</a>
             </li>
             <li class="">
                 <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/constant/constant">상수</a>
@@ -59,11 +53,11 @@ $(window).scroll(function(){
                     <li class="">
 						<a class="nav-subCategory" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/array">응용</a>
 						<ul class="nav" style="margin-left:10px">
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/lecture/show/data_type/array">배열</a></li>
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/lecture/show/data_type/pointer">포인터</a></li>
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/lecture/show/data_type/struct">구조체</a></li>
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/lecture/show/data_type/union">공용체</a></li>
-							 <li><a class="nav-subtitle" load-href="<?=base_url();?>index.php/lecture/show/data_type/enum">열거형</a></li>
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/array">배열</a></li>
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/pointer">포인터</a></li>
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/struct">구조체</a></li>
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/union">공용체</a></li>
+							 <li><a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/data_type/enum">열거형</a></li>
 						</ul>
 					</li>
                 </ul>

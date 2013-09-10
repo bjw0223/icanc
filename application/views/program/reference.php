@@ -1,4 +1,4 @@
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
    <span class="general">
       <ul>
 	      <li>프로그램 작성 시에는 순서를 지켜야 한다</li>

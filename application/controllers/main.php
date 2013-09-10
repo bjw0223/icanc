@@ -6,9 +6,8 @@ class Main extends CI_Controller {
 	{
 		$this->_head();
         $this->load->view('navbar');
-		$this->load->view('reference');
 		$this->load->view('main');
-		$this->load->view('footer');
+		$this->load->view('main-footer');
 	}
     function _head()
     {

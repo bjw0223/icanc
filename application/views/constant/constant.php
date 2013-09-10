@@ -1,35 +1,60 @@
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
        <ul>
-         <li>숫자 상수 : 정수형 상수(10진수, 8진수, 16진수) 와 실수형 상수</li>
- 	   <span class="red">문자(열) 안에서는 접두어가 \x, \ 이며 숫자 안에서는 0x, 0</span><br>
-           <ol>
-             <li class="general_sub2">정수 상수 : 0, 3, 123, -53, 012, 0x2B (8진수, 10진수, 16진수 사용)</li>
-             <li class="general_sub2">실수 상수 : 12.5, 0.12325E2 ... (10진수만 사용)</li>
-             <img src="<?=base_url()?>asset\lib\img\tutorial\constant\1.PNG" width=440px; height=80px;><br>
-           </ol><br>
-         <li>문자 상수 : 단일인용부호를 이용해서 표현하며, 메모리에 한 Byte 크기로 할당</li>
-           <ul>
-             <li class="general_sub2" id="list">ex) ‘3’, ‘A’, ‘\n’, ‘ ’ ... ---&gt; ‘ ’는 ASCII code가 32인 스페이스 문자</li>
-             <li class="general_sub2" id="list">cf) 3 = 메모리에 2진수 3 저장, ‘3’ = 메모리에 2진수 51 저장</li>
-           </ul><br>
-         <li>문자열 상수 : 이중인용부호를 이용해서 표현하며, 문자열의 끝 표시인 ‘\0’(NULL 문자)로 종료하는 데이터</li>
-           <ul>
-             <img src="<?=base_url()?>asset\lib\img\tutorial\constant\2.PNG" width=350px; height=40px; style="margin-bottom:20px; margin-left:100; float:right"><br>
-             <li class="general_sub2" id="list">ex) “3”, “ABC”, “A B”, “Hello World” ...</li>
-           </ul><br>
-         <li>매크로 상수 : 전처리기에 의해 처리되는 #define 명령문에 의해서 지정되는 상수로서 매크로 상수는 치환할 문자열로 치환되어 컴파일 된다.</li>
-           <ul>
-             <li class="general_sub2">유지보수가 편하다.</li>
-             <li class="general_sub2">처리 속도가 빠르다.</li>
-             <li class="general_sub2">중간에 값을 바꿀 수 없다.</li>
-             <li class="general_sub2" id="list">ex) #define PI 3.14</li>
-             <img src="<?=base_url()?>asset\lib\img\tutorial\constant\3.PNG" width=400px; height=180px; style="margin-left:25px"><br>
-           </ul><br>
-         <li>주소 상수 : 변수의 시작주소, 배열의 시작주소, 배열원소의 시작주소, 함수의 시작주소</li>
-           <ul>
-             <li class="general_sub2">주소 상수는 integer, register 크기와 같다.</li>
-           </ul><br>
+           <li>숫자</li>
+	       <li id="list" class="general_sub">: 정수와 실수의 2종류가 있으며 정수는 8진수, 10진수, 16진수의 3가지 표현 방법이 존재한다.</li>
+           <li id="list" class="general_sub">** 10진수는 수의 일반 표현방법.</li>
+		      <ul>
+	              <li class="general_sub">정수 : 소수점이 없는 숫자</li>
+	              <li id="list" class="general_sub">ex) -1, 0, 1, 2, 022(8진수), 0x12(16진수) ...</li>
+	              <li class="general_sub">실수 : 소수점이 존재하는 숫자</li>
+	              <li id="list" class="general_sub">** 실수는 10진수만 존재한다.</li>
+	              <li id="list" class="general_sub">ex) 0.1, 0.456 ...</li>
+		      </ul><br>
+           <li>문자</li>
+		   <li id="list" class="general_sub">: 작은따옴표를 이용하며 C에서는 char형으로 1바이트를 차지한다.</li>
+	       <li id="list" class="general_sub">ex) ‘I’, ‘C’ ...</li>
+	       <li id="list" class="general_sub">** 실제로 내부에서 문자는 각기 해당하는 ASCII code 값으로 변경되어 저장된다.</li><br>
+           <li>문자열</li>
+	       <li id="list" class="general_sub">: 큰따옴표를 이용하며 고정크기가 아니므로 ‘\0’(널 문자)를 이용하여 문자열의 끝을 표시한다(없으면 제어불가)</li>
+	       <li id="list" class="general_sub">ex) “I CAN C”, “SKY”</li><br>
+	       <li>주소</li>
+	       <li id="list" class="general_sub">: 각종 시작주소로서 변수, 배열, 함수 등의 시작주소를 말한다.</li>
+		   <li id="list" class="general_sub">** 주소상수의 크기는 integer, register 크기와 동일하다.</li><br>
+	       <li>매크로</li>
+	       <li id="list" class="general_sub">: 매크로 상수를 이용하면 유지보수가 편하고, 처리속도가 빨라진다. 전처리 중 #define으로 정의하는 상수로 중간에 값을 변경할 수는 없다.</li>
+	       <li id="list" class="general_sub">ex) #define C 34567;</li>
+<pre class="brush:cpp">
+#include &lt;stdio.h&gt;
+#define C 34567
+int main()
+{
+    printf("%d\n",C);     // C가 34567로 치환된다.
+    return 0;
+}
+</pre>
+
+
+       </ul>
+    </span>    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     

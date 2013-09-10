@@ -1,4 +1,4 @@
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
    <img src="<?=base_url()?>asset\lib\img\tutorial\program\execution_process\1.PNG" width=750px; Height=500px; style="margin-bottom:20px; margin-left:20px"><br>
    <span class="general">
       <ul>

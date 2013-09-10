@@ -1,4 +1,4 @@
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
        <ul>
 	       <li>크기가 큰 데이터는 프로그램에서 내부적으로 관리하기에 한계가 있으므로 외부에 저장한다.<br>(메모리의 양은 한정되어 있기 때문에 한번에 올리는 것도 제한이 있다)</li><br>
@@ -19,7 +19,7 @@
                            <li class="general_sub">원형 : FILE *fopen(const char *filename, const char mode);</li>
                            <li class="general_sub">첫 번째 전달인자는 대상 파일의 이름으로서 현재 작업 디렉토리에 파일이 존재하면 이름만, 다른 위치에 있다면 경로를 모두 적어주어야 한다.</li>
                            <li class="general_sub">두 번째 전달인자는 파일 접근 형태로서 다음과 같은 모드가 있다.</li>
-                           <img src="<?=base_url()?>asset\lib\img\tutorial\fileio\1.PNG" width=550px; height=230px;><br>
+                           <img src="<?=base_url()?>asset\lib\img\lecture\fileio\1.PNG" width=550px; height=230px;><br>
                            <li class="general_sub">파일 개방에 성공하여 지정된 파일에 액세스하면 파일에 대한 정보를 가진 주소값을 리턴하는데 이를 파일포인터라 한다.</li>
                            <li class="general_sub">fopen 함수의 원형에서 리턴값의 type이 FILE 인데 이것이 파일에 대한 정보를 가지고 있는 구조체이다.</li>
                            <li class="general_sub">파일은 개방이 된 후 안의 데이터들을 가져오기 위해서 위치지시자 등과 같은 정보가 필요한데 이런 정보들이 모두 FILE 구조체안에 있다.</li>

@@ -1,4 +1,4 @@
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
   <span class="general_sub">
      <ul>
         <li>변수 : 상수를 저장하기 위한 기억 공간</li><br>

@@ -9,7 +9,7 @@
 
 <div class="container">
 	<div class="row">	
-		<div class="col-lg-12 board-title">
+		<div class="col-lg-12 col-sm-12 board-title">
 		QNA
 		</div>
 	</div>

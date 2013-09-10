@@ -1,6 +1,6 @@
 <div class="container" style="margin-top:60px;">
 <div class="row-fluid"> 
-<div id="contents" class="span3" >
+<div id="contents" class="col-lg-3 col-sm-3" >
 <!-- -->
     <ul class="nav nav-tabs nav-stacked"> 
         <li>

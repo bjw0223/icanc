@@ -1,13 +1,11 @@
-#include <pthread.h> 
+#include <pthread.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-void *runCode34567(void *id34567) {	char a[10];
-	int b;
-
-	scanf("%s",a);
-	scanf("%d",&b);
-	printf("%s\n%d",a,b);}
+void *runCode34567(void *id34567)
+{	int i;
+	scanf("%d",&i);
+	printf("%d",i);}
 
 void *checkTime34567(void *id34567)
 {

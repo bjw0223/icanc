@@ -52,15 +52,15 @@ $(document).ready(function() {
     {
         $categoryDiv.innerHTML =$categoryDiv.innerHTML + 
             '<div class="row quiz-body-div">'+
-                '<div class="col-lg-8">'+
+                '<div class="col-lg-8 col-sm-8">'+
                     '<p class="quiz-title">'+$data[$i]['category']+'</p>'+
                     '<p class="quiz-description">'+$data[$i]['categoryDescription']+'</p>'+
                 '</div>'+
-                '<div class="col-lg-4">'+
-                    '<div class="col-lg-12 quiz-box">'+
-                        '<div class="col-lg-6 quiz-box-description">'+
+                '<div class="col-lg-4 col-sm-4">'+
+                    '<div class="col-lg-12 col-sm-12 quiz-box">'+
+                        '<div class="col-lg-6 col-sm-6 quiz-box-description">'+
                         '</div>'+
-                        '<div class="col-lg-6 quiz-btn-box">'+
+                        '<div class="col-lg-6 col-sm-6 quiz-btn-box">'+
                             '<a href="<?=base_url();?>index.php/quiz/title/'+$data[$i]['id']+
                                 '" class="quiz-btn" data-in="'+$data[$i]['numInCategory']+' Exercises">'+
                                 $data[$i]['numInCategory']+' Esxercises</a>'+
@@ -87,7 +87,7 @@ $(document).ready(function() {
     <div class="container">
 <!-- quiz start -->
     <div class="row">
-        <div class="quiz-head col-lg-12">
+        <div class="quiz-head col-lg-12 col-sm-12">
             <legend>
                 <p><h3><strong>C language</strong></h3></p>
             </legend>
@@ -95,14 +95,14 @@ $(document).ready(function() {
     </div>
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 col-sm-8">
             <div class="row">
-                <div class="quiz-body col-lg-12" id="categoryDiv">
+                <div class="quiz-body col-lg-12 col-sm-12" id="categoryDiv">
                 <!-- -->
                </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-sm-4">
 
         </div>
     </div>

@@ -1,7 +1,7 @@
 <div class="container">
-   <div class="col-lg-12">
+   <div class="col-lg-12 col-sm-12">
 	<div class="tutorial_main">CONSTANT</div>
-        <div class="tutorial_main_sub">프로그램 처리에 필요한 각종 자료(data)를 말하며 프로그램 시작부터 끝까지 변하지 않는 값을 의미</div> 
+        <div class="tutorial_main_sub">프로그램 내에서 변경할 수 없는 고정값으로 숫자와 문자 등을 의미한다.</div> 
    </div>
 </div>
 

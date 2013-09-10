@@ -15,16 +15,66 @@
 body {
     background-color:#36545F;
 }
-
+.carousel-inner > .item > img {
+    height:330px;
+    width:100%;
+}
+.carousel-inner > .item {
+    text-align:center;
+padding:10px;
+}
 </style>
+<script>
+
+$(document).ready(function() {
+
+var windowHeight = $(window).height();
+$('.carousel').carousel({
+      interval: 2000
+      })
+
+});
+
+</script>
 
 
 <div class="container" style="margin-top:110px;">
    <div class="row"> 
-        <div class="col-lg-8"> 
+        <div class="col-lg-8 col-sm-8"> 
+            <div id="carousel-example-generic" class="carousel slide">
+          <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img class="main-img" src="<?=base_url();?>asset/lib/img/main/practice_quiz_result.JPG" alt="...">
+                        <div class="carousel-caption">
+                            <h2>Quiz</h2>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="main-img" src="<?=base_url();?>asset/lib/img/main/freeCoding.JPG" alt="...">
+                        <div class="carousel-caption">
+                            <h2>FreeCoding</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="icon-prev"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="icon-next"></span>
+                </a>
+            </div>
         </div>
 
-        <div class="col-lg-4 login-block" style="">
+        <div class="col-lg-4 col-sm-4 login-block" style="">
             <form class="navbar-formt" action="<?=base_url()?>index.php/auth/authentication" method="post">
                 <fieldset>
                     <legend class="login-legend">Login</legend>

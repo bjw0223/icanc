@@ -59,7 +59,7 @@ $(document).ready(function() {
     <div class="container">
 <!-- quiz start -->
     <div class="row">
-        <div class="quiz-head col-lg-12">
+        <div class="quiz-head col-lg-12 col-sm-12">
             <legend>
                 <p><h3><strong>C language</strong></h3></p>
             </legend>
@@ -67,30 +67,30 @@ $(document).ready(function() {
     </div>
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 col-sm-8">
             <div class="row">
-                <div class="quiz-body col-lg-12">
+                <div class="quiz-body col-lg-12 col-sm-12">
 <!--quiz 1 start-->
                     <div class="row quiz-body-div">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 col-sm-12">
                             <p class="quiz-title">1. welcome to C language</p>
                             <p class="quiz-description">discription</p>
                             <div class="row">
-                                <div class="col-lg-10 col-offset-1 quiz-box">
-                                    <div class="col-lg-9 quiz-box-description">
+                                <div class="col-lg-10 col-sm-10 col-offset-1 quiz-box">
+                                    <div class="col-lg-9 col-sm-9 quiz-box-description">
                                        asdfghjklqweruyiozvcxnm,.b 
                                     </div>
-                                    <div class="col-lg-3 quiz-btn-box">
+                                    <div class="col-lg-3 col-sm-3 quiz-btn-box">
                                         <a href="#" class="quiz-btn" data-in="data-in">data-in</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-10 col-offset-1 quiz-box">
-                                    <div class="col-lg-9 quiz-box-description">
+                                <div class="col-lg-10 col-sm-10 col-offset-1 quiz-box">
+                                    <div class="col-lg-9 col-sm-9 quiz-box-description">
                                        asdfghjklqweruyiozvcxnm,.b 
                                     </div>
-                                    <div class="col-lg-3 quiz-btn-box">
+                                    <div class="col-lg-3 col-sm-3 quiz-btn-box">
                                         <a href="#" class="quiz-btn" data-in="data-in">data-in</a>
                                     </div>
                                 </div>
@@ -100,25 +100,25 @@ $(document).ready(function() {
 <!--quiz 1 end-->
 <!--quiz 2 start-->
                     <div class="row quiz-body-div">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12 col-sm-12">
                             <p class="quiz-title">2. hi eugene</p>
                             <p class="quiz-description">discription</p>
                             <div class="row">
-                                <div class="col-lg-10 col-offset-1 quiz-box">
-                                    <div class="col-lg-9 quiz-box-description">
+                                <div class="col-lg-10 col-sm-10 col-offset-1 quiz-box">
+                                    <div class="col-lg-9 col-sm-9 quiz-box-description">
                                        asdfghjklqweruyiozvcxnm,.b 
                                     </div>
-                                    <div class="col-lg-3 quiz-btn-box">
+                                    <div class="col-lg-3 col-sm-3 quiz-btn-box">
                                         <a href="#" class="quiz-btn" data-in="data-in">data-in</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-10 col-offset-1 quiz-box">
-                                    <div class="col-lg-9 quiz-box-description">
+                                <div class="col-lg-10 col-sm-10 col-offset-1 quiz-box">
+                                    <div class="col-lg-9 col-sm-9 quiz-box-description">
                                        asdfghjklqweruyiozvcxnm,.b 
                                     </div>
-                                    <div class="col-lg-3 quiz-btn-box">
+                                    <div class="col-lg-3 col-sm-3 quiz-btn-box">
                                         <a href="#" class="quiz-btn" data-in="data-in">data-in</a>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-sm-4">
 
         </div>
     </div>

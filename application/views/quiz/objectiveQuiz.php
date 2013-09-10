@@ -44,7 +44,7 @@ function checkAnswer(answer,srl)
 </style>
 
 <div class="row well">
-    <div class="col-lg-12">
+    <div class="col-lg-12 col-sm-12">
         <div>
             <legend>
                <h3><strong>문제</strong></h3>

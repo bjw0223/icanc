@@ -1,3 +1,14 @@
+<script>
+
+$(document).ready(function(){
+    $('.main-btn').click(function(){
+            document.location.href = "<?=base_url()?>index.php/auth/login";
+        
+    });
+
+});
+
+</script>
 <style>
 #main {
     border-top: 1px solid #536166;
@@ -6,72 +17,58 @@
     padding-right:50px;
 }
 body{ 
-    background-color:#36545F;
 }
 .icanc-main {
     color:white;
-    height:100%
 }
-.carousel-inner > .item > img {
-    width:100%;
-}
-.item { 
+.main-title {
+    margin-top:30px;
+    font-size:110px;
+    font-weight:bold;
+    letter-spacing:10px;
+    color:#36545f;
     text-align:center;
-    padding-top:10px;
-    padding-bottom:10px;
 }
-.carousel-inner{
-    background-color: rgba(0, 0, 0, 0.1);
+.main-subtitle {
+    font-size:40px;
+    font-weight:bold;
+    letter-spacing:10px;
+    color:#36545f;
+    text-align:center;
+}
+.main-btn { 
+    border-radius:10px;
+    border:3px solid #34545f;
+    color:#36545f;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:35px;
+    padding:15px;
+    margin-top:50px;
+    text-align:center;
+    letter-spacing:10px;
+}
+.main-btn:hover { 
+    background-color:#36545f;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    padding:15px;
 }
 </style>
 <script>
-$(document).ready(function() {
-var windowHeight = $(window).height();
-$('.carousel-inner > .item > img').height( windowHeight/100 * 70 ); 
-$('.carousel').carousel({
-      interval: 2000
-      })
-});
+
 </script>
 <div id="main" class="">
     <div class="row icanc-main">
-        <div class="col-lg-5">
-            <p style="font-size:20px;"> reference </p>
-            <p style="font-size:20px;"> tutorial </p>
-            <p style="font-size:20px;"> quiz </p>
-            <p style="font-size:20px;"> freecoding </p>
+        <div class="main-title col-lg-12 col-sm-12">
+           ICANC PROJECT 
         </div>
-
-        <div id="carousel-example-generic" class="carousel slide col-lg-7">
-      <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img class="main-img" src="<?=base_url();?>asset/lib/img/main/practice_quiz_result.JPG" alt="...">
-                    <div class="carousel-caption">
-                    Quiz 
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="main-img" src="<?=base_url();?>asset/lib/img/main/freeCoding.JPG" alt="...">
-                    <div class="carousel-caption">
-                    FreeCoding
-                    </div>
-                </div>
-            </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <span class="icon-prev"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="icon-next"></span>
-            </a>
+        <div class="main-subtitle col-lg-12 col-sm-12">
+        Online C language learner support
+        </div>
+        <div class="main-btn col-lg-4 col-sm-4 col-offset-4">
+            LOGIN
         </div>
     </div>
 </div>

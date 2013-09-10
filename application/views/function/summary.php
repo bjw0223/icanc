@@ -1,4 +1,4 @@
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
        <ul>
            <li>특정한 작업을 수행 하도록 독립적으로 작성된 명령 코드 블록({&nbsp; })을 말한다.</li><br>

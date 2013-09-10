@@ -56,7 +56,7 @@ $(document).ready( function(){
 
         $quizDiv.innerHTML =$quizDiv.innerHTML + 
          '<div class="row quiz-body-div">'+
-             '<div class="col-lg-10">'+
+             '<div class="col-lg-10 col-sm-10">'+
                  '<a href="<?=base_url();?>index.php/quiz/quizTest/'+$data[$i]['id']+'" class="quiz-title">Quiz '+($i+1)+" "+$flag+'</a>'+
                  '<p class="quiz-description">'+$data[$i]['question']+'</p>'+
              '</div>'+
@@ -69,7 +69,7 @@ $(document).ready( function(){
     <div class="container">
 <!-- quiz start -->
     <div class="row">
-        <div class="quiz-head col-lg-12">
+        <div class="quiz-head col-lg-12 col-sm-12">
             <legend>
                 <span><h2><strong><?=$data[0]['category']?></strong></h2><span>
             </legend>
@@ -77,16 +77,16 @@ $(document).ready( function(){
     </div>
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 col-sm-8">
             <div class="row" id="quizDiv">
 
-                <div id="quiz-body" class="quiz-body col-lg-12">
+                <div id="quiz-body" class="quiz-body col-lg-12 col-sm-12">
                 <!-- -->
                </div>
 
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-sm-4">
 
         </div>
     </div>
