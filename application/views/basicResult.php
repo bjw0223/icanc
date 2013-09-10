@@ -128,7 +128,7 @@ body {
 <script type="text/javascript">
 
 $(document).ready(function(){
-    
+
     var forbidRegExp = /((main)\s*\()|(goto\s*\:)/g;
     var $codeResult= "";
 

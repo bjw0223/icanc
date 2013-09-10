@@ -86,7 +86,7 @@ class User_model extends CI_Model {
     {
         $beforeData = $this->db->get_where('user',array('email'=>$option['email']))->row_array();
         
-        if( $beforeData['finishQuestionNo'] < $option['finishQuestionNo'] )
+        if( $beforeData['finishQuestionNo'] <= $option['finishQuestionNo'] )
         {
             $this->db->where_in('email',$option['email']);
             $this->db->set('finishQuestionNo',$option['finishQuestionNo']);
