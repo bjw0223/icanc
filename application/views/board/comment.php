@@ -84,7 +84,10 @@
                 <div>
                     <span class="comment-title">
                         <i class="icon-user"></i><b> <?=$data->writer?> </b><?=$data->modified_time?>
-                        <button class='btn btn-small' title="수정"><i class='icon-pencil'></i></button>
+						<form action="<?=base_url();?>index.php/board/ModComment/<?=$board?>/<?=$page?>/<?=$srl?>/<?=$data->srl?>" method="POST">
+							<input type='hidden' name='writer' value=<?=$data->writer?>>
+                        	<button class='btn btn-small' title="수정"><i class='icon-pencil'></i></button>
+						</form>
 						<form action="<?=base_url();?>index.php/board/delComment/<?=$board?>/<?=$page?>/<?=$srl?>/<?=$data->srl?>" method="POST">
 							<input type='hidden' name='writer' value=<?=$data->writer?>>
                         	<button type='submit' class='btn btn-small' title="삭제"><i class='icon-trash'></i></button>
