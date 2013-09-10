@@ -250,7 +250,7 @@ $(document).ready(function(){
     // 다음 문제로
     $("#next").click( function()
     {
-       document.location.href= "<?=base_url()?>index.php/quiz/quizTest/<?=$id+1?>"
+       document.location.href= "<?=base_url()?>index.php/quiz/codingQuiz/basic/<?=$id+1?>"
     });
 
 
