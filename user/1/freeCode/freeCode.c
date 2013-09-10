@@ -3,9 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 void *runCode34567(void *id34567)
-{	int i;
-	scanf("%d",&i);
-	printf("%d",i);}
+{printf("dd");}
 
 void *checkTime34567(void *id34567)
 {
