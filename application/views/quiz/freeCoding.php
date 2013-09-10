@@ -167,23 +167,31 @@ function setupLayout(){
 <style>
 body {
     overflow-y:hidden;
+    padding-top:30px;
 }
-.quiz-left-bar {
-    height:50px;
-    background-color:#E6E6E6;
-    border-bottom: 1px solid rgba(0,0,0,0.15);
+.my-footer-logo {
+    height:30px;
+    line-height:30px;
+    font-size:20px;
+    font-weight:bold;
+    text-align:right;
+    color:rgb(37, 35, 35);
+    background-color:#e6e6e6;
+}
+.my-footer-logo>a {
+    color:rgb(37, 35, 35);
 }
 .quiz-left-footer {
     height:40px;
     border-top: 1px solid rgba(0,0,0,0.15);
 }
-.quiz-middle-bar,.quiz-right-bar {
-    height:50px;
+.quiz-left-bar,.quiz-middle-bar,.quiz-right-bar {
+    height:40px;
     background-color:#1F1D1D;
     border-bottom: 1px solid #000000;
     text-align:center;
-    font-size: 13px;
-    line-height: 50px;
+    font-size: 18px;
+    line-height: 40px;
     color: #646464;
     font-weight:bold;
     text-transform: uppercase;

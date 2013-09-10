@@ -44,7 +44,7 @@ body{
     font-weight:bold;
     font-size:35px;
     padding:15px;
-    margin-top:50px;
+    margin-top:2.5em;
     text-align:center;
     letter-spacing:10px;
 }
@@ -67,7 +67,8 @@ body{
         <div class="main-subtitle col-lg-12 col-sm-12">
         Online C language learner support
         </div>
-        <div class="main-btn col-lg-4 col-sm-4 col-offset-4">
+        <div class="col-lg-4 col-sm-4"></div>
+        <div class="main-btn col-lg-4 col-sm-4">
             LOGIN
         </div>
     </div>
