@@ -167,14 +167,23 @@ function setupLayout(){
 <style>
 body {
     overflow-y:hidden;
+    padding-top:30px;
 }
-.quiz-left-bar {
-    height:40px;
-    background-color:#E6E6E6;
-    border-bottom: 1px solid rgba(0,0,0,0.15);
+.my-footer-logo {
+    height:30px;
+    line-height:30px;
+    font-size:20px;
+    font-weight:bold;
+    text-align:right;
+    color:rgb(37, 35, 35);
+    background-color:#e6e6e6;
+}
+.my-footer-logo>a {
+    color:rgb(37, 35, 35);
 }
 .quiz-left-footer {
     height:40px;
+    border-top: 1px solid rgba(0,0,0,0.15);
 }
 .quiz-left-bar,.quiz-middle-bar,.quiz-right-bar {
     height:40px;
@@ -183,7 +192,7 @@ body {
     text-align:center;
     font-size: 18px;
     line-height: 40px;
-    color: #bebebe;
+    color: #646464;
     font-weight:bold;
     text-transform: uppercase;
 }
@@ -224,13 +233,13 @@ body {
     border:1px solid #0052FF; 
 }
 .quiz-description, .quiz-result {
-    background-color#7C7C7C;
+    background-color:#FFFFFF;
     border-radius:10px;
-    border: 1px solid #928E8E;;
+    border: 1px solid #FFFFFF;
     padding:5px;
 }
 .quiz-description-desc, .quiz-result-desc{
-    background-color:#000000;
+    background-color:#204420;
     height:100%;
     width:100%;
     color:#ffffff;
@@ -241,7 +250,7 @@ body {
     margin-top:10px;
 }
 .compileBtn, .nextBtn {
-    background-color:#2F8143;
+    background-color:#08c;
     color:#ffffff;
 }
     .CodeMirror {
@@ -294,7 +303,7 @@ body {
 .left-title {
     font-size:16px;
     font-weight:bold;
-	margin:0px;
+margin:0px;
 }
 .quiz-left-tip{
     padding:5px;
@@ -310,34 +319,12 @@ body {
     color:silver;
 }
 #myModal {
-	position:absolute;
-	text-align:center;
+position:absolute;
+text-align:center;
 }
 .compile-waiting {
-	font-size:100px;
-	color:#eeeeee;
-}
-body {
-	padding-top:30px;
-}
-.freecoding-footer {
-	height:30px;
-	background-color:#e6e6e6;
-}
-.my-footer-logo
-{
-    height:30px;
-    line-height:30px;
-    font-size:15px;
-    font-weight:bold;
-    text-align:right;
-}
-.my-footer-logo > a {
-    color:rgb(37, 35, 35);
-}
-.my-footer-logo > a:hover {
-    text-decoration:none;
-    color:gold;
+font-size:100px;
+color:#eeeeee;
 }
 
 </style>
@@ -433,8 +420,8 @@ function setupEvents(){
                     <small>
                         <p><b>stdin은 ','로 각각을 구분합니다.</b></p>
                         <p>ex) a,b,1 - 세개의 char형 a,b,1이 차례대로 stdin으로 입력되어 집니다.</p>
-                        <p><b>또한 숫자의 경우 '##'을 붙여줌으로써 구분합니다.</b></p>
-                        <p>ex) ##1,##2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.</p>
+                        <p><b>또한 숫자의 경우 '#'을 붙여줌으로써 구분합니다.</b></p>
+                        <p>ex) #1,#2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.</p>
                     </small>
                 </div>
                 <div class="coding-input col-lg-12 col-sm-12">
@@ -464,7 +451,7 @@ function setupEvents(){
                 <div id="headDiv">
                     <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
                 </div>
-
+                
                 <div id="codeDiv">
                     <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
                 </div>
