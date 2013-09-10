@@ -225,7 +225,7 @@ $(document).ready(function(){
                                         $.ajax({
                                                 type : "POST",
                                                 url : "<?=base_url()?>index.php/quiz/updateFinishQuestionNo",
-                                                data : "finishQuestionNo=<?=$id?>",
+                                                data : "finishQuestionNo=<?=$id+1?>",
                                                 dataType : "json"
                                                 });
                                     }
