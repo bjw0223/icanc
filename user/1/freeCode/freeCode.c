@@ -1,13 +1,11 @@
-#include <pthread.h> 
+#include <pthread.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-void *runCode34567(void *id34567) {int i;
-
-	for(i=1; i<=9; i++)
-    {
-		printf("9 * %d = %d\n",i,i*9);
-    }}
+void *runCode34567(void *id34567)
+{	int i;
+	scanf("%d",&i);
+	printf("%d",i);}
 
 void *checkTime34567(void *id34567)
 {
