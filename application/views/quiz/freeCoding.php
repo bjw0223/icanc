@@ -183,7 +183,6 @@ body {
 }
 .quiz-left-footer {
     height:40px;
-    border-top: 1px solid rgba(0,0,0,0.15);
 }
 .quiz-left-bar,.quiz-middle-bar,.quiz-right-bar {
     height:40px;
