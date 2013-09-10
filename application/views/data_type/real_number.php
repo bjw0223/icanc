@@ -1,4 +1,4 @@
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9  col-sm-9 tutorial_desc">
 	<span class="general">    
        <ul>
            <li>종류는 float와 double형이 존재하며 double형이 대표 타입이다.</li>

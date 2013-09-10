@@ -1,6 +1,6 @@
-<div id="pwmodify" class="container col-lg-9">
+<div id="pwmodify" class="container col-lg-9 col-sm-9">
     <div class="row">
-        <div class="col-lg-10 col-offset-1">
+        <div class="col-lg-10 col-sm-10 col-offset-1">
            <form id="pwdmodifyForm" class="form-horizontal" action="<?=base_url()?>index.php/mypage/modifypwd" method="post">
                 <div style="padding-bottom:30px;">
                     <small color="gold"> 회원님의 정보 중 변경된 내용이 있는 경우, 아래에서 수정해주세요. <br/>
@@ -15,12 +15,12 @@
                           <td class="active">기존비밀번호</td>
                           <td>
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-sm-3">
                                     <input type="password" id="raw_password" name="raw_password" value="" style="width:120px" onkeyup="verifyRawPassword()"> 
                                 </div>
-                                <div class="col-lg-1"> 
+                                <div class="col-lg-1 col-sm-1"> 
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                     <label id="raw_passwordResult" style="margin-top:2px" value=""> </label>
                                 </div>
                              </div>
@@ -30,12 +30,12 @@
                           <td class="active">변경비밀번호</td>
                           <td>
                             <div class="row">
-                                <div class="col-lg-2">
+                                <div class="col-lg-2 col-sm-2">
                                     <input type="password" id="password" name="password" value="" style="width:120px" onfocusout="checkforPassword()" disabled="ture"> 
                                 </div>
-                                <div class="col-lg-2"> 
+                                <div class="col-lg-2 col-sm-2"> 
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                     <label id="passwordResult" style="margin-top:2px width:120px" value=""> </label>
                                 </div>
                              </div>
@@ -52,12 +52,12 @@
                           <td class="active">변경비밀번호확인</td>
                           <td>
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-sm-3">
                                     <input type="password" id="re_password" name="re_password" value="" style="width:120px" onfocusout="checkforRepassword()" disabled="true"> 
                                 </div>
-                                <div class="col-lg-1"> 
+                                <div class="col-lg-1 col-sm-1"> 
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                     <label id="re_passwordResult" style="margin-top:2px" value=""> </label>
                                 </div>
                              </div>

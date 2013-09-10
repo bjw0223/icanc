@@ -72,40 +72,40 @@ font-weight:bold;
 
 <div class="my-navbar">
     <div class="row">
-        <div class="col-lg-2 my-nav-logo">
+        <div class="col-lg-2 col-sm-2 my-nav-logo">
             <a href="<?=base_url();?>index.php/main">I CAN C</a>
         </div>
-        <div class="col-lg-7 my-nav-tap">
-            <div class="col-lg-2 <?=$active == 'startIcanc' ? 'active':'';?>"><a href="<?=base_url();?>index.php/start">Start ICANC</a></div>
-            <div class="col-lg-2 active"><a class="reference_btn">Reference</a></div>
-            <div class="col-lg-2 <?=$active == 'tutorial' ? 'active':'';?>"><a href="<?=base_url();?>index.php/tutorial">Tutorial</a></div>
-            <div class="col-lg-2 <?=$active == 'freeCoding' ? 'active':'';?>"><a href="<?=base_url();?>index.php/quiz">Quiz</a></div>
-            <div class="col-lg-2 <?=$active == 'freeCoding' ? 'active':'';?>"><a href="<?=base_url();?>index.php/quiz/codingQuiz/1">Free Coding</a></div>
-            <div class="col-lg-2 <?=$active == 'board' ? 'active':'';?>"><a href="<?=base_url();?>index.php/board/blist">Board</a></div>
+        <div class="col-lg-7 col-sm-7 my-nav-tap">
+            <div class="col-lg-2 col-sm-2 <?=$active == 'startIcanc' ? 'active':'';?>"><a href="<?=base_url();?>index.php/start">Start ICANC</a></div>
+            <div class="col-lg-2 col-sm-2 active"><a class="reference_btn">Reference</a></div>
+            <div class="col-lg-2 col-sm-2 <?=$active == 'tutorial' ? 'active':'';?>"><a href="<?=base_url();?>index.php/tutorial">Tutorial</a></div>
+            <div class="col-lg-2 col-sm-2 <?=$active == 'freeCoding' ? 'active':'';?>"><a href="<?=base_url();?>index.php/quiz">Quiz</a></div>
+            <div class="col-lg-2 col-sm-2 <?=$active == 'freeCoding' ? 'active':'';?>"><a href="<?=base_url();?>index.php/quiz/codingQuiz/1">Free Coding</a></div>
+            <div class="col-lg-2 col-sm-2 <?=$active == 'board' ? 'active':'';?>"><a href="<?=base_url();?>index.php/board/blist">Board</a></div>
         </div>
 
 
             <!--login or sign up  button-->
-            <div id="login_div" class="col-lg-3" style="text-align:right;">
-                <div class="col-lg-6"></div>
-                <div class="col-lg-3"><a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/register">JOIN</a></div>
-                <div class="col-lg-3"><a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/login">LOGIN</a></div>
+            <div id="login_div" class="col-lg-3 col-sm-3" style="text-align:right;">
+                <div class="col-lg-6 col-sm-6"></div>
+                <div class="col-lg-3 col-sm-3"><a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/register">JOIN</a></div>
+                <div class="col-lg-3 col-sm-3"><a class="navbar-btn btn btn-default" href="<?=base_url()?>index.php/auth/login">LOGIN</a></div>
             </div>
             <!--logout button-->
-            <div id="logout_div" class="col-lg-3" style="text-align:right;">
-                <div class="col-lg-6" style="text-align:right;"><a id="welcome" href="<?=base_url()?>index.php/mypage"><?=$this->session->userdata('user_nickname');?>님</a></div>
-                <div class="col-lg-3"><a href="<?=base_url()?>index.php/mypage">mypage</a></div>
-                <div class="col-lg-3"><a href="<?=base_url()?>index.php/auth/logout">logout</a></div>
+            <div id="logout_div" class="col-lg-3 col-sm-3" style="text-align:right;">
+                <div class="col-lg-6 col-sm-6" style="text-align:right;"><a id="welcome" href="<?=base_url()?>index.php/mypage"><?=$this->session->userdata('user_nickname');?>님</a></div>
+                <div class="col-lg-3 col-sm-3"><a href="<?=base_url()?>index.php/mypage">mypage</a></div>
+                <div class="col-lg-3 col-sm-3"><a href="<?=base_url()?>index.php/auth/logout">logout</a></div>
             </div>
 
 
 
     </div>
 <div>
-<div class="col-lg-3 my-nav-auth">
-            <div class="row">
-                <div class="col-lg-4 col-offset-4">로그인</div>
-                <div class="col-lg-4">회원가입</div>
-            </div>
-        </div>
+<div class="col-lg-3 col-sm-3 my-nav-auth">
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-offset-4">로그인</div>
+        <div class="col-lg-4 col-sm-4">회원가입</div>
+    </div>
+</div>
 

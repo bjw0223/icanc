@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 <div id="quizMain" class="container">
     <div class="row">
-        <div class="col-lg-5 col-offset-1" >
+        <div class="col-lg-5 col-sm-5 col-offset-1" >
             <div class="my-icon-box" href="<?=base_url()?>index.php/quiz/categoryList">
                 <div class="my-icon">
                     <i class="icon-btc icon-4x icon-spin"></i>
@@ -56,7 +56,7 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
-        <div class="col-lg-5">
+        <div class="col-lg-5 col-sm-5">
             <div class="my-icon-box" href="<?=base_url()?>index.php/quiz/practiceQuizList">
                 <div class="my-icon">
                     <i class="icon-pinterest icon-4x icon-spin"></i>

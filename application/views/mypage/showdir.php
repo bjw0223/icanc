@@ -54,23 +54,23 @@ table td > a {
 table th {
     font-weight:bold;
     line-height:20px;
-    font-size:16px;
+    font-size:1.2em;
 }
 
 </style>
-<div id="showdir" class="col-lg-9">
+<div id="showdir" class="col-lg-9 col-sm-9">
 <div class="row search-block">
-    <div class="col-lg-12">
+    <div class="col-lg-12 col-sm-12">
         <form class="form-inline">
             
-            <div class="input-group col-lg-2 col-offset-5 text-right">
+            <div class="input-group col-lg-2 col-sm-2 col-offset-5 text-right">
                 <select name="search_key" class="form-control">
                     <option value="title">제목</option>
                     <option value="srl">번호</option>
                 </select>
                  
             </div>
-            <div class="input-group col-lg-5 text-right">
+            <div class="input-group col-lg-5 col-sm-5 text-right">
                      
                 <input id="searchInput" name="search_keyword" type="text" class="form-control" placeholder="검색">
                 <span class="input-group-btn">
@@ -83,16 +83,16 @@ table th {
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-12 col-sm-12">
         <table class="table table-hover"  style="text-align:center;">
             <thead>
                 <tr>
-                    <th class="col-lg-1" style="text-align:center;"><h4>번호</h4></th>
-                    <th class="col-lg-5" style="text-align:center;"><h4>제목</h4></th>
-                    <th class="col-lg-2" style="text-align:center;"><h4>날짜</h4></th>
-                    <th class="col-lg-1" style="text-align:center;"><h4>조회수</h4></th>
-                    <th class="col-lg-1" style="text-align:center;"><h4>추천수</h4></th>
-                    <th class="col-lg-2" style="text-align:center;"><h4>삭제</h4></th>
+                    <th class="col-lg-1 col-sm-1" style="text-align:center;"><h4>번호</h4></th>
+                    <th class="col-lg-5 col-sm-5" style="text-align:center;"><h4>제목</h4></th>
+                    <th class="col-lg-2 col-sm-2" style="text-align:center;"><h4>날짜</h4></th>
+                    <th class="col-lg-1 col-sm-1" style="text-align:center;"><h4>조회수</h4></th>
+                    <th class="col-lg-1 col-sm-1" style="text-align:center;"><h4>추천수</h4></th>
+                    <th class="col-lg-2 col-sm-2" style="text-align:center;"><h4>삭제</h4></th>
                 </tr>				
             </thead>
             <tbody>
@@ -119,7 +119,7 @@ table th {
         ?>		
             </tbody>
         </table>
-        <div class="col-lg-12 text-center"> 
+        <div class="col-lg-12 col-sm-12 text-center"> 
 <?php
 if( $page_count >= 5 )
 {

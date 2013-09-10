@@ -87,10 +87,10 @@ $(document).ready(function() {
 
 <div class="my-navbar">
     <div class="row">
-        <div class="col-lg-2 my-nav-logo">
+        <div class="col-lg-2 col-sm-2  my-nav-logo">
             <a href="<?=base_url();?>index.php/main">I CAN C</a>
         </div>
-        <div class="col-lg-7 my-nav-tap">
+        <div class="col-lg-7 col-sm-7 my-nav-tap">
 <?php
     if($this->session->userdata('is_login') == 'true')
     {
@@ -109,7 +109,7 @@ $(document).ready(function() {
         </div>
 
 
-        <div id="login_div" class="col-lg-3" style="text-align:right;">
+        <div id="login_div" class="col-lg-3 col-sm-3" style="text-align:right;">
             <!--login or sign up  button-->
 <!--
             <div class="col-lg-3 col-offset-6" href="<?=base_url()?>index.php/auth/register">JOIN</div>
@@ -117,7 +117,7 @@ $(document).ready(function() {
 -->
         </div>
         <!--logout button-->
-        <div id="logout_div" class="col-lg-3" style="text-align:right;">
+        <div id="logout_div" class="col-lg-3 col-sm-3" style="text-align:right;">
 <!--
             <div class="col-lg-6 name" style="text-align:right;"><a id="welcome" href="<?=base_url()?>index.php/mypage"><small>Lv.<?=$this->session->userdata('user_level')?></small> <?=$this->session->userdata('user_nickname');?>님</a></div>
             <div class="col-lg-3" href="<?=base_url()?>index.php/mypage/checkPwd">MYPAGE</div>

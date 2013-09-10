@@ -328,12 +328,12 @@ color:#eeeeee;
     </div><!-- /.modal -->
 
 <div class="row">
-    <div class="quiz-left col-lg-3">
+    <div class="quiz-left col-lg-3 col-sm-3">
         <div class="quiz-left-div row">
-            <div class="quiz-left-bar col-lg-12">
+            <div class="quiz-left-bar col-lg-12 col-sm-12">
                 <p class="quiz-id">문제 (<?=$id?>)</p>
             </div>
-            <div class="quiz-left-desc col-lg-12">
+            <div class="quiz-left-desc col-lg-12 col-sm-12">
                 <div class="quiz-left-context">
                     <p class="left-title"><?=$question?></p>
                     <p class="left-desc"><?=$context?></p>
@@ -361,30 +361,30 @@ color:#eeeeee;
                 </div>
 
             </div>
-            <div class="quiz-left-footer col-lg-12">
+            <div class="quiz-left-footer col-lg-12 col-sm-12">
                 <div class="row">
-                    <div class="quiz-left-question col-lg-12">
+                    <div class="quiz-left-question col-lg-12 col-sm-12">
                         질문하기
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="quiz-middle col-lg-5">
+    <div class="quiz-middle col-lg-5 col-sm-5">
         <div class="quiz-middle-div row">
-            <div class="quiz-middle-bar col-lg-12">
+            <div class="quiz-middle-bar col-lg-12 col-sm-12">
                 <div class="row">
-                    <div class="quiz-tap-title col-lg-2">
+                    <div class="quiz-tap-title col-lg-2 col-sm-2">
                         files :
                     </div>
-                    <div class="quiz-tap col-lg-2" style="">
+                    <div class="quiz-tap col-lg-2 col-sm-2" style="">
                         <i class="icon-file-alt icon-large"></i> quiz.c
                     </div>
-                    <div class="col-lg-8"> 
+                    <div class="col-lg-8 col-sm-8"> 
                     </div>
                 </div>
             </div>
-            <div class="quiz-middle-desc col-lg-12">
+            <div class="quiz-middle-desc col-lg-12 col-sm-12">
                 <div id="headDiv">
                     <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
                 </div>
@@ -398,17 +398,17 @@ color:#eeeeee;
                 </div>
 
             </div>
-            <div class="quiz-middle-footer col-lg-12">
+            <div class="quiz-middle-footer col-lg-12 col-sm-12">
                 <button class="btn compileBtn" id="compile" name="compile"> Compile </button>
                 <button class="btn nextBtn" id="next" name="next"> Next Quiz </button>
             </div>
         </div>
    </div>
-    <div class="quiz-right col-lg-4">
+    <div class="quiz-right col-lg-4 col-sm-4">
         <div class="quiz-right-div row">
-            <div class="quiz-right-bar col-lg-12">
+            <div class="quiz-right-bar col-lg-12 col-sm-12">
             </div>
-            <div class="quiz-right-desc col-lg-12">
+            <div class="quiz-right-desc col-lg-12 col-sm-12">
                 <div class="quiz-result">
                    <div class="quiz-result-desc">
                     </div>
@@ -418,7 +418,7 @@ color:#eeeeee;
                     </div>
                 </div>
             </div>
-            <div class="quiz-right-footer col-lg-12">
+            <div class="quiz-right-footer col-lg-12 col-sm-12">
             </div>
         </div>
     </div>

@@ -29,7 +29,7 @@
         width:100%;
     }
 </style>
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
         <ul>
 			<img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\1.PNG" width=600px; height=150px; style="margin-left:-30px; margin-bottom:20px"><br>

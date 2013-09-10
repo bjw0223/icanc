@@ -17,7 +17,7 @@
         width:100%;
     }
 </style>
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
         <ul>
             <li>char형으로 1byte의 기억공간을 갖는다.</li><br>

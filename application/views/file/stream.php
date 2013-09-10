@@ -1,4 +1,4 @@
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
         <ul>
             <li>프로그램이 사용하는 데이터들의 집합을 '파일'이라 한다.</li><br>

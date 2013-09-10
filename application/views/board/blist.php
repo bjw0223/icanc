@@ -43,25 +43,34 @@ table th {
 }
 
 </style>
-<div id="blist" class="col-lg-9">
+<div id="blist" class="col-lg-9 col-sm-9">
 <div class="row search-block">
-    <div class="col-lg-2">
+    <div class="col-lg-2 col-sm-2">
         <div class="row">
-            <div class='col-lg-12 text-right write-btn-div'>
-                <a class="btn btn-default" href="<?=base_url();?>index.php/board/documentWrite/<?=$board?>">글쓰기</a>
-            </div>
+            <div class='col-lg-12  col-sm-12 text-right write-btn-div'>
+			<?php
+				if($board!='faq')
+					echo "<a class='btn btn-default' href=".base_url()."index.php/board/documentWrite/"."$board".">글쓰기</a>";
+				if($board=='faq')
+				{
+					$nickname = $this->session->userdata('user_nickname');
+					if($nickname =='admin')
+						echo "<a class='btn btn-default' href=".base_url()."index.php/board/documentWrite/"."$board".">글쓰기</a>";
+            	}
+			?>
+			</div>
         </div>
     </div>
-    <div class="col-lg-10">
+    <div class="col-lg-10 col-sm-10">
         <form class="form-inline">
-            <div class="input-group col-lg-2 col-offset-5 text-right">
+            <div class="input-group col-lg-2 col-sm-2 col-offset-5 text-right">
                 <select name="search_key" class="form-control">
                     <option value="title">제목</option>
                     <option value="writer">작성자</option>
                     <option value="srl">번호</option>
                 </select>
             </div>
-            <div class="input-group col-lg-5 text-right">
+            <div class="input-group col-lg-5 col-sm-5 text-right">
                 <input id="searchInput" name="search_keyword" type="text" class="form-control" placeholder="검색">
                 <span class="input-group-btn">
                     <button id="refSearchBtn" class="btn btn-default" type="submit"> 검 색 </button>
@@ -71,16 +80,16 @@ table th {
     </div>
 </div>
 <div class="row list-block">
-    <div class="col-lg-12">
+    <div class="col-lg-12 col-sm-12">
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th class="col-lg-1" style="text-align:center;">번호</th>
-                    <th class="col-lg-5" style="text-align:center;">제목</th>
-                    <th class="col-lg-2" style="text-align:center;">글쓴이</th>
-                    <th class="col-lg-2" style="text-align:center;">날짜</th>
-                    <th class="col-lg-1" style="text-align:center;">조회수</th>
-                    <th class="col-lg-1" style="text-align:center;">추천수</th>
+                    <th class="col-lg-1 col-sm-1" style="text-align:center;">번호</th>
+                    <th class="col-lg-5 col-sm-5" style="text-align:center;">제목</th>
+                    <th class="col-lg-2 col-sm-2" style="text-align:center;">글쓴이</th>
+                    <th class="col-lg-2 col-sm-2" style="text-align:center;">날짜</th>
+                    <th class="col-lg-1 col-sm-1" style="text-align:center;">조회수</th>
+                    <th class="col-lg-1 col-sm-1" style="text-align:center;">추천수</th>
                 </tr>				
             </thead>
             <tbody>
@@ -90,6 +99,7 @@ table th {
             
 			if($uri_num!=4){
 				$page=1;
+
 			}else{
 				$page = $this->uri->segment($uri_num);
 			}
@@ -117,7 +127,7 @@ table th {
             </tbody>
         </table>
 
-        <div class="col-lg-12 text-center pagination-block"> 
+        <div class="col-lg-12 col-sm-12 text-center pagination-block"> 
 
 <?php
 

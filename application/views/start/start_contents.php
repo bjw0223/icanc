@@ -38,7 +38,7 @@ $(window).scroll(function(){
 </script>
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 col-sm-12">
             <div class="title">
             <?=$selected?>
             </div>
@@ -50,7 +50,7 @@ $(window).scroll(function(){
 <div class="container bs-docs-container" style="maring:0px">
 <div class="row"> 
 
-<div id="tutorial_contents" class="col-lg-3" >
+<div id="tutorial_contents" class="col-lg-3 col-sm-3" >
     <div class="bs-sidebar" style="padding:10px;">
 
        <ul class="nav bs-sidenav"> 

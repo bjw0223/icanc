@@ -1,7 +1,7 @@
 
-<div id="checkPwd" class="container col-lg-9">
+<div id="checkPwd" class="container col-lg-9 col-sm-9">
     <div class="row">
-        <div class="col-lg-10 col-offset-1">
+        <div class="col-lg-10 col-sm-10 col-offset-1">
            <form id="checkPwdForm" class="form-horizontal" action="<?=base_url()?>index.php/mypage" method="post">
                 <div style="padding-bottom:30px;">
                     <small color="gold"> 회원님의 정보 중 변경된 내용이 있는 경우, 아래에서 수정해주세요. <br/>
@@ -16,12 +16,12 @@
                           <td class="active">아이디</td>
                           <td>
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-sm-3">
                                     <input type="text" id="email" name="email" value="" style="width:120px"> 
                                 </div>
-                                <div class="col-lg-1"> 
+                                <div class="col-lg-1 col-sm-1"> 
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                 </div>
                              </div>
                           </td>
@@ -30,12 +30,12 @@
                           <td class="active">기존비밀번호</td>
                           <td>
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-lg-3 col-sm-3">
                                     <input type="password" id="password" name="password" value="" style="width:120px"> 
                                 </div>
-                                <div class="col-lg-1"> 
+                                <div class="col-lg-1 col-sm-1"> 
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-lg-8 col-sm-8">
                                 </div>
                              </div>
                           </td>

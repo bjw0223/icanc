@@ -11,7 +11,7 @@
 	padding:10px 0px 10px 30px;
 	}
 </style>
-<div class="col-lg-9 tutorial_desc">
+<div class="col-lg-9 col-sm-9 tutorial_desc">
   <span class="general_sub">
      <ul>
          <img src="<?=base_url();?>asset\lib\img\lecture\program\1.png" width=300px; Height=200px; style="margin-bottom:20px">

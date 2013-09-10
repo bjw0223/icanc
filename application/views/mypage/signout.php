@@ -18,7 +18,7 @@
 }
 </style>
 
-<div id="signout" class="col-lg-9">
+<div id="signout" class="col-lg-9 col-sm-9">
     <p class="signout-title">회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.</p>
     <span class="signout-info">
         <ul>
