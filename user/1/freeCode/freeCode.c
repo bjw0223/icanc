@@ -2,7 +2,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-void *runCode34567(void *id34567){}
+void *runCode34567(void *id34567){	int random ;
+	random = rand()/27+1;
+	printf("%d",random);}
 
 void *checkTime34567(void *id34567)
 {

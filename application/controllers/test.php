@@ -13,4 +13,10 @@ class Test extends CI_Controller {
         $this->load->view('test');
         $this->load->view('footer');
     }
+    function fwrite()
+    {
+        $this->load->view('header');
+        $this->load->view('test2');
+        $this->load->view('footer');
+    }
 }
