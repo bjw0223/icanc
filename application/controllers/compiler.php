@@ -95,6 +95,7 @@ class Compiler extends CI_Controller {
                 foreach( $stdin as $value)
                 {
                     $value = str_replace("#","\n",$value);
+                    //$value = str_replace("","<br/>",$value);
                     fwrite($pipes[0],$value);
                 }
                     fclose($pipes[0]);
@@ -105,7 +106,7 @@ class Compiler extends CI_Controller {
             {
                 $result = $result.$pdf_content;
             }
-                $result = str_replace("\n","<br/>",$result);
+                $result = str_replace("\n","<br>",$result);
                 fclose($pipes[1]);
                 //echo json_encode($runOutput);
                 echo json_encode($result);
