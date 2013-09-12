@@ -233,13 +233,13 @@ body {
     border:1px solid #0052FF; 
 }
 .quiz-description, .quiz-result {
-    background-color:#FFFFFF;
+    background-color:#7c7c7c;
     border-radius:10px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #928e8e;
     padding:5px;
 }
 .quiz-description-desc, .quiz-result-desc{
-    background-color:#204420;
+    background-color:#000000;
     height:100%;
     width:100%;
     color:#ffffff;
