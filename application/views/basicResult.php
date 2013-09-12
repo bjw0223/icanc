@@ -250,8 +250,7 @@ $(document).ready(function(){
     // 다음 문제로
     $("#next").click( function()
     {
-        alert("<?=$id?>");
-       // document.location.href= "<?=base_url()?>index.php/quiz/codingQuiz/basic/<?=$id+1?>"
+        document.location.href= "<?=base_url()?>index.php/quiz/codingQuiz/basic/<?=$id+1?>"
     });
 
 
