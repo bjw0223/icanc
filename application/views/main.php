@@ -22,7 +22,7 @@ body{
     color:white;
 }
 .main-title {
-    margin-top:30px;
+    margin-top:50px;
     font-size:110px;
     font-weight:bold;
     letter-spacing:10px;
@@ -68,9 +68,6 @@ body{
         Online C language learner support
         </div>
         <div class="col-lg-4 col-sm-4"></div>
-        <div class="main-btn col-lg-4 col-sm-4">
-            LOGIN
-        </div>
     </div>
 </div>
 
