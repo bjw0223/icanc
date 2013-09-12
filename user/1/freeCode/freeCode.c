@@ -2,12 +2,9 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-void *runCode34567(void *id34567) {
-	int i, num;
-	printf("구구단을 입력하세요:\n");
-	scanf("%d",&num);
-    for( i = 1 ; i < 10 ; i++ )
-          printf("%d * %d = %d\n",num,i,num*i);}
+void *runCode34567(void *id34567){	int random ;
+	random = rand()/27+1;
+	printf("%d",random);}
 
 void *checkTime34567(void *id34567)
 {

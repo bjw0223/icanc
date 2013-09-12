@@ -91,7 +91,6 @@ $(document).ready(function(){
     $("#compile").click( function()
     {
         var $stdin = document.getElementById("stdin").value;
-        // CodeMirror에서 code textare로 값 보내기
         
         $("#myModal").css('top',($(window).height()/2-70) +"px");
         $("#myModal").modal("show");
@@ -183,7 +182,6 @@ body {
 }
 .quiz-left-footer {
     height:40px;
-    border-top: 1px solid rgba(0,0,0,0.15);
 }
 .quiz-left-bar,.quiz-middle-bar,.quiz-right-bar {
     height:40px;

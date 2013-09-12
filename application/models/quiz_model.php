@@ -33,7 +33,6 @@ class Quiz_model extends CI_Model {
     {
         $this->db->join('coding_basic','coding_basic.categoryNo = coding_category.id');
         $result = $this->db->get_where('coding_category',array('coding_basic.id'=>$id))->row();
-        var_dump($result);
         return $result;
     }
 
