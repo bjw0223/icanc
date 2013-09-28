@@ -97,7 +97,7 @@ class Quiz extends CI_Controller {
         $temp['active'] = 'quiz';
         $result['result'] = null;
         $this->load->view('header');
-        $this->load->view('navbar',$temp);
+        $this->load->view('coding-navbar',$temp);
 
         if($target == 'basic' && $this->session->userdata('user_finishQuestionNo')+1 >= $id)
         {
@@ -128,7 +128,7 @@ class Quiz extends CI_Controller {
         $this->load->view('header');
         $result['result'] = null;
         $temp['active'] = 'freeCoding';
-        $this->load->view('freecoding-navbar',$temp);
+        $this->load->view('coding-navbar',$temp);
         $this->load->view('quiz/freeCoding',$data);
         $this->load->view('footer');
     }
