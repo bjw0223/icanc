@@ -27,17 +27,18 @@ class Compiler extends CI_Controller {
         $preprocess = $_POST['preprocess'];
         $threadCodeRun = $data['threadCodeRun'];
         $code = $_POST['code'];
+        $tail = $_POST['tail'];
         $threadCodeTail = $data['threadCodeTail'];
         $funcDef = $_POST['funcDef'];
         
         if($flag == 0)
         {
-            $finalCode = $threadCodeHead."\r".$preprocess."\r".$threadCodeRun."\r".$code."\r\treturn 0;\r}\r".$funcDef."\r".$threadCodeTail;
+            $finalCode = $threadCodeHead."\r".$preprocess."\r".$threadCodeRun."\r".$code."\r".$tail."\r".$funcDef."\r".$threadCodeTail;
             $this->_preprocessCodingQuiz($finalCode,$stdin);
         }
         else if($flag == 1)
         {
-            $finalCode = $threadCodeHead."\r".$preprocess."\r".$threadCodeRun."\r".$code."\r\treturn 0;\r}\r".$funcDef."\r".$threadCodeTail;
+            $finalCode = $threadCodeHead."\r".$preprocess."\r".$threadCodeRun."\r".$code."\r".$tail."\r".$funcDef."\r".$threadCodeTail;
             $this->_preprocessFreeCoding($finalCode,$stdin);
         }
     }
