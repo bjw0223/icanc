@@ -49,7 +49,7 @@ $(document).ready(function(){
     
     var regExp = /((main|gets|getc)\s*\()|(goto\s*\:)/;
     
-    // head textarea option
+    // headDiv textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
                 mode: "text/x-csrc",
                 theme: "lesser-dark",
@@ -59,8 +59,8 @@ $(document).ready(function(){
                 readOnly : true,
             });
     
-    // code textarea option
-    var $code = CodeMirror.fromTextArea(document.getElementById("code"), {
+    // preprocessDiv textarea option
+    var $preprocess = CodeMirror.fromTextArea(document.getElementById("preprocess"), {
                 mode: "text/x-csrc",
                 theme: "lesser-dark",
                 matchBrackets: true,
@@ -71,20 +71,70 @@ $(document).ready(function(){
                 tabSize : 4,
             });
     
-    // tail textarea option
+    // mainDiv textarea option
+    var $main = CodeMirror.fromTextArea(document.getElementById("main"), {
+                mode: "text/x-csrc",
+                theme: "lesser-dark",
+                matchBrackets: true,
+                lineNumbers: true,
+                firstLineNumber : $head.lineCount()+$preprocess.lineCount()+1,
+                viewportMargin: 10,
+                readOnly : true,
+            });
+    // codeDiv textarea option
+    var $code = CodeMirror.fromTextArea(document.getElementById("code"), {
+                mode: "text/x-csrc",
+                theme: "lesser-dark",
+                matchBrackets: true,
+                smartIndent : true,
+                lineNumbers: true,
+                firstLineNumber : $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+1,
+                viewportMargin: 10,
+                tabSize : 4,
+            });
+    
+    // tailDiv textarea option
     var $tail = CodeMirror.fromTextArea(document.getElementById("tail"), {
                 mode: "text/x-csrc",
                 theme: "lesser-dark",
                 matchBrackets: true,
                 lineNumbers: true,
-                firstLineNumber : $head.lineCount()+$code.lineCount()+1,
+                firstLineNumber : $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+1,
                 viewportMargin: 10,
                 readOnly : true,
             }); 
     
-    // tail의 line number 실시간 변경
+    // funcDefDiv textarea option
+    var $funcDef = CodeMirror.fromTextArea(document.getElementById("funcDef"), {
+                mode: "text/x-csrc",
+                theme: "lesser-dark",
+                matchBrackets: true,
+                smartIndent : true,
+                lineNumbers: true,
+                firstLineNumber : $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+$tail.lineCount()+1,
+                viewportMargin: 10,
+                tabSize : 4,
+            });
+    
+    // Editor의 line number 실시간 변경
+    $preprocess.on("change", function($preprocess, change) {   
+                $main.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+1); 
+                $code.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+1); 
+                $tail.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+1); 
+                $funcDef.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+$tail.lineCount()+1); 
+            });
+
     $code.on("change", function($code, change) {   
-                $tail.setOption("firstLineNumber", $head.lineCount()+$code.lineCount()+1); 
+                $main.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+1); 
+                $code.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+1); 
+                $tail.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+1); 
+                $funcDef.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+$tail.lineCount()+1); 
+            });
+    $funcDef.on("change", function($funcDef, change) {   
+                $main.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+1); 
+                $code.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+1); 
+                $tail.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+1); 
+                $funcDef.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+$tail.lineCount()+1); 
             });
 
     // compile button click Event
@@ -94,32 +144,31 @@ $(document).ready(function(){
         
         $("#myModal").css('top',($(window).height()/2-70) +"px");
         $("#myModal").modal("show");
+        $preprocess.save();
         $code.save();
+        $funcDef.save();
 
-        var $headStr = document.getElementById("head").value;
+        var $preprocessStr = document.getElementById("preprocess").value;
         var $codeStr = document.getElementById("code").value;
-        var $tailStr = document.getElementById("tail").value;
+        var $funcDefStr = document.getElementById("funcDef").value;
         
         // 반복문, 선택문, goto 문 사용 불가 정규식 판별
         if( ($checkCodeStr = regExp.exec($codeStr)) != null )
         {
-            // 사용불가 알림창 표시위한 공백 및 'i', ':' 제거
-            $("#myModal").modal("hide");
-            $codeStr = $checkCodeStr[0].replace("(","");
-            $codeStr = $codeStr.replace(":","");
-            $codeStr = $codeStr.replace(/^\s*|\s*$/g,"");
-            
             alert($codeStr+"문은 사용할 수 없습니다"); 
         }
         else
         {
             // code textarea 특수문자 처리
+            $preprocessStr = encodeURIComponent($preprocessStr);
             $codeStr = encodeURIComponent($codeStr);
+            $funcDefStr = encodeURIComponent($funcDefStr);
             $stdin = encodeURIComponent($stdin);
+            
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/createCode",
-                    data : "code="+$codeStr+"&flag=1&stdin="+$stdin,
+                    data : "preprocess="+$preprocessStr+"&code="+$codeStr+"&funcDef="+$funcDefStr+"&flag=1&stdin="+$stdin,
                     dataType : "json",
                     success : function($result) {
                                 var $codeResult= "";
@@ -254,6 +303,7 @@ body {
     .CodeMirror {
         border: 0px solid #eee;
         width: 100%;
+        margin-top:-7px;
         height: auto;
         font-size : 1.063em;
         font-family : Nanum Gothic;
@@ -450,12 +500,24 @@ function setupEvents(){
                     <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
                 </div>
                 
+                <div id="preprocessDiv">
+                    <textarea class="form-control" id="preprocess" name="preprocess" placeholder="Preprocess goes here"></textarea>
+                </div>
+                
+                <div id="mainDiv">
+                    <textarea class="form-control" id="main" name="main"><?=$mainCodeMain?></textarea>
+                </div>
+                
                 <div id="codeDiv">
                     <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
                 </div>
 
                 <div id="tailDiv">
                     <textarea class="form-control" id="tail" name="tail"><?=$mainCodeTail?></textarea>
+                </div>
+                
+                <div id="funcDefDiv">
+                    <textarea class="form-control" id="funcDef" name="funcDef" placeholder="Function Define goes here"></textarea>
                 </div>
 
             </div>
