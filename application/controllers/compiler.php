@@ -48,7 +48,7 @@ class Compiler extends CI_Controller {
     {
         $filePath = $this->_createFile($code,'quiz','quiz.c');
         $result = $this->_compile($filePath,'quiz',$stdin);
-        //delete_files($filePath);
+        delete_files($filePath);
     }
 
     // FreeCoding 실행
@@ -56,7 +56,7 @@ class Compiler extends CI_Controller {
     {
         $filePath = $this->_createFile($code,'freeCode','freeCode.c');
         $this->_compile($filePath,'freeCode',$stdin);
-        //delete_files($filePath);
+        delete_files($filePath);
     }
 
     // 컴파일
