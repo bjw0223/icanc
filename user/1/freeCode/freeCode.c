@@ -1,12 +1,8 @@
-#include <pthread.h>
+#include <pthread.h> 
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
-void *runCode34567(void *id34567){	int random ;
-	random = rand()/27+1;
-	printf("%d",random);}
-
-void *checkTime34567(void *id34567)
+#include <stdio.h>void *runCode34567(void *id34567) 
+{	printf("testing...\n")	return 0;}void *checkTime34567(void *id34567)
 {
     sleep(2);
     
