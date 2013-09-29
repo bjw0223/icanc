@@ -10,26 +10,33 @@
 <style>
 body {
     overflow-y:hidden;
+    padding-top:30px;
 }
-.quiz-left-bar {
-    height:50px;
-    background-color:#E6E6E6;
-    border-bottom: 1px solid rgba(0,0,0,0.15);
+.my-footer-logo {
+    height:30px;
+    line-height:30px;
+    font-size:20px;
+    font-weight:bold;
+    text-align:right;
+    color:rgb(37, 35, 35);
+    background-color:#e6e6e6;
 }
-.quiz-left-footer {
+.my-footer-logo>a {
+    color:rgb(37, 35, 35);
+}
+
+.quiz-left-bar,.quiz-middle-bar,.quiz-right-bar {
     height:40px;
-    border-top: 1px solid rgba(0,0,0,0.15);
-}
-.quiz-middle-bar,.quiz-right-bar {
-    height:50px;
     background-color:#1F1D1D;
     border-bottom: 1px solid #000000;
     text-align:center;
-    font-size: 13px;
-    line-height: 50px;
+    font-size: 18px;
+    line-height: 40px;
     color: #646464;
     font-weight:bold;
     text-transform: uppercase;
+}
+.quiz-left-footer {
 }
 .quiz-middle-desc, .quiz-right-desc{
     background-color:#232C31;
@@ -68,13 +75,13 @@ body {
     border:1px solid #0052FF; 
 }
 .quiz-description, .quiz-result {
-    background-color:#FFFFFF;
+    background-color:#7c7c7c;
     border-radius:10px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #928e8e;
     padding:5px;
 }
 .quiz-description-desc, .quiz-result-desc{
-    background-color:#204420;
+    background-color:#000000;
     height:100%;
     width:100%;
     color:#ffffff;
@@ -268,7 +275,7 @@ $(document).ready(function() {
 });
 function setupLayout(){
     var windowHeight = $(window).height();
-    $('.quiz-left-desc').css('height', (windowHeight - 140) + 'px' );
+    $('.quiz-left-desc').css('height', (windowHeight - 100) + 'px' );
     $('.quiz-middle-desc').css('height', (windowHeight - 170) + 'px' );
     $('.quiz-right-desc').css('height', (windowHeight - 170) + 'px' );
     $(".quiz-description").hide();
@@ -348,6 +355,7 @@ color:#eeeeee;
                     <p class="left-title">힌트</p>
                     <p class="left-desc"><?=$hint?></p>
                 </div>
+                <!--
             <div class="coding-help col-lg-12">
 				<p><b> 도움말 </b></p>
 				<small>
@@ -357,15 +365,14 @@ color:#eeeeee;
 					<p>ex) #1,#2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.</p>
 				</small>
 			</div>
-			<div class="coding-input col-lg-12">
-				<p><b> stdin : </b></p>
-				<input type="text" id="stdin" name="stdin" class="form-control"></input>
-			</div>
-            
+            -->
+
+		
 			<div class="quiz-left-footer col-lg-12 col-sm-12">
                 <div class="row">
-                    <div class="quiz-left-question col-lg-12 col-sm-12">
-                        질문하기
+                    <div class="coding-input col-lg-12">
+                        <p><b> stdin : </b></p>
+                        <input type="text" id="stdin" name="stdin" class="form-control"></input>
                     </div>
                 </div>
 			</div>		
@@ -376,13 +383,13 @@ color:#eeeeee;
         <div class="quiz-middle-div row">
             <div class="quiz-middle-bar col-lg-12 col-sm-12">
                 <div class="row">
-                    <div class="quiz-tap-title col-lg-2 col-sm-2">
-                        files :
+                    <div class="quiz-tap col-lg-2 col-sm-2">
+                        <i class="icon-file-alt icon-large"></i>
                     </div>
-                    <div class="quiz-tap col-lg-2 col-sm-2" style="">
-                        <i class="icon-file-alt icon-large"></i> quiz.c
+                    <div class="quiz-tap-title col-lg-6 col-sm-6">
+                        Quiz Editor
                     </div>
-                    <div class="col-lg-8 col-sm-8"> 
+                    <div class="col-lg-6 col-sm-6"> 
                     </div>
                 </div>
             </div>
@@ -425,4 +432,9 @@ color:#eeeeee;
         </div>
     </div>
 
+</div>
+<div class="freecoding-footer">
+        <div class="col-lg-12  col-sm-12 my-footer-logo">
+            <a href="#">Design by icanc</a>
+        </div>
 </div>

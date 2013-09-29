@@ -46,7 +46,7 @@ $(document).ready(function() {
     text-align:center;
 }
 .my-nav-logo > a {
-    color:rgb(37, 35, 35);
+    color:black;
 }
 .my-nav-logo > a:hover {
     text-decoration:none;
@@ -58,7 +58,7 @@ $(document).ready(function() {
     font-size:15px;
     font-weight:bold;
     line-height:30px;
-    color:white;
+    color:black;
 }
 .my-navbar .my-nav-tap > div:hover, #logout_div > div:hover, #login_div > div:hover {
     border-radius:10px;
@@ -68,13 +68,12 @@ $(document).ready(function() {
 }
 
 .my-navbar .my-nav-tap > div >a, #logout_div > div > a,#login_div > div > a{
-    color:white;
+    color:black;
 }
 .my-navbar .my-nav-tap > div >a:hover , #logout_div > div > a:hover, #login_div > div > a:hover{
     text-decoration:none;
 }
 #logout_div .name:hover  {
-    background-color:#36545F;
     padding-top:0px;
 }
 #logout_div .name > a:hover  {
@@ -111,18 +110,14 @@ $(document).ready(function() {
 
         <div id="login_div" class="col-lg-3 col-sm-3" style="text-align:right;">
             <!--login or sign up  button-->
-<!--
             <div class="col-lg-3 col-offset-6" href="<?=base_url()?>index.php/auth/register">JOIN</div>
             <div class="col-lg-3" href="<?=base_url()?>index.php/auth/login">LOGIN</div>
--->
         </div>
         <!--logout button-->
         <div id="logout_div" class="col-lg-3 col-sm-3" style="text-align:right;">
-<!--
             <div class="col-lg-6 name" style="text-align:right;"><a id="welcome" href="<?=base_url()?>index.php/mypage"><small>Lv.<?=$this->session->userdata('user_level')?></small> <?=$this->session->userdata('user_nickname');?>님</a></div>
             <div class="col-lg-3" href="<?=base_url()?>index.php/mypage/checkPwd">MYPAGE</div>
             <div class="col-lg-3" href="<?=base_url()?>index.php/auth/logout">LOGOUT</div>
--->
         </div>
     </div>
 </div>

@@ -165,6 +165,9 @@
 				    <li class="general_sub">void 포인터는 주로 동적할당 시에 사용한다.</li>
 			    </ul>
         </ul>
+
+        <img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\test.gif" width=700px; height=400px; style="margin-bottom:40px"><br>
+		
     </span>    
 </div>
 
