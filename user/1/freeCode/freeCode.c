@@ -1,6 +1,7 @@
-#include <pthread.h>
+#include <pthread.h> 
 #include <unistd.h>
 #include <stdlib.h>
+<<<<<<< HEAD
 #include <stdio.h>
 void *runCode34567(void *id34567){	int i,j;
 	int n;
@@ -53,6 +54,10 @@ void *runCode34567(void *id34567){	int i,j;
     }}
 
 void *checkTime34567(void *id34567)
+=======
+#include <stdio.h>void *runCode34567(void *id34567) 
+{	return 0;}void *checkTime34567(void *id34567)
+>>>>>>> 1bcb0514edbd65a7545a5cbc91bb6f9b7cc89623
 {
     sleep(2);
     

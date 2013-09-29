@@ -24,19 +24,20 @@ class Compiler extends CI_Controller {
         $data = (array)$rawData;
 
         $threadCodeHead = $data['threadCodeHead'];
+        $preprocess = $_POST['preprocess'];
+        $threadCodeRun = $data['threadCodeRun'];
         $code = $_POST['code'];
         $threadCodeTail = $data['threadCodeTail'];
+        $funcDef = $_POST['funcDef'];
         
         if($flag == 0)
         {
-            // textarea에 text값 가져와 \n처리
-            $finalCode = $threadCodeHead."\r".$code."\r".$threadCodeTail;
+            $finalCode = $threadCodeHead."\r".$preprocess."\r".$threadCodeRun."\r".$code."\r\treturn 0;\r}\r".$funcDef."\r".$threadCodeTail;
             $this->_preprocessCodingQuiz($finalCode,$stdin);
         }
         else if($flag == 1)
         {
-            // textarea에 text값 가져와 \n처리
-            $finalCode = $threadCodeHead."\r".$code."\r".$threadCodeTail;
+            $finalCode = $threadCodeHead."\r".$preprocess."\r".$threadCodeRun."\r".$code."\r\treturn 0;\r}\r".$funcDef."\r".$threadCodeTail;
             $this->_preprocessFreeCoding($finalCode,$stdin);
         }
     }
@@ -76,6 +77,7 @@ class Compiler extends CI_Controller {
          {
             $error = (array)fread($fp,$errmsgSize);
             fclose($fp);
+            $error = str_replace("\r\n","<br/>", $error);
             $error = str_replace("\n","<br/>", $error);
             $error = str_replace($filePath.$target.'.c:',"--> ", $error);
             $error = str_replace("'runCode34567'","'main'",$error);

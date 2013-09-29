@@ -33,8 +33,32 @@
 	                       <li class="general_sub">함수가 리턴한 값을 버퍼에 저장하여 함수 호출이 발생될 때마다 가져와 읽는다.</li>
 	                       <li class="general_sub">버퍼의 데이터는 가져온다고 해서 없어지지 않는다.</li>
 	                       <li class="general_sub">FILE 구조체에 파일에 대한 여러 정보가 있는데 그 중 위치지시자라는 것을 이용하여 순차적으로 파일의 데이터를 가져올 수 있게 한다.</li>
-				       </ul>
-	               <li id="list" class="general_sub">&lt;파일 출력(output)&gt;</li>
+				       </ul><br>
+			       <li id="list" class="general_sub">&lt;파일 위치 제어&gt;</li>
+                   <li id="list" class="general_sub">파일 입출력시 위치 지시자의 위치를 확인, 변경할 수 있다.</li>
+				   <li id="list" class="general_sub">1. 원형 : long int ftell (FILE *fp);</li>
+				       <ul>
+					       <li class="general_sub">파일의 처음부터 시작하여 현재 위치 지시자의 위치를 확인하는데 쓰인다.</li>
+				           <li class="general_sub">리턴값은 알아낸 현재 위치 지시자의 값이며, 실패시 –1을 리턴한다.</li>
+				           <li class="general_sub">전달인자로 확인하고자 하는 파일의 파일 포인터값을 넘겨준다.</li>
+                       </ul>
+				   <li id="list" class="general_sub">2. 원형 : int fseek (FLIE *fp, long int offset, lnt origin);</li>
+					   <ul>
+					       <li class="general_sub">파일의 위치 지시자의 위치를 원하는 곳으로 이동시킨다.</li>
+					       <li class="general_sub">위치 지시자의 위치를 제대로 옮기면 0을 리턴하며 실패시 0이 아닌 값을 리턴한다.</li>
+					       <li class="general_sub">전달인자의 첫 번째는 파일의 파일 포인터이며 두 번째는 얼마나 이동할 것인지를, 세 번째는 그 시작위치를 나타낸다.</li>
+                           <img src="<?=base_url()?>asset\lib\img\lecture\fileio\2.PNG" width=550px; height=115px"><br>
+						   <li id="list" class="maroon" "general_sub">*** fseek() 함수의 전달인자 값에 따른 상대적인 이동</li>
+                       
+						    지웅아 여기다 넣어라 
+
+                       </ul>
+				   <li id="list" class="general_sub">3. 원형 : void rewind (FILE *fp);</li>
+					   <ul>		 
+					       <li class="general_sub">파일의 위치 지시자의 위치를 파일의 시작 위치로 이동시킨다.</li>
+						   <li class="general_sub">fseek (fp, 0, SEEK_SET) 호출 시 동일한 기능을 한다.</li>
+					   </ul><br>
+			       <li id="list" class="general_sub">&lt;파일 출력(output)&gt;</li>
 				       <ul>
                            <li class="general_sub">출력을 위해서는 fputc 같은 함수를 이용한다.</li>
 	                       <li class="general_sub">원형 : int fputc(int ch, FILE *fp);</li>
