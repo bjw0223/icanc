@@ -95,6 +95,7 @@ body {
         border: 0px solid #eee;
         width: 100%;
         height: auto;
+        margin-top : -7px;
         font-size : 1.063em;
         font-family : Nanum Gothic;
     }
@@ -131,8 +132,8 @@ $(document).ready(function(){
 
     var forbidRegExp = /((main)\s*\()|(goto\s*\:)/g;
     var $codeResult= "";
-
-    // head textarea option
+    
+    // headDiv textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
                 mode: "text/x-csrc",
                 theme: "lesser-dark",
@@ -142,8 +143,8 @@ $(document).ready(function(){
                 readOnly : true,
             });
     
-    // code textarea option
-    var $code = CodeMirror.fromTextArea(document.getElementById("code"), {
+    // preprocessDiv textarea option
+    var $preprocess = CodeMirror.fromTextArea(document.getElementById("preprocess"), {
                 mode: "text/x-csrc",
                 theme: "lesser-dark",
                 matchBrackets: true,
@@ -154,19 +155,69 @@ $(document).ready(function(){
                 tabSize : 4,
             });
     
-    // tail textarea option
+    // mainDiv textarea option
+    var $main = CodeMirror.fromTextArea(document.getElementById("main"), {
+                mode: "text/x-csrc",
+                theme: "lesser-dark",
+                matchBrackets: true,
+                lineNumbers: true,
+                firstLineNumber : $head.lineCount()+$preprocess.lineCount()+1,
+                viewportMargin: 10,
+                readOnly : true,
+            });
+    // codeDiv textarea option
+    var $code = CodeMirror.fromTextArea(document.getElementById("code"), {
+                mode: "text/x-csrc",
+                theme: "lesser-dark",
+                matchBrackets: true,
+                smartIndent : true,
+                lineNumbers: true,
+                firstLineNumber : $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+1,
+                viewportMargin: 10,
+                tabSize : 4,
+            });
+    
+    // tailDiv textarea option
     var $tail = CodeMirror.fromTextArea(document.getElementById("tail"), {
                 mode: "text/x-csrc",
                 theme: "lesser-dark",
                 matchBrackets: true,
                 lineNumbers: true,
-                firstLineNumber : $head.lineCount()+$code.lineCount()+1,
+                firstLineNumber : $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+1,
                 viewportMargin: 10,
                 readOnly : true,
             }); 
-    // tail의 line number 실시간 변경
+    
+    // funcDefDiv textarea option
+    var $funcDef = CodeMirror.fromTextArea(document.getElementById("funcDef"), {
+                mode: "text/x-csrc",
+                theme: "lesser-dark",
+                matchBrackets: true,
+                smartIndent : true,
+                lineNumbers: true,
+                firstLineNumber : $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+$tail.lineCount()+1,
+                viewportMargin: 10,
+                tabSize : 4,
+            });
+    // Editor의 line number 실시간 변경
+    $preprocess.on("change", function($preprocess, change) {   
+                $main.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+1); 
+                $code.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+1); 
+                $tail.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+1); 
+                $funcDef.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+$tail.lineCount()+1); 
+            });
+
     $code.on("change", function($code, change) {   
-                $tail.setOption("firstLineNumber", $head.lineCount()+$code.lineCount()+1); 
+                $main.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+1); 
+                $code.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+1); 
+                $tail.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+1); 
+                $funcDef.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+$tail.lineCount()+1); 
+            });
+    $funcDef.on("change", function($funcDef, change) {   
+                $main.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+1); 
+                $code.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+1); 
+                $tail.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+1); 
+                $funcDef.setOption("firstLineNumber", $head.lineCount()+$preprocess.lineCount()+$main.lineCount()+$code.lineCount()+$tail.lineCount()+1); 
             });
 
     // Compile Button Click Event
@@ -176,18 +227,20 @@ $(document).ready(function(){
         // CodeMirror에서 code textare로 값 보내기
         $("#myModal").css('top',($(window).height()/2-70) +"px");
         $("#myModal").modal("show");
+        
+        $preprocess.save();
         $code.save();
         $tail.save();
+        $funcDef.save();
 
+        var $preprocessStr = document.getElementById("preprocess").value;
         var $codeStr = document.getElementById("code").value;
-        var $answerCodeStr = document.getElementById("tail").value.replace("return 0;\n}","");
+        var $tailStr = document.getElementById("tail").value;
+        var $funcDefStr = document.getElementById("funcDef").value;
 
         // 반복문, 선택문, goto 문등 사용 불가 정규식 판별
         if( ($checkCodeStr = forbidRegExp.exec($codeStr)) != null )
         {
-            // 사용불가 알림창 표시위한 공백 및 'i', ':' 제거
-            $("#myModal").modal("hide");
-            $errorStr = $checkCodeStr[0].replace(/^\s*|\s*$/g,"");
             alert($errorStr+"는 사용할 수 없습니다"); 
         }
         else
@@ -195,11 +248,16 @@ $(document).ready(function(){
             $codeResult = "";
 
             // code textarea 특수문자 처리
-            $codeStr = encodeURIComponent($codeStr+$answerCodeStr);
+            $preprocessStr = encodeURIComponent($preprocessStr);
+            $codeStr = encodeURIComponent($codeStr);
+            $tailStr = encodeURIComponent($tailStr);
+            $funcDefStr = encodeURIComponent($funcDefStr);
+            $stdin = encodeURIComponent($stdin);
+            
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/createCode",
-                    data : "code="+$codeStr+"&flag=0&stdin="+$stdin,
+                    data : "preprocess="+$preprocessStr+"&code="+$codeStr+"&tail="+$tailStr+"&funcDef="+$funcDefStr+"&flag=0&stdin="+$stdin,
                     dataType : "json",
                     success : function($result) {
                                 if($result == "")
@@ -390,13 +448,25 @@ color:#eeeeee;
                 <div id="headDiv">
                     <textarea class="form-control" id="head" name="head"><?=$mainCodeHead?></textarea>
                 </div>
-
-                <div id="codeDiv">
-                    <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
+                
+                <div id="preprocessDiv">
+                    <textarea class="form-control" id="preprocess" name="preprocess" placeholder="  Preprocess goes here"></textarea>
                 </div>
-                 
+                
+                <div id="mainDiv">
+                    <textarea class="form-control" id="main" name="main"><?=$mainCodeMain?></textarea>
+                </div>
+                
+                <div id="codeDiv">
+                    <textarea class="form-control" id="code" name="code" placeholder="  Code goes here"></textarea>
+                </div>
+
                 <div id="tailDiv">
-                    <textarea class="form-control" id="tail" name="tail"><?=$answerCode."\n"?><?=$mainCodeTail?></textarea>
+                    <textarea class="form-control" id="tail" name="tail"><?=$answerCode?><?=$mainCodeTail?></textarea>
+                </div>
+                
+                <div id="funcDefDiv">
+                    <textarea class="form-control" id="funcDef" name="funcDef" placeholder="  Function Define goes here"></textarea>
                 </div>
 
             </div>

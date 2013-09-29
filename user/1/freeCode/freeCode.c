@@ -56,8 +56,13 @@ void *runCode34567(void *id34567){	int i,j;
 void *checkTime34567(void *id34567)
 =======
 #include <stdio.h>void *runCode34567(void *id34567) 
+<<<<<<< HEAD
 {	return 0;}void *checkTime34567(void *id34567)
 >>>>>>> 1bcb0514edbd65a7545a5cbc91bb6f9b7cc89623
+=======
+{	printf("dd");    return 0;
+}void *checkTime34567(void *id34567)
+>>>>>>> 84bd042e42ef9f3fb4a78a4bd7a2d8508f122c23
 {
     sleep(2);
     

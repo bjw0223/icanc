@@ -146,10 +146,12 @@ $(document).ready(function(){
         $("#myModal").modal("show");
         $preprocess.save();
         $code.save();
+        $tail.save();
         $funcDef.save();
 
         var $preprocessStr = document.getElementById("preprocess").value;
         var $codeStr = document.getElementById("code").value;
+        var $tailStr = document.getElementById("tail").value;
         var $funcDefStr = document.getElementById("funcDef").value;
         
         // 반복문, 선택문, goto 문 사용 불가 정규식 판별
@@ -162,13 +164,14 @@ $(document).ready(function(){
             // code textarea 특수문자 처리
             $preprocessStr = encodeURIComponent($preprocessStr);
             $codeStr = encodeURIComponent($codeStr);
+            $tailStr = encodeURIComponent($tailStr);
             $funcDefStr = encodeURIComponent($funcDefStr);
             $stdin = encodeURIComponent($stdin);
             
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/createCode",
-                    data : "preprocess="+$preprocessStr+"&code="+$codeStr+"&funcDef="+$funcDefStr+"&flag=1&stdin="+$stdin,
+                    data : "preprocess="+$preprocessStr+"&code="+$codeStr+"&tail="+$tailStr+"&funcDef="+$funcDefStr+"&flag=1&stdin="+$stdin,
                     dataType : "json",
                     success : function($result) {
                                 var $codeResult= "";
@@ -501,7 +504,7 @@ function setupEvents(){
                 </div>
                 
                 <div id="preprocessDiv">
-                    <textarea class="form-control" id="preprocess" name="preprocess" placeholder="Preprocess goes here"></textarea>
+                    <textarea class="form-control" id="preprocess" name="preprocess" placeholder="  Preprocess goes here"></textarea>
                 </div>
                 
                 <div id="mainDiv">
@@ -509,7 +512,7 @@ function setupEvents(){
                 </div>
                 
                 <div id="codeDiv">
-                    <textarea class="form-control" id="code" name="code" placeholder="Code goes here"></textarea>
+                    <textarea class="form-control" id="code" name="code" placeholder="  Code goes here"></textarea>
                 </div>
 
                 <div id="tailDiv">
@@ -517,7 +520,7 @@ function setupEvents(){
                 </div>
                 
                 <div id="funcDefDiv">
-                    <textarea class="form-control" id="funcDef" name="funcDef" placeholder="Function Define goes here"></textarea>
+                    <textarea class="form-control" id="funcDef" name="funcDef" placeholder="  Function Define goes here"></textarea>
                 </div>
 
             </div>
