@@ -47,7 +47,9 @@
 			    <img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\2.PNG" width=370px; height=90px; style="margin-bottom:40px"><br>
 			<li>참조연산자(*)는 선언문에서 사용할 때와 실행문에서 사용할 때 뜻이 다르다.</li>
 				<li id="list" class="general_sub">int *p = &a; -&gt; 선언문, 이 때는 포인터변수 p 자체의 공간을 의미한다.</li>
-				<li id="list" class="general_sub">*p = 3; -&gt; 실행문, 이 때는 포인터변수가 가리키는 기억공간을 의미한다.</li><br>
+                <img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\p_1.gif" width=500px; height=180px; style="margin-bottom:20px"><br>
+				<li id="list" class="general_sub">*p = 3; -&gt; 실행문, 이 때는 포인터변수가 가리키는 기억공간을 의미한다.</li>
+                <img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\p_2.gif" width=500px; height=180px><br><br>
 			<li>포인터변수의 크기는 부호없는 4byte 정수형이다.</li>
 			     <ul>
 			      	<li class="general_sub">부호가 없는 까닭은 주소이기 때문이다.</li>
@@ -72,12 +74,13 @@
 		*num2 = 1;
 	}
 			</textarea>
-		</div>
+		</div><br>
 			<li>포인터변수도 개념은 ‘변수’이기 때문에 일반 변수들의 주소값을 구했던 것처럼 주소값을 구할 수 있다. 포인터변수의 주소값도 상수이므로 변수에 담아서 사용하는데 이런식으로 확장해 나가면 2중, 3중 ... 의 포인터를 구할 수 있다.</li>
 	            <li id="list" class="general_sub">int a = 1;</li>
 	            <li id="list" class="general_sub">int *p = &a;</li>
 	            <li id="list" class="general_sub">int **pp = &p;</li>
 	            <li id="list" class="general_sub">int ***ppp = &pp;</li>
+                <img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\p_3.gif" width=400px; height=520px; style="margin-bottom:20px"><br>
             <li id="list">이 때 이중포인터 pp가 가리키는 형은 (int *) 이며 삼중포인터 ppp가 가리키는 형은 (int **) 이다.</li>
 				<li id="list" class="general_sub">cf. **pp는 주소값을 두 번 참조하게 되는데 주소값은 4byte 정수이다. 한 번 참조해서 들어갔을 때 4byte 주소값이 있어야 하기 때문에 무조건 그 안의 4byte를 주소로 인식한다(값은 관계 없다)</li><br>
             <li>배열명과 함수명은 그 자체가 주소값을 가지고 있는데 이를 배열포인터, 함수포인터라 한다.</li>
@@ -120,7 +123,7 @@
                                  <li id="list" class="general_sub3">배열명은 주소값이다. 주소값에 어떤 상수를 더했을 경우에 실제로 연산되는 값은 ((상수 * 자료형의 크기) + 주소값)이다. 여기서 a는 배열의 첫 번째 구성요소인 1차원 배열을 가리키고 있으므로 3행으로 가기 위해서 +2를 계산한다. (a + 2)역시 3행의 1차원 배열 전체를 가리키고 있으므로 3열을 가기 위해서는 3행의 첫 번째 요소의 주소를 참조해야 한다(이것이 *(a + 2))</li>
                                     </ul>
 				</ul><br>
-                <li id="list" class="general_sub">**함수포인터</li>
+                <li id="list" class="general_sub">** 함수포인터</li>
                    <ul>
                        <li class="general_sub2">사용자가 만든 함수나 컴파일러가 제공해 주는 함수 모두 사용할 때 함수명을 호출하게 되는데 이는 함수명이 함수의 주소값을 가지고 있기 때문이다.</li>
 				       <li class="general_sub2">함수명도 주소값이므로 함수포인터변수에 담아서 활용할 수 있다.</li>
@@ -166,7 +169,6 @@
 			    </ul>
         </ul>
 
-        <img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\test.gif" width=700px; height=400px; style="margin-bottom:40px"><br>
 		
     </span>    
 </div>
