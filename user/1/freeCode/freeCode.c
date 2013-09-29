@@ -2,19 +2,54 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-void *runCode34567(void *id34567){	int n;
-	int i;
-	int j;
+void *runCode34567(void *id34567){	int i,j;
+	int n;
 	
-	n=10;
-	j=1;
-	while(j<=n/2){
-      	i=1;
-      	while(i<=j){
-			printf("%d %d ", j, i);
-      		i++;      	
-    	}
-      	j++;
+	char seekname[10]="hyunjung";
+	printf("찾고자 하는 이름 : %s\n", seekname);
+	char name[10][10]={"elle", 
+                       "yeomyeon", 
+                       "almang", 
+                       "hyunjung", 
+                       "han", 
+                       "heejung", 
+                       "mingjaen", 
+                       "killer", 
+                       "coke", 
+                       "solas"};
+	
+	for(i=0; i<10; i++)
+    {
+      	j=0;
+    	while(name[i][j]!='\0')
+        {
+        	j++;
+        }
+      	printf("%d번 글자수 : %d\n",i+1,j);
+      	n=j;
+      
+      	if(n==8)
+        {
+          	int flag=0;
+          
+    		for(j=0; j<n;j++)
+        	{
+         	 	if(name[i][j]!=seekname[j])
+          		{
+            		//printf("불일치\n");
+          			flag=1;
+                  	break;
+          		}
+            }
+          	if(flag==0)
+            {
+          		printf("일치\n");
+            }
+        }
+      	else
+        {
+          //printf("불일치\n");
+        }
     }}
 
 void *checkTime34567(void *id34567)
