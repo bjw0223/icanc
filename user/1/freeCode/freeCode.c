@@ -1,23 +1,9 @@
-#include <pthread.h>
+#include <pthread.h> 
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
-void *runCode34567(void *id34567){	int n;
-	int i;
-	int j;
-	
-	n=10;
-	j=1;
-	while(j<=n/2){
-      	i=1;
-      	while(i<=j){
-			printf("%d %d ", j, i);
-      		i++;      	
-    	}
-      	j++;
-    }}
-
-void *checkTime34567(void *id34567)
+#include <stdio.h>void *runCode34567(void *id34567) 
+{	printf("dd");    return 0;
+}void *checkTime34567(void *id34567)
 {
     sleep(2);
     
