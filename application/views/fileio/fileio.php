@@ -1,3 +1,99 @@
+<script>
+$(document).ready(function() {
+	$('.run-fseek').click(function() {
+		var $offset = $('.offset').val();
+		var $whence = $('.whence').val();
+        var $cur_whence = $('.fseek-string').attr('whence');
+		runfseek($offset,$whence,$cur_whence);
+	});
+	function runfseek($offset,$whence,$cur_whence)
+	{
+		var $string = "abcdefghijklmnopqrstuvwxyz";
+		var $pointer = "";
+	    if($whence == "SEEK_SET")
+		{
+            if( $offset < 0 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else if( $offset > 25 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else
+            {
+                for(var i = 0 ; i < $offset; i++ )
+                {
+                    $pointer+="&nbsp";
+                }
+                $pointer+="!";
+                $('.fseek-string').attr('whence',parseInt($offset));
+            }
+		}
+        else if($whence == "SEEK_CUR")
+        {
+            if( parseInt($offset) + parseInt($cur_whence) < 0 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else if( parseInt($offset) + parseInt($cur_whence) > 25 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else
+            {
+                for(var i = 0 ; i < parseInt($offset) + parseInt($cur_whence); i++ )
+                {
+                    $pointer+="&nbsp";
+                }
+                $pointer+="!";
+                $('.fseek-string').attr('whence',parseInt($offset) + parseInt($cur_whence))
+            }
+        }
+        else if($whence == "SEEK_END")
+        {
+            if( parseInt($offset) > 0 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else if(parseInt($offset)  > 25 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else
+            {
+                for(var i = 0 ; i < 25 +parseInt($offset); i++ )
+                {
+                    $pointer+="&nbsp";
+                }
+                $pointer+="!";
+                $('.fseek-string').attr('whence',25+parseInt($offset));
+            }
+        }
+        else
+        {
+           alert("SEEK_SET,SEEK_CUR,SEEK_END를 입력하세요");
+            $pointer+="!";
+        }
+
+		$('.fseek-string').html($string+"<br>"+$pointer);
+	}
+});
+</script>
+
+<style>
+.fseek-div {
+    border-radius:10px;
+    border: 1.5px solid black;
+    padding:10px;
+}
+</style>
 <div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
        <ul>
@@ -33,8 +129,45 @@
 	                       <li class="general_sub">함수가 리턴한 값을 버퍼에 저장하여 함수 호출이 발생될 때마다 가져와 읽는다.</li>
 	                       <li class="general_sub">버퍼의 데이터는 가져온다고 해서 없어지지 않는다.</li>
 	                       <li class="general_sub">FILE 구조체에 파일에 대한 여러 정보가 있는데 그 중 위치지시자라는 것을 이용하여 순차적으로 파일의 데이터를 가져올 수 있게 한다.</li>
-				       </ul>
-	               <li id="list" class="general_sub">&lt;파일 출력(output)&gt;</li>
+				       </ul><br>
+			       <li id="list" class="general_sub">&lt;파일 위치 제어&gt;</li>
+                   <li id="list" class="general_sub">파일 입출력시 위치 지시자의 위치를 확인, 변경할 수 있다.</li>
+				   <li id="list" class="general_sub">1. 원형 : long int ftell (FILE *fp);</li>
+				       <ul>
+					       <li class="general_sub">파일의 처음부터 시작하여 현재 위치 지시자의 위치를 확인하는데 쓰인다.</li>
+				           <li class="general_sub">리턴값은 알아낸 현재 위치 지시자의 값이며, 실패시 –1을 리턴한다.</li>
+				           <li class="general_sub">전달인자로 확인하고자 하는 파일의 파일 포인터값을 넘겨준다.</li>
+                       </ul>
+				   <li id="list" class="general_sub">2. 원형 : int fseek (FLIE *fp, long int offset, lnt origin);</li>
+					   <ul>
+					       <li class="general_sub">파일의 위치 지시자의 위치를 원하는 곳으로 이동시킨다.</li>
+					       <li class="general_sub">위치 지시자의 위치를 제대로 옮기면 0을 리턴하며 실패시 0이 아닌 값을 리턴한다.</li>
+					       <li class="general_sub">전달인자의 첫 번째는 파일의 파일 포인터이며 두 번째는 얼마나 이동할 것인지를, 세 번째는 그 시작위치를 나타낸다.</li>
+                           <img src="<?=base_url()?>asset\lib\img\lecture\fileio\2.PNG" width=550px; height=115px"><br>
+						   <li id="list" class="maroon general_sub">*** fseek() 함수의 전달인자 값에 따른 상대적인 이동</li>
+
+					       <li class="general_sub">fseek 테스터</li>
+						   <li id="list" style="padding-left:20px;">
+                                <div class="row fseek-div">
+                                    <div class="col-lg-12 fseek-string" whence="0">
+                                        abcdefghijklmnopqrstuvwxyz<br>
+                                        !
+                                    </div>
+                                    <div class="col-lg-12">
+                                    fseek(fp,<input class="offset" size="3" type="text">,<input class="whence" size="10" type="text">);
+                                    </div>	
+                                    <div class="col-lg-12">
+                                        <a class="btn btn-default run-fseek">실행</a>
+                                    </div>
+                                </div>
+                            </li>
+                       </ul>
+				   <li id="list" class="general_sub">3. 원형 : void rewind (FILE *fp);</li>
+					   <ul>		 
+					       <li class="general_sub">파일의 위치 지시자의 위치를 파일의 시작 위치로 이동시킨다.</li>
+						   <li class="general_sub">fseek (fp, 0, SEEK_SET) 호출 시 동일한 기능을 한다.</li>
+					   </ul><br>
+			       <li id="list" class="general_sub">&lt;파일 출력(output)&gt;</li>
 				       <ul>
                            <li class="general_sub">출력을 위해서는 fputc 같은 함수를 이용한다.</li>
 	                       <li class="general_sub">원형 : int fputc(int ch, FILE *fp);</li>

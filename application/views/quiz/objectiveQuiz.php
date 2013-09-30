@@ -32,6 +32,7 @@ function checkAnswer(answer,srl)
 }
 </script>
 
+
 <style>
 .CodeMirror {
     border: 1px solid #eee;
@@ -41,54 +42,55 @@ function checkAnswer(answer,srl)
     overflow-y: hidden;
     overflow-x: auto;
 }
+.objectiveQuiz {
+    border:1px solid black;
+    padding:5px;
+}
+.answer-btn {
+    background-color:#971953;
+}
 </style>
 
-<div class="row well">
-    <div class="col-lg-12 col-sm-12">
-        <div>
-            <legend>
-               <h3><strong>문제</strong></h3>
-               <h4><?=$data->question?></h4>
-            </legend>
-<?php 
-if( $data->code != null)
-{
-?>
-            <textarea id="code"><?=$data->code?></textarea>
+
+<div class="row objectiveQuiz" quizNo="1">
+    <div class="quiz-text col-lg-12 col-sm-12">
+        <?=$data->question?>
+    </div>
+    <div class="quiz-code col-lg-12 col-sm-12">
 <?php
-}
-if( $data->img_path != null )
+if( $data->code != NULL )
 {
 ?>
-            <img src="<?=base_url();?><?=$data->img_path?>">
+        <textarea id='code'><?=$data->code?></textarea>
 <?php
 }
 ?>
-        </div>
-        <div>
-            <div>
-                <h4><strong>(1)</strong> <?=$data->example1?></h4>
+    </div>
+    <div class="quiz-img col-lg-12 col-sm-12">
+<?php
+if( $data->img_path != NULL )
+{
+?>
+    <img src="<?=base_url().'/'.$data->img_path?>">
+<?php
+}
+?>
+    </div>
+    <div class="quiz-objective col-lg-12 col-sm-12">
+        <p class="example">(1)<?=$data->example1?></p>
+        <p class="example">(2)<?=$data->example2?></p>
+        <p class="example">(3)<?=$data->example3?></p>
+        <p class="example">(4)<?=$data->example4?></p>
+    </div>
+    <div class="quiz-check col-lg-12 col-sm-12">
+        <div class="input-group">
+            <input class="inputAnswer<?=$data->srl?> form-control" type="text">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="button" onclick="checkAnswer(<?=$data->answer?>,<?=$data->srl?>)">정답확인</button>
             </div>
-            <div>
-                <h4><strong>(2)</strong> <?=$data->example2?></h4>
-            </div>
-            <div>
-                <h4><strong>(3)</strong> <?=$data->example3?></h4>
-            </div>
-            <div>
-                <h4><strong>(4)</strong> <?=$data->example4?></h4>
-            </div>
         </div>
-        <div class="row">
-            <div class="input-group col-offset-9">
-                <input class="inputAnswer<?=$data->srl?> form-control" type="text">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="button" onclick="checkAnswer(<?=$data->answer?>,<?=$data->srl?>)">Go!</button>
-                </div>
-            </div>        
-        </div>
-        <div class="explanation explanation<?=$data->srl?>">
-            <h4><?=$data->explanation?></h4>
-        </div>
+    </div>
+    <div class="explanation explanation<?=$data->srl?>  col-lg-12 col-sm-12">
+        <?=$data->explanation?>
     </div>
 </div>

@@ -24,19 +24,21 @@ class Compiler extends CI_Controller {
         $data = (array)$rawData;
 
         $threadCodeHead = $data['threadCodeHead'];
+        $preprocess = $_POST['preprocess'];
+        $threadCodeRun = $data['threadCodeRun'];
         $code = $_POST['code'];
+        $tail = $_POST['tail'];
         $threadCodeTail = $data['threadCodeTail'];
+        $funcDef = $_POST['funcDef'];
         
         if($flag == 0)
         {
-            // textarea에 text값 가져와 \n처리
-            $finalCode = $threadCodeHead."\r".$code."\r".$threadCodeTail;
+            $finalCode = $threadCodeHead."\r".$preprocess."\r".$threadCodeRun."\r".$code."\r".$tail."\r".$funcDef."\r".$threadCodeTail;
             $this->_preprocessCodingQuiz($finalCode,$stdin);
         }
         else if($flag == 1)
         {
-            // textarea에 text값 가져와 \n처리
-            $finalCode = $threadCodeHead."\r".$code."\r".$threadCodeTail;
+            $finalCode = $threadCodeHead."\r".$preprocess."\r".$threadCodeRun."\r".$code."\r".$tail."\r".$funcDef."\r".$threadCodeTail;
             $this->_preprocessFreeCoding($finalCode,$stdin);
         }
     }
@@ -46,7 +48,7 @@ class Compiler extends CI_Controller {
     {
         $filePath = $this->_createFile($code,'quiz','quiz.c');
         $result = $this->_compile($filePath,'quiz',$stdin);
-        //delete_files($filePath);
+        delete_files($filePath);
     }
 
     // FreeCoding 실행
@@ -54,7 +56,7 @@ class Compiler extends CI_Controller {
     {
         $filePath = $this->_createFile($code,'freeCode','freeCode.c');
         $this->_compile($filePath,'freeCode',$stdin);
-        //delete_files($filePath);
+        delete_files($filePath);
     }
 
     // 컴파일
@@ -76,6 +78,7 @@ class Compiler extends CI_Controller {
          {
             $error = (array)fread($fp,$errmsgSize);
             fclose($fp);
+            $error = str_replace("\r\n","<br/>", $error);
             $error = str_replace("\n","<br/>", $error);
             $error = str_replace($filePath.$target.'.c:',"--> ", $error);
             $error = str_replace("'runCode34567'","'main'",$error);
