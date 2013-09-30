@@ -26,12 +26,12 @@ body {
 .quiz-left-footer {
 }
 .quiz-left-bar,.quiz-middle-bar,.quiz-right-bar {
-    height:50px;
+    height:40px;
     background-color:#1F1D1D;
     border-bottom: 1px solid #000000;
     text-align:center;
-    font-size: 13px;
-    line-height: 50px;
+    font-size: 18px;
+    line-height:40px;
     color: #646464;
     font-weight:bold;
     text-transform: uppercase;

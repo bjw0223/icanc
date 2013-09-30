@@ -1,3 +1,99 @@
+<script>
+$(document).ready(function() {
+	$('.run-fseek').click(function() {
+		var $offset = $('.offset').val();
+		var $whence = $('.whence').val();
+        var $cur_whence = $('.fseek-string').attr('whence');
+		runfseek($offset,$whence,$cur_whence);
+	});
+	function runfseek($offset,$whence,$cur_whence)
+	{
+		var $string = "abcdefghijklmnopqrstuvwxyz";
+		var $pointer = "";
+	    if($whence == "SEEK_SET")
+		{
+            if( $offset < 0 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else if( $offset > 25 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else
+            {
+                for(var i = 0 ; i < $offset; i++ )
+                {
+                    $pointer+="&nbsp";
+                }
+                $pointer+="!";
+                $('.fseek-string').attr('whence',parseInt($offset));
+            }
+		}
+        else if($whence == "SEEK_CUR")
+        {
+            if( parseInt($offset) + parseInt($cur_whence) < 0 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else if( parseInt($offset) + parseInt($cur_whence) > 25 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else
+            {
+                for(var i = 0 ; i < parseInt($offset) + parseInt($cur_whence); i++ )
+                {
+                    $pointer+="&nbsp";
+                }
+                $pointer+="!";
+                $('.fseek-string').attr('whence',parseInt($offset) + parseInt($cur_whence))
+            }
+        }
+        else if($whence == "SEEK_END")
+        {
+            if( parseInt($offset) > 0 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else if(parseInt($offset)  > 25 )
+            {
+                alert("범위를 벗어났습니다.");
+                $pointer+="!";
+            }
+            else
+            {
+                for(var i = 0 ; i < 25 +parseInt($offset); i++ )
+                {
+                    $pointer+="&nbsp";
+                }
+                $pointer+="!";
+                $('.fseek-string').attr('whence',25+parseInt($offset));
+            }
+        }
+        else
+        {
+           alert("SEEK_SET,SEEK_CUR,SEEK_END를 입력하세요");
+            $pointer+="!";
+        }
+
+		$('.fseek-string').html($string+"<br>"+$pointer);
+	}
+});
+</script>
+
+<style>
+.fseek-div {
+    border-radius:10px;
+    border: 1.5px solid black;
+    padding:10px;
+}
+</style>
 <div class="col-lg-9 col-sm-9 tutorial_desc">
     <span class="general">    
        <ul>
@@ -48,10 +144,23 @@
 					       <li class="general_sub">위치 지시자의 위치를 제대로 옮기면 0을 리턴하며 실패시 0이 아닌 값을 리턴한다.</li>
 					       <li class="general_sub">전달인자의 첫 번째는 파일의 파일 포인터이며 두 번째는 얼마나 이동할 것인지를, 세 번째는 그 시작위치를 나타낸다.</li>
                            <img src="<?=base_url()?>asset\lib\img\lecture\fileio\2.PNG" width=550px; height=115px"><br>
-						   <li id="list" class="maroon" "general_sub">*** fseek() 함수의 전달인자 값에 따른 상대적인 이동</li>
-                       
-						    지웅아 여기다 넣어라 
+						   <li id="list" class="maroon general_sub">*** fseek() 함수의 전달인자 값에 따른 상대적인 이동</li>
 
+					       <li class="general_sub">fseek 테스터</li>
+						   <li id="list" style="padding-left:20px;">
+                                <div class="row fseek-div">
+                                    <div class="col-lg-12 fseek-string" whence="0">
+                                        abcdefghijklmnopqrstuvwxyz<br>
+                                        !
+                                    </div>
+                                    <div class="col-lg-12">
+                                    fseek(fp,<input class="offset" size="3" type="text">,<input class="whence" size="10" type="text">);
+                                    </div>	
+                                    <div class="col-lg-12">
+                                        <a class="btn btn-default run-fseek">실행</a>
+                                    </div>
+                                </div>
+                            </li>
                        </ul>
 				   <li id="list" class="general_sub">3. 원형 : void rewind (FILE *fp);</li>
 					   <ul>		 
