@@ -439,14 +439,14 @@ color:#eeeeee;
     <div class="quiz-middle col-lg-5 col-sm-5">
         <div class="quiz-middle-div row">
             <div class="quiz-middle-bar col-lg-12 col-sm-5">
-                <div class="row">
-                    <div class="quiz-tap-title col-lg-2">
-                        files :
+                 <div class="row">
+                    <div class="quiz-tap col-lg-2 col-sm-2">
+                        <i class="icon-file-alt icon-large"></i>
                     </div>
-                    <div class="quiz-tap col-lg-2 col-sm-2" style="">
-                        <i class="icon-file-alt icon-large"></i> quiz.c
+                    <div class="quiz-tap-title col-lg-6 col-sm-6">
+                        Quiz Editor
                     </div>
-                    <div class="col-lg-8 col-sm-8"> 
+                    <div class="col-lg-6 col-sm-6"> 
                     </div>
                 </div>
             </div>
