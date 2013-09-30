@@ -2,7 +2,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>void *runCode34567(void *id34567) 
-{	return 0;}void *checkTime34567(void *id34567)
+{	printf("dd");    return 0;
+}void *checkTime34567(void *id34567)
 {
     sleep(2);
     
