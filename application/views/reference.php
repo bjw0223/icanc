@@ -52,7 +52,7 @@ $(document).ready(function() {
             },
             success : function(data) {
                 if( data['total_rows'] == 0 ){
-                    alert("검색결과없당");
+                    alert("검색 결과가 없습니다.");
                 }
                 else if( data['total_rows']  > 1 )
                 {
@@ -236,12 +236,10 @@ $(document).ready(function() {
 
 <div id="reference">
     <div class="row" id="referenceNavbar">
-        <div class="col-lg-1 col-sm-1">
+        <div class="col-lg-9 col-sm-9">
             <button id="showAllRefBtn" type="button" class="btn btn-danger"> 목 록 </button>
         </div>
-        <div class="col-lg-8 col-sm-8" style="">
-        </div>
-        <div class="col-lg-3 col-sm-3" style="">
+        <div class="col-lg-3 col-sm-3">
             <div class="input-group">
                 <input id="refSearch"type="text" class="form-control">
                 <span class="input-group-btn">

@@ -130,12 +130,12 @@
 
 <div id="reference">
     <div class="row" id="referenceNavbar">
-        <div class="col-lg-1">
+        <div class="col-lg-1 col-sm-1">
             <button id="showAllRefBtn" type="button" class="btn btn-danger"> 목 록 </button>
         </div>
-        <div class="col-lg-8" style="">
+        <div class="col-lg-8 col-sm-8" style="">
         </div>
-        <div class="col-lg-3" style="">
+        <div class="col-lg-3 col-sm-3" style="">
             <div class="input-group">
                 <input id="refSearch"type="text" class="form-control">
                 <span class="input-group-btn">
@@ -147,7 +147,7 @@
     <div id="referenceDev">
         <div id="referenceContents">
             <div class="row">
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="isdigit">isdigit</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="iscntrl">iscntrl</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="isblank">isblank</a>
@@ -165,7 +165,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="strpbrk">strpbrk</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="strcspn">strcspn</a>
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="strspn">strspn</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="strstr">strstr</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="strrchr">strrchr</a>
@@ -182,7 +182,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="isprint">isprint</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="islower">islower</a>
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="isgraph">isgraph</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="memset">memset</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="memcmp">memcmp</a>
@@ -199,7 +199,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="clearerr">clearerr</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="ferror">ferror</a>
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">feof</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">ungetc</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">fwrite</a>
@@ -216,7 +216,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">printf</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">scanf</a>
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">puts</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">gets</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">putchar</a>
@@ -233,7 +233,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">fsync</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">sync</a>
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">chroot</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">fchown</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">chown</a>
@@ -250,7 +250,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">creat</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">write</a>
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">close</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">open</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">log10</a>
@@ -267,7 +267,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">floor</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">ceil</a>
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">fmod</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">ldiv</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">div</a>
@@ -284,7 +284,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">tsearch</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">bsearch</a>
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">lfind</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">lsearch</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">rindex</a>
@@ -301,7 +301,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">wait</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">atexit</a>
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">exit</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">vfork</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">usleep</a>
@@ -319,7 +319,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">sigismember</a>
 
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">sigdelset</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">sigaddset</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">strtof</a>
@@ -337,7 +337,7 @@
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">localtime</a>
 
                 </div>
-                <div class="col-lg-1"><!--목차-->
+                <div class="col-lg-1 col-sm-1"><!--목차-->
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">ctime</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">time</a>
                     <a class="refBtn btn btn-small btn-block" href="#" data-in="">getopt_long</a>

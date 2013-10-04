@@ -100,7 +100,7 @@ class Auth extends CI_Controller {
                              'is_login' => true
                             );
            $this->session->set_userdata($sess_add);
-           redirect( base_url().'index.php/start' );
+           redirect( base_url().'index.php/lecture' );
         }
         else 
         {

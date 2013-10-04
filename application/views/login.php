@@ -46,20 +46,34 @@ $('.carousel').carousel({
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img class="main-img" src="<?=base_url();?>asset/lib/img/main/practice_quiz_result.JPG" alt="...">
+                        <img class="main-img" src="<?=base_url();?>asset/lib/img/main/1.png" alt="...">
+                        <div class="carousel-caption">
+                            <h2>Reference</h2>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="main-img" src="<?=base_url();?>asset/lib/img/main/2.png" alt="...">
+                        <div class="carousel-caption">
+                            <h2>FreeCoding</h2>
+                        </div>
+                    </div>
+					<div class="item">
+                        <img class="main-img" src="<?=base_url();?>asset/lib/img/main/3.png" alt="...">
                         <div class="carousel-caption">
                             <h2>Quiz</h2>
                         </div>
                     </div>
-                    <div class="item">
-                        <img class="main-img" src="<?=base_url();?>asset/lib/img/main/freeCoding.JPG" alt="...">
+					<div class="item">
+                        <img class="main-img" src="<?=base_url();?>asset/lib/img/main/4.png" alt="...">
                         <div class="carousel-caption">
-                            <h2>FreeCoding</h2>
+                            <h2>lecture</h2>
                         </div>
                     </div>
                 </div>
