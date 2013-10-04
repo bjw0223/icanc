@@ -119,6 +119,7 @@
                         	     <li id="list" class="general_sub3" style="text-indent:30px">2) 참조연산자를 사용하는 경우</li>
                                  <li id="list" class="general_sub3" style="text-indent:55px">: a[2][2]의 값을 구할 때</li>
                                  <li id="list" class="general_sub3" style="text-indent:55px">*(a + 2)[2]</li>
+			                     <img src="<?=base_url()?>asset\lib\img\lecture\data_type\pointer\p_4.gif" width=400px; height=300px; style="margin-left:40px"><br>
 								    <ul>
                                  <li id="list" class="general_sub3">배열명은 주소값이다. 주소값에 어떤 상수를 더했을 경우에 실제로 연산되는 값은 ((상수 * 자료형의 크기) + 주소값)이다. 여기서 a는 배열의 첫 번째 구성요소인 1차원 배열을 가리키고 있으므로 3행으로 가기 위해서 +2를 계산한다. (a + 2)역시 3행의 1차원 배열 전체를 가리키고 있으므로 3열을 가기 위해서는 3행의 첫 번째 요소의 주소를 참조해야 한다(이것이 *(a + 2))</li>
                                     </ul>

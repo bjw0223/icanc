@@ -420,7 +420,6 @@ color:#eeeeee;
                     <p class="left-title">힌트</p>
                     <p class="left-desc"><?=$hint?></p>
                 </div>
-                <!--
             <div class="coding-help col-lg-12">
 				<p><b> 도움말 </b></p>
 				<small>
@@ -430,9 +429,12 @@ color:#eeeeee;
 					<p>ex) #1,#2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.</p>
 				</small>
 			</div>
-            -->
 
-		
+			<div class="coding-input col-lg-12">
+				<p><b> stdin : </b></p>
+				<input type="text" id="stdin" name="stdin" class="form-control"></input>
+			</div>
+            
 			<div class="quiz-left-footer col-lg-12 col-sm-12">
                 <div class="row">
                     <div class="coding-input col-lg-12">
