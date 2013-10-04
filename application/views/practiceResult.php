@@ -437,7 +437,10 @@ color:#eeeeee;
             
 			<div class="quiz-left-footer col-lg-12 col-sm-12">
                 <div class="row">
-
+                    <div class="coding-input col-lg-12">
+                        <p><b> stdin : </b></p>
+                        <textarea id="stdin" name="stdin" class="form-control"></textarea>
+                    </div>
                 </div>
 			</div>		
             </div>

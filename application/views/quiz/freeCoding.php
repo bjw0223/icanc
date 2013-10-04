@@ -47,7 +47,7 @@
 
 $(document).ready(function(){
     
-    var regExp = /((main|gets|getc)\s*\()|(goto\s*\:)/;
+    var regExp = /((main)\s*\()|(goto\s*\:)/;
     
     // headDiv textarea option
     var $head = CodeMirror.fromTextArea(document.getElementById("head"), {
@@ -477,7 +477,7 @@ function setupEvents(){
                 </div>
                 <div class="coding-input col-lg-12 col-sm-12">
                     <p><b> stdin : </b></p>
-                    <input type="text" id="stdin" name="stdin" class="form-control"></input>
+                    <textarea id="stdin" name="stdin" class="form-control"></textarea>
                 </div>
             </div>
             <div class="quiz-left-footer col-lg-12 col-sm-12">
