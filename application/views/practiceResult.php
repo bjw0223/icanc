@@ -437,7 +437,7 @@ color:#eeeeee;
                 <div class="row">
                     <div class="coding-input col-lg-12">
                         <p><b> stdin : </b></p>
-                        <input type="text" id="stdin" name="stdin" class="form-control"></input>
+                        <textarea id="stdin" name="stdin" class="form-control"></textarea>
                     </div>
                 </div>
 			</div>		

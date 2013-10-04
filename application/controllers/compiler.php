@@ -18,7 +18,7 @@ class Compiler extends CI_Controller {
     {
         // view에서 ajax로 POST값 가져오기 
         $flag = $_POST['flag'];
-        $stdin = explode(',',$_POST['stdin']); 
+        $stdin = $_POST['stdin'];
 
         $rawData = $this->quiz_model->getCodingCode(1);
         $data = (array)$rawData;
@@ -47,6 +47,7 @@ class Compiler extends CI_Controller {
     function _preprocessCodingQuiz($code,$stdin)
     {
         $filePath = $this->_createFile($code,'quiz','quiz.c');
+        $this->_createFile($stdin,'quiz','stdin.txt');
         $result = $this->_compile($filePath,'quiz',$stdin);
         delete_files($filePath);
     }
@@ -55,6 +56,7 @@ class Compiler extends CI_Controller {
     function _preprocessFreeCoding($code,$stdin)
     {
         $filePath = $this->_createFile($code,'freeCode','freeCode.c');
+        $this->_createFile($stdin,'freeCode','stdin.txt');
         $this->_compile($filePath,'freeCode',$stdin);
         delete_files($filePath);
     }
@@ -89,29 +91,32 @@ class Compiler extends CI_Controller {
          {
             $descriptorspec = array(
                 0 => array("pipe", "r"),
-                1 => array("pipe", "w"), );
-        
+                1 => array("pipe", "w"), 
+                );
+                                     
             $process = proc_open("./".$target,$descriptorspec, $pipes, $filePath);
 
             if (is_resource($process)) 
             {   
-                foreach( $stdin as $value)
+                $handle = fopen($filePath."stdin.txt", "r");
+                while( $handle != feof($handle))
                 {
-                    $value = str_replace("#","\n",$value);
-                    //$value = str_replace("","<br/>",$value);
-                    fwrite($pipes[0],$value);
+                    //$value = str_replace("#","\n",$value);
+                    stream_copy_to_stream($handle,$pipes[0]);
+                    //fwrite($pipes[0],$value);
                 }
                     fclose($pipes[0]);
             }
 
             $result = "";
-            while($pdf_content = fgets($pipes[1]))
+            while($pdf_content = stream_get_contents($pipes[1]))
             {
                 $result = $result.$pdf_content;
             }
                 $result = str_replace("\n","<br>",$result);
                 fclose($pipes[1]);
                 //echo json_encode($runOutput);
+                proc_close($process);
                 echo json_encode($result);
          }
     }
