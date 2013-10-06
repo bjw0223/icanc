@@ -168,7 +168,6 @@ $(document).ready(function(){
             $funcDefStr = encodeURIComponent($funcDefStr);
             $stdin = encodeURIComponent($stdin);
             
-            alert($codeStr);
             $.ajax({
                     type : "POST",
                     url : "<?=base_url()?>index.php/compiler/createCode",
