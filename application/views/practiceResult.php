@@ -25,7 +25,7 @@ body {
     color:rgb(37, 35, 35);
 }
 
-.quiz-left-bar,.quiz-middle-bar,.quiz-right-bar {
+.quiz-left-bar,.quiz-middle-bar,.quiz-right-bar, .quiz-help {
     height:40px;
     background-color:#1F1D1D;
     border-bottom: 1px solid #000000;
@@ -371,9 +371,11 @@ function setupLayout(){
 .left-title {
     font-size:16px;
     font-weight:bold;
-margin:0px;
 }
 .quiz-left-tip{
+    padding:5px;
+}
+.coding-help{
     padding:5px;
 }
 .quiz-left-desc {
@@ -393,6 +395,32 @@ text-align:center;
 .compile-waiting {
 font-size:100px;
 color:#eeeeee;
+}
+#stdinDiv {
+border: 1px solid black;
+border-radius: 10px;
+padding: 5px;
+border-color: rgba(82, 168, 236, 0.8);
+outline: 0;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+display: block;
+width: 96%;
+height: 38px;
+padding: 8px 12px;
+margin-left : 10px;
+font-size: 14px;
+line-height: 1.428571429;
+color: #555555;
+vertical-align: middle;
+background-color: #ffffff;
+border: 1px solid #cccccc;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+height: auto;
 }
 </style>
     <div class="modal fade" id="myModal">
@@ -421,28 +449,27 @@ color:#eeeeee;
                     <p class="left-desc"><?=$hint?></p>
                 </div>
             <div class="coding-help col-lg-12">
-				<p><b> 도움말 </b></p>
-				<small>
-					<p><b>stdin은 ','로 각각을 구분합니다.</b></p>
-					<p>ex) a,b,1 - 세개의 char형 a,b,1이 차례대로 stdin으로 입력되어 집니다.</p>
-					<p><b>또한 숫자의 경우 '#'을 붙여줌으로써 구분합니다.</b></p>
-					<p>ex) #1,#2 - 두개의 int형 1,2이 차례대로 stdin으로 입력되어 집니다.</p>
+                <p class="left-title"><b>도움말</b></p>
+                <small>
+                    <p><b>&nbsp 1. Editor부분은 3가지 부분으로 나누어 입력합니다.</b></p>
+                    <p>&nbsp&nbsp- <b>Preprocess goes here</b> => 전처리 코드와 사용자 정의함수 선언 공간
+                    <p>&nbsp&nbsp- <b>Code goes here</b> => 메인함수 내부를 작성하는 공간
+                    <p>&nbsp&nbsp- <b>Function Define goes here</b> => 사용자 정의함수 정의 공간
+					<p><b>&nbsp 2. stdin은 하나의 라인을 하나의 입력으로 간주합니다.</b></p>
+                    <p>&nbsp&nbsp stdin Example</p>
+					<div id="stdinDiv" name="stdinDiv">a<br/>b</br>1</div> 
+                    <p>&nbsp&nbsp- 세개의 char형 a,b,1이 차례대로 stdin으로 입력되어 집니다.<p>
+					<p>&nbsp&nbsp- getchar 함수의 경우 사용이 불가합니다.</p>
 				</small>
 			</div>
-
-			<div class="coding-input col-lg-12">
-				<p><b> stdin : </b></p>
-				<input type="text" id="stdin" name="stdin" class="form-control"></input>
-			</div>
-            
-			<div class="quiz-left-footer col-lg-12 col-sm-12">
+            <div class="coding-input col-lg-12">
+				<p><b>&nbsp&nbspstdin :  </b></p>
+                <textarea id="stdin" name="stdin" class="form-control" style="resize:none; height:100px;"></textarea>
+            </div>
+            <div class="quiz-left-footer col-lg-12 col-sm-12">
                 <div class="row">
-                    <div class="coding-input col-lg-12">
-                        <p><b> stdin : </b></p>
-                        <textarea id="stdin" name="stdin" class="form-control"></textarea>
-                    </div>
                 </div>
-			</div>		
+            </div>
             </div>
         </div>
     </div>
