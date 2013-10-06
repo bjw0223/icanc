@@ -64,22 +64,22 @@ $(window).scroll(function(){
     <div class="bs-sidebar well" style="padding:10px;">
        <ul class="nav bs-sidenav"> 
             <li class="active">
-                <a class="nav-title" href="#">Tutorial</a>
-                <ul class="nav">
-                    <li><a class="nav-subtitle" href="#">이해</a></li>
-                    <li><a class="nav-subtitle" href="#">구성</a></li>
-                    <li><a class="nav-subtitle" href="#">실행과정</a></li>
-                    <li><a class="nav-subtitle" href="#">참고사항</a></li>
-                </ul>
+                <a class="nav-title" href="#">Lecture</a>
             </li>
             <li class="">
-                <a href="#">Free Coding</a>
+                <a class="nav-title" href="#">Reference</a>
             </li>  
             <li class="">
-                <a href="#">Reference</a>
+                <a class="nav-title"href="#">Quiz</a>
             </li>
             <li class="">
-                <a href="#">Board</a>
+                <a class="nav-title"href="#">Freecoding</a>
+            </li>
+            <li class="">
+                <a class="nav-title"href="#">Board</a>
+            </li>
+            <li class="">
+                <a class="nav-title"href="#">Mypage</a>
             </li>
         </ul>
     </div>

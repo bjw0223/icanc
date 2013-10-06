@@ -10,6 +10,7 @@ class Lecture extends CI_Controller {
 		$this->load->view('lecture_title');
 		$this->load->view('contents');
 		$this->load->view('lecture');
+		$this->load->view('sk_social_reply');
 		$this->load->view('footer');
 	}
     public function show($title,$subTitle,$flag="false")

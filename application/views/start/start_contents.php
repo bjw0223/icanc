@@ -54,17 +54,23 @@ $(window).scroll(function(){
     <div class="bs-sidebar" style="padding:10px;">
 
        <ul class="nav bs-sidenav"> 
-            <li class="<?=$selected=='tutorial'?'active':''?>">
-                <a class="nav-title" href="<?=base_url();?>index.php/start/overview/tutorial">Tutorial</a>
+            <li class="<?=$selected=='lecture'?'active':''?>">
+                <a class="nav-title" href="<?=base_url();?>index.php/start/overview/lecture">Lecture</a>
+            </li>
+            <li class="<?=$selected=='reference'?'active':''?>">
+                <a class="nav-title" href="<?=base_url();?>index.php/start/overview/reference">Reference</a>
+            </li>  
+            <li class="<?=$selected=='quiz'?'active':''?>">
+                <a class="nav-title" href="<?=base_url();?>index.php/start/overview/quiz">Quiz</a>
             </li>
             <li class="<?=$selected=='freecoding'?'active':''?>">
                 <a class="nav-title" href="<?=base_url();?>index.php/start/overview/freecoding">Free Coding</a>
-            </li>  
-            <li class="<?=$selected=='reference'?'active':''?>">
-                <a class="nav-title" href="<?=base_url();?>index.php/start/overview/reference">Reference</a>
             </li>
-            <li class="<?=$selected=='quiz'?'active':''?>">
-                <a class="nav-title" href="<?=base_url();?>index.php/start/overview/quiz">Quiz</a>
+            <li class="<?=$selected=='board'?'active':''?>">
+                <a class="nav-title" href="<?=base_url();?>index.php/start/overview/board">Board</a>
+            </li>
+            <li class="<?=$selected=='mypage'?'active':''?>">
+                <a class="nav-title" href="<?=base_url();?>index.php/start/overview/mypage">Mypage</a>
             </li>
         </ul>
 

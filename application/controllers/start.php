@@ -7,7 +7,7 @@ class Start extends CI_Controller {
     }
     function index()
     {
-        $this->overview('tutorial');
+        $this->overview('lecture');
     }
     function overview($arg)
     {
