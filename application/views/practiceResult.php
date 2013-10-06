@@ -277,7 +277,7 @@ $(document).ready(function(){
                                 $codeResult = "";
                                 if($result == "")
                                 {
-                                    $codeResult = $codeResult+"<br>";
+                                    $codeResult = $codeResult+"<br/>";
                                 }
 
                                 for (var $value in $result) 
