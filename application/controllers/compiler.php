@@ -114,7 +114,7 @@ class Compiler extends CI_Controller {
             {
                 $result = $result.$pdf_content;
             }
-                $result = str_replace("\n","<br>",$result);
+                $result = str_replace("\n","<br/>",$result);
                 fclose($pipes[1]);
                 //echo json_encode($runOutput);
                 proc_close($process);
