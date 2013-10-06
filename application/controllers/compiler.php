@@ -99,13 +99,14 @@ class Compiler extends CI_Controller {
             if (is_resource($process)) 
             {   
                 $handle = fopen($filePath."stdin.txt", "r");
-                while( $handle != feof($handle))
+                while( $handle != feof($handle) && $stdin != "") 
                 {
                     //$value = str_replace("#","\n",$value);
                     stream_copy_to_stream($handle,$pipes[0]);
                     //fwrite($pipes[0],$value);
                 }
                     fclose($pipes[0]);
+                    fclose($handle);
             }
 
             $result = "";
