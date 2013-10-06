@@ -13,7 +13,7 @@
 	$json_str='{"domain":"http://220.70.0.7","login_id":"admin@naver.com","name":"유진영","photo":"http://comments.skplanetx.com/f/profile/13769801564336016.jpg"}';
 //	var_dump($json_str);
 	$base64_str = base64_encode($json_str);
-	var_dump($base64_str);
+//	var_dump($base64_str);
 	$timestamp_str = round(microtime(true)*1000);
 	$org_str = "eyJsb2dpbl9pZCI6ImFkbWluQG5hdmVyLmNvbSIsIm5hbWUiOiLtmY3quLjrj5kiLCJkb21haW4iOiJodHRwOi8vMjIwLjcwLjAuNy9pY2FuYy9pbmRleC5waHAvbG9naW4iLCJwaG90byI6Imh0dHA6Ly9jb21tZW50cy5za3BsYW5ldHguY29tL2YvcHJvZmlsZS8xMzc2OTgwMTU2NDMzNjAxNi5qcGcifQ= "." ".$timestamp_str;       
 	//$hmac_str = hash('sha512', $app_secret );
@@ -33,7 +33,6 @@
 		    target_id: 'comments_plugin1',
 			op_app_key: '682abf17-0480-38ed-a76e-5a35849f19e8',
 			// (Optional) 페이지 식별자입니다. 같은 page_id는 같은 댓글들을 표시하며 생략시 페이지URL이 들어갑니다.
-			page_id: 'page002',
 			// (Optional) 아포가토에 표시될 페이지 제목입니다. 생략 시 브라우저 타이틀이 들어갑니다.
 			// (Optional) 아래는 필요에 따라 추가하며 상세한 내용은 하단 표를 참고하세요.
 			//page_url: 'http://affogato.skplanetx.com',
@@ -56,4 +55,8 @@
 			sso_token:'<?=$sso_token?>'
 	});
 </script>
-<div id="comments_plugin1"></div>
+<div class="row">
+	<div class="col-lg-9 col-offset-3">
+		<div id="comments_plugin1"></div>
+	</div>
+</div>

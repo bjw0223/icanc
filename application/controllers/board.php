@@ -57,7 +57,7 @@ class Board extends CI_Controller {
 		$this->load->view('board/board_contents', $selected);
 		$this->load->view('board/doc_view',$result);
 		$this->load->view('board/comment', $comments);
-		$this->load->view('board/sk_social_reply');
+//		$this->load->view('board/sk_social_reply');
 		$this->load->view('footer');
 
 	}
