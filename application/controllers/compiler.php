@@ -106,6 +106,7 @@ class Compiler extends CI_Controller {
                     //fwrite($pipes[0],$value);
                 }
                     fclose($pipes[0]);
+                    fclose($handle);
             }
 
             $result = "";
