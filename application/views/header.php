@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
     <head>
-        <meta charset="utf-8"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link href='http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css' rel='stylesheet' type='text/css'>
         <link href="<?=base_url();?>asset/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" media="screen"> 
         <link href="<?=base_url();?>asset/lib/bootstrap/dist/css/docs.css" rel="stylesheet" media="screen"> 

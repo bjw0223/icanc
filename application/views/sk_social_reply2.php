@@ -1,11 +1,14 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!--<script src="/j/jquery-1.8.3.js"></script>-->
 <script src="<?=base_url();?>asset/lib/js/hmac-sha512.js"></script>
 <script src="//comments.skplanetx.com/script/plugin.js"></script>
 <script>
-	var user_email = '<?=$this->session->userdata('user_email');?>';
-	var user_nickname = '<?=$this->session->userdata('user_email');?>';
-	//var user_nickname = '<?=$this->session->userdata('user_nickname');?>';
 // btoa, atob for IE
-;(function () {
+(function () {
 
 		var
 		object = typeof window != 'undefined' ? window : exports,
@@ -64,32 +67,54 @@
 
 }());
 
+function getToken(domain, login_id, name, photo) {
 	var org = {
-		domain: "http://220.70.0.7",
-		//login_id: '<?=$this->session->userdata('user_nickname');?>',
-		//name: '<?=$this->session->userdata('user_nickname');?>'
-		//login_id: 'test',
-		//name: 'test'
-		login_id: user_email,
-		name: user_nickname
+domain: domain,
+		login_id: login_id,
+		name: name
 	};
+	if (photo) org.photo = photo;
 	var org_str = JSON.stringify(org);
 	var base64_str = window.btoa(org_str);
 	var timestamp = (new Date()).getTime();
 	var app_secret = '62e2d6de2780487276ba68ce876adede'; // (상단 Step3]hmac hashing string 생성 참고)
 	var hmac_str = CryptoJS.HmacSHA512(base64_str + " " + timestamp, app_secret);
 	var token = base64_str + " " + hmac_str + " " + timestamp;
+	return token;
+}
+$(function() {
+//		$('#host_login').submit(function(e) {
+			//e.preventDefault();
+			$('#comments_plugin1').html('');
+			//var domain = 'affogato.skplanetx.com';
+			var domain = "http://220.70.0.7"
+			var login_id = 'TEST_ID';
+			var name = '가나';
+			//var login_id = "<?=$this->session->userdata('user_nickname');?>";
+			//var name =  '<?=$this->session->userdata('user_nickname');?>';
+			var photo = 'http://comments.skplanetx.com/f/profile/13769801564336016.jpg';
+			var op_app_key = '682abf17-0480-38ed-a76e-5a35849f19e8';
+			var token = getToken(domain, login_id, name, decodeURIComponent(photo));
 
-	var op_app_key = '682abf17-0480-38ed-a76e-5a35849f19e8';
-	var options = {
-		target_id: 'comments_plugin1',
-		op_app_key: op_app_key,
-		sso_token: token
-	};
+//alert("<?=$this->session->userdata('user_nickname');?>");
+			var options = {
+				target_id: 'comments_plugin1',
+				op_app_key: op_app_key,
+				//page_id: 'page001',
+				//page_title: 'page_test',
+				//host_favicon: 'http://affogato.skplanetx.com/favicon.ico',            // login link 에 보일 favicon (16x16)
+				//host_login_url: 'http://affogato.skplanetx.come/login/loginPage.do',  // optional
+				//host_logout_url: 'http://affogato.skplanetx.com/login/logout.do',     // optional
 
-	SKP.commentsPlugin(options);
+				// Host SSO 로그인
+				sso_token: token
+			};
+
+			//SKP.commentsPlugin(options);
+//		});
+
+});
 </script>
-
 <div class="row">
 	<div class="col-lg-9 col-sm-9 col-offset-3">
 		<div id="comments_plugin1"></div>

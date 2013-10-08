@@ -15,8 +15,10 @@ class Lecture extends CI_Controller {
 	}
     public function show($title,$subTitle,$flag="false")
 	{
+		$data['page_id'] = $title.'/'.$subTitle;
+
         if( $flag == "false") {
-            $this->load->view($title.'/'.$subTitle);
+            $this->load->view($title.'/'.$subTitle,$data);
         }
         else if($flag == "true" )
         {

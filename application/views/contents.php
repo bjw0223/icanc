@@ -28,7 +28,7 @@ $(window).scroll(function(){
     <div class="bs-sidebar">
        <ul class="nav bs-sidebar"> 
             <li class="">
-                <a class="nav-title" href="#"  load-href="<?=base_url();?>index.php/lecture/show/program/program">프로그램</a>
+                <a class="nav-title" href="#program"  load-href="<?=base_url();?>index.php/lecture/show/program/program">프로그램</a>
             </li>
             <li class="">
                 <a class="nav-subtitle" href="#" load-href="<?=base_url();?>index.php/lecture/show/constant/constant">상수</a>
