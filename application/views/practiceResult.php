@@ -283,8 +283,16 @@ $(document).ready(function(){
                                 for (var $value in $result) 
                                 {
                                     $codeResult = $codeResult + $result[$value];
-                                }
-                                    if( $codeResult == ("<?=$answer?>") )
+                                } 
+                                    for( i=0; i<$answer.length; ++i)
+                                    {
+                                        if($answer.charAt(i) == " ")
+                                        {
+                                            $answer = $answer.replace(" ","&nbsp");
+                                        }
+                                    }
+                                    
+                                    if( $codeResult == $answer )
                                     {
                                         $("#myModal").modal("hide");
                                         alert("정답입니다");

@@ -230,6 +230,7 @@ $(document).ready(function(){
     $("#compile").click( function()
     {
 		var $stdin = document.getElementById("stdin").value;
+        var $answer = "<?=$answer?>";
         // CodeMirror에서 code textare로 값 보내기
         $("#myModal").css('top',($(window).height()/2-70) +"px");
         $("#myModal").modal("show");
@@ -268,14 +269,23 @@ $(document).ready(function(){
                     success : function($result) {
                                 if($result == "")
                                 {
-                                    $codeResult = $codeResult+"<br>";
+                                    $codeResult = $codeResult+"<br/>";
                                 }
 
                                 for (var $value in $result) 
                                 {
                                     $codeResult = $codeResult + $result[$value];
                                 }
-                                    if( $codeResult == ("<?=$answer?>") )
+                                  
+                                    for( i=0; i<$answer.length; ++i)
+                                    {
+                                        if($answer.charAt(i) == " ")
+                                        {
+                                            $answer = $answer.replace(" ","&nbsp");
+                                        }
+                                    }
+                                    
+                                    if( $codeResult == $answer )
                                     {
                                         $("#myModal").modal("hide");
                                         alert("정답입니다");
