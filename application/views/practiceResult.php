@@ -234,6 +234,7 @@ $(document).ready(function(){
     $("#compile").click( function()
     {
         var $stdin = document.getElementById("stdin").value;
+        var $answer = "<?=$answer?>";
         // CodeMirror에서 code textare로 값 보내기
         $("#myModal").css('top',($(window).height()/2-70) +"px");
 		$("#myModal").modal("show");

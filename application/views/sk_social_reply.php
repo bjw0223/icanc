@@ -66,10 +66,6 @@
 
 	var org = {
 		domain: "http://220.70.0.7",
-		//login_id: '<?=$this->session->userdata('user_nickname');?>',
-		//name: '<?=$this->session->userdata('user_nickname');?>'
-		//login_id: 'test',
-		//name: 'test'
 		login_id: user_email,
 		name: user_nickname
 	};
