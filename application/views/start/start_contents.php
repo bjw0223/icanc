@@ -57,6 +57,7 @@ $(window).scroll(function(){
             <li class="<?=$selected=='lecture'?'active':''?>">
                 <a class="nav-title" href="<?=base_url();?>index.php/start/overview/lecture">Lecture</a>
             </li>
+<!--
             <li class="<?=$selected=='reference'?'active':''?>">
                 <a class="nav-title" href="<?=base_url();?>index.php/start/overview/reference">Reference</a>
             </li>  
@@ -72,6 +73,7 @@ $(window).scroll(function(){
             <li class="<?=$selected=='mypage'?'active':''?>">
                 <a class="nav-title" href="<?=base_url();?>index.php/start/overview/mypage">Mypage</a>
             </li>
+-->
         </ul>
 
     </div>

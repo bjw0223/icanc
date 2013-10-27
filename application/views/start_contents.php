@@ -66,6 +66,7 @@ $(window).scroll(function(){
             <li class="active">
                 <a class="nav-title" href="#">Lecture</a>
             </li>
+<!--
             <li class="">
                 <a class="nav-title" href="#">Reference</a>
             </li>  
@@ -81,6 +82,7 @@ $(window).scroll(function(){
             <li class="">
                 <a class="nav-title"href="#">Mypage</a>
             </li>
+-->
         </ul>
     </div>
 </div>

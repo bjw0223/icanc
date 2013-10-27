@@ -77,8 +77,10 @@
 	var token = base64_str + " " + hmac_str + " " + timestamp;
 
 	var op_app_key = '682abf17-0480-38ed-a76e-5a35849f19e8';
+	var page_url = '<?=current_url();?>';
 	var options = {
 		target_id: 'comments_plugin1',
+		page_id: page_url,
 		op_app_key: op_app_key,
 		sso_token: token
 	};
